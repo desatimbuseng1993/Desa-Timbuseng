@@ -1,3 +1,603 @@
 <!DOCTYPE html>
-<!-- CMS Admin Update for index.html at 2026-09-11T14:15:31.772Z -->
-<html><head><title>index.html - Desa Timbuseng</title></head><body><h1>Desa Timbuseng Kab. Takalar</h1></body></html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Resmi Desa Timbuseng - Kab. Takalar</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d5c3a;
+            --primary-dark: #073b24;
+            --accent-color: #f39c12;
+            --light-bg: #f8faf9;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #2d3748;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--primary-dark);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.85rem;
+        }
+
+        .top-bar a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .top-bar a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Navbar */
+        .navbar {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+
+        .navbar-brand {
+            max-width: 75%;
+        }
+
+        .navbar-brand img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .bg-desa {
+            background-color: var(--primary-color) !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 0.6rem 1rem !important;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-color) !important;
+        }
+
+        /* Running Text Announcement */
+        .announcement-bar {
+            background-color: #fff8e6;
+            border-bottom: 1px solid #ffe0b2;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(13, 92, 58, 0.90), rgba(7, 59, 36, 0.90)), 
+                        url('kantor.png') center/cover no-repeat;
+            color: white;
+            padding: 100px 0 90px 0;
+            position: relative;
+        }
+
+        .hero-badge {
+            background-color: rgba(243, 156, 18, 0.2);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Feature Card */
+        .feature-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: #ffffff;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(13, 92, 58, 0.1) !important;
+            border-color: var(--primary-color);
+        }
+
+        .feature-icon-wrapper {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            background-color: rgba(13, 92, 58, 0.08);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Stats Box */
+        .stat-card {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #edf2f7;
+            padding: 1.75rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-color);
+        }
+
+        .stat-icon {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+        }
+
+        /* Culture / Sejarah Section */
+        .culture-box {
+            background-color: var(--light-bg);
+            border-radius: 20px;
+            border-left: 6px solid var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0b1510;
+            color: #e2e8f0;
+        }
+
+        .footer-link {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .footer-link:hover {
+            color: #ffffff;
+            padding-left: 5px;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-btn:hover {
+            background-color: var(--accent-color);
+            color: #000000;
+            transform: translateY(-3px);
+        }
+
+        .copyright-bar {
+            background-color: #050a07;
+            border-top: 1px solid #1a2e22;
+            font-size: 0.875rem;
+        }
+
+        /* FLOATING ADMIN BUTTON */
+        .admin-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1050;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background-color: #1a202c;
+            color: #f39c12;
+            border: 2px solid #2d3748;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .admin-fab:hover {
+            background-color: #f39c12;
+            color: #1a202c;
+            transform: scale(1.1) rotate(15deg);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP HEADER INFORMASI -->
+    <div class="top-bar py-2 d-none d-md-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+                <span><i class="fas fa-map-marker-alt text-warning me-1"></i> Kec. Polongbangkeng Timur, Kab. Takalar</span>
+                <span><i class="fas fa-envelope text-warning me-1"></i> desatimbuseng1993@gmail.com</span>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <span><i class="fas fa-phone-alt text-warning me-1"></i> +62 852-9957-6913</span>
+                <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="fw-semibold text-warning">
+                    <i class="fab fa-instagram me-1"></i> @desa_timbuseng
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR UTAMA -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2 text-decoration-none" href="index.html">
+                <!-- LOGO DESA -->
+                <img src="logo.png" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                <div class="lh-sm overflow-hidden">
+                    <span class="d-block fs-6 fs-md-5 text-white fw-bold text-truncate">DESA TIMBUSENG</span>
+                    <small class="fw-normal text-white-50 text-uppercase d-block" style="font-size: 0.7rem;">Kabupaten Takalar</small>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse bg-desa bg-lg-transparent mt-3 mt-lg-0 p-3 p-lg-0 rounded-3 rounded-lg-0 shadow-sm shadow-lg-none" id="navbarNav">
+                <ul class="navbar-nav ms-auto fw-semibold py-2 py-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profil.html"><i class="fas fa-landmark me-1"></i> Profil Desa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="peta.html"><i class="fas fa-map-marked-alt me-1"></i> Peta Digital</a></li>
+                    <li class="nav-item"><a class="nav-link" href="informasi.html"><i class="fas fa-bullhorn me-1"></i> Informasi Publik</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pengaduan.html"><i class="fas fa-paper-plane me-1"></i> Pengaduan Warga</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kontak.html"><i class="fas fa-envelope-open-text me-1"></i> Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- RUNNING TEXT PENGUMUMAN -->
+    <div class="announcement-bar overflow-hidden">
+        <div class="container d-flex align-items-center">
+            <span class="badge bg-danger me-3 px-3 py-1 flex-shrink-0">PENGUMUMAN</span>
+            <marquee class="fw-medium text-dark mb-0" scrollamount="6">
+                Selamat Datang di Portal Resmi Sistem Informasi Desa Timbuseng. Pelayanan Administrasi Kantor Desa Buka Setiap Hari Kerja Jam 08.00 - 16.00 WITA. Ikuti Instagram Resmi Kami @desa_timbuseng Untuk Informasi Terbaru!
+            </marquee>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <header class="hero-section text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <span class="badge hero-badge px-3 py-2 mb-3 rounded-pill text-uppercase">Portal Resmi Pemerintah Desa</span>
+                    <h1 class="display-5 display-md-4 fw-extrabold mb-3">Selamat Datang di Desa Timbuseng</h1>
+                    <p class="lead text-white-50 mx-auto mb-4 fs-6 fs-md-5" style="max-width: 780px;">
+                        Pusat layanan informasi publik, pemetaan wilayah digital, transparansi tata kelola pemerintahan, serta pelestarian sejarah dan budaya lokal masyarakat Desa Timbuseng, Kabupaten Takalar.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a href="profil.html" class="btn btn-warning text-dark btn-md btn-lg-lg fw-bold px-4 py-3 shadow rounded-3">
+                            <i class="fas fa-compass me-2"></i>Jelajahi Profil Desa
+                        </a>
+                        <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-md btn-lg-lg fw-semibold px-4 py-3 shadow rounded-3">
+                            <i class="fab fa-instagram me-2"></i>Instagram Desa
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- METRIK / STATISTIK UTAMA DESA -->
+    <section class="py-5" style="margin-top: -30px;">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-6 col-md-3">
+                    <div class="stat-card text-center">
+                        <i class="fas fa-users stat-icon mb-2"></i>
+                        <h3 class="fw-bold mb-1 fs-4 fs-md-3">2.709</h3>
+                        <p class="text-muted small mb-0">Total Penduduk (Jiwa)</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card text-center">
+                        <i class="fas fa-vector-square stat-icon mb-2"></i>
+                        <h3 class="fw-bold mb-1 fs-4 fs-md-3">1.083,47</h3>
+                        <p class="text-muted small mb-0">Luas Wilayah (Ha)</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card text-center">
+                        <i class="fas fa-map-signs stat-icon mb-2"></i>
+                        <h3 class="fw-bold mb-1 fs-4 fs-md-3">7</h3>
+                        <p class="text-muted small mb-0">Wilayah Dusun</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card text-center">
+                        <i class="fas fa-home stat-icon mb-2"></i>
+                        <h3 class="fw-bold mb-1 fs-4 fs-md-3">884</h3>
+                        <p class="text-muted small mb-0">Kepala Keluarga (KK)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FITUR UTAMA / NAVIGASI CEPAT -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-success fw-bold text-uppercase tracking-wider">Layanan & Informasi</span>
+                <h2 class="fw-bold text-dark mt-1">Jelajahi Portal Desa Timbuseng</h2>
+                <p class="text-muted mx-auto" style="max-width: 600px;">Akses cepat ke berbagai fitur dan informasi resmi yang telah disediakan oleh Pemerintah Desa Timbuseng.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <a href="profil.html" class="text-decoration-none text-dark">
+                        <div class="feature-card p-4 h-100 shadow-sm">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-landmark"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">Profil & Aparatur Desa</h5>
+                            <p class="text-muted small mb-3">Informasi lengkap struktur pemerintahan desa di bawah kepemimpinan Kepala Desa Kaharuddin, S.P., Visi Misi, dan lembaga desa.</p>
+                            <span class="text-success fw-semibold small">Pelajari Selengkapnya <i class="fas fa-arrow-right ms-1"></i></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="peta.html" class="text-decoration-none text-dark">
+                        <div class="feature-card p-4 h-100 shadow-sm">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">Peta Digital & Wilayah</h5>
+                            <p class="text-muted small mb-3">Peta administratif 7 dusun (Sauleya, Timbuseng I & II, Panaikang I & II, Bontobaddo, Tanasambayang) serta peta guna lahan.</p>
+                            <span class="text-success fw-semibold small">Buka Peta Digital <i class="fas fa-arrow-right ms-1"></i></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="informasi.html" class="text-decoration-none text-dark">
+                        <div class="feature-card p-4 h-100 shadow-sm">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">Informasi & Kabar Desa</h5>
+                            <p class="text-muted small mb-3">Pengumuman resmi dari kantor desa, berita kegiatan kemasyarakatan, agenda desa, serta pembaruan pembangunan.</p>
+                            <span class="text-success fw-semibold small">Lihat Berita Terkini <i class="fas fa-arrow-right ms-1"></i></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="pengaduan.html" class="text-decoration-none text-dark">
+                        <div class="feature-card p-4 h-100 shadow-sm">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">Layanan Pengaduan Warga</h5>
+                            <p class="text-muted small mb-3">Sampaikan saran, masukan, pengaduan fasilitas, atau aspirasi masyarakat secara daring dan langsung ke aparatur desa.</p>
+                            <span class="text-success fw-semibold small">Kirim Pengaduan <i class="fas fa-arrow-right ms-1"></i></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="kontak.html" class="text-decoration-none text-dark">
+                        <div class="feature-card p-4 h-100 shadow-sm">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">Kontak & Pelayanan</h5>
+                            <p class="text-muted small mb-3">Jam pelayanan kantor desa, nomor WhatsApp resmi, alamat pos, dan lokasi peta kantor desa di Google Maps.</p>
+                            <span class="text-success fw-semibold small">Hubungi Kami <i class="fas fa-arrow-right ms-1"></i></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="profil.html#kebudayaan" class="text-decoration-none text-dark">
+                        <div class="feature-card p-4 h-100 shadow-sm">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-hands-holding-circle"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">Budaya & Kearifan Lokal</h5>
+                            <p class="text-muted small mb-3">Mengenal tradisi ritual mata air Je'ne Timbusu', tarian daerah Pakarena, serta seni pertunjukan Akmanca dan Anggaru.</p>
+                            <span class="text-success fw-semibold small">Lihat Tradisi Desa <i class="fas fa-arrow-right ms-1"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HIGHLIGHT SEJARAH & NILAI LOKAL -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="text-success fw-bold text-uppercase">Nilai & Identitas Desa</span>
+                    <h2 class="fw-bold text-dark mt-1 mb-3">Warisan Air Sakral "Je'ne Timbusu'"</h2>
+                    <p class="text-muted leading-relaxed">
+                        Nama <strong>Desa Timbuseng</strong> berakar dari keberadaan mata air sakral yang terpancar murni dari dalam tanah, yang oleh warga lokal dinamakan <em>Je'ne Timbusu'</em>. Sejak berdiri sebagai desa definitif pada 13 Maret 1995, masyarakat Timbuseng senantiasa menjaga kelestarian tradisi dan nilai gotong royong.
+                    </p>
+                    <p class="text-muted leading-relaxed">
+                        Setiap warga yang menggelar hajatan tradisi atau pernikahan memiliki kearifan mengambil air di Sumur Timbusu' diiringi tabuhan gendang khas sebagai simbol memohon keberkahan dan kelancaran acara.
+                    </p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="profil.html" class="btn btn-success bg-desa border-0 px-4 py-2 rounded-3">
+                            <i class="fas fa-book-open me-2"></i>Baca Sejarah Lengkap
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="culture-box p-4 p-md-5 shadow-sm">
+                        <h4 class="fw-bold text-dark mb-3"><i class="fas fa-compass text-success me-2"></i>Wilayah & Potensi Utama</h4>
+                        <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
+                            <li class="d-flex align-items-start gap-3">
+                                <i class="fas fa-seedling text-success fs-5 mt-1"></i>
+                                <div>
+                                    <strong class="d-block text-dark">Sektor Perkebunan Tebu & Pertanian</strong>
+                                    <span class="text-muted small">Didukung lahan perkebunan tebu seluas 705,39 Ha serta area persawahan irigasi produktif seluas 216,53 Ha.</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-start gap-3">
+                                <i class="fas fa-city text-success fs-5 mt-1"></i>
+                                <div>
+                                    <strong class="d-block text-dark">Pemekaran Wilayah Kecamatan</strong>
+                                    <span class="text-muted small">Berada di Kecamatan Polongbangkeng Timur (pemekaran dari Polongbangkeng Utara) Kabupaten Takalar.</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-start gap-3">
+                                <i class="fas fa-users-gear text-success fs-5 mt-1"></i>
+                                <div>
+                                    <strong class="d-block text-dark">Kepemimpinan Desa</strong>
+                                    <span class="text-muted small">Dipimpin oleh Kepala Desa Kaharuddin, S.P. bersama Sekretaris Desa Haeruddin, S.Pd.I dan perangkat desa.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER UTAMA -->
+    <footer class="pt-5">
+        <div class="container pb-4">
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <img src="logo.PNG" alt="Logo Desa Timbuseng" style="height: 48px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                        <div>
+                            <h5 class="fw-bold text-white mb-0">Pemerintah Desa Timbuseng</h5>
+                            <small class="text-white-50">Kec. Polongbangkeng Timur, Kab. Takalar</small>
+                        </div>
+                    </div>
+                    <p class="text-white-50 small pe-lg-4">
+                        Portal resmi Sistem Informasi Desa Timbuseng. Menyajikan data profil, transparansi tata kelola pemerintahan, layanan pengaduan masyarakat, serta pemetaan wilayah desa.
+                    </p>
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram Resmi Desa">
+                            <i class="fab fa-instagram fs-5"></i>
+                        </a>
+                        <a href="#" class="social-btn" title="Facebook Desa">
+                            <i class="fab fa-facebook-f fs-5"></i>
+                        </a>
+                        <a href="#" class="social-btn" title="YouTube Desa">
+                            <i class="fab fa-youtube fs-5"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <h6 class="fw-bold text-white mb-3 text-uppercase">Navigasi Utama</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small">
+                        <li><a href="index.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Beranda</a></li>
+                        <li><a href="profil.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Profil Desa & Perangkat</a></li>
+                        <li><a href="peta.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Peta Digital Wilayah</a></li>
+                        <li><a href="informasi.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Informasi & Berita Desa</a></li>
+                        <li><a href="pengaduan.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Layanan Pengaduan Warga</a></li>
+                        <li><a href="kontak.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Kontak & Lokasi Kantor</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-8 col-lg-4">
+                    <h6 class="fw-bold text-white mb-3 text-uppercase">Kontak Kantor Desa</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small text-white-50">
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-map-marker-alt text-warning mt-1"></i>
+                            <span>Kantor Desa Timbuseng, Kec. Polongbangkeng Timur, Kab. Takalar, Sulawesi Selatan 92221</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-phone-alt text-warning"></i>
+                            <span>+62 852-9957-6913</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-envelope text-warning"></i>
+                            <span>desatimbuseng1993@gmail.com</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fab fa-instagram text-warning"></i>
+                            <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                                @desa_timbuseng
+                            </a>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-clock text-warning"></i>
+                            <span>Senin - Jumat: 08:00 - 16:00 WITA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- COPYRIGHT BAR -->
+        <div class="copyright-bar py-3 text-center text-white-50">
+            <div class="container">
+                <p class="mb-0">©2026 P10 KKN UHM | Pemerintah Desa Timbuseng, Polongbangkeng Timur, Takalar. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING ADMIN BUTTON -->
+    <button class="admin-fab" data-bs-toggle="modal" data-bs-target="#loginModal" title="Akses Admin">
+        <i class="fas fa-user-shield"></i>
+    </button>
+
+    <!-- MODAL OTORISASI ADMIN -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title fw-bold" id="loginModalLabel"><i class="fas fa-lock me-2 text-warning"></i>Otorisasi Admin</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="text-muted small mb-3">Masukkan kata sandi administrator untuk masuk ke Halaman Dasbor Admin (`admin.html`).</p>
+                    <div class="mb-3">
+                        <label for="adminPassword" class="form-label fw-bold">Kata Sandi</label>
+                        <input type="password" class="form-control" id="adminPassword" placeholder="Masukkan sandi...">
+                        <div id="passwordError" class="text-danger small mt-2 d-none"><i class="fas fa-exclamation-circle me-1"></i>Sandi yang Anda masukkan salah.</div>
+                    </div>
+                    <button type="button" class="btn btn-warning w-100 fw-bold" onclick="verifyPassword()">Masuk Ke Halaman Admin</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Skrip Verifikasi Sandi Admin -->
+    <script>
+        const ADMIN_PASSWORD = "admintimbuseng";
+
+        function verifyPassword() {
+            const input = document.getElementById("adminPassword").value;
+            const errorMsg = document.getElementById("passwordError");
+            
+            if(input === ADMIN_PASSWORD) {
+                errorMsg.classList.add("d-none");
+                window.location.href = "admin.html";
+            } else {
+                errorMsg.classList.remove("d-none");
+            }
+        }
+
+        document.getElementById("adminPassword").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                verifyPassword();
+            }
+        });
+    </script>
+</body>
+</html>
