@@ -23,6 +23,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: #2d3748;
             background-color: #ffffff;
+            overflow-x: hidden;
         }
 
         /* Top Bar */
@@ -43,10 +44,20 @@
         }
 
         /* Navbar */
+        .navbar {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+
+        .navbar-brand {
+            max-width: 75%;
+        }
+
         .navbar-brand img {
-            height: 48px;
+            height: 45px;
             width: auto;
             object-fit: contain;
+            flex-shrink: 0;
         }
 
         .bg-desa {
@@ -66,7 +77,7 @@
         /* Header Profil */
         .profile-header {
             background: linear-gradient(135deg, rgba(13, 92, 58, 0.92), rgba(7, 59, 36, 0.92)), 
-                        url('kantor.PNG') center/cover no-repeat;
+                        url('kantor.png') center/cover no-repeat;
             color: white;
             padding: 80px 0 60px 0;
         }
@@ -235,17 +246,17 @@
     <!-- NAVBAR UTAMA -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow">
         <div class="container">
-            <a class="navbar-brand fw-bold d-flex align-items-center gap-3" href="index.html">
-                <img src="logo.PNG" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
-                <div class="lh-sm">
-                    <span class="d-block fs-5 text-white fw-bold tracking-wide">DESA TIMBUSENG</span>
-                    <small class="fw-normal text-white-50 text-uppercase" style="font-size: 0.75rem;">Kabupaten Takalar</small>
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2 text-decoration-none" href="index.html">
+                <img src="logo.png" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                <div class="lh-sm overflow-hidden">
+                    <span class="d-block fs-6 fs-md-5 text-white fw-bold text-truncate">DESA TIMBUSENG</span>
+                    <small class="fw-normal text-white-50 text-uppercase d-block" style="font-size: 0.7rem;">Kabupaten Takalar</small>
                 </div>
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse bg-desa bg-lg-transparent mt-3 mt-lg-0 p-3 p-lg-0 rounded-3 rounded-lg-0 shadow-sm shadow-lg-none" id="navbarNav">
                 <ul class="navbar-nav ms-auto fw-semibold py-2 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a></li>
                     <li class="nav-item"><a class="nav-link active" href="profil.html"><i class="fas fa-landmark me-1"></i> Profil Desa</a></li>
@@ -262,8 +273,8 @@
     <header class="profile-header text-center">
         <div class="container">
             <span class="badge bg-warning text-dark px-3 py-2 rounded-pill text-uppercase fw-bold mb-3">Dokumentasi Profil Resmi</span>
-            <h1 class="display-5 fw-extrabold mb-2">Profil & Sejarah Desa Timbuseng</h1>
-            <p class="lead text-white-50 mx-auto" style="max-width: 750px;">
+            <h1 class="display-6 display-md-5 fw-extrabold mb-2">Profil & Sejarah Desa Timbuseng</h1>
+            <p class="lead text-white-50 mx-auto fs-6 fs-md-5" style="max-width: 750px;">
                 Mengenal sejarah berdirinya desa, makna simbolis daerah, visi misi, tata kelola pemerintahan, serta pembagian 7 wilayah dusun di Kecamatan Polongbangkeng Timur.
             </p>
         </div>
@@ -344,7 +355,7 @@
                 <!-- GAMBAR LOGO DAERAH -->
                 <div class="col-lg-4 text-center">
                     <div class="bg-white p-4 rounded-4 shadow-sm border">
-                        <img src="logo.PNG" alt="Logo Kabupaten Takalar" class="img-fluid mb-3" style="max-height: 220px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/200?text=LOGO+TAKALAR';">
+                        <img src="logo.png" alt="Logo Kabupaten Takalar" class="img-fluid mb-3" style="max-height: 220px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/200?text=LOGO+TAKALAR';">
                         <h5 class="fw-bold text-dark mb-1">Kabupaten Takalar</h5>
                         <small class="text-muted">Simbol Kebangsaan & Perjuangan</small>
                     </div>
@@ -463,13 +474,13 @@
                             Pemerintah Desa Timbuseng dipimpin oleh Kepala Desa <strong>Kaharuddin, S.P.</strong> didampingi Sekretaris Desa <strong>Haeruddin, S.Pd.I</strong> serta didukung oleh jajaran Kepala Seksi (Kasi), Kepala Urusan (Kaur), dan Perangkat Desa lainnya yang berdedikasi melayani warga.
                         </p>
                         <div class="d-flex flex-wrap gap-2 text-white small">
-                            <span class="bg-white/10 border border-white/20 px-3 py-1.5 rounded-pill"><i class="fas fa-user-tie text-warning me-1.5"></i> Kades: Kaharuddin, S.P.</span>
-                            <span class="bg-white/10 border border-white/20 px-3 py-1.5 rounded-pill"><i class="fas fa-user-gear text-warning me-1.5"></i> Sekdes: Haeruddin, S.Pd.I</span>
-                            <span class="bg-white/10 border border-white/20 px-3 py-1.5 rounded-pill"><i class="fas fa-users text-warning me-1.5"></i> BPD & LKD Desa</span>
+                            <span class="bg-white/15 border border-white/20 px-3 py-1.5 rounded-pill"><i class="fas fa-user-tie text-warning me-1.5"></i> Kades: Kaharuddin, S.P.</span>
+                            <span class="bg-white/15 border border-white/20 px-3 py-1.5 rounded-pill"><i class="fas fa-user-gear text-warning me-1.5"></i> Sekdes: Haeruddin, S.Pd.I</span>
+                            <span class="bg-white/15 border border-white/20 px-3 py-1.5 rounded-pill"><i class="fas fa-users text-warning me-1.5"></i> BPD & LKD Desa</span>
                         </div>
                     </div>
                     <div class="col-lg-4 text-lg-end text-center">
-                        <a href="pemdes.html" class="btn btn-warning btn-lg text-dark font-bold px-4 py-3 shadow rounded-3 text-nowrap">
+                        <a href="pemdes.html" class="btn btn-warning btn-lg text-dark fw-bold px-4 py-3 shadow rounded-3 text-nowrap">
                             <i class="fas fa-sitemap me-2"></i>Lihat Struktur Pemdes Lengkap
                         </a>
                     </div>
@@ -625,7 +636,7 @@
             <div class="row g-4">
                 <div class="col-lg-5">
                     <div class="d-flex align-items-center gap-3 mb-3">
-                        <img src="logo.PNG" alt="Logo Desa Timbuseng" style="height: 48px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                        <img src="logo.png" alt="Logo Desa Timbuseng" style="height: 48px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
                         <div>
                             <h5 class="fw-bold text-white mb-0">Pemerintah Desa Timbuseng</h5>
                             <small class="text-white-50">Kec. Polongbangkeng Timur, Kab. Takalar</small>
