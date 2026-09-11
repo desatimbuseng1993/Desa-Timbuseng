@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Desa Timbuseng - Kec. Polongbangkeng Timur</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d5c3a;
+            --primary-dark: #073b24;
+            --accent-color: #f39c12;
+            --light-bg: #f8faf9;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #2d3748;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--primary-dark);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.85rem;
+        }
+
+        .top-bar a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .top-bar a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Navbar */
+        .navbar-brand img {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .bg-desa {
+            background-color: var(--primary-color) !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 0.6rem 1rem !important;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-color) !important;
+        }
+
+        /* Header Profil */
+        .profile-header {
+            background: linear-gradient(135deg, rgba(13, 92, 58, 0.92), rgba(7, 59, 36, 0.92)), 
+                        url('kantor.PNG') center/cover no-repeat;
+            color: white;
+            padding: 80px 0 60px 0;
+        }
+
+        /* Card Styling */
+        .custom-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            background: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(13, 92, 58, 0.08) !important;
+            border-color: var(--primary-color);
+        }
+
+        /* Logo Meaning Box */
+        .symbol-card {
+            border-left: 5px solid var(--accent-color);
+            background-color: var(--light-bg);
+            border-radius: 12px;
+            padding: 1.25rem;
+            height: 100%;
+        }
+
+        .symbol-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background-color: rgba(243, 156, 18, 0.15);
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Dusun Card Interactive */
+        .dusun-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+        }
+
+        .dusun-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(13, 92, 58, 0.12);
+            color: inherit;
+        }
+
+        .dusun-badge {
+            background-color: rgba(13, 92, 58, 0.1);
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* Pemdes Interactive Link Card */
+        .pemdes-banner {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-radius: 20px;
+            color: white;
+            padding: 2.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0b1510;
+            color: #e2e8f0;
+        }
+
+        .footer-link {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .footer-link:hover {
+            color: #ffffff;
+            padding-left: 5px;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-btn:hover {
+            background-color: var(--accent-color);
+            color: #000000;
+            transform: translateY(-3px);
+        }
+
+        .copyright-bar {
+            background-color: #050a07;
+            border-top: 1px solid #1a2e22;
+            font-size: 0.875rem;
+        }
+
+        /* FLOATING ADMIN BUTTON */
+        .admin-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1050;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background-color: #1a202c;
+            color: #f39c12;
+            border: 2px solid #2d3748;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .admin-fab:hover {
+            background-color: #f39c12;
+            color: #1a202c;
+            transform: scale(1.1) rotate(15deg);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP HEADER INFORMASI -->
+    <div class="top-bar py-2 d-none d-md-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+                <span><i class="fas fa-map-marker-alt text-warning me-1"></i> Kec. Polongbangkeng Timur, Kab. Takalar</span>
+                <span><i class="fas fa-envelope text-warning me-1"></i> desatimbuseng1993@gmail.com</span>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <span><i class="fas fa-phone-alt text-warning me-1"></i> +62 852-9957-6913</span>
+                <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="fw-semibold text-warning">
+                    <i class="fab fa-instagram me-1"></i> @desa_timbuseng
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR UTAMA -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-3" href="index.html">
+                <img src="logo.PNG" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                <div class="lh-sm">
+                    <span class="d-block fs-5 text-white fw-bold tracking-wide">DESA TIMBUSENG</span>
+                    <small class="fw-normal text-white-50 text-uppercase" style="font-size: 0.75rem;">Kabupaten Takalar</small>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto fw-semibold py-2 py-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="profil.html"><i class="fas fa-landmark me-1"></i> Profil Desa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="peta.html"><i class="fas fa-map-marked-alt me-1"></i> Peta Digital</a></li>
+                    <li class="nav-item"><a class="nav-link" href="informasi.html"><i class="fas fa-bullhorn me-1"></i> Informasi Publik</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pengaduan.html"><i class="fas fa-paper-plane me-1"></i> Pengaduan Warga</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kontak.html"><i class="fas fa-envelope-open-text me-1"></i> Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER PROFIL DESA -->
+    <header class="profile-header text-center">
+        <div class="container">
+            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill text-uppercase fw-bold mb-3">Dokumentasi Profil Resmi</span>
+            <h1 class="display-5 fw-extrabold mb-2">Profil & Sejarah Desa Timbuseng</h1>
+            <p class="lead text-white-50 mx-auto" style="max-width: 750px;">
+                Mengenal sejarah berdirinya desa, makna simbolis daerah, visi misi, tata kelola pemerintahan, serta pembagian 7 wilayah dusun di Kecamatan Polongbangkeng Timur.
+            </p>
+        </div>
+    </header>
+
+    <!-- SEKSI 1: SEJARAH DAN ASAL USUL DESA TIMBUSENG -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="pe-lg-3">
+                        <span class="text-success fw-bold text-uppercase tracking-wider"><i class="fas fa-history me-1"></i> Asal Usul & Historiografi</span>
+                        <h2 class="fw-bold text-dark mt-1 mb-4">Sejarah Berdirinya Desa Timbuseng</h2>
+                        <p class="text-secondary leading-relaxed mb-3">
+                            Nama <strong>Desa Timbuseng</strong> secara etimologis berakar dari keberadaan mata air sakral murni yang memancar (*timbus*) dari dalam perut bumi, yang oleh masyarakat setempat dikenal secara turun-temurun dengan sebutan <em>Je'ne Timbusu'</em>. Sumber air ini tidak pernah surut sepanjang musim dan menjadi sumber kehidupan utama masyarakat.
+                        </p>
+                        <p class="text-secondary leading-relaxed mb-3">
+                            Desa Timbuseng resmi berdiri sebagai desa definitif pada <strong>13 Maret 1995</strong>. Sebelum dimekarkan, wilayah Timbuseng merupakan bagian integral dari kawasan Polongbangkeng yang kaya akan nilai perjuangan patriotik dan tradisi agraris.
+                        </p>
+                        <p class="text-secondary leading-relaxed">
+                            Hingga saat ini, tradisi mengambil air di Sumur Timbusu' yang diiringi dengan prosesi tabuhan gendang khas senantiasa dilestarikan oleh warga setiap kali menyelenggarakan hajatan besar atau pesta pernikahan sebagai ucapan syukur dan permohonan keberkahan.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-light p-4 p-md-5 rounded-4 border border-emerald-100 shadow-sm">
+                        <h4 class="fw-bold text-dark mb-4 border-bottom pb-3"><i class="fas fa-award text-success me-2"></i>Identitas Singkat Desa</h4>
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="bg-white p-3 rounded-3 border">
+                                    <small class="text-muted d-block">Tanggal Berdiri</small>
+                                    <strong class="text-dark fs-6">13 Maret 1995</strong>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-white p-3 rounded-3 border">
+                                    <small class="text-muted d-block">Kecamatan</small>
+                                    <strong class="text-dark fs-6">Polongbangkeng Timur</strong>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-white p-3 rounded-3 border">
+                                    <small class="text-muted d-block">Kabupaten</small>
+                                    <strong class="text-dark fs-6">Takalar</strong>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-white p-3 rounded-3 border">
+                                    <small class="text-muted d-block">Provinsi</small>
+                                    <strong class="text-dark fs-6">Sulawesi Selatan</strong>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="bg-white p-3 rounded-3 border">
+                                    <small class="text-muted d-block">Aspek Budaya Utama</small>
+                                    <strong class="text-dark fs-6">Ritual Air Sakral Je'ne Timbusu' & Seni Akmanca</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKSI 2: MAKNA LOGO KABUPATEN TAKALAR -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-success fw-bold text-uppercase tracking-wider">Identitas Daerah</span>
+                <h2 class="fw-bold text-dark mt-1">Makna Simbolis Logo Kabupaten Takalar</h2>
+                <p class="text-muted mx-auto" style="max-width: 680px;">
+                    Lambang Kabupaten Takalar mencerminkan filosofi perjuangan, nilai kebangsaan, serta kekayaan alam yang melandasi semangat warga Desa Timbuseng.
+                </p>
+            </div>
+
+            <div class="row g-4 align-items-center">
+                <!-- GAMBAR LOGO DAERAH -->
+                <div class="col-lg-4 text-center">
+                    <div class="bg-white p-4 rounded-4 shadow-sm border">
+                        <img src="logo.PNG" alt="Logo Kabupaten Takalar" class="img-fluid mb-3" style="max-height: 220px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/200?text=LOGO+TAKALAR';">
+                        <h5 class="fw-bold text-dark mb-1">Kabupaten Takalar</h5>
+                        <small class="text-muted">Simbol Kebangsaan & Perjuangan</small>
+                    </div>
+                </div>
+
+                <!-- RINCIAN SIMBOL LOGO -->
+                <div class="col-lg-8">
+                    <div class="row g-3">
+                        <!-- SIMBOL LIPAN -->
+                        <div class="col-md-6">
+                            <div class="symbol-card">
+                                <div class="symbol-icon">
+                                    <i class="fas fa-shield-halved"></i>
+                                </div>
+                                <h5 class="fw-bold text-dark mb-2">Simbol Lipan</h5>
+                                <p class="text-secondary small mb-0">
+                                    Merupakan simbol kepahlawanan dan semangat patriotik masyarakat Takalar, terinspirasi dari keberanian <strong>Laskar Lipan Bajeng</strong> yang berdiri kokoh pada masa revolusi fisik mempertahankan kemerdekaan.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- SIMBOL POHON & PETAK SAWAH -->
+                        <div class="col-md-6">
+                            <div class="symbol-card">
+                                <div class="symbol-icon">
+                                    <i class="fas fa-wheat-awn"></i>
+                                </div>
+                                <h5 class="fw-bold text-dark mb-2">Pohon & Petak Sawah</h5>
+                                <p class="text-secondary small mb-0">
+                                    Mewakili kemakmuran dan kesuburan tanah Kabupaten Takalar yang produktif di sektor pertanian dan perkebunan, serta mencerminkan kebahagiaan dan keharmonisan tata kehidupan masyarakat.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- SIMBOL LAUT DAN GUNUNG -->
+                        <div class="col-md-6">
+                            <div class="symbol-card">
+                                <div class="symbol-icon">
+                                    <i class="fas fa-mountain-sun"></i>
+                                </div>
+                                <h5 class="fw-bold text-dark mb-2">Simbol Laut & Gunung</h5>
+                                <p class="text-secondary small mb-0">
+                                    Menunjukkan keberagaman bentang alam Takalar yang meluas dari pesisir hingga pegunungan, sekaligus melambangkan daya juang pantang menyerah masyarakat dalam menghadapi tantangan zaman.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- NILAI KEBANGSAAN & PERJUANGAN -->
+                        <div class="col-md-6">
+                            <div class="symbol-card">
+                                <div class="symbol-icon">
+                                    <i class="fas fa-flag"></i>
+                                </div>
+                                <h5 class="fw-bold text-dark mb-2">Kebangsaan & Perjuangan</h5>
+                                <p class="text-secondary small mb-0">
+                                    Keseluruhan simbol tersebut menyatu mencerminkan nilai-nilai luhur kebangsaan, persatuan gotong royong, dan semangat perjuangan masyarakat Takalar dalam memajukan daerah.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKSI 3: VISI & MISI DESA TIMBUSENG -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="bg-desa text-white p-4 p-md-5 rounded-4 h-100 shadow">
+                        <span class="badge bg-warning text-dark mb-3 px-3 py-1 fw-bold">VISI DESA</span>
+                        <h3 class="fw-bold mb-3">Mewujudkan Desa Timbuseng yang Mandiri, Sejahtera, dan Berbudaya</h3>
+                        <p class="text-white-50 leading-relaxed mb-0">
+                            Terwujudnya tata kelola pemerintahan desa yang transparan, akuntabel, serta berbasis pelayanan publik yang adaptif demi kesejahteraan seluruh masyarakat berlandaskan kearifan lokal Je'ne Timbusu'.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="custom-card p-4 p-md-5 h-100">
+                        <span class="text-success fw-bold text-uppercase tracking-wider">MISI STRATEGIS</span>
+                        <h3 class="fw-bold text-dark mt-1 mb-4">Misi Pembangunan Desa</h3>
+                        <div class="d-flex flex-column gap-3">
+                            <div class="d-flex gap-3 align-items-start">
+                                <div class="bg-success text-white rounded-circle flex-shrink-0 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; font-weight: bold;">1</div>
+                                <p class="text-secondary mb-0">Meningkatkan kualitas pelayanan administrasi kependudukan yang cepat, efisien, dan ramah berbasis teknologi digital.</p>
+                            </div>
+                            <div class="d-flex gap-3 align-items-start">
+                                <div class="bg-success text-white rounded-circle flex-shrink-0 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; font-weight: bold;">2</div>
+                                <p class="text-secondary mb-0">Mendorong percepatan pembangunan infrastruktur jalan tani, sarana pengairan sawah, dan fasilitas publik antar-dusun.</p>
+                            </div>
+                            <div class="d-flex gap-3 align-items-start">
+                                <div class="bg-success text-white rounded-circle flex-shrink-0 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; font-weight: bold;">3</div>
+                                <p class="text-secondary mb-0">Mengembangkan potensi ekonomi lokal sektor perkebunan tebu, pertanian padi, serta pemberdayaan UMKM desa.</p>
+                            </div>
+                            <div class="d-flex gap-3 align-items-start">
+                                <div class="bg-success text-white rounded-circle flex-shrink-0 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; font-weight: bold;">4</div>
+                                <p class="text-secondary mb-0">Melestarikan tradisi seni budaya lokal seperti Je'ne Timbusu', Akmanca, Anggaru, serta nilai kearifan gotong royong warga.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKSI 4: PEMERINTAHAN DESA & NAVIGASI STRUKTUR PEMDES -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="pemdes-banner shadow-lg">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-8">
+                        <span class="badge bg-warning text-dark px-3 py-1 text-uppercase fw-bold mb-2">Pemerintah Desa Timbuseng</span>
+                        <h2 class="fw-extrabold text-white mb-3">Tata Kelola & Struktur Perangkat Desa</h2>
+                        <p class="text-white-50 leading-relaxed mb-4">
+                            Pemerintah Desa Timbuseng dipimpin oleh Kepala Desa <strong>Kaharuddin, S.P.</strong> didampingi Sekretaris Desa <strong>Haeruddin, S.Pd.I</strong> serta didukung oleh jajaran Kepala Seksi (Kasi), Kepala Urusan (Kaur), dan Perangkat Desa lainnya yang berdedikasi melayani warga.
+                        </p>
+                        <div class="d-flex flex-wrap gap-2 text-white small">
+                            <span class="bg-white/10 border border-white/20 px-3 py-1.5 rounded-pill"><i class="fas fa-user-tie text-warning me-1.5"></i> Kades: Kaharuddin, S.P.</span>
+                            <span class="bg-white/10 border border-white/20 px-3 py-1.5 rounded-pill"><i class="fas fa-user-gear text-warning me-1.5"></i> Sekdes: Haeruddin, S.Pd.I</span>
+                            <span class="bg-white/10 border border-white/20 px-3 py-1.5 rounded-pill"><i class="fas fa-users text-warning me-1.5"></i> BPD & LKD Desa</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-lg-end text-center">
+                        <a href="pemdes.html" class="btn btn-warning btn-lg text-dark font-bold px-4 py-3 shadow rounded-3 text-nowrap">
+                            <i class="fas fa-sitemap me-2"></i>Lihat Struktur Pemdes Lengkap
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKSI 5: WILAYAH ADMINISTRATIF 7 DUSUN DESA TIMBUSENG -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-success fw-bold text-uppercase tracking-wider">Pembagian Wilayah Spasial</span>
+                <h2 class="fw-bold text-dark mt-1">7 Wilayah Dusun Desa Timbuseng</h2>
+                <p class="text-muted mx-auto" style="max-width: 650px;">
+                    Pilih salah satu dusun di bawah ini untuk melihat profil statistik warga, data RT/RW, komoditas unggulan, fasilitas umum, dan profil Kepala Dusun masing-masing.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <!-- DUSUN TIMBUSENG 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <a href="dusun-timbuseng1.html" class="dusun-card">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="dusun-badge">Wilayah Dusun I</span>
+                            <i class="fas fa-arrow-right text-success"></i>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-1">Dusun Timbuseng I</h4>
+                        <p class="text-muted small mb-3"><i class="fas fa-user-circle me-1 text-success"></i> Kadus: Syamsuddin Daeng Naba</p>
+                        <hr class="my-2 border-slate-100">
+                        <div class="d-flex justify-content-between text-muted small">
+                            <span><i class="fas fa-users me-1 text-success"></i> 438 Jiwa</span>
+                            <span><i class="fas fa-home me-1 text-success"></i> 138 KK</span>
+                            <span><i class="fas fa-seedling me-1 text-success"></i> Tebu & Padi</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- DUSUN TIMBUSENG 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <a href="dusun-timbuseng2.html" class="dusun-card">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="dusun-badge">Wilayah Dusun II</span>
+                            <i class="fas fa-arrow-right text-success"></i>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-1">Dusun Timbuseng II</h4>
+                        <p class="text-muted small mb-3"><i class="fas fa-user-circle me-1 text-success"></i> Kadus Dusun Timbuseng II</p>
+                        <hr class="my-2 border-slate-100">
+                        <div class="d-flex justify-content-between text-muted small">
+                            <span><i class="fas fa-users me-1 text-success"></i> Penduduk Dusun</span>
+                            <span><i class="fas fa-home me-1 text-success"></i> KK Dusun</span>
+                            <span><i class="fas fa-wheat-awn me-1 text-success"></i> Pertanian</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- DUSUN SAULEYA -->
+                <div class="col-md-6 col-lg-4">
+                    <a href="dusun-sauleya.html" class="dusun-card">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="dusun-badge">Wilayah Dusun III</span>
+                            <i class="fas fa-arrow-right text-success"></i>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-1">Dusun Sauleya</h4>
+                        <p class="text-muted small mb-3"><i class="fas fa-user-circle me-1 text-success"></i> Kadus Dusun Sauleya</p>
+                        <hr class="my-2 border-slate-100">
+                        <div class="d-flex justify-content-between text-muted small">
+                            <span><i class="fas fa-users me-1 text-success"></i> Penduduk Dusun</span>
+                            <span><i class="fas fa-home me-1 text-success"></i> KK Dusun</span>
+                            <span><i class="fas fa-road me-1 text-success"></i> Jalan Tani</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- DUSUN TANASAMBAYANG -->
+                <div class="col-md-6 col-lg-4">
+                    <a href="dusun-tanasambayang.html" class="dusun-card">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="dusun-badge">Wilayah Dusun IV</span>
+                            <i class="fas fa-arrow-right text-success"></i>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-1">Dusun Tanasambayang</h4>
+                        <p class="text-muted small mb-3"><i class="fas fa-user-circle me-1 text-success"></i> Kadus Dusun Tanasambayang</p>
+                        <hr class="my-2 border-slate-100">
+                        <div class="d-flex justify-content-between text-muted small">
+                            <span><i class="fas fa-users me-1 text-success"></i> Penduduk Dusun</span>
+                            <span><i class="fas fa-home me-1 text-success"></i> KK Dusun</span>
+                            <span><i class="fas fa-seedling me-1 text-success"></i> Komoditas Utama</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- DUSUN BONTOBADDO -->
+                <div class="col-md-6 col-lg-4">
+                    <a href="dusun-bontobaddo.html" class="dusun-card">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="dusun-badge">Wilayah Dusun V</span>
+                            <i class="fas fa-arrow-right text-success"></i>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-1">Dusun Bontobaddo</h4>
+                        <p class="text-muted small mb-3"><i class="fas fa-user-circle me-1 text-success"></i> Kadus Dusun Bontobaddo</p>
+                        <hr class="my-2 border-slate-100">
+                        <div class="d-flex justify-content-between text-muted small">
+                            <span><i class="fas fa-users me-1 text-success"></i> Penduduk Dusun</span>
+                            <span><i class="fas fa-home me-1 text-success"></i> KK Dusun</span>
+                            <span><i class="fas fa-tree me-1 text-success"></i> Perkebunan</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- DUSUN PANAIKANG 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <a href="dusun-panaikang1.html" class="dusun-card">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="dusun-badge">Wilayah Dusun VI</span>
+                            <i class="fas fa-arrow-right text-success"></i>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-1">Dusun Panaikang I</h4>
+                        <p class="text-muted small mb-3"><i class="fas fa-user-circle me-1 text-success"></i> Kadus Dusun Panaikang I</p>
+                        <hr class="my-2 border-slate-100">
+                        <div class="d-flex justify-content-between text-muted small">
+                            <span><i class="fas fa-users me-1 text-success"></i> Penduduk Dusun</span>
+                            <span><i class="fas fa-home me-1 text-success"></i> KK Dusun</span>
+                            <span><i class="fas fa-wheat-awn me-1 text-success"></i> Sawah Irigasi</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- DUSUN PANAIKANG 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <a href="dusun-panaikang2.html" class="dusun-card">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="dusun-badge">Wilayah Dusun VII</span>
+                            <i class="fas fa-arrow-right text-success"></i>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-1">Dusun Panaikang II</h4>
+                        <p class="text-muted small mb-3"><i class="fas fa-user-circle me-1 text-success"></i> Kadus Dusun Panaikang II</p>
+                        <hr class="my-2 border-slate-100">
+                        <div class="d-flex justify-content-between text-muted small">
+                            <span><i class="fas fa-users me-1 text-success"></i> Penduduk Dusun</span>
+                            <span><i class="fas fa-home me-1 text-success"></i> KK Dusun</span>
+                            <span><i class="fas fa-seedling me-1 text-success"></i> Pertanian</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER UTAMA -->
+    <footer class="pt-5">
+        <div class="container pb-4">
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <img src="logo.PNG" alt="Logo Desa Timbuseng" style="height: 48px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                        <div>
+                            <h5 class="fw-bold text-white mb-0">Pemerintah Desa Timbuseng</h5>
+                            <small class="text-white-50">Kec. Polongbangkeng Timur, Kab. Takalar</small>
+                        </div>
+                    </div>
+                    <p class="text-white-50 small pe-lg-4">
+                        Portal resmi Sistem Informasi Desa Timbuseng. Menyajikan data profil, transparansi tata kelola pemerintahan, layanan pengaduan masyarakat, serta pemetaan wilayah desa.
+                    </p>
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram Resmi Desa">
+                            <i class="fab fa-instagram fs-5"></i>
+                        </a>
+                        <a href="#" class="social-btn" title="Facebook Desa">
+                            <i class="fab fa-facebook-f fs-5"></i>
+                        </a>
+                        <a href="#" class="social-btn" title="YouTube Desa">
+                            <i class="fab fa-youtube fs-5"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <h6 class="fw-bold text-white mb-3 text-uppercase">Navigasi Utama</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small">
+                        <li><a href="index.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Beranda</a></li>
+                        <li><a href="profil.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Profil Desa</a></li>
+                        <li><a href="pemdes.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Struktur Pemdes</a></li>
+                        <li><a href="peta.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Peta Digital Wilayah</a></li>
+                        <li><a href="informasi.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Informasi & Berita Desa</a></li>
+                        <li><a href="kontak.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Kontak & Lokasi Kantor</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-8 col-lg-4">
+                    <h6 class="fw-bold text-white mb-3 text-uppercase">Kontak Kantor Desa</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small text-white-50">
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-map-marker-alt text-warning mt-1"></i>
+                            <span>Kantor Desa Timbuseng, Kec. Polongbangkeng Timur, Kab. Takalar, Sulawesi Selatan 92221</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-phone-alt text-warning"></i>
+                            <span>+62 852-9957-6913</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-envelope text-warning"></i>
+                            <span>desatimbuseng1993@gmail.com</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fab fa-instagram text-warning"></i>
+                            <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                                @desa_timbuseng
+                            </a>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-clock text-warning"></i>
+                            <span>Senin - Jumat: 08:00 - 16:00 WITA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- COPYRIGHT BAR -->
+        <div class="copyright-bar py-3 text-center text-white-50">
+            <div class="container">
+                <p class="mb-0">©2026 P10 KKN UHM | Pemerintah Desa Timbuseng, Polongbangkeng Timur, Takalar. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING ADMIN BUTTON -->
+    <button class="admin-fab" data-bs-toggle="modal" data-bs-target="#loginModal" title="Akses Admin">
+        <i class="fas fa-user-shield"></i>
+    </button>
+
+    <!-- MODAL OTORISASI ADMIN -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title fw-bold" id="loginModalLabel"><i class="fas fa-lock me-2 text-warning"></i>Otorisasi Admin</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="text-muted small mb-3">Masukkan kata sandi administrator untuk masuk ke Halaman Dasbor Admin (`admin.html`).</p>
+                    <div class="mb-3">
+                        <label for="adminPassword" class="form-label fw-bold">Kata Sandi</label>
+                        <input type="password" class="form-control" id="adminPassword" placeholder="Masukkan sandi...">
+                        <div id="passwordError" class="text-danger small mt-2 d-none"><i class="fas fa-exclamation-circle me-1"></i>Sandi yang Anda masukkan salah.</div>
+                    </div>
+                    <button type="button" class="btn btn-warning w-100 fw-bold" onclick="verifyPassword()">Masuk Ke Halaman Admin</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Skrip Verifikasi Sandi Admin -->
+    <script>
+        const ADMIN_PASSWORD = "admintimbuseng";
+
+        function verifyPassword() {
+            const input = document.getElementById("adminPassword").value;
+            const errorMsg = document.getElementById("passwordError");
+            
+            if(input === ADMIN_PASSWORD) {
+                errorMsg.classList.add("d-none");
+                window.location.href = "admin.html";
+            } else {
+                errorMsg.classList.remove("d-none");
+            }
+        }
+
+        document.getElementById("adminPassword").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                verifyPassword();
+            }
+        });
+    </script>
+</body>
+</html>

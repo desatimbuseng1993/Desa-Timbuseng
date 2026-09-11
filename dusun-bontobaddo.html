@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dusun Bontobaddo - Desa Timbuseng</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d5c3a;
+            --primary-dark: #073b24;
+            --primary-light: #e8f5e9;
+            --accent-color: #f39c12;
+            --light-bg: #f8faf9;
+            --dark-text: #1e293b;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f4f6f8;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        .bg-desa { background-color: var(--primary-color) !important; }
+        .text-desa { color: var(--primary-color) !important; }
+
+        .navbar {
+            padding: 0.8rem 1rem;
+        }
+        .dropdown-menu .dropdown-item.active, 
+        .dropdown-menu .dropdown-item:active {
+            background-color: var(--primary-color);
+        }
+
+        .page-hero {
+            background: linear-gradient(rgba(7, 59, 36, 0.88), rgba(13, 92, 58, 0.92)), url('image.PNG') center/cover no-repeat;
+            color: white;
+            padding: 4.5rem 0 3.5rem;
+            border-bottom: 5px solid var(--accent-color);
+        }
+
+        .stat-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.4rem;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        }
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .profile-card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+        }
+        .profile-header-bg {
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        }
+        .profile-img-wrapper {
+            margin-top: -45px;
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+            background-color: #ffffff;
+        }
+
+        .content-card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            padding: 1.75rem;
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            border-radius: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .badge-custom {
+            font-weight: 600;
+            padding: 0.45em 0.85em;
+            border-radius: 30px;
+        }
+
+        .gallery-img {
+            height: 190px;
+            object-fit: cover;
+            border-radius: 14px;
+            transition: transform 0.3s ease;
+        }
+        .gallery-img:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR DROPDOWN -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="logo.PNG" alt="Logo Desa" height="40" onerror="this.style.display='none'">
+                <span class="fw-bold text-white fs-5">Desa Timbuseng</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-1 align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profil.html"><i class="fas fa-landmark me-1"></i> Profil Desa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pemdes.html"><i class="fas fa-users me-1"></i> Pemdes & Kades</a>
+                    </li>
+                    
+                    <!-- DROPDOWN WILAYAH DUSUN -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active fw-bold" href="#" id="navbarDropdownDusun" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-map-marked-alt me-1"></i> Wilayah Dusun
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="navbarDropdownDusun">
+                            <li><a class="dropdown-item active fw-bold" href="dusun-timbuseng1.html"><i class="fas fa-chevron-right me-2 text-warning"></i>Dusun Timbuseng I</a></li>
+                            <li><a class="dropdown-item" href="dusun-timbuseng2.html">Dusun Timbuseng II</a></li>
+                            <li><a class="dropdown-item" href="dusun-sauleya.html">Dusun Sauleya</a></li>
+                            <li><a class="dropdown-item" href="dusun-tanasambayang.html">Dusun Tanasambayang</a></li>
+                            <li><a class="dropdown-item" href="dusun-bontobaddo.html">Dusun Bontobaddo</a></li>
+                            <li><a class="dropdown-item" href="dusun-panaikang1.html">Dusun Panaikang I</a></li>
+                            <li><a class="dropdown-item" href="dusun-panaikang2.html">Dusun Panaikang II</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="informasi.html"><i class="fas fa-bullhorn me-1"></i> Informasi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pengaduan.html"><i class="fas fa-paper-plane me-1"></i> Pengaduan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kontak.html"><i class="fas fa-envelope me-1"></i> Kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO HEADER -->
+    <header class="page-hero text-center">
+        <div class="container">
+            <span class="badge bg-warning text-dark badge-custom mb-3 shadow-sm"><i class="fas fa-map-marker-alt me-1"></i> Profil Wilayah Dusun</span>
+            <h1 class="fw-extrabold display-5 text-white">Dusun Bontobaddo</h1>
+            <p class="lead mb-0 text-white-50 max-w-700 mx-auto">Wilayah Pemukiman Asri & Perkebunan Tradisional Desa Timbuseng, Kec. Polongbangkeng Timur</p>
+        </div>
+    </header>
+
+    <!-- KONTEN UTAMA -->
+    <section class="py-5">
+        <div class="container">
+
+            <!-- STATISTIK DUSUN -->
+            <div class="row g-3 mb-5">
+                <div class="col-6 col-md-3">
+                    <div class="stat-card d-flex align-items-center gap-3">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div>
+                            <small class="text-muted fw-semibold d-block">Estimasi Penduduk</small>
+                            <h3 class="fw-bold text-dark mb-0">385 <small class="fs-6 text-muted fw-normal">Jiwa</small></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card d-flex align-items-center gap-3">
+                        <div class="stat-icon"><i class="fas fa-house-user"></i></div>
+                        <div>
+                            <small class="text-muted fw-semibold d-block">Kepala Keluarga</small>
+                            <h3 class="fw-bold text-dark mb-0">98 <small class="fs-6 text-muted fw-normal">KK</small></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card d-flex align-items-center gap-3">
+                        <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
+                        <div>
+                            <small class="text-muted fw-semibold d-block">Kategori Wilayah</small>
+                            <h3 class="fw-bold text-dark mb-0 fs-5">Pemukiman & Kebun</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card d-flex align-items-center gap-3">
+                        <div class="stat-icon"><i class="fas fa-seedling"></i></div>
+                        <div>
+                            <small class="text-muted fw-semibold d-block">Komoditas Utama</small>
+                            <h3 class="fw-bold text-success mb-0 fs-5">Padi & Palawija</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                
+                <!-- TOKOH PEMIMPIN DUSUN -->
+                <div class="col-lg-8">
+                    <h4 class="section-title text-dark">Aparatur & Tokoh Masyarakat Dusun Bontobaddo</h4>
+                    
+                    <div class="row g-4 mb-4">
+                        <!-- KEPALA DUSUN -->
+                        <div class="col-md-6">
+                            <div class="profile-card h-100 text-center">
+                                <div class="profile-header-bg"></div>
+                                <div class="profile-img-wrapper mb-3">
+                                    <img src="foto.PNG" alt="Syafri" class="profile-img" onerror="this.src='foto.PNG'">
+                                </div>
+                                <div class="p-3 pt-0">
+                                    <span class="badge bg-success badge-custom mb-2">Kepala Dusun</span>
+                                    <h5 class="fw-bold text-dark mb-1">Syafri</h5>
+                                    <p class="text-muted small mb-2"><i class="fas fa-id-card me-1 text-secondary"></i>NIK: 7305040709820001</p>
+                                    <p class="text-muted small mb-3"><i class="fas fa-birthday-cake me-1 text-secondary"></i>Bontobaddo, 07 Sept 1982</p>
+                                    <hr class="my-2">
+                                    <div class="d-grid mt-3">
+                                        <a href="https://wa.me/" class="btn btn-outline-success btn-sm rounded-pill fw-semibold"><i class="fab fa-whatsapp me-1"></i> Kontak Kadus</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- IMAM DUSUN -->
+                        <div class="col-md-6">
+                            <div class="profile-card h-100 text-center">
+                                <div class="profile-header-bg"></div>
+                                <div class="profile-img-wrapper mb-3">
+                                    <img src="foto.PNG" alt="Syarifuddin Dg. Ngempos" class="profile-img" onerror="this.src='foto.PNG'">
+                                </div>
+                                <div class="p-3 pt-0">
+                                    <span class="badge bg-warning text-dark badge-custom mb-2">Imam Dusun Bontobaddo</span>
+                                    <h5 class="fw-bold text-dark mb-1">Syarifuddin Dg. Ngempos</h5>
+                                    <p class="text-muted small mb-2"><i class="fas fa-id-card me-1 text-secondary"></i>NIK: 7305041504740003</p>
+                                    <p class="text-muted small mb-2"><i class="fas fa-birthday-cake me-1 text-secondary"></i>Timbuseng, 15 April 1974</p>
+                                    <p class="text-muted small mb-3"><i class="fab fa-whatsapp me-1 text-success"></i>083189295395</p>
+                                    <hr class="my-2">
+                                    <div class="d-grid mt-3">
+                                        <a href="https://wa.me/6283189295395" target="_blank" class="btn btn-outline-success btn-sm rounded-pill fw-semibold"><i class="fab fa-whatsapp me-1"></i> Hubungi Imam</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DESKRIPSI WILAYAH -->
+                    <div class="content-card mb-4">
+                        <h5 class="fw-bold text-dark mb-3"><i class="fas fa-info-circle text-success me-2"></i>Gambaran Umum & Kehidupan Masyarakat</h5>
+                        <p class="text-secondary small leading-relaxed mb-3">
+                            Dusun Bontobaddo berlokasi di bagian barat wilayah Desa Timbuseng. Dusun ini dikenal memiliki hamparan persawahan produktif dan kawasan permukiman yang sejuk serta tenang. Kehidupan masyarakat sangat erat dengan adat istiadat persaudaraan dan kegiatan keagamaan yang aktif.
+                        </p>
+                        <p class="text-secondary small leading-relaxed mb-0">
+                            Di bawah kepemimpinan Kepala Dusun <strong>Syafri</strong> dan dibimbing oleh Imam Dusun <strong>Syarifuddin Dg. Ngempos</strong>, Dusun Bontobaddo terus bersinergi membangun sarana prasarana lingkungan, jalan tani, serta pelayanan sosial bagi seluruh warga.
+                        </p>
+                    </div>
+
+                    <!-- GALERI DUSUN -->
+                    <div class="content-card">
+                        <h5 class="fw-bold text-dark mb-3"><i class="fas fa-images text-success me-2"></i>Dokumentasi & Galeri Dusun</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="overflow-hidden rounded-3 border">
+                                    <img src="image.PNG" alt="Wilayah Dusun Bontobaddo" class="img-fluid w-100 gallery-img" onerror="this.src='image.PNG'">
+                                </div>
+                                <small class="text-muted d-block text-center mt-1" style="font-size:0.78rem;">Suasana Lingkungan Dusun Bontobaddo</small>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="overflow-hidden rounded-3 border">
+                                    <img src="image.PNG" alt="Aktivitas Pertanian Dusun Bontobaddo" class="img-fluid w-100 gallery-img" onerror="this.src='image.PNG'">
+                                </div>
+                                <small class="text-muted d-block text-center mt-1" style="font-size:0.78rem;">Lahan Pertanian & Kebun Warga</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- SIDEBAR -->
+                <div class="col-lg-4">
+                    
+                    <!-- BATAS WILAYAH -->
+                    <div class="content-card mb-4">
+                        <h5 class="fw-bold text-dark mb-3"><i class="fas fa-map-marked-alt text-success me-2"></i>Batas Wilayah Dusun</h5>
+                        <ul class="list-group list-group-flush small">
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+                                <span class="text-muted"><i class="fas fa-arrow-up text-primary me-2"></i>Utara</span>
+                                <span class="fw-semibold text-dark">Dusun Sauleya</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+                                <span class="text-muted"><i class="fas fa-arrow-down text-danger me-2"></i>Selatan</span>
+                                <span class="fw-semibold text-dark">Dusun Timbuseng I</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+                                <span class="text-muted"><i class="fas fa-arrow-right text-warning me-2"></i>Timur</span>
+                                <span class="fw-semibold text-dark">Dusun Timbuseng II</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+                                <span class="text-muted"><i class="fas fa-arrow-left text-info me-2"></i>Barat</span>
+                                <span class="fw-semibold text-dark">Batas Luar Desa</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- FASILITAS UMUM -->
+                    <div class="content-card mb-4">
+                        <h5 class="fw-bold text-dark mb-3"><i class="fas fa-city text-success me-2"></i>Fasilitas & Sarana Publik</h5>
+                        
+                        <div class="d-flex align-items-center gap-3 mb-2 p-2.5 bg-light rounded-3">
+                            <i class="fas fa-mosque text-warning fs-4"></i>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark small">Masjid Dusun Bontobaddo</h6>
+                                <small class="text-muted" style="font-size:0.75rem;">Pusat Pembinaan Keagamaan</small>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-3 mb-2 p-2.5 bg-light rounded-3">
+                            <i class="fas fa-clinic-medical text-danger fs-4"></i>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark small">Posyandu Bontobaddo</h6>
+                                <small class="text-muted" style="font-size:0.75rem;">Pos Kesehatan Balita & Lansia</small>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-3 p-2.5 bg-light rounded-3">
+                            <i class="fas fa-road text-success fs-4"></i>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark small">Jalan Tani & Drainase</h6>
+                                <small class="text-muted" style="font-size:0.75rem;">Akses Pertanian Terpadu</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PIN PENGADUAN -->
+                    <div class="card border-0 bg-success text-white rounded-4 p-4 shadow-sm">
+                        <h6 class="fw-bold mb-2"><i class="fas fa-headset me-2"></i>Layanan Warga Dusun</h6>
+                        <p class="small text-white-50 mb-3">Membutuhkan pelayanan administrasi atau ingin menyampaikan usulan di Dusun Bontobaddo?</p>
+                        <a href="pengaduan.html" class="btn btn-light btn-sm text-success fw-bold rounded-pill"><i class="fas fa-paper-plane me-1"></i> Ajukan Pengaduan / Usulan</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white pt-4 pb-3">
+        <div class="container text-center">
+            <p class="small text-white-50 mb-0">©2026 P10 KKN UHM | Wilayah Dusun Bontobaddo, Desa Timbuseng, Takalar.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

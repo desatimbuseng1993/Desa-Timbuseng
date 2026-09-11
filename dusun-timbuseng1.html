@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dusun Timbuseng I - Desa Timbuseng</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d5c3a;
+            --primary-dark: #073b24;
+            --accent-color: #f39c12;
+            --light-bg: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--light-bg);
+            color: #1e293b;
+        }
+
+        .bg-desa { background-color: var(--primary-color) !important; }
+        .text-desa { color: var(--primary-color) !important; }
+
+        /* Custom Navbar */
+        .navbar {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        .navbar-brand img {
+            height: 42px;
+            width: auto;
+            object-fit: contain;
+        }
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 0.8rem !important;
+            transition: all 0.2s ease;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #ffffff !important;
+        }
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            border-radius: 12px;
+            padding: 0.5rem;
+        }
+        .dropdown-item {
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .dropdown-item.active, .dropdown-item:active {
+            background-color: var(--primary-color);
+        }
+
+        /* Hero Header */
+        .page-hero {
+            position: relative;
+            background: linear-gradient(rgba(7, 59, 36, 0.85), rgba(13, 92, 58, 0.92)), url('image.PNG') center/cover no-repeat;
+            color: white;
+            padding: 4rem 0 3rem;
+            border-bottom: 5px solid var(--accent-color);
+        }
+
+        /* Card Styles */
+        .card-custom {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            transition: all 0.25s ease-in-out;
+        }
+        .card-custom:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+            transform: translateY(-3px);
+        }
+
+        .stat-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .profile-img-frame {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 45px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .badge-soft-success {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        .badge-soft-warning {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .icon-box {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-3" href="index.html">
+                <img src="logo.PNG" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='image.PNG';">
+                <div class="lh-sm">
+                    <span class="d-block fs-5 text-white fw-bold tracking-wide">DESA TIMBUSENG</span>
+                    <small class="fw-normal text-white-50 text-uppercase" style="font-size: 0.72rem;">Kabupaten Takalar</small>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto fw-semibold py-2 py-lg-0 align-items-lg-center gap-1">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profil.html"><i class="fas fa-landmark me-1"></i> Profil Desa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pemdes.html"><i class="fas fa-users me-1"></i> Pemdes & Kades</a>
+                    </li>
+                    
+                    <!-- DROPDOWN WILAYAH DUSUN -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active fw-bold" href="#" id="navbarDropdownDusun" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-map-marked-alt me-1"></i> Wilayah Dusun
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="navbarDropdownDusun">
+                            <li><a class="dropdown-item active fw-bold" href="dusun-timbuseng1.html"><i class="fas fa-chevron-right me-2 text-warning"></i>Dusun Timbuseng I</a></li>
+                            <li><a class="dropdown-item" href="dusun-timbuseng2.html">Dusun Timbuseng II</a></li>
+                            <li><a class="dropdown-item" href="dusun-sauleya.html">Dusun Sauleya</a></li>
+                            <li><a class="dropdown-item" href="dusun-tanasambayang.html">Dusun Tanasambayang</a></li>
+                            <li><a class="dropdown-item" href="dusun-bontobaddo.html">Dusun Bontobaddo</a></li>
+                            <li><a class="dropdown-item" href="dusun-panaikang1.html">Dusun Panaikang I</a></li>
+                            <li><a class="dropdown-item" href="dusun-panaikang2.html">Dusun Panaikang II</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="informasi.html"><i class="fas fa-bullhorn me-1"></i> Informasi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pengaduan.html"><i class="fas fa-paper-plane me-1"></i> Pengaduan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kontak.html"><i class="fas fa-envelope me-1"></i> Kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO HEADER DUSUN -->
+    <header class="page-hero text-center">
+        <div class="container">
+            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3 shadow-sm">
+                <i class="fas fa-map-pin me-1"></i> Profil Wilayah Kewilayahan
+            </span>
+            <h1 class="fw-extrabold display-5 text-white mb-2">Dusun Timbuseng I</h1>
+            <p class="lead mb-0 text-white-50 max-w-2xl mx-auto fs-6">
+                Pusat Pemerintahan Desa & Kawasan Pemukiman Utama Desa Timbuseng, Kec. Polongbangkeng Timur
+            </p>
+        </div>
+    </header>
+
+    <!-- KONTEN UTAMA -->
+    <section class="py-5">
+        <div class="container">
+
+            <!-- METRIK & STATISTIK DUSUN -->
+            <div class="row g-3 mb-5">
+                <div class="col-6 col-md-3">
+                    <div class="stat-card">
+                        <small class="text-muted fw-semibold d-block"><i class="fas fa-users text-success me-1"></i> Total Penduduk</small>
+                        <h3 class="fw-bold text-dark mb-0 mt-2">280 <small class="fs-6 text-muted fw-normal">Jiwa</small></h3>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card">
+                        <small class="text-muted fw-semibold d-block"><i class="fas fa-home text-primary me-1"></i> Kepala Keluarga</small>
+                        <h3 class="fw-bold text-dark mb-0 mt-2">79 <small class="fs-6 text-muted fw-normal">KK</small></h3>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card">
+                        <small class="text-muted fw-semibold d-block"><i class="fas fa-vector-square text-warning me-1"></i> Luas Wilayah</small>
+                        <h3 class="fw-bold text-dark mb-0 mt-2">188,85 <small class="fs-6 text-muted fw-normal">Ha</small></h3>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card">
+                        <small class="text-muted fw-semibold d-block"><i class="fas fa-seedling text-success me-1"></i> Komoditas Utama</small>
+                        <h3 class="fw-bold text-success mb-0 mt-2 fs-5">Tebu & Padi</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                
+                <!-- TOKOH PEMIMPIN DUSUN (KADUS & IMAM DESA) -->
+                <div class="col-lg-8">
+                    <h4 class="section-title">Aparatur & Tokoh Pembina Wilayah</h4>
+                    
+                    <div class="row g-4 mb-4">
+                        <!-- KEPALA DUSUN -->
+                        <div class="col-md-6">
+                            <div class="card-custom p-4 text-center h-100 position-relative">
+                                <div class="mb-3">
+                                    <img src="foto.PNG" alt="Abdul Kadir - Kadus Timbuseng I" class="profile-img-frame" onerror="this.onerror=null; this.src='foto.PNG';">
+                                </div>
+                                <span class="badge badge-soft-success rounded-pill px-3 py-1 fw-bold mb-2">Kepala Dusun Timbuseng I</span>
+                                <h5 class="fw-bold text-dark mb-1">Abdul Kadir</h5>
+                                
+                                <div class="bg-light rounded-3 p-3 text-start small mt-3 border">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-muted"><i class="fas fa-id-card me-1"></i> NIK:</span>
+                                        <span class="fw-semibold text-dark">7305040905850004</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-muted"><i class="fas fa-calendar-alt me-1"></i> TTL:</span>
+                                        <span class="fw-semibold text-dark">09 Mei 1985</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-muted"><i class="fas fa-clock me-1"></i> Masa Jabatan:</span>
+                                        <span class="fw-semibold text-dark">2025 – Sekarang</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-muted"><i class="fas fa-home me-1"></i> Patokan Rumah:</span>
+                                        <span class="fw-semibold text-dark text-end">Rumah batu putih</span>
+                                    </div>
+                                </div>
+
+                                <div class="mt-3">
+                                    <a href="https://wa.me/6285756614977" target="_blank" class="btn btn-outline-success btn-sm w-100 rounded-pill fw-semibold">
+                                        <i class="fab fa-whatsapp me-1 fs-6"></i> Hubungi Kadus (0857-5661-4977)
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- IMAM DESA -->
+                        <div class="col-md-6">
+                            <div class="card-custom p-4 text-center h-100 position-relative">
+                                <div class="mb-3">
+                                    <img src="foto.PNG" alt="Muh. Fajar S.Ag - Imam Desa" class="profile-img-frame" onerror="this.onerror=null; this.src='foto.PNG';">
+                                </div>
+                                <span class="badge badge-soft-warning rounded-pill px-3 py-1 fw-bold mb-2">Imam Desa Timbuseng</span>
+                                <h5 class="fw-bold text-dark mb-1">Muh. Fajar, S.Ag.</h5>
+                                
+                                <div class="bg-light rounded-3 p-3 text-start small mt-3 border">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-muted"><i class="fas fa-id-card me-1"></i> NIK:</span>
+                                        <span class="fw-semibold text-dark">7305041507750001</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-muted"><i class="fas fa-calendar-alt me-1"></i> TTL:</span>
+                                        <span class="fw-semibold text-dark">Parangbaddo, 15 Jul 1975</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-muted"><i class="fas fa-clock me-1"></i> Masa Jabatan:</span>
+                                        <span class="fw-semibold text-dark">2008 – Sekarang</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-muted"><i class="fas fa-mosque me-1"></i> Peran:</span>
+                                        <span class="fw-semibold text-dark">Pembina Keagamaan</span>
+                                    </div>
+                                </div>
+
+                                <div class="mt-3">
+                                    <a href="https://wa.me/6285299636971" target="_blank" class="btn btn-outline-warning text-dark btn-sm w-100 rounded-pill fw-semibold">
+                                        <i class="fab fa-whatsapp me-1 fs-6"></i> Hubungi Imam Desa (0852-9963-6971)
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DESKRIPSI & POTENSI WILAYAH -->
+                    <div class="card-custom p-4">
+                        <h5 class="fw-bold text-dark mb-3"><i class="fas fa-layer-group text-success me-2"></i>Gambaran Umum & Potensi Kewilayahan</h5>
+                        <p class="text-secondary small leading-relaxed">
+                            <strong>Dusun Timbuseng I</strong> berkedudukan sebagai pusat kegiatan administrasi dan pemerintahan Desa Timbuseng. Wilayah ini memiliki cakupan luas sebesar <strong>188,85 Ha</strong> atau sekitar 17,43% dari total luas Desa Timbuseng (1.083,47 Ha).
+                        </p>
+                        <p class="text-secondary small leading-relaxed mb-0">
+                            Sebagai wilayah pusat desa, Dusun Timbuseng I didukung oleh infrastruktur jalan publik, fasilitas layanan publik utama kantor desa, sarana ibadah, serta fasilitas posyandu masyarakat. Sektor perkebunan tebu dan pertanian sawah menjadi mata pencaharian utama warga setempat, disokong oleh kegiatan perniagaan UMKM skala pemukiman.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SIDEBAR SPASIAL & FASILITAS DUSUN -->
+                <div class="col-lg-4">
+                    
+                    <!-- BATAS WILAYAH DUSUN -->
+                    <div class="card-custom p-4 mb-4">
+                        <h5 class="fw-bold text-dark mb-3"><i class="fas fa-compass text-success me-2"></i>Batas Wilayah Dusun</h5>
+                        <div class="list-group list-group-flush border-0">
+                            <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 border-bottom">
+                                <span class="text-muted small"><i class="fas fa-arrow-up text-primary me-2"></i>Utara</span>
+                                <span class="fw-semibold small text-dark">Dusun Timbuseng II</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 border-bottom">
+                                <span class="text-muted small"><i class="fas fa-arrow-down text-danger me-2"></i>Selatan</span>
+                                <span class="fw-semibold small text-dark">Dusun Sauleya</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 border-bottom">
+                                <span class="text-muted small"><i class="fas fa-arrow-right text-warning me-2"></i>Timur</span>
+                                <span class="fw-semibold small text-dark">Areal Perkebunan PTPN</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 border-0">
+                                <span class="text-muted small"><i class="fas fa-arrow-left text-success me-2"></i>Barat</span>
+                                <span class="fw-semibold small text-dark">Dusun Panaikang I</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FASILITAS UMUM DI DUSUN -->
+                    <div class="card-custom p-4">
+                        <h5 class="fw-bold text-dark mb-3"><i class="fas fa-building text-success me-2"></i>Fasilitas Umum & Sanitasi</h5>
+                        
+                        <div class="d-flex align-items-center gap-3 mb-3 p-2 bg-light rounded-3 border">
+                            <div class="icon-box bg-success text-white">
+                                <i class="fas fa-landmark"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark small">Kantor Desa Timbuseng</h6>
+                                <small class="text-muted">Pusat Pelayanan Publik Desa</small>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-3 mb-3 p-2 bg-light rounded-3 border">
+                            <div class="icon-box bg-warning text-dark">
+                                <i class="fas fa-mosque"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark small">Masjid Desa Timbuseng</h6>
+                                <small class="text-muted">Pusat Peribadatan & Keagamaan</small>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-3 p-2 bg-light rounded-3 border">
+                            <div class="icon-box bg-danger text-white">
+                                <i class="fas fa-clinic-medical"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark small">Posyandu Timbuseng I</h6>
+                                <small class="text-muted">Layanan Posyandu Balita & Lansia</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white pt-5 pb-4 border-top border-success border-3">
+        <div class="container text-center">
+            <div class="mb-3">
+                <img src="logo.PNG" alt="Logo Desa" height="48" onerror="this.onerror=null; this.src='image.PNG';">
+            </div>
+            <h6 class="fw-bold text-white mb-1">Pemerintah Desa Timbuseng</h6>
+            <p class="small text-white-50 mb-3">Kecamatan Polongbangkeng Timur, Kabupaten Takalar, Sulawesi Selatan</p>
+            <hr class="border-secondary my-3">
+            <p class="small text-white-50 mb-0">©2026 P10 KKN UHM — Website Resmi Profil Dusun Timbuseng I</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Kami - Desa Timbuseng</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d5c3a;
+            --primary-dark: #073b24;
+            --accent-color: #f39c12;
+            --light-bg: #f8faf9;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #2d3748;
+            background-color: #f8faf9;
+        }
+
+        /* Top Bar & Navbar */
+        .top-bar { background-color: var(--primary-dark); color: rgba(255, 255, 255, 0.85); font-size: 0.85rem; }
+        .navbar-brand img { height: 48px; width: auto; object-fit: contain; }
+        .bg-desa { background-color: var(--primary-color) !important; }
+        .nav-link { font-weight: 500; padding: 0.6rem 1rem !important; transition: all 0.2s ease; }
+        .nav-link:hover, .nav-link.active { color: var(--accent-color) !important; }
+
+        /* Page Header */
+        .page-header {
+            background-color: var(--primary-dark);
+            background-image: linear-gradient(135deg, rgba(13, 92, 58, 0.95), rgba(7, 59, 36, 0.98)), url('kantor.PNG');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-color);
+        }
+
+        /* Contact Cards */
+        .contact-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            border: 1px solid #edf2f7;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 25px rgba(13, 92, 58, 0.08);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            background-color: rgba(13, 92, 58, 0.1);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .map-iframe-wrapper {
+            border-radius: 16px;
+            overflow: hidden;
+            height: 400px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid #edf2f7;
+        }
+
+        .map-iframe-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        footer { background-color: #0b1510; color: #e2e8f0; }
+        .footer-link { color: #a0aec0; text-decoration: none; transition: 0.2s; }
+        .footer-link:hover { color: #ffffff; padding-left: 5px; }
+        .social-link { color: var(--accent-color); transition: transform 0.2s ease; display: inline-block; }
+        .social-link:hover { color: #ffffff; transform: scale(1.1); }
+        .copyright-bar { background-color: #050a07; border-top: 1px solid #1a2e22; font-size: 0.875rem; }
+    </style>
+</head>
+<body>
+
+    <!-- TOP HEADER -->
+    <div class="top-bar py-2 d-none d-md-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+                <span><i class="fas fa-map-marker-alt text-warning me-1"></i> Kec. Polombangkeng Utara, Kab. Takalar</span>
+                <span><i class="fas fa-envelope text-warning me-1"></i> desatimbuseng1993@gmail.com</span>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <span><i class="fas fa-phone-alt text-warning me-1"></i> +62 852-9957-6913</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR UTAMA -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-3" href="index.html">
+                <img src="logo.PNG" alt="Logo Desa" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                <div class="lh-sm">
+                    <span class="d-block fs-5 text-white fw-bold tracking-wide">DESA TIMBUSENG</span>
+                    <small class="fw-normal text-white-50 text-uppercase" style="font-size: 0.75rem;">Kabupaten Takalar</small>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto fw-semibold py-2 py-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profil.html"><i class="fas fa-landmark me-1"></i> Profil Desa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="peta.html"><i class="fas fa-map-marked-alt me-1"></i> Peta Digital</a></li>
+                    <li class="nav-item"><a class="nav-link" href="informasi.html"><i class="fas fa-bullhorn me-1"></i> Informasi Publik</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pengaduan.html"><i class="fas fa-paper-plane me-1"></i> Pengaduan Warga</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="kontak.html"><i class="fas fa-envelope-open-text me-1"></i> Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="display-5 fw-bold mb-3">Kontak & Lokasi Kantor Desa</h1>
+            <p class="lead text-white-50 mx-auto" style="max-width: 650px;">
+                Silakan hubungi kami atau kunjungi Kantor Desa Timbuseng untuk mendapatkan pelayanan administrasi dan informasi publik.
+            </p>
+        </div>
+    </header>
+
+    <!-- KARTU INFORMASI KONTAK -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                
+                <!-- Alamat -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="contact-card">
+                        <div class="icon-box"><i class="fas fa-map-marked-alt"></i></div>
+                        <h5 class="fw-bold text-dark mb-2">Alamat Kantor</h5>
+                        <p class="text-muted small mb-0">Kantor Desa Timbuseng, Kecamatan Polombangkeng Utara, Kabupaten Takalar, Sulawesi Selatan 92221</p>
+                    </div>
+                </div>
+
+                <!-- Jam Operasional -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="contact-card">
+                        <div class="icon-box"><i class="fas fa-clock"></i></div>
+                        <h5 class="fw-bold text-dark mb-2">Jam Layanan</h5>
+                        <p class="text-muted small mb-1"><strong>Senin - Jumat:</strong> 08.00 - 16.00 WITA</p>
+                        <p class="text-muted small mb-0"><strong>Sabtu - Minggu:</strong> Libur</p>
+                    </div>
+                </div>
+
+                <!-- Telepon / WhatsApp -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="contact-card">
+                        <div class="icon-box"><i class="fas fa-phone-alt"></i></div>
+                        <h5 class="fw-bold text-dark mb-2">Telepon / WhatsApp</h5>
+                        <p class="text-muted small mb-2">+62 852-9957-6913</p>
+                        <a href="https://wa.me/6285299576913" target="_blank" class="btn btn-sm btn-outline-success rounded-pill fw-semibold">
+                            <i class="fab fa-whatsapp me-1"></i> Kirim WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Email & Sosial Media -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="contact-card">
+                        <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                        <h5 class="fw-bold text-dark mb-2">Email & Sosmed</h5>
+                        <p class="text-muted small mb-2 text-break">desatimbuseng1993@gmail.com</p>
+                        <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" class="btn btn-sm btn-outline-warning text-dark rounded-pill fw-semibold">
+                            <i class="fab fa-instagram me-1"></i> Instagram Resmi
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- FORM KIRIM PESAN & PETA GOOGLE -->
+            <div class="row g-5">
+                
+                <!-- Form Pesan -->
+                <div class="col-lg-6">
+                    <div class="bg-white p-4 p-md-5 rounded-4 border shadow-sm">
+                        <h4 class="fw-bold text-dark mb-2"><i class="fas fa-paper-plane text-success me-2"></i>Kirim Pesan / Pertanyaan</h4>
+                        <p class="text-muted small mb-4">Pesan Anda akan terkirim langsung ke Sekretariat Pemerintah Desa Timbuseng.</p>
+                        
+                        <form action="#" method="POST">
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Nama Lengkap <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="nama" placeholder="Masukkan nama Anda" required>
+                            </div>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Alamat Email</label>
+                                    <input type="email" class="form-control" name="email" placeholder="contoh@email.com">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Nomor Telepon / WA <span class="text-danger">*</span></label>
+                                    <input type="tel" class="form-control" name="telepon" placeholder="0852xxxxxxxx" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Subjek Pesan <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="subjek" placeholder="Topik atau judul pesan" required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label fw-semibold">Isi Pesan <span class="text-danger">*</span></label>
+                                <textarea class="form-control" name="pesan" rows="4" placeholder="Tuliskan pertanyaan atau pesan Anda di sini..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success bg-desa px-5 py-2.5 rounded-pill fw-bold w-100 shadow-sm">
+                                <i class="fas fa-paper-plane me-2"></i>Kirim Pesan
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Peta Lokasi Kantor Desa -->
+                <div class="col-lg-6">
+                    <div class="bg-white p-4 p-md-5 rounded-4 border shadow-sm h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="fw-bold text-dark mb-0"><i class="fas fa-map-pin text-danger me-2"></i>Lokasi Kantor Desa</h4>
+                                <a href="https://maps.app.goo.gl/xZScJrm2hDV89dJDA" target="_blank" class="btn btn-sm btn-outline-success rounded-pill fw-semibold">
+                                    <i class="fas fa-directions me-1"></i> Petunjuk Arah
+                                </a>
+                            </div>
+                            <p class="text-muted small mb-4">Gunakan peta interaktif di bawah ini untuk memandu perjalanan Anda menuju Kantor Desa Timbuseng.</p>
+                        </div>
+
+                        <div class="map-iframe-wrapper flex-grow-1 mt-2">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.164344158936!2d119.46337857500114!3d-5.399581154336025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbeeaa5b9e02c5f%3A0x633cb245c3b99db1!2sTimbuseng%2C%20Kec.%20Polombangkeng%20Utara%2C%20Kabupaten%20Takalar%2C%20Sulawesi%20Selatan!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="pt-5">
+        <div class="container pb-4">
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <img src="logo.PNG" alt="Logo Desa" style="height: 48px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                        <div>
+                            <h5 class="fw-bold text-white mb-0">Pemerintah Desa Timbuseng</h5>
+                            <small class="text-white-50">Kec. Polombangkeng Utara, Kab. Takalar</small>
+                        </div>
+                    </div>
+                    <p class="text-white-50 small pe-lg-4">
+                        Portal resmi Sistem Informasi Desa Timbuseng. Menyajikan data profil, transparansi tata kelola pemerintahan, layanan pengaduan masyarakat, serta pemetaan wilayah desa.
+                    </p>
+                    <div class="d-flex gap-3 fs-5 mt-3">
+                        <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <!-- Tautan Instagram -->
+                        <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" class="social-link" title="Instagram Resmi"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <h6 class="fw-bold text-white mb-3 text-uppercase">Navigasi Utama</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small">
+                        <li><a href="index.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Beranda</a></li>
+                        <li><a href="profil.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Profil Desa & Perangkat</a></li>
+                        <li><a href="peta.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Peta Digital Wilayah</a></li>
+                        <li><a href="informasi.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Informasi & Berita Desa</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-8 col-lg-4">
+                    <h6 class="fw-bold text-white mb-3 text-uppercase">Kontak Kantor Desa</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small text-white-50">
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-map-marker-alt text-warning mt-1"></i>
+                            <span>Kantor Desa Timbuseng, Kec. Polombangkeng Utara, Kab. Takalar, Sulsel 92221</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-phone-alt text-warning"></i>
+                            <span>+62 852-9957-6913</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-envelope text-warning"></i>
+                            <span>desatimbuseng1993@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-bar py-3 text-center text-white-50">
+            <div class="container">
+                <p class="mb-0">©2026 P10 KKN UHM | Pemerintah Desa Timbuseng, Polombangkeng Utara, Takalar. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

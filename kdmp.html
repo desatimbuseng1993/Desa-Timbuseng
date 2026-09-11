@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDMP Desa Timbuseng - Kawasan Desa Mandiri Pangan</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d5c3a;
+            --primary-dark: #073b24;
+            --primary-light: #e8f5e9;
+            --accent-color: #f39c12;
+            --accent-hover: #d35400;
+            --light-bg: #f8faf9;
+            --dark-text: #1e293b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f4f6f8;
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Utility Classes */
+        .bg-desa { background-color: var(--primary-color) !important; }
+        .text-desa { color: var(--primary-color) !important; }
+        .bg-desa-dark { background-color: var(--primary-dark) !important; }
+
+        /* Navigation Bar */
+        .navbar {
+            padding: 0.85rem 1rem;
+            transition: all 0.3s ease;
+        }
+        .navbar-brand img {
+            transition: transform 0.3s ease;
+        }
+        .navbar-brand:hover img {
+            transform: scale(1.05);
+        }
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 0.9rem !important;
+            border-radius: 8px;
+            transition: all 0.25s ease;
+        }
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #ffffff !important;
+        }
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .dropdown-item {
+            padding: 0.6rem 1.2rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .dropdown-item:hover {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            padding-left: 1.5rem;
+        }
+
+        /* Hero Header */
+        .page-hero {
+            background: linear-gradient(rgba(7, 59, 36, 0.9), rgba(13, 92, 58, 0.85)), url('image.PNG') center/cover no-repeat fixed;
+            color: white;
+            padding: 5.5rem 0 4.5rem;
+            border-bottom: 5px solid var(--accent-color);
+            position: relative;
+        }
+        .hero-badge {
+            background: rgba(243, 156, 18, 0.2);
+            color: #ffd166;
+            border: 1px solid rgba(243, 156, 18, 0.5);
+            padding: 0.5em 1.2em;
+            border-radius: 50px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Key Performance Cards */
+        .stat-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            height: 100%;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(13, 92, 58, 0.1);
+        }
+        .stat-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        /* Section Titles */
+        .section-title {
+            position: relative;
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 55px;
+            height: 4px;
+            border-radius: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .content-card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+            padding: 1.8rem;
+            margin-bottom: 1.8rem;
+        }
+
+        /* Profile Manager Card */
+        .profile-card {
+            background: #ffffff;
+            border-radius: 22px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .profile-card-header {
+            height: 110px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            position: relative;
+        }
+        .profile-img-wrapper {
+            margin-top: -65px;
+            position: relative;
+            z-index: 2;
+        }
+        .ketua-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #ffffff;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            background-color: #ffffff;
+        }
+
+        .quote-box {
+            background-color: var(--primary-light);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 16px 16px 0;
+            font-style: italic;
+        }
+
+        /* Program / Pangan Cards */
+        .pangan-card {
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.4rem;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .pangan-card:hover {
+            border-color: var(--primary-color);
+            background-color: #fcfdfe;
+            box-shadow: 0 8px 24px rgba(13, 92, 58, 0.09);
+            transform: translateY(-3px);
+        }
+
+        /* Organizational Structure Cards */
+        .org-card {
+            border-radius: 14px;
+            border: 1px dashed var(--border-color);
+            padding: 1rem;
+            background-color: var(--light-bg);
+            transition: all 0.25s ease;
+        }
+        .org-card:hover {
+            border-color: var(--primary-color);
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Floating Contact Button */
+        .floating-cta {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 999;
+            box-shadow: 0 8px 25px rgba(13, 92, 58, 0.35);
+        }
+
+        /* Custom Badges */
+        .badge-soft-primary {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        .badge-soft-warning {
+            background-color: #fef5e7;
+            color: #d35400;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR / NAVIGATION -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-3" href="index.html">
+                <img src="logo.PNG" alt="Logo Desa Timbuseng" height="42" onerror="this.onerror=null; this.src='https://via.placeholder.com/42?text=DESA';">
+                <div class="lh-sm">
+                    <span class="d-block fs-5 text-white fw-bold tracking-wide">DESA TIMBUSENG</span>
+                    <small class="fw-normal text-white-50 text-uppercase" style="font-size: 0.72rem;">Kec. Polongbangkeng Timur, Takalar</small>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-1 align-items-lg-center fw-semibold py-2 py-lg-0">
+                    <li class="nav-item"><a class="nav-link text-white" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="pemdes.html"><i class="fas fa-users-cog me-1"></i> Pemdes & Kades</a></li>
+                    
+                    <!-- DROPDOWN WILAYAH DUSUN -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDusunDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-map-marked-alt me-1"></i> Wilayah Dusun
+                        </a>
+                        <ul class="dropdown-menu shadow border-0 rounded-3 mt-2" aria-labelledby="navbarDusunDropdown">
+                            <li><a class="dropdown-item" href="dusun-timbuseng1.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Timbuseng I</a></li>
+                            <li><a class="dropdown-item" href="dusun-timbuseng2.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Timbuseng II</a></li>
+                            <li><a class="dropdown-item" href="dusun-sauleya.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Sauleya</a></li>
+                            <li><a class="dropdown-item" href="dusun-tanasambayang.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Tanasambayang</a></li>
+                            <li><a class="dropdown-item" href="dusun-bontobaddo.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Bontobaddo</a></li>
+                            <li><a class="dropdown-item" href="dusun-panaikang1.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Panaikang I</a></li>
+                            <li><a class="dropdown-item" href="dusun-panaikang2.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Panaikang II</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link text-white" href="pengaduan.html"><i class="fas fa-paper-plane me-1"></i> Pengaduan</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO HEADER -->
+    <header class="page-hero text-center">
+        <div class="container" data-aos="fade-up">
+            <div class="hero-badge mb-3 shadow-sm">
+                <i class="fas fa-seedling"></i> Kawasan Desa Mandiri Pangan
+            </div>
+            <h1 class="fw-extrabold display-4 text-white mb-2">KDMP Desa Timbuseng</h1>
+            <p class="lead text-white-50 max-w-700 mx-auto mb-4" style="max-width: 720px;">
+                Program strategis ketahanan pangan desa, stabilisasi ketersediaan bahan pokok, dan penguatan lumbung pangan mandiri untuk kesejahteraan masyarakat Desa Timbuseng.
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#profil-pengelola" class="btn btn-warning btn-lg rounded-pill px-4 fw-bold shadow-sm"><i class="fas fa-user-tie me-2"></i>Pengelola KDMP</a>
+                <a href="#program-pangan" class="btn btn-outline-light btn-lg rounded-pill px-4 fw-semibold"><i class="fas fa-boxes me-2"></i>Layanan Pangan</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT SECTION -->
+    <section class="py-5">
+        <div class="container">
+
+            <!-- STATISTIK / HIGHLIGHT METRICS -->
+            <div class="row g-3 mb-5" data-aos="fade-up">
+                <div class="col-6 col-md-3">
+                    <div class="stat-card d-flex align-items-center gap-3">
+                        <div class="stat-icon"><i class="fas fa-warehouse"></i></div>
+                        <div>
+                            <span class="text-muted small fw-semibold d-block">Lumbung Pangan</span>
+                            <h3 class="fw-bold text-dark mb-0">Aktif <small class="fs-6 text-muted fw-normal">Desa</small></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card d-flex align-items-center gap-3">
+                        <div class="stat-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div>
+                            <span class="text-muted small fw-semibold d-block">Stok Cadangan</span>
+                            <h3 class="fw-bold text-dark mb-0">Terkendali <small class="fs-6 text-muted fw-normal">Aman</small></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card d-flex align-items-center gap-3">
+                        <div class="stat-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                        <div>
+                            <span class="text-muted small fw-semibold d-block">Distribusi Warga</span>
+                            <h3 class="fw-bold text-dark mb-0">Merata <small class="fs-6 text-muted fw-normal">7 Dusun</small></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card d-flex align-items-center gap-3">
+                        <div class="stat-icon"><i class="fas fa-leaf"></i></div>
+                        <div>
+                            <span class="text-muted small fw-semibold d-block">Kemandirian</span>
+                            <h3 class="fw-bold text-success mb-0">Pangan <small class="fs-6 text-muted fw-normal">Lokal</small></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                
+                <!-- KOLOM KIRI: PROFIL PENGELOLA & LAYANAN PANGAN -->
+                <div class="col-lg-8">
+                    
+                    <!-- PROFIL PENGELOLA KDMP -->
+                    <div class="profile-card mb-4" id="profil-pengelola" data-aos="fade-up">
+                        <div class="profile-card-header"></div>
+                        <div class="px-4 pb-4">
+                            <div class="d-flex flex-column flex-md-row align-items-center align-items-md-end gap-4 profile-img-wrapper mb-3">
+                                <img src="profil_kdmp.jpg" alt="Pengelola KDMP Desa Timbuseng" class="ketua-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/150?text=KDMP';">
+                                <div class="text-center text-md-start">
+                                    <span class="badge badge-soft-primary px-3 py-1 rounded-pill mb-2"><i class="fas fa-shield-alt me-1"></i> Koordinator KDMP Desa Timbuseng</span>
+                                    <h3 class="fw-bold text-dark mb-1">Nama Pengelola / Ketua KDMP</h3>
+                                    <p class="text-muted small mb-0"><i class="fas fa-building me-1 text-success"></i>Kawasan Desa Mandiri Pangan Timbuseng</p>
+                                </div>
+                            </div>
+
+                            <div class="quote-box my-4">
+                                <p class="mb-2 text-dark fs-6">
+                                    "Ketahanan pangan adalah fondasi utama kestabilan sosial dan ekonomi masyarakat. Melalui program Kawasan Desa Mandiri Pangan (KDMP), kami berupaya memastikan ketersediaan, keterjangkauan, dan kelancaran suplai bahan pangan pokok bagi seluruh warga Desa Timbuseng."
+                                </p>
+                                <small class="fw-bold text-success d-block">— Pengelola KDMP Desa Timbuseng</small>
+                            </div>
+
+                            <div class="d-flex flex-wrap gap-2 pt-1">
+                                <a href="https://wa.me/" target="_blank" class="btn btn-outline-success btn-sm rounded-pill px-3 fw-semibold"><i class="fab fa-whatsapp me-1"></i> Kontak KDMP</a>
+                                <button type="button" class="btn btn-success btn-sm rounded-pill px-3 fw-semibold" data-bs-toggle="modal" data-bs-target="#stokPanganModal"><i class="fas fa-info-circle me-1"></i> Cek Informasi Stok Pangan</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LAYANAN & PROGRAM KAWASAN PANGAN -->
+                    <div class="content-card" id="program-pangan" data-aos="fade-up">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="section-title mb-0">Layanan & Program Utama KDMP</h4>
+                            <span class="badge bg-success rounded-pill px-3 py-2">Ketahanan Desa</span>
+                        </div>
+                        <p class="text-muted small mb-4">Pilar operasional KDMP difokuskan untuk menjaga stabilitas harga, ketersediaan cadangan pangan, serta mendukung hasil tani lokal.</p>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="pangan-card">
+                                    <div>
+                                        <div class="d-flex align-items-center gap-3 mb-3">
+                                            <div class="stat-icon"><i class="fas fa-boxes text-success"></i></div>
+                                            <div>
+                                                <h6 class="fw-bold text-dark mb-0">Lumbung & Cadangan Pangan</h6>
+                                                <span class="badge badge-soft-primary small">Penyimpanan</span>
+                                            </div>
+                                        </div>
+                                        <p class="small text-secondary mb-0">Pengelolaan cadangan beras dan komoditas pokok desa untuk mengantisipasi gejolak harga atau kebutuhan darurat.</p>
+                                    </div>
+                                    <div class="mt-3 pt-2 border-top">
+                                        <small class="text-muted"><i class="far fa-clock me-1"></i>Status: Cadangan Aman</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="pangan-card">
+                                    <div>
+                                        <div class="d-flex align-items-center gap-3 mb-3">
+                                            <div class="stat-icon"><i class="fas fa-store text-warning"></i></div>
+                                            <div>
+                                                <h6 class="fw-bold text-dark mb-0">Distribusi Pangan Murah</h6>
+                                                <span class="badge badge-soft-warning small">Penyaluran</span>
+                                            </div>
+                                        </div>
+                                        <p class="small text-secondary mb-0">Fasilitasi pasar murah dan distribusi langsung kebutuhan pokok kepada warga di 7 wilayah dusun.</p>
+                                    </div>
+                                    <div class="mt-3 pt-2 border-top">
+                                        <small class="text-muted"><i class="far fa-clock me-1"></i>Status: Terjadwal Berkala</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="pangan-card">
+                                    <div>
+                                        <div class="d-flex align-items-center gap-3 mb-3">
+                                            <div class="stat-icon"><i class="fas fa-seedling text-primary"></i></div>
+                                            <div>
+                                                <h6 class="fw-bold text-dark mb-0">Penguatan Petani Lokal</h6>
+                                                <span class="badge badge-soft-primary small">Kemitraan</span>
+                                            </div>
+                                        </div>
+                                        <p class="small text-secondary mb-0">Menampung hasil panen petani lokal Desa Timbuseng untuk memperkuat rantai pasok pangan mandiri desa.</p>
+                                    </div>
+                                    <div class="mt-3 pt-2 border-top">
+                                        <small class="text-muted"><i class="far fa-clock me-1"></i>Status: Kemitraan Aktif</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="pangan-card">
+                                    <div>
+                                        <div class="d-flex align-items-center gap-3 mb-3">
+                                            <div class="stat-icon"><i class="fas fa-chart-line text-success"></i></div>
+                                            <div>
+                                                <h6 class="fw-bold text-dark mb-0">Pemantauan Harga & Pasar</h6>
+                                                <span class="badge badge-soft-warning small">Pengawasan</span>
+                                            </div>
+                                        </div>
+                                        <p class="small text-secondary mb-0">Monitoring berkala terhadap ketersediaan dan fluktuasi harga bahan pokok di tingkat lokal desa.</p>
+                                    </div>
+                                    <div class="mt-3 pt-2 border-top">
+                                        <small class="text-muted"><i class="far fa-clock me-1"></i>Status: Rutin Mingguan</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- KOLOM KANAN: STRUKTUR PENGELOLA & INFORMASI -->
+                <div class="col-lg-4">
+
+                    <!-- SEKSI STRUKTUR TIM KDMP -->
+                    <div class="content-card" data-aos="fade-left">
+                        <h5 class="fw-bold text-dark mb-3"><i class="fas fa-sitemap text-success me-2"></i>Struktur Pengelola KDMP</h5>
+                        
+                        <div class="d-flex flex-column gap-2">
+                            <div class="org-card">
+                                <span class="badge bg-success text-white mb-1">Penanggung Jawab</span>
+                                <h6 class="fw-bold text-dark mb-1">Kepala Desa Timbuseng</h6>
+                                <p class="small text-muted mb-0">Pengarah utama program kemandirian pangan desa.</p>
+                            </div>
+
+                            <div class="org-card">
+                                <span class="badge bg-success text-white mb-1">Koordinator</span>
+                                <h6 class="fw-bold text-dark mb-1">Ketua & Pengurus KDMP</h6>
+                                <p class="small text-muted mb-0">Mengelola operasional lumbung, logistik, dan distribusi pangan.</p>
+                            </div>
+
+                            <div class="org-card">
+                                <span class="badge bg-success text-white mb-1">Mitra Lapangan</span>
+                                <h6 class="fw-bold text-dark mb-1">Kelompok Tani & PKK Dusun</h6>
+                                <p class="small text-muted mb-0">Pendukung rantai pasok dan penyaluran langsung ke warga.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BANNER INFORMASI -->
+                    <div class="card border-0 bg-success text-white rounded-4 p-4 shadow-sm" data-aos="fade-left" data-aos-delay="200">
+                        <h5 class="fw-bold mb-2"><i class="fas fa-bullhorn me-2"></i>Informasi Pangan Desa</h5>
+                        <p class="small text-white-50 mb-3">Butuh informasi seputar jadwal pasar murah, ketersediaan sembako, atau penyaluran cadangan pangan desa? Cek di sini.</p>
+                        <button type="button" class="btn btn-light text-success fw-bold rounded-pill shadow-sm" data-bs-toggle="modal" data-bs-target="#stokPanganModal"><i class="fas fa-info-circle me-1"></i> Cek Jadwal & Stok</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL INFORMASI STOK & JADWAL KDMP -->
+    <div class="modal fade" id="stokPanganModal" tabindex="-1" aria-labelledby="stokPanganModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0 shadow">
+                <div class="modal-header bg-desa text-white rounded-top-4">
+                    <h5 class="modal-title fw-bold" id="stokPanganModalLabel"><i class="fas fa-warehouse me-2"></i>Informasi Cadangan & Program KDMP</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <ul class="list-group list-group-flush small mb-3">
+                        <li class="list-group-item py-3">
+                            <div class="fw-bold text-success">Status Cadangan Beras & Sembako</div>
+                            <span class="text-muted">Aman dan tersedia di lumbung pangan desa.</span>
+                        </li>
+                        <li class="list-group-item py-3">
+                            <div class="fw-bold text-success">Jadwal Pasar Murah / Operasi Pangan</div>
+                            <span class="text-muted">Diumumkan secara berkala melalui pengurus dusun masing-masing.</span>
+                        </li>
+                        <li class="list-group-item py-3">
+                            <div class="fw-bold text-success">Layanan Pengadaan Petani Lokal</div>
+                            <span class="text-muted">Terbuka untuk kerja sama penyerapan hasil tani warga Timbuseng.</span>
+                        </li>
+                    </ul>
+                    <button type="button" class="btn btn-success w-100 rounded-pill fw-bold" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING ACTION BUTTON -->
+    <a href="https://wa.me/" target="_blank" class="btn btn-success rounded-circle p-3 floating-cta d-flex align-items-center justify-content-center" style="width: 55px; height: 55px;" title="Hubungi KDMP Via WA">
+        <i class="fab fa-whatsapp fs-3"></i>
+    </a>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white pt-4 pb-3">
+        <div class="container text-center">
+            <p class="small text-white-50 mb-0">©2026 P10 KKN UHM | KDMP Desa Timbuseng, Kec. Polongbangkeng Timur, Kabupaten Takalar.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+</html>

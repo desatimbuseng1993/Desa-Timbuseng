@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemerintah & Lembaga Desa - Desa Timbuseng</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d5c3a;
+            --primary-dark: #073b24;
+            --accent-color: #f39c12;
+            --light-bg: #f8faf9;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #2d3748;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--primary-dark);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.85rem;
+        }
+
+        .top-bar a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .top-bar a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Navbar Khusus Lembaga Pemdes */
+        .navbar-brand img {
+            height: 44px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .bg-pemdes-nav {
+            background-color: var(--primary-color) !important;
+        }
+
+        .pemdes-nav .nav-link {
+            font-weight: 500;
+            font-size: 0.85rem;
+            padding: 0.5rem 0.65rem !important;
+            color: rgba(255, 255, 255, 0.9) !important;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .pemdes-nav .nav-link:hover, 
+        .pemdes-nav .nav-link.active {
+            color: var(--accent-color) !important;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+        }
+
+        /* Sub-Header */
+        .pemdes-header {
+            background: linear-gradient(135deg, rgba(13, 92, 58, 0.92), rgba(7, 59, 36, 0.92)), 
+                        url('kantor.PNG') center/cover no-repeat;
+            color: white;
+            padding: 60px 0 40px 0;
+        }
+
+        /* Card Photo Kades */
+        .kades-img-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border: 4px solid #ffffff;
+        }
+
+        .kades-img {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        /* Card Member Pemdes */
+        .pemdes-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .pemdes-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(13, 92, 58, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .avatar-placeholder {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: rgba(13, 92, 58, 0.1);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1rem auto;
+        }
+
+        .kadus-avatar {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background-color: rgba(243, 156, 18, 0.15);
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 0.75rem auto;
+        }
+
+        /* Institution Card Link Grid */
+        .inst-card {
+            border: 1px solid #edf2f7;
+            border-radius: 14px;
+            background: #ffffff;
+            padding: 1.25rem;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .inst-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            color: inherit;
+        }
+
+        .inst-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            background-color: rgba(243, 156, 18, 0.15);
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0b1510;
+            color: #e2e8f0;
+        }
+
+        .footer-link {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .footer-link:hover {
+            color: #ffffff;
+            padding-left: 5px;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-btn:hover {
+            background-color: var(--accent-color);
+            color: #000000;
+            transform: translateY(-3px);
+        }
+
+        .copyright-bar {
+            background-color: #050a07;
+            border-top: 1px solid #1a2e22;
+            font-size: 0.875rem;
+        }
+
+        /* FLOATING ADMIN BUTTON */
+        .admin-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1050;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background-color: #1a202c;
+            color: #f39c12;
+            border: 2px solid #2d3748;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .admin-fab:hover {
+            background-color: #f39c12;
+            color: #1a202c;
+            transform: scale(1.1) rotate(15deg);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP HEADER INFORMASI -->
+    <div class="top-bar py-2 d-none d-md-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+                <span><i class="fas fa-map-marker-alt text-warning me-1"></i> Kec. Polongbangkeng Timur, Kab. Takalar</span>
+                <span><i class="fas fa-envelope text-warning me-1"></i> desatimbuseng1993@gmail.com</span>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <span><i class="fas fa-phone-alt text-warning me-1"></i> +62 852-9957-6913</span>
+                <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="fw-semibold text-warning">
+                    <i class="fab fa-instagram me-1"></i> @desa_timbuseng
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR KHUSUS LEMBAGA & PEMERINTAHAN DESA -->
+    <nav class="navbar navbar-expand-xl navbar-dark bg-pemdes-nav sticky-top shadow pemdes-nav">
+        <div class="container-fluid px-lg-4">
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2 me-3" href="profil.html">
+                <img src="logo.PNG" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/40?text=LOGO';">
+                <div class="lh-sm">
+                    <span class="d-block fs-6 text-white fw-bold">PEMDES TIMBUSENG</span>
+                    <small class="fw-normal text-white-50" style="font-size: 0.7rem;">Struktur & Lembaga Desa</small>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#pemdesNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="pemdesNavbar">
+                <ul class="navbar-nav mx-auto fw-medium py-2 py-xl-0 gap-xl-1">
+                    <li class="nav-item"><a class="nav-link text-warning fw-bold" href="index.html"><i class="fas fa-arrow-left me-1"></i> Beranda Utama</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="pemdes.html"><i class="fas fa-user-tie me-1"></i> Pemdes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bpd.html">BPD</a></li>
+                    <li class="nav-item"><a class="nav-link" href="lpm.html">LPM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="babinsa.html">Babinsa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bimnas.html">Bimnas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="iman-desa.html">Iman Desa</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active fw-bold px-3" href="#" id="navbarDusunDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Kadus & Imdus
+                        </a>
+                        <ul class="dropdown-menu shadow border-0 rounded-3 mt-2" aria-labelledby="navbarDusunDropdown">
+                            <li><a class="dropdown-item py-2" href="dusun-timbuseng1.html">Dusun Timbuseng I</a></li>
+                            <li><a class="dropdown-item py-2" href="dusun-timbuseng2.html">Dusun Timbuseng II</a></li>
+                            <li><a class="dropdown-item py-2" href="dusun-sauleya.html">Dusun Sauleya</a></li>
+                            <li><a class="dropdown-item py-2" href="dusun-tanasambayang.html">Dusun Tanasambayang</a></li>
+                            <li><a class="dropdown-item py-2" href="dusun-bontobaddo.html">Dusun Bontobaddo</a></li>
+                            <li><a class="dropdown-item py-2" href="dusun-panaikang1.html">Dusun Panaikang I</a></li>
+                            <li><a class="dropdown-item py-2 active fw-bold" href="dusun-panaikang2.html"><i class="fas fa-chevron-right me-1 fs-7"></i> Dusun Panaikang II</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="pkk.html">TP-PKK</a></li>
+                    <li class="nav-item"><a class="nav-link" href="karang-taruna.html">Karang Taruna</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bumdes.html">BUMDes Sejati</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kdmp.html">KDMP</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kmp.html">KMP</a></li>
+                </ul>
+                <a href="profil.html" class="btn btn-outline-light btn-sm fw-bold px-3 d-none d-xl-inline-block">
+                    <i class="fas fa-landmark me-1"></i> Ke Profil Utama
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER PEMDES -->
+    <header class="pemdes-header text-center">
+        <div class="container">
+            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill text-uppercase fw-bold mb-3">Sistem Informasi Pemerintahan</span>
+            <h1 class="display-6 fw-extrabold mb-2">Pemerintah Desa Timbuseng</h1>
+            <p class="lead text-white-50 mx-auto" style="max-width: 750px;">
+                Struktur Perangkat Desa Resmi, Sambutan Kepala Desa, Jajaran Kepala Urusan (Kaur), Kepala Seksi (Kasi), serta 7 Kepala Dusun di Wilayah Desa Timbuseng.
+            </p>
+        </div>
+    </header>
+
+    <!-- SEKSI SAMBUTAN KEPALA DESA -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <!-- FOTO PAK KEPALA DESA -->
+                <div class="col-lg-5 text-center">
+                    <div class="kades-img-wrapper mx-auto" style="max-width: 380px;">
+                        <img src="kades.PNG" alt="Kaharuddin, S.P. - Kepala Desa Timbuseng" class="kades-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x500?text=KAHARUDDIN,+S.P';">
+                        <div class="bg-dark text-white p-3 text-center">
+                            <h5 class="fw-bold mb-0">KAHARUDDIN, S.P</h5>
+                            <small class="text-warning">Kepala Desa Timbuseng</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEKS SAMBUTAN -->
+                <div class="col-lg-7">
+                    <span class="text-success fw-bold text-uppercase tracking-wider"><i class="fas fa-quote-left me-1"></i> Sambutan Resmi</span>
+                    <h2 class="fw-bold text-dark mt-1 mb-3">Assalamu’alaikum Warahmatullahi Wabarakatuh</h2>
+                    <p class="text-secondary leading-relaxed mb-3">
+                        Selamat datang di portal resmi Pemerintah Desa Timbuseng, Kecamatan Polongbangkeng Timur, Kabupaten Takalar. Puji dan syukur kita panjatkan ke hadirat Allah SWT, karena atas rahmat dan karunia-Nya, kami dapat menyajikan portal transparansi informasi dan tata kelola pemerintahan desa.
+                    </p>
+                    <p class="text-secondary leading-relaxed mb-3">
+                        Sebagai Kepala Desa, komitmen kami adalah menghadirkan pelayanan publik yang cepat, terbuka, akuntabel, serta berorientasi pada kemajuan warga. Berlandaskan semangat kearifan lokal <em>Je'ne Timbusu'</em> yang senantiasa membawa kesejukan dan persatuan, kami berikhtiar terus memajukan sektor agraris, perkebunan, serta infrastruktur pendukung di 7 wilayah dusun kami.
+                    </p>
+                    <p class="text-secondary leading-relaxed mb-4">
+                        Kami mengundang seluruh elemen masyarakat, BPD, LKD, serta pemuda untuk saling bersinergi dalam mewujudkan pembangunan desa yang berkelanjutan. Mari bersama-sama kita jaga semangat gotong royong dan kepahlawanan demi kemajuan Desa Timbuseng tercinta.
+                    </p>
+                    <div class="p-3 bg-light rounded-3 border-start border-4 border-success">
+                        <p class="fw-semibold text-dark mb-1">"Melayani dengan Integritas, Membangun Desa Timbuseng yang Mandiri & Sejahtera"</p>
+                        <small class="text-muted">— KAHARUDDIN, S.P (Kepala Desa Timbuseng)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKSI APARATUR PEMERINTAH DESA (DATA LENGKAP DARI EXCEL) -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-success fw-bold text-uppercase tracking-wider">Aparatur Desa Resmi</span>
+                <h2 class="fw-bold text-dark mt-1">Struktur Perangkat Desa Timbuseng</h2>
+                <p class="text-muted mx-auto" style="max-width: 650px;">
+                    Data resmi Kepala Desa, Sekretaris Desa, Kepala Urusan (Kaur), dan Kepala Seksi (Kasi) Pemerintah Desa Timbuseng.
+                </p>
+            </div>
+
+            <!-- UNURAN PIMPINAN UTAMA -->
+            <div class="row g-4 justify-content-center mb-4">
+                <!-- KEPALA DESA -->
+                <div class="col-md-6 col-lg-5">
+                    <div class="pemdes-card p-4 text-center h-100 shadow-sm">
+                        <div class="avatar-placeholder">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <span class="badge bg-success mb-2 px-3 py-1">Kepala Desa</span>
+                        <h4 class="fw-bold text-dark mb-1">KAHARUDDIN, S.P</h4>
+                        <p class="text-muted small mb-2"><i class="fas fa-id-card me-1 text-success"></i> NIK: 7305041009820004</p>
+                        <hr class="my-2 border-slate-200">
+                        <small class="text-secondary">Pimpinan Tertinggi Pemerintah Desa Timbuseng</small>
+                    </div>
+                </div>
+
+                <!-- SEKRETARIS DESA -->
+                <div class="col-md-6 col-lg-5">
+                    <div class="pemdes-card p-4 text-center h-100 shadow-sm">
+                        <div class="avatar-placeholder">
+                            <i class="fas fa-user-gear"></i>
+                        </div>
+                        <span class="badge bg-primary mb-2 px-3 py-1">Sekretaris Desa</span>
+                        <h4 class="fw-bold text-dark mb-1">HAERUDDIN, S.Pd.I</h4>
+                        <p class="text-muted small mb-2"><i class="fas fa-id-card me-1 text-primary"></i> NIK: 7305041804860001</p>
+                        <hr class="my-2 border-slate-200">
+                        <small class="text-secondary">Penanggung Jawab Administrasi & Sekretariat Desa</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KAUR DESA -->
+            <h4 class="fw-bold text-dark border-bottom pb-2 mb-4 mt-5"><i class="fas fa-folder-tree text-success me-2"></i>Kepala Urusan (Kaur)</h4>
+            <div class="row g-4 mb-4">
+                <!-- KAUR TU DAN UMUM -->
+                <div class="col-md-4">
+                    <div class="pemdes-card p-4 text-center h-100">
+                        <div class="avatar-placeholder" style="width: 70px; height: 70px; font-size: 1.6rem;">
+                            <i class="fas fa-file-signature"></i>
+                        </div>
+                        <span class="badge bg-secondary mb-2">Kaur TU & Umum</span>
+                        <h5 class="fw-bold text-dark mb-1">BUNGALIA</h5>
+                        <small class="text-muted d-block mb-2">NIK: 7305046510890002</small>
+                    </div>
+                </div>
+
+                <!-- KAUR KEUANGAN -->
+                <div class="col-md-4">
+                    <div class="pemdes-card p-4 text-center h-100">
+                        <div class="avatar-placeholder" style="width: 70px; height: 70px; font-size: 1.6rem;">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <span class="badge bg-secondary mb-2">Kaur Keuangan</span>
+                        <h5 class="fw-bold text-dark mb-1">SYAMSUARDI</h5>
+                        <small class="text-muted d-block mb-2">NIK: 7305041212940001</small>
+                    </div>
+                </div>
+
+                <!-- KAUR PERENCANAAN -->
+                <div class="col-md-4">
+                    <div class="pemdes-card p-4 text-center h-100">
+                        <div class="avatar-placeholder" style="width: 70px; height: 70px; font-size: 1.6rem;">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <span class="badge bg-secondary mb-2">Kaur Perencanaan</span>
+                        <h5 class="fw-bold text-dark mb-1">FIRMANSYA</h5>
+                        <small class="text-muted d-block mb-2">NIK: 7305040610920001</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KASI DESA -->
+            <h4 class="fw-bold text-dark border-bottom pb-2 mb-4 mt-5"><i class="fas fa-users-gear text-success me-2"></i>Kepala Seksi (Kasi)</h4>
+            <div class="row g-4 mb-5">
+                <!-- KASI PEMERINTAHAN -->
+                <div class="col-md-4">
+                    <div class="pemdes-card p-4 text-center h-100">
+                        <div class="avatar-placeholder" style="width: 70px; height: 70px; font-size: 1.6rem;">
+                            <i class="fas fa-building-flag"></i>
+                        </div>
+                        <span class="badge bg-info text-dark mb-2">Kasi Pemerintahan</span>
+                        <h5 class="fw-bold text-dark mb-1">HASNIATI</h5>
+                        <small class="text-muted d-block mb-2">NIK: 7305044808760001</small>
+                    </div>
+                </div>
+
+                <!-- KASI PELAYANAN -->
+                <div class="col-md-4">
+                    <div class="pemdes-card p-4 text-center h-100">
+                        <div class="avatar-placeholder" style="width: 70px; height: 70px; font-size: 1.6rem;">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <span class="badge bg-info text-dark mb-2">Kasi Pelayanan</span>
+                        <h5 class="fw-bold text-dark mb-1">MUH SULTAN, S.IP</h5>
+                        <small class="text-muted d-block mb-2">NIK: 7306110705900002</small>
+                    </div>
+                </div>
+
+                <!-- KASI PEMBERDAYAAN -->
+                <div class="col-md-4">
+                    <div class="pemdes-card p-4 text-center h-100">
+                        <div class="avatar-placeholder" style="width: 70px; height: 70px; font-size: 1.6rem;">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <span class="badge bg-info text-dark mb-2">Kasi Pemberdayaan</span>
+                        <h5 class="fw-bold text-dark mb-1">SYAMSINAR, Amd. Keb</h5>
+                        <small class="text-muted d-block mb-2">NIK: 7305044507940002</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KEPALA DUSUN (7 DUSUN DESA TIMBUSENG) -->
+            <h4 class="fw-bold text-dark border-bottom pb-2 mb-4 mt-5"><i class="fas fa-map-location-dot text-success me-2"></i>Kepala Dusun (Kadus) Se-Desa Timbuseng</h4>
+            <div class="row g-3">
+                <!-- KADUS TIMBUSENG I -->
+                <div class="col-md-6 col-lg-3">
+                    <a href="dusun-timbuseng1.html" class="text-decoration-none">
+                        <div class="pemdes-card p-3 text-center h-100">
+                            <div class="kadus-avatar"><i class="fas fa-user-large"></i></div>
+                            <span class="badge bg-warning text-dark mb-1">Kadus Timbuseng I</span>
+                            <h6 class="fw-bold text-dark mb-1">ABD KADIR DG NGUNJUNG</h6>
+                            <small class="text-muted d-block">NIK: 7305040905850004</small>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- KADUS TIMBUSENG II -->
+                <div class="col-md-6 col-lg-3">
+                    <a href="dusun-timbuseng2.html" class="text-decoration-none">
+                        <div class="pemdes-card p-3 text-center h-100">
+                            <div class="kadus-avatar"><i class="fas fa-user-large"></i></div>
+                            <span class="badge bg-warning text-dark mb-1">Kadus Timbuseng II</span>
+                            <h6 class="fw-bold text-dark mb-1">USMAN</h6>
+                            <small class="text-muted d-block">NIK: 7305041011790001</small>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- KADUS SAULEYA -->
+                <div class="col-md-6 col-lg-3">
+                    <a href="dusun-sauleya.html" class="text-decoration-none">
+                        <div class="pemdes-card p-3 text-center h-100">
+                            <div class="kadus-avatar"><i class="fas fa-user-large"></i></div>
+                            <span class="badge bg-warning text-dark mb-1">Kadus Sauleya</span>
+                            <h6 class="fw-bold text-dark mb-1">MUH. ASWAN MUHAJIR</h6>
+                            <small class="text-muted d-block">NIK: 7305041712960002</small>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- KADUS TANASAMBAYANG -->
+                <div class="col-md-6 col-lg-3">
+                    <a href="dusun-tanasambayang.html" class="text-decoration-none">
+                        <div class="pemdes-card p-3 text-center h-100">
+                            <div class="kadus-avatar"><i class="fas fa-user-large"></i></div>
+                            <span class="badge bg-warning text-dark mb-1">Kadus Tanasambayang</span>
+                            <h6 class="fw-bold text-dark mb-1">WANDI</h6>
+                            <small class="text-muted d-block">NIK: 7305040707990004</small>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- KADUS BONTOBADDO -->
+                <div class="col-md-6 col-lg-4">
+                    <a href="dusun-bontobaddo.html" class="text-decoration-none">
+                        <div class="pemdes-card p-3 text-center h-100">
+                            <div class="kadus-avatar"><i class="fas fa-user-large"></i></div>
+                            <span class="badge bg-warning text-dark mb-1">Kadus Bontobaddo</span>
+                            <h6 class="fw-bold text-dark mb-1">SAFRI</h6>
+                            <small class="text-muted d-block">NIK: 7305040709820001</small>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- KADUS PANAIKANG I -->
+                <div class="col-md-6 col-lg-4">
+                    <a href="dusun-panaikang1.html" class="text-decoration-none">
+                        <div class="pemdes-card p-3 text-center h-100">
+                            <div class="kadus-avatar"><i class="fas fa-user-large"></i></div>
+                            <span class="badge bg-warning text-dark mb-1">Kadus Panaikang I</span>
+                            <h6 class="fw-bold text-dark mb-1">ARMAN</h6>
+                            <small class="text-muted d-block">NIK: 7305042912870001</small>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- KADUS PANAIKANG II -->
+                <div class="col-md-6 col-lg-4">
+                    <a href="dusun-panaikang2.html" class="text-decoration-none">
+                        <div class="pemdes-card p-3 text-center h-100">
+                            <div class="kadus-avatar"><i class="fas fa-user-large"></i></div>
+                            <span class="badge bg-warning text-dark mb-1">Kadus Panaikang II</span>
+                            <h6 class="fw-bold text-dark mb-1">YUSTANG</h6>
+                            <small class="text-muted d-block">NIK: 7305042305840001</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKSI DIREKTORI LEMBAGA-LEMBAGA DESA -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-success fw-bold text-uppercase tracking-wider">Direktori Kemasyarakatan</span>
+                <h2 class="fw-bold text-dark mt-1">Lembaga Kemasyarakatan & Mitra Desa</h2>
+                <p class="text-muted mx-auto" style="max-width: 650px;">
+                    Akses halaman khusus tiap lembaga desa untuk melihat program kerja, keanggotaan, serta tugas dan fungsi mitra pembangunan desa.
+                </p>
+            </div>
+
+            <div class="row g-3">
+                <!-- BPD -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="bpd.html" class="inst-card">
+                        <div class="inst-icon"><i class="fas fa-gavel"></i></div>
+                        <h6 class="fw-bold text-dark mb-1">BPD</h6>
+                        <small class="text-muted d-block">Badan Permusyawaratan Desa</small>
+                    </a>
+                </div>
+
+                <!-- LPM -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="lpm.html" class="inst-card">
+                        <div class="inst-icon"><i class="fas fa-users-line"></i></div>
+                        <h6 class="fw-bold text-dark mb-1">LPM</h6>
+                        <small class="text-muted d-block">Lembaga Pemberdayaan Masyarakat</small>
+                    </a>
+                </div>
+
+                <!-- BABINSA -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="babinsa.html" class="inst-card">
+                        <div class="inst-icon"><i class="fas fa-shield-cat"></i></div>
+                        <h6 class="fw-bold text-dark mb-1">Babinsa</h6>
+                        <small class="text-muted d-block">TNI Babinsa Desa</small>
+                    </a>
+                </div>
+
+                <!-- BIMNAS -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="bimnas.html" class="inst-card">
+                        <div class="inst-icon"><i class="fas fa-user-shield"></i></div>
+                        <h6 class="fw-bold text-dark mb-1">Bimnas / Bhabinkamtibmas</h6>
+                        <small class="text-muted d-block">Polri Mitra Keamanan</small>
+                    </a>
+                </div>
+
+                <!-- IMAN DESA -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="iman-desa.html" class="inst-card">
+                        <div class="inst-icon"><i class="fas fa-mosque"></i></div>
+                        <h6 class="fw-bold text-dark mb-1">Iman Desa</h6>
+                        <small class="text-muted d-block">Pembina Keagamaan Desa</small>
+                    </a>
+                </div>
+
+                <!-- KADUS & IMDUS -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="kadus-imdus.html" class="inst-card">
+                        <div class="inst-icon"><i class="fas fa-people-roof"></i></div>
+                        <h6 class="fw-bold text-dark mb-1">Kadus & Imdus</h6>
+                        <small class="text-muted d-block">Kepala & Imam Dusun</small>
+                    </a>
+                </div>
+
+                <!-- TP-PKK -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="pkk.html" class="inst-card">
+                        <div class="inst-icon"><i class="fas fa-person-breastfeeding"></i></div>
+                        <h6 class="fw-bold text-dark mb-1">TP-PKK</h6>
+                        <small class="text-muted d-block">Tim Penggerak PKK</small>
+                    </a>
+                </div>
+
+                <!-- KARANG TARUNA -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="karang-taruna.html" class="inst-card">
+                        <div class="inst-icon"><i class="fas fa-child-reaching"></i></div>
+                        <h6 class="fw-bold text-dark mb-1">Karang Taruna</h6>
+                        <small class="text-muted d-block">Wadah Kepemudaan Desa</small>
+                    </a>
+                </div>
+
+                <!-- BUMDES SEJATI -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="bumdes.html" class="inst-card">
+                        <div class="inst-icon"><i class="fas fa-store"></i></div>
+                        <h6 class="fw-bold text-dark mb-1">BUMDes Sejati</h6>
+                        <small class="text-muted d-block">Badan Usaha Milik Desa</small>
+                    </a>
+                </div>
+
+                <!-- KDMP -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="kdmp.html" class="inst-card">
+                        <div class="inst-icon"><i class="fas fa-handshake"></i></div>
+                        <h6 class="fw-bold text-dark mb-1">KDMP</h6>
+                        <small class="text-muted d-block">Kemitraan Desa & Masyarakat</small>
+                    </a>
+                </div>
+
+                <!-- KMP -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="kmp.html" class="inst-card">
+                        <div class="inst-icon"><i class="fas fa-network-wired"></i></div>
+                        <h6 class="fw-bold text-dark mb-1">KMP</h6>
+                        <small class="text-muted d-block">Kader Pemberdayaan Masyarakat</small>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER UTAMA -->
+    <footer class="pt-5">
+        <div class="container pb-4">
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <img src="logo.PNG" alt="Logo Desa Timbuseng" style="height: 48px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                        <div>
+                            <h5 class="fw-bold text-white mb-0">Pemerintah Desa Timbuseng</h5>
+                            <small class="text-white-50">Kec. Polongbangkeng Timur, Kab. Takalar</small>
+                        </div>
+                    </div>
+                    <p class="text-white-50 small pe-lg-4">
+                        Portal resmi Sistem Informasi Desa Timbuseng. Menyajikan data profil, transparansi tata kelola pemerintahan, layanan pengaduan masyarakat, serta pemetaan wilayah desa.
+                    </p>
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram Resmi Desa">
+                            <i class="fab fa-instagram fs-5"></i>
+                        </a>
+                        <a href="#" class="social-btn" title="Facebook Desa">
+                            <i class="fab fa-facebook-f fs-5"></i>
+                        </a>
+                        <a href="#" class="social-btn" title="YouTube Desa">
+                            <i class="fab fa-youtube fs-5"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <h6 class="fw-bold text-white mb-3 text-uppercase">Navigasi Utama</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small">
+                        <li><a href="index.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Beranda Utama</a></li>
+                        <li><a href="profil.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Profil Desa</a></li>
+                        <li><a href="pemdes.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Struktur Pemdes</a></li>
+                        <li><a href="peta.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Peta Digital Wilayah</a></li>
+                        <li><a href="informasi.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Informasi & Berita Desa</a></li>
+                        <li><a href="kontak.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Kontak & Lokasi Kantor</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-8 col-lg-4">
+                    <h6 class="fw-bold text-white mb-3 text-uppercase">Kontak Kantor Desa</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small text-white-50">
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-map-marker-alt text-warning mt-1"></i>
+                            <span>Kantor Desa Timbuseng, Kec. Polongbangkeng Timur, Kab. Takalar, Sulawesi Selatan 92221</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-phone-alt text-warning"></i>
+                            <span>+62 852-9957-6913</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-envelope text-warning"></i>
+                            <span>desatimbuseng1993@gmail.com</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fab fa-instagram text-warning"></i>
+                            <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                                @desa_timbuseng
+                            </a>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-clock text-warning"></i>
+                            <span>Senin - Jumat: 08:00 - 16:00 WITA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- COPYRIGHT BAR -->
+        <div class="copyright-bar py-3 text-center text-white-50">
+            <div class="container">
+                <p class="mb-0">©2026 P10 KKN UHM | Pemerintah Desa Timbuseng, Polongbangkeng Timur, Takalar. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING ADMIN BUTTON -->
+    <button class="admin-fab" data-bs-toggle="modal" data-bs-target="#loginModal" title="Akses Admin">
+        <i class="fas fa-user-shield"></i>
+    </button>
+
+    <!-- MODAL OTORISASI ADMIN -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title fw-bold" id="loginModalLabel"><i class="fas fa-lock me-2 text-warning"></i>Otorisasi Admin</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="text-muted small mb-3">Masukkan kata sandi administrator untuk masuk ke Halaman Dasbor Admin (`admin.html`).</p>
+                    <div class="mb-3">
+                        <label for="adminPassword" class="form-label fw-bold">Kata Sandi</label>
+                        <input type="password" class="form-control" id="adminPassword" placeholder="Masukkan sandi...">
+                        <div id="passwordError" class="text-danger small mt-2 d-none"><i class="fas fa-exclamation-circle me-1"></i>Sandi yang Anda masukkan salah.</div>
+                    </div>
+                    <button type="button" class="btn btn-warning w-100 fw-bold" onclick="verifyPassword()">Masuk Ke Halaman Admin</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Skrip Verifikasi Sandi Admin -->
+    <script>
+        const ADMIN_PASSWORD = "admintimbuseng";
+
+        function verifyPassword() {
+            const input = document.getElementById("adminPassword").value;
+            const errorMsg = document.getElementById("passwordError");
+            
+            if(input === ADMIN_PASSWORD) {
+                errorMsg.classList.add("d-none");
+                window.location.href = "admin.html";
+            } else {
+                errorMsg.classList.remove("d-none");
+            }
+        }
+
+        document.getElementById("adminPassword").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                verifyPassword();
+            }
+        });
+    </script>
+</body>
+</html>
