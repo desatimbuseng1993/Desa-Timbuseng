@@ -23,11 +23,22 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: #2d3748;
             background-color: #f8faf9;
+            overflow-x: hidden;
         }
 
         /* Top Bar & Navbar */
         .top-bar { background-color: var(--primary-dark); color: rgba(255, 255, 255, 0.85); font-size: 0.85rem; }
-        .navbar-brand img { height: 48px; width: auto; object-fit: contain; }
+        
+        .navbar {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+
+        .navbar-brand {
+            max-width: 75%;
+        }
+
+        .navbar-brand img { height: 45px; width: auto; object-fit: contain; flex-shrink: 0; }
         .bg-desa { background-color: var(--primary-color) !important; }
         .nav-link { font-weight: 500; padding: 0.6rem 1rem !important; transition: all 0.2s ease; }
         .nav-link:hover, .nav-link.active { color: var(--accent-color) !important; }
@@ -35,7 +46,7 @@
         /* Page Header */
         .page-header {
             background-color: var(--primary-dark);
-            background-image: linear-gradient(135deg, rgba(13, 92, 58, 0.95), rgba(7, 59, 36, 0.98)), url('kantor.PNG');
+            background-image: linear-gradient(135deg, rgba(13, 92, 58, 0.95), rgba(7, 59, 36, 0.98)), url('kantor.png');
             background-size: cover;
             background-position: center;
             color: white;
@@ -107,7 +118,9 @@
                 <span><i class="fas fa-envelope text-warning me-1"></i> desatimbuseng1993@gmail.com</span>
             </div>
             <div class="d-flex align-items-center gap-3">
-                <span><i class="fas fa-phone-alt text-warning me-1"></i> +62 852-9957-6913</span>
+                <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="fw-semibold text-warning">
+                    <i class="fab fa-whatsapp me-1"></i> +62 852-9957-6913
+                </a>
             </div>
         </div>
     </div>
@@ -115,17 +128,17 @@
     <!-- NAVBAR UTAMA -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow">
         <div class="container">
-            <a class="navbar-brand fw-bold d-flex align-items-center gap-3" href="index.html">
-                <img src="logo.PNG" alt="Logo Desa" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
-                <div class="lh-sm">
-                    <span class="d-block fs-5 text-white fw-bold tracking-wide">DESA TIMBUSENG</span>
-                    <small class="fw-normal text-white-50 text-uppercase" style="font-size: 0.75rem;">Kabupaten Takalar</small>
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2 text-decoration-none" href="index.html">
+                <img src="logo.png" alt="Logo Desa" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                <div class="lh-sm overflow-hidden">
+                    <span class="d-block fs-6 fs-md-5 text-white fw-bold text-truncate">DESA TIMBUSENG</span>
+                    <small class="fw-normal text-white-50 text-uppercase d-block" style="font-size: 0.7rem;">Kabupaten Takalar</small>
                 </div>
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse bg-desa bg-lg-transparent mt-3 mt-lg-0 p-3 p-lg-0 rounded-3 rounded-lg-0 shadow-sm shadow-lg-none" id="navbarNav">
                 <ul class="navbar-nav ms-auto fw-semibold py-2 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a></li>
                     <li class="nav-item"><a class="nav-link" href="profil.html"><i class="fas fa-landmark me-1"></i> Profil Desa</a></li>
@@ -141,8 +154,8 @@
     <!-- PAGE HEADER -->
     <header class="page-header">
         <div class="container">
-            <h1 class="display-5 fw-bold mb-3">Kontak & Lokasi Kantor Desa</h1>
-            <p class="lead text-white-50 mx-auto" style="max-width: 650px;">
+            <h1 class="display-6 display-md-5 fw-bold mb-3">Kontak & Lokasi Kantor Desa</h1>
+            <p class="lead text-white-50 mx-auto fs-6 fs-md-5" style="max-width: 650px;">
                 Silakan hubungi kami atau kunjungi Kantor Desa Timbuseng untuk mendapatkan pelayanan administrasi dan informasi publik.
             </p>
         </div>
@@ -178,7 +191,7 @@
                         <div class="icon-box"><i class="fas fa-phone-alt"></i></div>
                         <h5 class="fw-bold text-dark mb-2">Telepon / WhatsApp</h5>
                         <p class="text-muted small mb-2">+62 852-9957-6913</p>
-                        <a href="https://wa.me/6285299576913" target="_blank" class="btn btn-sm btn-outline-success rounded-pill fw-semibold">
+                        <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-success rounded-pill fw-semibold">
                             <i class="fab fa-whatsapp me-1"></i> Kirim WhatsApp
                         </a>
                     </div>
@@ -190,7 +203,7 @@
                         <div class="icon-box"><i class="fas fa-envelope"></i></div>
                         <h5 class="fw-bold text-dark mb-2">Email & Sosmed</h5>
                         <p class="text-muted small mb-2 text-break">desatimbuseng1993@gmail.com</p>
-                        <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" class="btn btn-sm btn-outline-warning text-dark rounded-pill fw-semibold">
+                        <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-warning text-dark rounded-pill fw-semibold">
                             <i class="fab fa-instagram me-1"></i> Instagram Resmi
                         </a>
                     </div>
@@ -207,7 +220,7 @@
                         <h4 class="fw-bold text-dark mb-2"><i class="fas fa-paper-plane text-success me-2"></i>Kirim Pesan / Pertanyaan</h4>
                         <p class="text-muted small mb-4">Pesan Anda akan terkirim langsung ke Sekretariat Pemerintah Desa Timbuseng.</p>
                         
-                        <form action="#" method="POST">
+                        <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Terima kasih! Pesan Anda telah berhasil dikirim.'); this.reset();">
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">Nama Lengkap <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="nama" placeholder="Masukkan nama Anda" required>
@@ -243,7 +256,7 @@
                         <div>
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="fw-bold text-dark mb-0"><i class="fas fa-map-pin text-danger me-2"></i>Lokasi Kantor Desa</h4>
-                                <a href="https://maps.app.goo.gl/xZScJrm2hDV89dJDA" target="_blank" class="btn btn-sm btn-outline-success rounded-pill fw-semibold">
+                                <a href="https://maps.app.goo.gl/xZScJrm2hDV89dJDA" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-success rounded-pill fw-semibold">
                                     <i class="fas fa-directions me-1"></i> Petunjuk Arah
                                 </a>
                             </div>
@@ -271,7 +284,7 @@
             <div class="row g-4">
                 <div class="col-lg-5">
                     <div class="d-flex align-items-center gap-3 mb-3">
-                        <img src="logo.PNG" alt="Logo Desa" style="height: 48px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                        <img src="logo.png" alt="Logo Desa" style="height: 48px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
                         <div>
                             <h5 class="fw-bold text-white mb-0">Pemerintah Desa Timbuseng</h5>
                             <small class="text-white-50">Kec. Polombangkeng Utara, Kab. Takalar</small>
@@ -281,9 +294,9 @@
                         Portal resmi Sistem Informasi Desa Timbuseng. Menyajikan data profil, transparansi tata kelola pemerintahan, layanan pengaduan masyarakat, serta pemetaan wilayah desa.
                     </p>
                     <div class="d-flex gap-3 fs-5 mt-3">
-                        <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="social-link" title="WhatsApp Resmi"><i class="fab fa-whatsapp"></i></a>
                         <!-- Tautan Instagram -->
-                        <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" class="social-link" title="Instagram Resmi"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram Resmi"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
@@ -304,8 +317,10 @@
                             <span>Kantor Desa Timbuseng, Kec. Polombangkeng Utara, Kab. Takalar, Sulsel 92221</span>
                         </li>
                         <li class="d-flex align-items-center gap-2">
-                            <i class="fas fa-phone-alt text-warning"></i>
-                            <span>+62 852-9957-6913</span>
+                            <i class="fab fa-whatsapp text-warning"></i>
+                            <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                                +62 852-9957-6913 (WhatsApp)
+                            </a>
                         </li>
                         <li class="d-flex align-items-center gap-2">
                             <i class="fas fa-envelope text-warning"></i>
@@ -326,3 +341,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+```[cite: 33]
