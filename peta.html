@@ -23,6 +23,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: #2d3748;
             background-color: #ffffff;
+            overflow-x: hidden;
         }
 
         /* Top Bar */
@@ -43,10 +44,20 @@
         }
 
         /* Navbar */
+        .navbar {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+
+        .navbar-brand {
+            max-width: 75%;
+        }
+
         .navbar-brand img {
-            height: 48px;
+            height: 45px;
             width: auto;
             object-fit: contain;
+            flex-shrink: 0;
         }
 
         .bg-desa {
@@ -66,7 +77,7 @@
         /* Header Peta */
         .map-header {
             background: linear-gradient(135deg, rgba(13, 92, 58, 0.92), rgba(7, 59, 36, 0.92)), 
-                        url('kantor.PNG') center/cover no-repeat;
+                        url('kantor.png') center/cover no-repeat;
             color: white;
             padding: 80px 0 60px 0;
         }
@@ -213,17 +224,17 @@
     <!-- NAVBAR UTAMA -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow">
         <div class="container">
-            <a class="navbar-brand fw-bold d-flex align-items-center gap-3" href="index.html">
-                <img src="logo.PNG" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
-                <div class="lh-sm">
-                    <span class="d-block fs-5 text-white fw-bold tracking-wide">DESA TIMBUSENG</span>
-                    <small class="fw-normal text-white-50 text-uppercase" style="font-size: 0.75rem;">Kabupaten Takalar</small>
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2 text-decoration-none" href="index.html">
+                <img src="logo.png" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                <div class="lh-sm overflow-hidden">
+                    <span class="d-block fs-6 fs-md-5 text-white fw-bold text-truncate">DESA TIMBUSENG</span>
+                    <small class="fw-normal text-white-50 text-uppercase d-block" style="font-size: 0.7rem;">Kabupaten Takalar</small>
                 </div>
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse bg-desa bg-lg-transparent mt-3 mt-lg-0 p-3 p-lg-0 rounded-3 rounded-lg-0 shadow-sm shadow-lg-none" id="navbarNav">
                 <ul class="navbar-nav ms-auto fw-semibold py-2 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a></li>
                     <li class="nav-item"><a class="nav-link" href="profil.html"><i class="fas fa-landmark me-1"></i> Profil Desa</a></li>
@@ -240,8 +251,8 @@
     <header class="map-header text-center">
         <div class="container">
             <span class="badge bg-warning text-dark px-3 py-2 rounded-pill text-uppercase fw-bold mb-3">Sistem Informasi Spasial</span>
-            <h1 class="display-5 fw-extrabold mb-2">Peta Digital & Wilayah Desa Timbuseng</h1>
-            <p class="lead text-white-50 mx-auto" style="max-width: 750px;">
+            <h1 class="display-6 display-md-5 fw-extrabold mb-2">Peta Digital & Wilayah Desa Timbuseng</h1>
+            <p class="lead text-white-50 mx-auto fs-6 fs-md-5" style="max-width: 750px;">
                 Eksplorasi batas wilayah spasial, titik lokasi kantor desa, fasilitas umum, serta pembagian 7 wilayah dusun di Kecamatan Polongbangkeng Timur, Kabupaten Takalar.
             </p>
         </div>
@@ -291,8 +302,8 @@
                     </a>
                 </div>
                 <div class="map-frame-wrapper">
-                    <!-- Embed Google Maps untuk Desa Timbuseng, Takalar -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.0!2d119.5!3d-5.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMjQnMDAuMCJTIDExOcKwMzAnMDAuMCJF!5e0!3m2!1sid!2sid!4v1650000000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <!-- Embed Google Maps yang langsung muncul secara instan dan responsif -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15891.7583624!2d119.52!3d-5.42!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbee32c7f4e8b35%3A0xf01e428e83311a0!2sTimbuseng%2C%20Polongbangkeng%20Timur%2C%20Takalar%20Regency%2C%20South%20Sulawesi!5e0!3m2!1sid!2sid!4v1650000000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
 
@@ -385,7 +396,7 @@
             <div class="row g-4">
                 <div class="col-lg-5">
                     <div class="d-flex align-items-center gap-3 mb-3">
-                        <img src="logo.PNG" alt="Logo Desa Timbuseng" style="height: 48px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                        <img src="logo.png" alt="Logo Desa Timbuseng" style="height: 48px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
                         <div>
                             <h5 class="fw-bold text-white mb-0">Pemerintah Desa Timbuseng</h5>
                             <small class="text-white-50">Kec. Polongbangkeng Timur, Kab. Takalar</small>
