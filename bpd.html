@@ -28,55 +28,63 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #f4f6f8;
             color: var(--dark-text);
-            line-height: 1.6;
+            line-height: 1.5;
             overflow-x: hidden;
-            width: 100%;
         }
 
+        /* Utility Classes */
         .bg-desa { background-color: var(--primary-color) !important; }
         .text-desa { color: var(--primary-color) !important; }
+        .bg-desa-dark { background-color: var(--primary-dark) !important; }
 
-        /* Navbar */
+        /* Navigation Bar */
         .navbar {
             padding: 0.75rem 1rem;
         }
         .navbar-brand img {
             height: 38px;
             width: auto;
+            object-fit: contain;
         }
         .nav-link {
             font-weight: 500;
+            font-size: 0.9rem;
             padding: 0.5rem 0.75rem !important;
-            border-radius: 8px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
         }
         .nav-link:hover, .nav-link.active {
-            background-color: rgba(255, 255, 255, 0.15);
+            background-color: rgba(255, 255, 255, 0.12);
             color: #ffffff !important;
         }
         .dropdown-menu {
             border: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             border-radius: 12px;
         }
+        .dropdown-item {
+            padding: 0.5rem 1rem;
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+        .dropdown-item:hover {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+        }
 
-        /* Hero Header Responsive */
+        /* Hero Header yang Responsif & Proporsional */
         .page-hero {
-            background: linear-gradient(rgba(7, 59, 36, 0.92), rgba(13, 92, 58, 0.9)), url('image_bpd.png') center/cover no-repeat;
+            background: linear-gradient(rgba(7, 59, 36, 0.92), rgba(13, 92, 58, 0.88)), url('image_bpd.png') center/cover no-repeat;
             color: white;
-            padding: 3.5rem 1rem 3rem;
+            padding: 4rem 1rem 3.5rem;
             border-bottom: 4px solid var(--accent-color);
             text-align: center;
-        }
-        @media (min-width: 768px) {
-            .page-hero {
-                padding: 5rem 0 4rem;
-            }
         }
         .hero-badge {
             background: rgba(243, 156, 18, 0.2);
             color: #ffd166;
-            border: 1px solid rgba(243, 156, 18, 0.5);
-            padding: 0.4em 1rem;
+            border: 1px solid rgba(243, 156, 18, 0.4);
+            padding: 0.4em 1em;
             border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 600;
@@ -85,30 +93,30 @@
             gap: 6px;
         }
 
-        /* Stat Cards Responsive Fixes */
+        /* Key Performance Cards (Diperbaiki agar aman di HP) */
         .stat-card {
             background: #ffffff;
             border-radius: 14px;
-            padding: 1.1rem;
+            padding: 1rem;
             border: 1px solid var(--border-color);
             border-left: 4px solid var(--primary-color);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
             height: 100%;
         }
         .stat-icon {
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
             border-radius: 10px;
             background-color: var(--primary-light);
             color: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             flex-shrink: 0;
         }
 
-        /* Profile Card Responsive Fixes */
+        /* Profile Card */
         .profile-card {
             background: #ffffff;
             border-radius: 18px;
@@ -134,15 +142,6 @@
             box-shadow: 0 6px 20px rgba(0,0,0,0.12);
             background-color: #ffffff;
         }
-        @media (min-width: 768px) {
-            .bpd-img {
-                width: 140px;
-                height: 140px;
-            }
-            .profile-img-wrapper {
-                margin-top: -65px;
-            }
-        }
 
         .quote-box {
             background-color: var(--primary-light);
@@ -150,13 +149,7 @@
             padding: 1rem 1.2rem;
             border-radius: 0 12px 12px 0;
             font-style: italic;
-            font-size: 0.9rem;
-        }
-        @media (min-width: 768px) {
-            .quote-box {
-                font-size: 1rem;
-                padding: 1.25rem 1.5rem;
-            }
+            font-size: 0.92rem;
         }
 
         /* Section Titles */
@@ -165,13 +158,8 @@
             padding-bottom: 10px;
             margin-bottom: 20px;
             font-weight: 700;
-            color: var(--dark-text);
             font-size: 1.25rem;
-        }
-        @media (min-width: 768px) {
-            .section-title {
-                font-size: 1.4rem;
-            }
+            color: var(--dark-text);
         }
         .section-title::after {
             content: '';
@@ -188,15 +176,9 @@
             background: #ffffff;
             border-radius: 16px;
             border: 1px solid var(--border-color);
-            box-shadow: 0 3px 12px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
             padding: 1.25rem;
             margin-bottom: 1.5rem;
-        }
-        @media (min-width: 768px) {
-            .content-card {
-                padding: 1.8rem;
-                margin-bottom: 1.8rem;
-            }
         }
 
         /* Program/Task Cards */
@@ -215,21 +197,19 @@
         .org-card {
             border-radius: 12px;
             border: 1px dashed var(--border-color);
-            padding: 0.9rem;
+            padding: 0.85rem;
             background-color: var(--light-bg);
         }
 
         /* Gallery Images */
+        .gallery-img-container {
+            overflow: hidden;
+            border-radius: 12px;
+        }
         .gallery-img {
             height: 180px;
             object-fit: cover;
             width: 100%;
-            border-radius: 12px;
-        }
-        @media (min-width: 768px) {
-            .gallery-img {
-                height: 220px;
-            }
         }
 
         /* Floating Contact Button */
@@ -238,7 +218,9 @@
             bottom: 20px;
             right: 20px;
             z-index: 999;
-            box-shadow: 0 6px 20px rgba(13, 92, 58, 0.35);
+            box-shadow: 0 6px 20px rgba(13, 92, 58, 0.3);
+            width: 50px;
+            height: 50px;
         }
     </style>
 </head>
@@ -246,19 +228,19 @@
 
     <!-- NAVBAR / NAVIGATION -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow-sm">
-        <div class="container">
+        <div class="container-fluid px-3">
             <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-                <img src="logo.png" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/42?text=DESA';">
-                <div class="lh-sm">
-                    <span class="d-block fs-6 text-white fw-bold tracking-wide">DESA TIMBUSENG</span>
-                    <small class="fw-normal text-white-50 text-uppercase" style="font-size: 0.65rem;">Kec. Polongbangkeng Timur</small>
+                <img src="logo.png" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/40?text=DESA';">
+                <div class="lh-sm overflow-hidden">
+                    <span class="d-block fs-6 text-white fw-bold text-truncate">DESA TIMBUSENG</span>
+                    <small class="fw-normal text-white-50 d-block" style="font-size: 0.65rem;">Kec. Polongbangkeng Timur</small>
                 </div>
             </a>
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto gap-1 align-items-lg-center fw-semibold py-2 py-lg-0">
+                <ul class="navbar-nav ms-auto gap-1 fw-semibold py-2">
                     <li class="nav-item"><a class="nav-link text-white" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="pemdes.html"><i class="fas fa-users-cog me-1"></i> Pemdes & Kades</a></li>
                     <li class="nav-item"><a class="nav-link active text-white" href="bpd.html"><i class="fas fa-landmark me-1"></i> BPD</a></li>
@@ -268,15 +250,16 @@
                             <i class="fas fa-map-marked-alt me-1"></i> Dusun
                         </a>
                         <ul class="dropdown-menu shadow border-0 rounded-3 mt-2" aria-labelledby="navbarDusunDropdown">
-                            <li><a class="dropdown-item py-2" href="dusun-timbuseng1.html">Dusun Timbuseng I</a></li>
-                            <li><a class="dropdown-item py-2" href="dusun-timbuseng2.html">Dusun Timbuseng II</a></li>
-                            <li><a class="dropdown-item py-2" href="dusun-sauleya.html">Dusun Sauleya</a></li>
-                            <li><a class="dropdown-item py-2" href="dusun-tanasambayang.html">Dusun Tanasambayang</a></li>
-                            <li><a class="dropdown-item py-2" href="dusun-bontobaddo.html">Dusun Bontobaddo</a></li>
-                            <li><a class="dropdown-item py-2" href="dusun-panaikang1.html">Dusun Panaikang I</a></li>
-                            <li><a class="dropdown-item py-2" href="dusun-panaikang2.html">Dusun Panaikang II</a></li>
+                            <li><a class="dropdown-item" href="dusun-timbuseng1.html">Dusun Timbuseng I</a></li>
+                            <li><a class="dropdown-item" href="dusun-timbuseng2.html">Dusun Timbuseng II</a></li>
+                            <li><a class="dropdown-item" href="dusun-sauleya.html">Dusun Sauleya</a></li>
+                            <li><a class="dropdown-item" href="dusun-tanasambayang.html">Dusun Tanasambayang</a></li>
+                            <li><a class="dropdown-item" href="dusun-bontobaddo.html">Dusun Bontobaddo</a></li>
+                            <li><a class="dropdown-item" href="dusun-panaikang1.html">Dusun Panaikang I</a></li>
+                            <li><a class="dropdown-item" href="dusun-panaikang2.html">Dusun Panaikang II</a></li>
                         </ul>
                     </li>
+
                     <li class="nav-item"><a class="nav-link text-white" href="pengaduan.html"><i class="fas fa-paper-plane me-1"></i> Pengaduan</a></li>
                 </ul>
             </div>
@@ -289,89 +272,89 @@
             <div class="hero-badge mb-2 shadow-sm">
                 <i class="fas fa-landmark"></i> Lembaga Demokrasi Desa
             </div>
-            <h1 class="fw-extrabold fs-2 fs-md-1 text-white mb-2">Badan Permusyawaratan Desa (BPD)</h1>
-            <p class="text-white-50 mx-auto mb-3 fs-7 fs-md-6" style="max-width: 680px;">
+            <h1 class="fw-bold fs-3 fs-md-2 text-white mb-2">Badan Permusyawaratan Desa (BPD)</h1>
+            <p class="text-white-50 mx-auto mb-3 small" style="max-width: 650px;">
                 Mitra kerja Pemerintah Desa Timbuseng dalam menampung aspirasi, membahas rancangan Peraturan Desa, serta merumuskan arah pembangunan kesejahteraan masyarakat.
             </p>
             <div class="d-flex justify-content-center gap-2 flex-wrap">
-                <a href="#profil-anggota" class="btn btn-warning btn-sm btn-md-lg rounded-pill px-3 px-md-4 fw-bold shadow-sm"><i class="fas fa-users me-1"></i>Profil BPD</a>
-                <a href="#tugas-fungsi" class="btn btn-outline-light btn-sm btn-md-lg rounded-pill px-3 px-md-4 fw-semibold"><i class="fas fa-tasks me-1"></i>Tugas & Fungsi</a>
+                <a href="#profil-anggota" class="btn btn-warning btn-sm rounded-pill px-3 fw-bold shadow-sm"><i class="fas fa-users me-1"></i>Profil BPD</a>
+                <a href="#tugas-fungsi" class="btn btn-outline-light btn-sm rounded-pill px-3 fw-semibold"><i class="fas fa-tasks me-1"></i>Tugas & Fungsi</a>
             </div>
         </div>
     </header>
 
     <!-- MAIN CONTENT SECTION -->
-    <section class="py-4 py-md-5">
-        <div class="container">
+    <section class="py-4">
+        <div class="container px-3">
 
-            <!-- STATISTIK / HIGHLIGHT METRICS (Perbaikan Grid HP agar 2x2 pas tanpa overflow) -->
-            <div class="row g-2 g-md-3 mb-4 mb-md-5" data-aos="fade-up">
-                <div class="col-6 col-md-3">
+            <!-- STATISTIK / HIGHLIGHT METRICS (Grid Fleksibel anti-pecah di HP) -->
+            <div class="row g-2 mb-4" data-aos="fade-up">
+                <div class="col-6 col-lg-3">
                     <div class="stat-card d-flex align-items-center gap-2 gap-md-3">
                         <div class="stat-icon"><i class="fas fa-users"></i></div>
                         <div>
-                            <span class="text-muted text-truncate d-block" style="font-size: 0.75rem;">Anggota Aktif</span>
-                            <h6 class="fw-bold text-dark mb-0 fs-7 fs-md-6">Aktif Menjabat</h6>
+                            <span class="text-muted small d-block" style="font-size: 0.75rem;">Anggota Aktif</span>
+                            <h6 class="fw-bold text-dark mb-0 fs-6">Aktif Menjabat</h6>
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-md-3">
+                <div class="col-6 col-lg-3">
                     <div class="stat-card d-flex align-items-center gap-2 gap-md-3">
                         <div class="stat-icon"><i class="fas fa-comments"></i></div>
                         <div>
-                            <span class="text-muted text-truncate d-block" style="font-size: 0.75rem;">Musyawarah Desa</span>
-                            <h6 class="fw-bold text-dark mb-0 fs-7 fs-md-6">Rutin Digelar</h6>
+                            <span class="text-muted small d-block" style="font-size: 0.75rem;">Musyawarah Desa</span>
+                            <h6 class="fw-bold text-dark mb-0 fs-6">Rutin Digelar</h6>
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-md-3">
+                <div class="col-6 col-lg-3">
                     <div class="stat-card d-flex align-items-center gap-2 gap-md-3">
                         <div class="stat-icon"><i class="fas fa-file-signature"></i></div>
                         <div>
-                            <span class="text-muted text-truncate d-block" style="font-size: 0.75rem;">Perumusan RPJMDes</span>
-                            <h6 class="fw-bold text-dark mb-0 fs-7 fs-md-6">Sinergis Pemdes</h6>
+                            <span class="text-muted small d-block" style="font-size: 0.75rem;">Perumusan RPJMDes</span>
+                            <h6 class="fw-bold text-dark mb-0 fs-6">Sinergis Pemdes</h6>
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-md-3">
+                <div class="col-6 col-lg-3">
                     <div class="stat-card d-flex align-items-center gap-2 gap-md-3">
                         <div class="stat-icon"><i class="fas fa-map-marked-alt"></i></div>
                         <div>
-                            <span class="text-muted text-truncate d-block" style="font-size: 0.75rem;">Keterwakilan</span>
-                            <h6 class="fw-bold text-success mb-0 fs-7 fs-md-6">7 Dusun</h6>
+                            <span class="text-muted small d-block" style="font-size: 0.75rem;">Keterwakilan</span>
+                            <h6 class="fw-bold text-success mb-0 fs-6">7 Dusun</h6>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row g-3 g-md-4">
+            <div class="row g-3">
                 
-                <!-- KOLOM KIRI -->
+                <!-- KOLOM KIRI: PROFIL BPD & DETAIL -->
                 <div class="col-lg-8">
                     
                     <!-- PROFIL ANGGOTA BPD (Bapak Bakri) -->
-                    <div class="profile-card mb-4" id="profil-anggota" data-aos="fade-up">
+                    <div class="profile-card mb-3" id="profil-anggota" data-aos="fade-up">
                         <div class="profile-card-header"></div>
-                        <div class="px-3 px-md-4 pb-4">
-                            <div class="d-flex flex-column flex-md-row align-items-center align-items-md-end gap-3 gap-md-4 profile-img-wrapper mb-3 text-center text-md-start">
+                        <div class="px-3 pb-3 px-md-4 pb-md-4">
+                            <div class="d-flex flex-column flex-sm-row align-items-center align-items-sm-end gap-3 profile-img-wrapper mb-3 text-center text-sm-start">
                                 <img src="anggota-bpd.jpg" alt="Anggota BPD Desa Timbuseng" class="bpd-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/150?text=BPD';">
                                 <div>
-                                    <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 rounded-pill mb-2 fw-semibold" style="font-size: 0.75rem;"><i class="fas fa-user-tie me-1"></i> Anggota BPD Timbuseng</span>
-                                    <h3 class="fw-bold text-dark mb-1 fs-4">Bapak Bakri</h3>
-                                    <p class="text-muted small mb-0 fs-7"><i class="fas fa-id-card me-1 text-success"></i>NIK: 7305041004770001 <br class="d-md-none"><span class="d-none d-md-inline">|</span> <i class="fas fa-calendar-alt ms-md-1 me-1 text-success"></i>TTL: Timbuseng, 10-04-1977</p>
+                                    <span class="badge bg-success bg-opacity-15 text-success px-3 py-1 rounded-pill mb-2 fw-bold" style="font-size: 0.75rem;"><i class="fas fa-user-tie me-1"></i> Anggota BPD Timbuseng</span>
+                                    <h4 class="fw-bold text-dark mb-1 fs-4">Bapak Bakri</h4>
+                                    <p class="text-muted small mb-0" style="font-size: 0.8rem;"><i class="fas fa-id-card me-1 text-success"></i>NIK: 7305041004770001 <br class="d-sm-none"><i class="fas fa-calendar-alt ms-sm-2 me-1 text-success"></i>TTL: Timbuseng, 10-04-1977</p>
                                 </div>
                             </div>
 
                             <div class="quote-box my-3">
-                                <p class="mb-2 text-dark">
-                                    "BPD hadir sebagai wakil masyarakat Desa Timbuseng untuk memastikan tata kelola pemerintahan yang transparan dan tepat sasaran. Melalui pengawasan dan penyusunan RPJMDes yang baik, kita ciptakan arah pembangunan desa yang membawa kesejahteraan bagi seluruh masyarakat."
+                                <p class="mb-1 text-dark" style="font-size: 0.9rem;">
+                                    "BPD hadir sebagai wakil masyarakat Desa Timbuseng untuk memastikan tata kelola pemerintahan yang transparan dan tepat sasaran demi kesejahteraan bersama."
                                 </p>
-                                <small class="fw-bold text-success d-block">— Anggota BPD Desa Timbuseng</small>
+                                <small class="fw-bold text-success d-block mt-1">— Anggota BPD Desa Timbuseng</small>
                             </div>
 
-                            <div class="pt-1 text-center text-md-start">
-                                <button type="button" class="btn btn-success btn-sm rounded-pill px-4 fw-semibold shadow-sm" data-bs-toggle="modal" data-bs-target="#aspirasiModal"><i class="fas fa-envelope-open-text me-1"></i> Sampaikan Aspirasi ke BPD</button>
-                            </div>
+                            <button type="button" class="btn btn-success btn-sm rounded-pill px-3 fw-semibold w-100 w-sm-auto" data-bs-toggle="modal" data-bs-target="#aspirasiModal">
+                                <i class="fas fa-envelope-open-text me-1"></i> Sampaikan Aspirasi ke BPD
+                            </button>
                         </div>
                     </div>
 
@@ -379,26 +362,26 @@
                     <div class="content-card" data-aos="fade-up">
                         <h4 class="section-title">Peran Pokok & Fungsi BPD</h4>
                         <div class="p-3 bg-light rounded-3 mb-3 border-start border-4 border-success">
-                            <h6 class="fw-bold text-success mb-1 fs-7 fs-md-6"><i class="fas fa-handshake me-2"></i>Mitra Strategis Penyelenggaraan Pemerintahan</h6>
-                            <p class="small text-secondary mb-0">Dalam tatanan penyelenggaraan pemerintahan desa, BPD memegang peranan krusial sebagai wadah demokrasi yang bertugas memfasilitasi musyawarah desa, menyalurkan aspirasi, serta aktif menyusun Rencana Pembangunan Jangka Menengah Desa (RPJMDes) bersama Pemerintah Desa[cite: 13].</p>
+                            <h6 class="fw-bold text-success mb-1 fs-6"><i class="fas fa-handshake me-2"></i>Mitra Strategis Pemerintahan</h6>
+                            <p class="small text-secondary mb-0">BPD berperan krusial sebagai wadah demokrasi yang memfasilitasi musyawarah desa, menyalurkan aspirasi, serta aktif menyusun RPJMDes bersama Pemdes[cite: 13].</p>
                         </div>
 
-                        <div class="row g-3">
+                        <div class="row g-2">
                             <div class="col-md-6">
                                 <div class="p-3 bg-light rounded-3 h-100">
-                                    <h6 class="fw-bold text-dark mb-2 fs-7 fs-md-6"><i class="fas fa-gavel text-success me-2"></i>Fungsi Legislasi & Aturan</h6>
+                                    <h6 class="fw-bold text-dark mb-2 fs-6"><i class="fas fa-gavel text-success me-2"></i>Fungsi Legislasi</h6>
                                     <ul class="small text-secondary ps-3 mb-0">
-                                        <li class="mb-2">Membahas dan menyepakati Rancangan Peraturan Desa (Perdes) bersama Kepala Desa.</li>
-                                        <li class="mb-2">Menggali dan merumuskan kebijakan terkait kesejahteraan masyarakat.</li>
+                                        <li>Membahas & menyepakati Rancangan Perdes bersama Kepala Desa[cite: 13].</li>
+                                        <li>Menggali aspirasi kesejahteraan masyarakat.</li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="p-3 bg-light rounded-3 h-100">
-                                    <h6 class="fw-bold text-dark mb-2 fs-7 fs-md-6"><i class="fas fa-eye text-success me-2"></i>Fungsi Pengawasan & Evaluasi</h6>
+                                    <h6 class="fw-bold text-dark mb-2 fs-6"><i class="fas fa-eye text-success me-2"></i>Fungsi Pengawasan</h6>
                                     <ul class="small text-secondary ps-3 mb-0">
-                                        <li class="mb-2">Melakukan pengawasan terhadap pelaksanaan program Pemdes serta realisasi APBDes.</li>
-                                        <li class="mb-2">Mengevaluasi laporan keterangan penyelenggaraan pemerintahan desa secara berkala.</li>
+                                        <li>Mengawasi program Pemdes & APBDes[cite: 13].</li>
+                                        <li>Mengevaluasi laporan penyelenggaraan desa.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -409,26 +392,21 @@
                     <div class="content-card" id="tugas-fungsi" data-aos="fade-up">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h4 class="section-title mb-0">Tugas & Agenda Kerja</h4>
-                            <span class="badge bg-success rounded-pill px-3 py-1 fs-8">Aktif</span>
+                            <span class="badge bg-success rounded-pill px-2.5 py-1 small">Aktif</span>
                         </div>
-                        <p class="text-muted small mb-3">Secara kelembagaan, BPD menjalankan sejumlah agenda inti untuk mewujudkan asas pemerintahan desa yang partisipatif dan berkeadilan.</p>
+                        <p class="text-muted small mb-3">Agenda kelembagaan BPD untuk mewujudkan asas pemerintahan desa yang partisipatif[cite: 13].</p>
 
-                        <div class="row g-3">
+                        <div class="row g-2">
                             <div class="col-md-6">
                                 <div class="program-card">
                                     <div>
                                         <div class="d-flex align-items-center gap-2 mb-2">
-                                            <div class="stat-icon"><i class="fas fa-users-cog text-success"></i></div>
-                                            <div>
-                                                <h6 class="fw-bold text-dark mb-0 fs-7">Musyawarah Desa (Musdes)</h6>
-                                                <span class="badge bg-success-subtle text-success fs-8">Forum Demokrasi</span>
-                                            </div>
+                                            <div class="stat-icon" style="width:36px;height:36px;font-size:1rem;"><i class="fas fa-users-cog text-success"></i></div>
+                                            <h6 class="fw-bold text-dark mb-0 fs-6">Musyawarah Desa (Musdes)</h6>
                                         </div>
-                                        <p class="small text-secondary mb-0">Menyelenggarakan dan memimpin Musdes guna menetapkan kebijakan krusial tata kelola dan rencana pembangunan lintas dusun.</p>
+                                        <p class="small text-secondary mb-0">Menyelenggarakan Musdes guna menetapkan kebijakan & pembangunan lintas dusun[cite: 13].</p>
                                     </div>
-                                    <div class="mt-3 pt-2 border-top">
-                                        <small class="text-muted" style="font-size: 0.75rem;"><i class="far fa-clock me-1"></i>Pelaksanaan: Terjadwal</small>
-                                    </div>
+                                    <div class="mt-2 pt-2 border-top text-muted" style="font-size: 0.75rem;"><i class="far fa-clock me-1"></i>Terjadwal</div>
                                 </div>
                             </div>
 
@@ -436,17 +414,12 @@
                                 <div class="program-card">
                                     <div>
                                         <div class="d-flex align-items-center gap-2 mb-2">
-                                            <div class="stat-icon"><i class="fas fa-file-invoice text-primary"></i></div>
-                                            <div>
-                                                <h6 class="fw-bold text-dark mb-0 fs-7">Penyusunan RPJMDes</h6>
-                                                <span class="badge bg-warning-subtle text-warning-emphasis fs-8">Perencanaan</span>
-                                            </div>
+                                            <div class="stat-icon" style="width:36px;height:36px;font-size:1rem;"><i class="fas fa-file-invoice text-primary"></i></div>
+                                            <h6 class="fw-bold text-dark mb-0 fs-6">Penyusunan RPJMDes</h6>
                                         </div>
-                                        <p class="small text-secondary mb-0">Terlibat intensif dalam penyusunan Rencana Pembangunan Jangka Menengah Desa sebagai panduan kerja Pemdes[cite: 13].</p>
+                                        <p class="small text-secondary mb-0">Terlibat intensif menyusun Rencana Pembangunan Jangka Menengah Desa[cite: 13].</p>
                                     </div>
-                                    <div class="mt-3 pt-2 border-top">
-                                        <small class="text-muted" style="font-size: 0.75rem;"><i class="far fa-clock me-1"></i>Pelaksanaan: Periode Kades</small>
-                                    </div>
+                                    <div class="mt-2 pt-2 border-top text-muted" style="font-size: 0.75rem;"><i class="far fa-clock me-1"></i>Periode Kades Baru</div>
                                 </div>
                             </div>
 
@@ -454,17 +427,12 @@
                                 <div class="program-card">
                                     <div>
                                         <div class="d-flex align-items-center gap-2 mb-2">
-                                            <div class="stat-icon"><i class="fas fa-hands-helping text-warning"></i></div>
-                                            <div>
-                                                <h6 class="fw-bold text-dark mb-0 fs-7">Jaring Aspirasi Warga</h6>
-                                                <span class="badge bg-success-subtle text-success fs-8">Interaksi Warga</span>
-                                            </div>
+                                            <div class="stat-icon" style="width:36px;height:36px;font-size:1rem;"><i class="fas fa-hands-helping text-warning"></i></div>
+                                            <h6 class="fw-bold text-dark mb-0 fs-6">Jaring Aspirasi Warga</h6>
                                         </div>
-                                        <p class="small text-secondary mb-0">Turun langsung menemui warga di setiap dusun untuk menyerap keluhan, saran, maupun usulan pembangunan[cite: 13].</p>
+                                        <p class="small text-secondary mb-0">Menemui warga di setiap dusun untuk menyerap usulan pembangunan[cite: 13].</p>
                                     </div>
-                                    <div class="mt-3 pt-2 border-top">
-                                        <small class="text-muted" style="font-size: 0.75rem;"><i class="far fa-clock me-1"></i>Pelaksanaan: Rutin</small>
-                                    </div>
+                                    <div class="mt-2 pt-2 border-top text-muted" style="font-size: 0.75rem;"><i class="far fa-clock me-1"></i>Rutin</div>
                                 </div>
                             </div>
 
@@ -472,17 +440,12 @@
                                 <div class="program-card">
                                     <div>
                                         <div class="d-flex align-items-center gap-2 mb-2">
-                                            <div class="stat-icon"><i class="fas fa-balance-scale text-danger"></i></div>
-                                            <div>
-                                                <h6 class="fw-bold text-dark mb-0 fs-7">Mediasi Sengketa</h6>
-                                                <span class="badge bg-warning-subtle text-warning-emphasis fs-8">Ketetapan Hukum</span>
-                                            </div>
+                                            <div class="stat-icon" style="width:36px;height:36px;font-size:1rem;"><i class="fas fa-balance-scale text-danger"></i></div>
+                                            <h6 class="fw-bold text-dark mb-0 fs-6">Mediasi Sosial</h6>
                                         </div>
-                                        <p class="small text-secondary mb-0">Turut hadir memberikan penengah dan solusi berlandaskan musyawarah mufakat terhadap berbagai dinamika sosial.</p>
+                                        <p class="small text-secondary mb-0">Memberikan penengah dan solusi berlandaskan musyawarah mufakat[cite: 13].</p>
                                     </div>
-                                    <div class="mt-3 pt-2 border-top">
-                                        <small class="text-muted" style="font-size: 0.75rem;"><i class="far fa-clock me-1"></i>Pelaksanaan: Kondisional</small>
-                                    </div>
+                                    <div class="mt-2 pt-2 border-top text-muted" style="font-size: 0.75rem;"><i class="far fa-clock me-1"></i>Kondisional</div>
                                 </div>
                             </div>
                         </div>
@@ -491,86 +454,72 @@
                     <!-- DOKUMENTASI KEGIATAN -->
                     <div class="content-card" data-aos="fade-up">
                         <h4 class="section-title">Dokumentasi Sidang & Musyawarah</h4>
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="border rounded-4 overflow-hidden">
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <div class="gallery-img-container border">
                                     <img src="bpd-musdes.jpg" alt="Musyawarah Desa" class="gallery-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x220?text=Musyawarah+Desa';">
                                 </div>
-                                <small class="text-muted d-block text-center mt-2 fw-medium fs-7">Sidang Penetapan RPJMDes Timbuseng</small>
+                                <small class="text-muted d-block text-center mt-1" style="font-size: 0.75rem;">Sidang RPJMDes Timbuseng</small>
                             </div>
-                            <div class="col-md-6">
-                                <div class="border rounded-4 overflow-hidden">
+                            <div class="col-6">
+                                <div class="gallery-img-container border">
                                     <img src="bpd-aspirasi.jpg" alt="Jaring Aspirasi" class="gallery-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x220?text=Jaring+Aspirasi';">
                                 </div>
-                                <small class="text-muted d-block text-center mt-2 fw-medium fs-7">Dengar Pendapat Bersama Warga Dusun</small>
+                                <small class="text-muted d-block text-center mt-1" style="font-size: 0.75rem;">Dengar Pendapat Warga</small>
                             </div>
                         </div>
                     </div>
 
                 </div>
 
-                <!-- KOLOM KANAN -->
+                <!-- KOLOM KANAN: STRUCTURE & KEMITRAAN -->
                 <div class="col-lg-4">
 
                     <!-- SEKSI STRUKTUR -->
                     <div class="content-card" data-aos="fade-left">
                         <h5 class="fw-bold text-dark mb-3 fs-6"><i class="fas fa-sitemap text-success me-2"></i>Struktur BPD</h5>
-                        
                         <div class="d-flex flex-column gap-2">
                             <div class="org-card">
-                                <span class="badge bg-success text-white mb-1 fs-8">Pimpinan</span>
-                                <h6 class="fw-bold text-dark mb-1 fs-7">Ketua BPD</h6>
-                                <p class="small text-muted mb-0" style="font-size: 0.8rem;">Koordinator utama lembaga permusyawaratan desa.</p>
+                                <span class="badge bg-success text-white mb-1" style="font-size:0.65rem;">Pimpinan</span>
+                                <h6 class="fw-bold text-dark mb-1 fs-6">Ketua BPD</h6>
+                                <p class="small text-muted mb-0" style="font-size:0.78rem;">Koordinator utama lembaga permusyawaratan desa.</p>
                             </div>
-
                             <div class="org-card">
-                                <span class="badge bg-success text-white mb-1 fs-8">Pimpinan</span>
-                                <h6 class="fw-bold text-dark mb-1 fs-7">Wakil Ketua BPD</h6>
-                                <p class="small text-muted mb-0" style="font-size: 0.8rem;">Mendampingi serta menjalankan wewenang ketua.</p>
+                                <span class="badge bg-success text-white mb-1" style="font-size:0.65rem;">Pimpinan</span>
+                                <h6 class="fw-bold text-dark mb-1 fs-6">Wakil Ketua BPD</h6>
+                                <p class="small text-muted mb-0" style="font-size:0.78rem;">Mendampingi serta menjalankan wewenang ketua.</p>
                             </div>
-
                             <div class="org-card">
-                                <span class="badge bg-success text-white mb-1 fs-8">Administratif</span>
-                                <h6 class="fw-bold text-dark mb-1 fs-7">Sekretaris BPD</h6>
-                                <p class="small text-muted mb-0" style="font-size: 0.8rem;">Mengelola kearsipan, notulensi, dan persuratan lembaga.</p>
+                                <span class="badge bg-success text-white mb-1" style="font-size:0.65rem;">Administratif</span>
+                                <h6 class="fw-bold text-dark mb-1 fs-6">Sekretaris BPD</h6>
+                                <p class="small text-muted mb-0" style="font-size:0.78rem;">Mengelola kearsipan, notulensi, dan persuratan.</p>
                             </div>
-
                             <div class="org-card">
-                                <span class="badge bg-success text-white mb-1 fs-8">Pelaksana</span>
-                                <h6 class="fw-bold text-dark mb-1 fs-7">Anggota / Keterwakilan Dusun</h6>
-                                <p class="small text-muted mb-0" style="font-size: 0.8rem;">Termasuk <strong>Bapak Bakri</strong>, mewakili dan memperjuangkan suara warga.</p>
+                                <span class="badge bg-success text-white mb-1" style="font-size:0.65rem;">Pelaksana</span>
+                                <h6 class="fw-bold text-dark mb-1 fs-6">Anggota / Keterwakilan Dusun</h6>
+                                <p class="small text-muted mb-0" style="font-size:0.78rem;">Termasuk <strong>Bapak Bakri</strong>, mewakili suara warga tiap dusun.</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- KEMITRAAN & KOORDINASI -->
-                    <div class="content-card" data-aos="fade-left" data-aos-delay="100">
+                    <div class="content-card" data-aos="fade-left">
                         <h5 class="fw-bold text-dark mb-3 fs-6"><i class="fas fa-handshake text-success me-2"></i>Mitra Koordinasi</h5>
-                        <ul class="list-unstyled small text-secondary mb-0 gap-2 d-flex flex-column">
-                            <li class="d-flex align-items-center gap-2">
-                                <i class="fas fa-check-circle text-success"></i>
-                                <span>Pemerintah Desa (Kepala Desa)</span>
-                            </li>
-                            <li class="d-flex align-items-center gap-2">
-                                <i class="fas fa-check-circle text-success"></i>
-                                <span>Lembaga Pemberdayaan Masyarakat (LPM)</span>
-                            </li>
-                            <li class="d-flex align-items-center gap-2">
-                                <i class="fas fa-check-circle text-success"></i>
-                                <span>PKK Desa Timbuseng</span>
-                            </li>
-                            <li class="d-flex align-items-center gap-2">
-                                <i class="fas fa-check-circle text-success"></i>
-                                <span>Karang Taruna & Lembaga Pemuda</span>
-                            </li>
+                        <ul class="list-unstyled small text-secondary mb-0 gap-2 d-flex flex-column" style="font-size: 0.85rem;">
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Pemerintah Desa (Kepala Desa)</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Lembaga Pemberdayaan Masyarakat (LPM)</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>PKK Desa Timbuseng</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Karang Taruna & Pemuda Desa</li>
                         </ul>
                     </div>
 
                     <!-- BANNER ASPIRASI -->
-                    <div class="card border-0 bg-success text-white rounded-4 p-4 shadow-sm" data-aos="fade-left" data-aos-delay="200">
-                        <h5 class="fw-bold mb-2 fs-6"><i class="fas fa-bullhorn me-2"></i>Punya Aspirasi?</h5>
-                        <p class="small text-white-50 mb-3">BPD terbuka untuk setiap aduan, ide, dan keluhan masyarakat terkait pembangunan & pelayanan di Desa Timbuseng.</p>
-                        <button type="button" class="btn btn-light text-success fw-bold rounded-pill shadow-sm btn-sm" data-bs-toggle="modal" data-bs-target="#aspirasiModal"><i class="fas fa-edit me-1"></i> Sampaikan Aspirasi</button>
+                    <div class="card border-0 bg-success text-white rounded-4 p-3 shadow-sm text-center text-sm-start" data-aos="fade-left">
+                        <h5 class="fw-bold mb-1 fs-6"><i class="fas fa-bullhorn me-2"></i>Punya Aspirasi?</h5>
+                        <p class="small text-white-50 mb-3" style="font-size: 0.82rem;">BPD terbuka untuk aduan, ide, dan keluhan pembangunan di Desa Timbuseng.</p>
+                        <button type="button" class="btn btn-light text-success fw-bold rounded-pill shadow-sm btn-sm w-100" data-bs-toggle="modal" data-bs-target="#aspirasiModal">
+                            <i class="fas fa-edit me-1"></i> Sampaikan Aspirasi
+                        </button>
                     </div>
 
                 </div>
@@ -583,19 +532,19 @@
     <div class="modal fade" id="aspirasiModal" tabindex="-1" aria-labelledby="aspirasiModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-4 border-0 shadow">
-                <div class="modal-header bg-desa text-white rounded-top-4">
+                <div class="modal-header bg-desa text-white rounded-top-4 py-3">
                     <h5 class="modal-title fw-bold fs-6" id="aspirasiModalLabel"><i class="fas fa-envelope-open-text me-2"></i>Form Aspirasi ke BPD</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-4">
+                <div class="modal-body p-3">
                     <form id="formAspirasi">
-                        <div class="mb-3">
+                        <div class="mb-2">
                             <label class="form-label small fw-bold">Nama Lengkap</label>
-                            <input type="text" class="form-control rounded-3" placeholder="Masukkan nama Anda..." required>
+                            <input type="text" class="form-control form-control-sm rounded-3" placeholder="Masukkan nama Anda..." required>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-2">
                             <label class="form-label small fw-bold">Asal Dusun</label>
-                            <select class="form-select rounded-3" required>
+                            <select class="form-select form-select-sm rounded-3" required>
                                 <option value="" selected disabled>-- Pilih Dusun --</option>
                                 <option value="Timbuseng I">Dusun Timbuseng I</option>
                                 <option value="Timbuseng II">Dusun Timbuseng II</option>
@@ -606,15 +555,15 @@
                                 <option value="Panaikang II">Dusun Panaikang II</option>
                             </select>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-2">
                             <label class="form-label small fw-bold">Kontak (WhatsApp)</label>
-                            <input type="tel" class="form-control rounded-3" placeholder="08xxxxxxxxxx" required>
+                            <input type="tel" class="form-control form-control-sm rounded-3" placeholder="08xxxxxxxxxx" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Aspirasi / Keluhan / Usulan</label>
-                            <textarea class="form-control rounded-3" rows="3" placeholder="Tuliskan aspirasi Anda untuk BPD..." required></textarea>
+                            <textarea class="form-control form-control-sm rounded-3" rows="3" placeholder="Tuliskan aspirasi Anda..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-success w-100 rounded-pill fw-bold"><i class="fas fa-paper-plane me-1"></i> Kirim Aspirasi</button>
+                        <button type="submit" class="btn btn-success w-100 rounded-pill fw-bold btn-sm"><i class="fas fa-paper-plane me-1"></i> Kirim Aspirasi</button>
                     </form>
                 </div>
             </div>
@@ -622,14 +571,14 @@
     </div>
 
     <!-- FLOATING ACTION BUTTON -->
-    <a href="https://wa.me/" target="_blank" class="btn btn-success rounded-circle p-3 floating-cta d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;" title="Hubungi BPD Via WA">
+    <a href="https://wa.me/" target="_blank" class="btn btn-success rounded-circle floating-cta d-flex align-items-center justify-content-center" title="Hubungi BPD Via WA">
         <i class="fab fa-whatsapp fs-4"></i>
     </a>
 
     <!-- FOOTER -->
-    <footer class="bg-dark text-white pt-4 pb-3">
-        <div class="container text-center">
-            <p class="small text-white-50 mb-0" style="font-size: 0.75rem;">©2026 P10 KKN UHM | Badan Permusyawaratan Desa (BPD) Timbuseng, Kec. Polongbangkeng Timur, Kabupaten Takalar.</p>
+    <footer class="bg-dark text-white pt-3 pb-3">
+        <div class="container text-center px-3">
+            <p class="small text-white-50 mb-0" style="font-size: 0.75rem;">©2026 P10 KKN UHM | BPD Timbuseng, Kec. Polongbangkeng Timur, Kabupaten Takalar.</p>
         </div>
     </footer>
 
