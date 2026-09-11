@@ -23,6 +23,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: #2d3748;
             background-color: #ffffff;
+            overflow-x: hidden;
         }
 
         /* Top Bar */
@@ -43,10 +44,20 @@
         }
 
         /* Navbar */
+        .navbar {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+
+        .navbar-brand {
+            max-width: 75%;
+        }
+
         .navbar-brand img {
-            height: 48px;
+            height: 45px;
             width: auto;
             object-fit: contain;
+            flex-shrink: 0;
         }
 
         .bg-desa {
@@ -66,7 +77,7 @@
         /* Header Pengaduan */
         .complaint-header {
             background: linear-gradient(135deg, rgba(13, 92, 58, 0.92), rgba(7, 59, 36, 0.92)), 
-                        url('kantor.PNG') center/cover no-repeat;
+                        url('kantor.png') center/cover no-repeat;
             color: white;
             padding: 80px 0 60px 0;
         }
@@ -180,7 +191,9 @@
                 <span><i class="fas fa-envelope text-warning me-1"></i> desatimbuseng1993@gmail.com</span>
             </div>
             <div class="d-flex align-items-center gap-3">
-                <span><i class="fas fa-phone-alt text-warning me-1"></i> +62 852-9957-6913</span>
+                <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="fw-semibold text-warning">
+                    <i class="fab fa-whatsapp me-1"></i> +62 852-9957-6913
+                </a>
                 <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="fw-semibold text-warning">
                     <i class="fab fa-instagram me-1"></i> @desa_timbuseng
                 </a>
@@ -191,17 +204,17 @@
     <!-- NAVBAR UTAMA -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow">
         <div class="container">
-            <a class="navbar-brand fw-bold d-flex align-items-center gap-3" href="index.html">
-                <img src="logo.PNG" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
-                <div class="lh-sm">
-                    <span class="d-block fs-5 text-white fw-bold tracking-wide">DESA TIMBUSENG</span>
-                    <small class="fw-normal text-white-50 text-uppercase" style="font-size: 0.75rem;">Kabupaten Takalar</small>
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2 text-decoration-none" href="index.html">
+                <img src="logo.png" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                <div class="lh-sm overflow-hidden">
+                    <span class="d-block fs-6 fs-md-5 text-white fw-bold text-truncate">DESA TIMBUSENG</span>
+                    <small class="fw-normal text-white-50 text-uppercase d-block" style="font-size: 0.7rem;">Kabupaten Takalar</small>
                 </div>
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse bg-desa bg-lg-transparent mt-3 mt-lg-0 p-3 p-lg-0 rounded-3 rounded-lg-0 shadow-sm shadow-lg-none" id="navbarNav">
                 <ul class="navbar-nav ms-auto fw-semibold py-2 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a></li>
                     <li class="nav-item"><a class="nav-link" href="profil.html"><i class="fas fa-landmark me-1"></i> Profil Desa</a></li>
@@ -218,8 +231,8 @@
     <header class="complaint-header text-center">
         <div class="container">
             <span class="badge bg-warning text-dark px-3 py-2 rounded-pill text-uppercase fw-bold mb-3">Layanan Aspirasi Masyarakat</span>
-            <h1 class="display-5 fw-extrabold mb-2">Pengaduan & Aspirasi Warga</h1>
-            <p class="lead text-white-50 mx-auto" style="max-width: 750px;">
+            <h1 class="display-6 display-md-5 fw-extrabold mb-2">Pengaduan & Aspirasi Warga</h1>
+            <p class="lead text-white-50 mx-auto fs-6 fs-md-5" style="max-width: 750px;">
                 Sampaikan laporan, keluhan infrastruktur, saran pembangunan, atau aspirasi Anda secara transparan langsung kepada Pemerintah Desa Timbuseng.
             </p>
         </div>
@@ -247,6 +260,24 @@
                     <div class="step-box">
                         <div class="text-success fw-bold fs-4 mb-2"><i class="fas fa-check-circle"></i> 3. Tindak Lanjut</div>
                         <p class="text-secondary small mb-0">Pengaduan akan diproses, ditindaklanjuti, dan diberikan tanggapan resmi oleh pihak Pemerintah Desa Timbuseng.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ALTERNATIF WHATSAPP RAPAT KELUHAN -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-9">
+                    <div class="alert alert-success border-0 shadow-sm rounded-4 p-4 d-flex flex-wrap align-items-center justify-content-between gap-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="fs-1 text-success flex-shrink-0"><i class="fab fa-whatsapp"></i></div>
+                            <div>
+                                <h5 class="fw-bold text-dark mb-1">Butuh Respon Cepat via WhatsApp?</h5>
+                                <p class="text-secondary small mb-0">Anda juga dapat berkonsultasi atau mengirimkan pengaduan langsung melalui nomor WhatsApp resmi pelayanan Desa Timbuseng.</p>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/6285299576913?text=Halo%20Pemerintah%20Desa%20Timbuseng,%20saya%20ingin%20menyampaikan%20pengaduan/aspirasi..." target="_blank" rel="noopener noreferrer" class="btn btn-success fw-bold px-4 py-2 rounded-pill text-nowrap">
+                            <i class="fab fa-whatsapp me-2"></i> Chat WhatsApp Desa
+                        </a>
                     </div>
                 </div>
             </div>
@@ -332,7 +363,7 @@
             <div class="row g-4">
                 <div class="col-lg-5">
                     <div class="d-flex align-items-center gap-3 mb-3">
-                        <img src="logo.PNG" alt="Logo Desa Timbuseng" style="height: 48px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                        <img src="logo.png" alt="Logo Desa Timbuseng" style="height: 48px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
                         <div>
                             <h5 class="fw-bold text-white mb-0">Pemerintah Desa Timbuseng</h5>
                             <small class="text-white-50">Kec. Polongbangkeng Timur, Kab. Takalar</small>
@@ -342,6 +373,9 @@
                         Portal resmi Sistem Informasi Desa Timbuseng. Menyajikan data profil, transparansi tata kelola pemerintahan, layanan pengaduan masyarakat, serta pemetaan wilayah desa.
                     </p>
                     <div class="d-flex gap-2 mt-3">
+                        <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="social-btn" title="WhatsApp Resmi Desa">
+                            <i class="fab fa-whatsapp fs-5"></i>
+                        </a>
                         <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram Resmi Desa">
                             <i class="fab fa-instagram fs-5"></i>
                         </a>
@@ -372,8 +406,10 @@
                             <span>Kantor Desa Timbuseng, Kec. Polongbangkeng Timur, Kab. Takalar, Sulawesi Selatan 92221</span>
                         </li>
                         <li class="d-flex align-items-center gap-2">
-                            <i class="fas fa-phone-alt text-warning"></i>
-                            <span>+62 852-9957-6913</span>
+                            <i class="fab fa-whatsapp text-warning"></i>
+                            <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                                +62 852-9957-6913 (WhatsApp)
+                            </a>
                         </li>
                         <li class="d-flex align-items-center gap-2">
                             <i class="fas fa-envelope text-warning"></i>
