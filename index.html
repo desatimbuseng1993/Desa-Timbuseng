@@ -23,6 +23,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: #2d3748;
             background-color: #ffffff;
+            overflow-x: hidden;
         }
 
         /* Top Bar */
@@ -43,10 +44,20 @@
         }
 
         /* Navbar */
+        .navbar {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+
+        .navbar-brand {
+            max-width: 75%;
+        }
+
         .navbar-brand img {
-            height: 48px;
+            height: 45px;
             width: auto;
             object-fit: contain;
+            flex-shrink: 0;
         }
 
         .bg-desa {
@@ -76,7 +87,7 @@
             background: linear-gradient(135deg, rgba(13, 92, 58, 0.90), rgba(7, 59, 36, 0.90)), 
                         url('kantor.PNG') center/cover no-repeat;
             color: white;
-            padding: 120px 0 100px 0;
+            padding: 100px 0 90px 0;
             position: relative;
         }
 
@@ -232,18 +243,18 @@
     <!-- NAVBAR UTAMA -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow">
         <div class="container">
-            <a class="navbar-brand fw-bold d-flex align-items-center gap-3" href="index.html">
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2 text-decoration-none" href="index.html">
                 <!-- LOGO DESA -->
-                <img src="logo.png" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
-                <div class="lh-sm">
-                    <span class="d-block fs-5 text-white fw-bold tracking-wide">DESA TIMBUSENG</span>
-                    <small class="fw-normal text-white-50 text-uppercase" style="font-size: 0.75rem;">Kabupaten Takalar</small>
+                <img src="logo.PNG" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                <div class="lh-sm overflow-hidden">
+                    <span class="d-block fs-6 fs-md-5 text-white fw-bold text-truncate">DESA TIMBUSENG</span>
+                    <small class="fw-normal text-white-50 text-uppercase d-block" style="font-size: 0.7rem;">Kabupaten Takalar</small>
                 </div>
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse bg-desa bg-lg-transparent mt-3 mt-lg-0 p-3 p-lg-0 rounded-3 rounded-lg-0 shadow-sm shadow-lg-none" id="navbarNav">
                 <ul class="navbar-nav ms-auto fw-semibold py-2 py-lg-0">
                     <li class="nav-item"><a class="nav-link active" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a></li>
                     <li class="nav-item"><a class="nav-link" href="profil.html"><i class="fas fa-landmark me-1"></i> Profil Desa</a></li>
@@ -257,10 +268,10 @@
     </nav>
 
     <!-- RUNNING TEXT PENGUMUMAN -->
-    <div class="announcement-bar">
+    <div class="announcement-bar overflow-hidden">
         <div class="container d-flex align-items-center">
-            <span class="badge bg-danger me-3 px-3 py-1">PENGUMUMAN</span>
-            <marquee class="fw-medium text-dark" scrollamount="6">
+            <span class="badge bg-danger me-3 px-3 py-1 flex-shrink-0">PENGUMUMAN</span>
+            <marquee class="fw-medium text-dark mb-0" scrollamount="6">
                 Selamat Datang di Portal Resmi Sistem Informasi Desa Timbuseng. Pelayanan Administrasi Kantor Desa Buka Setiap Hari Kerja Jam 08.00 - 16.00 WITA. Ikuti Instagram Resmi Kami @desa_timbuseng Untuk Informasi Terbaru!
             </marquee>
         </div>
@@ -272,15 +283,15 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <span class="badge hero-badge px-3 py-2 mb-3 rounded-pill text-uppercase">Portal Resmi Pemerintah Desa</span>
-                    <h1 class="display-4 fw-extrabold mb-3">Selamat Datang di Desa Timbuseng</h1>
-                    <p class="lead text-white-50 mx-auto mb-4" style="max-width: 780px;">
+                    <h1 class="display-5 display-md-4 fw-extrabold mb-3">Selamat Datang di Desa Timbuseng</h1>
+                    <p class="lead text-white-50 mx-auto mb-4 fs-6 fs-md-5" style="max-width: 780px;">
                         Pusat layanan informasi publik, pemetaan wilayah digital, transparansi tata kelola pemerintahan, serta pelestarian sejarah dan budaya lokal masyarakat Desa Timbuseng, Kabupaten Takalar.
                     </p>
                     <div class="d-flex justify-content-center gap-3 flex-wrap">
-                        <a href="profil.html" class="btn btn-warning text-dark btn-lg fw-bold px-4 py-3 shadow rounded-3">
+                        <a href="profil.html" class="btn btn-warning text-dark btn-md btn-lg-lg fw-bold px-4 py-3 shadow rounded-3">
                             <i class="fas fa-compass me-2"></i>Jelajahi Profil Desa
                         </a>
-                        <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-lg fw-semibold px-4 py-3 shadow rounded-3">
+                        <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-md btn-lg-lg fw-semibold px-4 py-3 shadow rounded-3">
                             <i class="fab fa-instagram me-2"></i>Instagram Desa
                         </a>
                     </div>
@@ -290,34 +301,34 @@
     </header>
 
     <!-- METRIK / STATISTIK UTAMA DESA -->
-    <section class="py-5" style="margin-top: -40px;">
+    <section class="py-5" style="margin-top: -30px;">
         <div class="container">
             <div class="row g-4">
                 <div class="col-6 col-md-3">
                     <div class="stat-card text-center">
                         <i class="fas fa-users stat-icon mb-2"></i>
-                        <h3 class="fw-bold mb-1">2.709</h3>
+                        <h3 class="fw-bold mb-1 fs-4 fs-md-3">2.709</h3>
                         <p class="text-muted small mb-0">Total Penduduk (Jiwa)</p>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-card text-center">
                         <i class="fas fa-vector-square stat-icon mb-2"></i>
-                        <h3 class="fw-bold mb-1">1.083,47</h3>
+                        <h3 class="fw-bold mb-1 fs-4 fs-md-3">1.083,47</h3>
                         <p class="text-muted small mb-0">Luas Wilayah (Ha)</p>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-card text-center">
                         <i class="fas fa-map-signs stat-icon mb-2"></i>
-                        <h3 class="fw-bold mb-1">7</h3>
+                        <h3 class="fw-bold mb-1 fs-4 fs-md-3">7</h3>
                         <p class="text-muted small mb-0">Wilayah Dusun</p>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-card text-center">
                         <i class="fas fa-home stat-icon mb-2"></i>
-                        <h3 class="fw-bold mb-1">884</h3>
+                        <h3 class="fw-bold mb-1 fs-4 fs-md-3">884</h3>
                         <p class="text-muted small mb-0">Kepala Keluarga (KK)</p>
                     </div>
                 </div>
