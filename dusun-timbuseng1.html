@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Dusun Timbuseng I - Desa Timbuseng</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,10 +20,17 @@
             --border-color: #e2e8f0;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--light-bg);
             color: #1e293b;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
         }
 
         .bg-desa { background-color: var(--primary-color) !important; }
@@ -32,14 +39,16 @@
         /* Custom Navbar */
         .navbar {
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 0.75rem 1rem;
         }
         .navbar-brand img {
-            height: 42px;
+            height: 38px;
             width: auto;
             object-fit: contain;
         }
         .nav-link {
             font-weight: 500;
+            font-size: 0.9rem;
             padding: 0.5rem 0.8rem !important;
             transition: all 0.2s ease;
         }
@@ -56,19 +65,27 @@
             border-radius: 8px;
             padding: 0.5rem 1rem;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
         .dropdown-item.active, .dropdown-item:active {
             background-color: var(--primary-color);
         }
 
-        /* Hero Header */
+        /* Hero Header Proporsional & Pas di HP */
         .page-hero {
             position: relative;
-            background: linear-gradient(rgba(7, 59, 36, 0.85), rgba(13, 92, 58, 0.92)), url('image.PNG') center/cover no-repeat;
+            background: linear-gradient(rgba(7, 59, 36, 0.85), rgba(13, 92, 58, 0.92)), url('image.png') center/cover no-repeat;
             color: white;
-            padding: 4rem 0 3rem;
-            border-bottom: 5px solid var(--accent-color);
+            padding: 3.5rem 1rem 3rem;
+            border-bottom: 4px solid var(--accent-color);
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: clamp(1.6rem, 4vw, 2.3rem);
+            font-weight: 800;
+        }
+        .page-hero p {
+            font-size: clamp(0.88rem, 2vw, 1rem);
         }
 
         /* Card Styles */
@@ -86,16 +103,24 @@
 
         .stat-card {
             background: #ffffff;
-            border-radius: 16px;
-            padding: 1.25rem 1.5rem;
+            border-radius: 14px;
+            padding: 1rem;
             border: 1px solid var(--border-color);
-            border-left: 5px solid var(--primary-color);
+            border-left: 4px solid var(--primary-color);
             box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            height: 100%;
+        }
+        .stat-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+        .stat-card small {
+            font-size: 0.75rem;
         }
 
         .profile-img-frame {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             object-fit: cover;
             border-radius: 50%;
             border: 4px solid #ffffff;
@@ -104,9 +129,10 @@
 
         .section-title {
             position: relative;
-            padding-bottom: 12px;
-            margin-bottom: 24px;
+            padding-bottom: 10px;
+            margin-bottom: 18px;
             font-weight: 700;
+            font-size: 1.2rem;
             color: #0f172a;
         }
         .section-title::after {
@@ -114,8 +140,8 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 45px;
-            height: 4px;
+            width: 40px;
+            height: 3px;
             background-color: var(--accent-color);
             border-radius: 2px;
         }
@@ -130,14 +156,20 @@
         }
 
         .icon-box {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1rem;
             flex-shrink: 0;
+        }
+
+        .container, .container-fluid {
+            max-width: 100% !important;
+            padding-left: 15px;
+            padding-right: 15px;
         }
     </style>
 </head>
@@ -146,14 +178,14 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-3" href="index.html">
-                <img src="logo.PNG" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='image.PNG';">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="logo.png" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='image.png';">
                 <div class="lh-sm">
-                    <span class="d-block fs-5 text-white fw-bold tracking-wide">DESA TIMBUSENG</span>
-                    <small class="fw-normal text-white-50 text-uppercase" style="font-size: 0.72rem;">Kabupaten Takalar</small>
+                    <span class="d-block fs-6 text-white fw-bold">DESA TIMBUSENG</span>
+                    <small class="fw-normal text-white-50 text-uppercase" style="font-size: 0.65rem;">Kabupaten Takalar</small>
                 </div>
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -201,86 +233,86 @@
     <!-- HERO HEADER DUSUN -->
     <header class="page-hero text-center">
         <div class="container">
-            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3 shadow-sm">
-                <i class="fas fa-map-pin me-1"></i> Profil Wilayah Kewilayahan
+            <span class="badge bg-warning text-dark px-3 py-1.5 rounded-pill fw-bold mb-2 shadow-sm" style="font-size: 0.78rem;">
+                <i class="fas fa-map-pin me-1"></i> Profil Kewilayahan
             </span>
-            <h1 class="fw-extrabold display-5 text-white mb-2">Dusun Timbuseng I</h1>
-            <p class="lead mb-0 text-white-50 max-w-2xl mx-auto fs-6">
+            <h1 class="text-white mb-2">Dusun Timbuseng I</h1>
+            <p class="mb-0 text-white-50 mx-auto" style="max-width: 600px;">
                 Pusat Pemerintahan Desa & Kawasan Pemukiman Utama Desa Timbuseng, Kec. Polongbangkeng Timur
             </p>
         </div>
     </header>
 
     <!-- KONTEN UTAMA -->
-    <section class="py-5">
+    <section class="py-4">
         <div class="container">
 
             <!-- METRIK & STATISTIK DUSUN -->
-            <div class="row g-3 mb-5">
+            <div class="row g-2 mb-4">
                 <div class="col-6 col-md-3">
                     <div class="stat-card">
                         <small class="text-muted fw-semibold d-block"><i class="fas fa-users text-success me-1"></i> Total Penduduk</small>
-                        <h3 class="fw-bold text-dark mb-0 mt-2">280 <small class="fs-6 text-muted fw-normal">Jiwa</small></h3>
+                        <h3 class="fw-bold text-dark mt-1">280 <small class="fs-6 text-muted fw-normal">Jiwa</small></h3>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-card">
                         <small class="text-muted fw-semibold d-block"><i class="fas fa-home text-primary me-1"></i> Kepala Keluarga</small>
-                        <h3 class="fw-bold text-dark mb-0 mt-2">79 <small class="fs-6 text-muted fw-normal">KK</small></h3>
+                        <h3 class="fw-bold text-dark mt-1">79 <small class="fs-6 text-muted fw-normal">KK</small></h3>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-card">
                         <small class="text-muted fw-semibold d-block"><i class="fas fa-vector-square text-warning me-1"></i> Luas Wilayah</small>
-                        <h3 class="fw-bold text-dark mb-0 mt-2">188,85 <small class="fs-6 text-muted fw-normal">Ha</small></h3>
+                        <h3 class="fw-bold text-dark mt-1">188,85 <small class="fs-6 text-muted fw-normal">Ha</small></h3>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-card">
-                        <small class="text-muted fw-semibold d-block"><i class="fas fa-seedling text-success me-1"></i> Komoditas Utama</small>
-                        <h3 class="fw-bold text-success mb-0 mt-2 fs-5">Tebu & Padi</h3>
+                        <small class="text-muted fw-semibold d-block"><i class="fas fa-seedling text-success me-1"></i> Komoditas</small>
+                        <h3 class="fw-bold text-success mt-1 fs-6">Tebu & Padi</h3>
                     </div>
                 </div>
             </div>
 
-            <div class="row g-4">
+            <div class="row g-3">
                 
-                <!-- TOKOH PEMIMPIN DUSUN (KADUS & IMAM DESA) -->
+                <!-- TOKOH PEMIMPIN DUSUN -->
                 <div class="col-lg-8">
                     <h4 class="section-title">Aparatur & Tokoh Pembina Wilayah</h4>
                     
-                    <div class="row g-4 mb-4">
+                    <div class="row g-3 mb-3">
                         <!-- KEPALA DUSUN -->
                         <div class="col-md-6">
-                            <div class="card-custom p-4 text-center h-100 position-relative">
-                                <div class="mb-3">
-                                    <img src="foto.PNG" alt="Abdul Kadir - Kadus Timbuseng I" class="profile-img-frame" onerror="this.onerror=null; this.src='foto.PNG';">
+                            <div class="card-custom p-3 text-center h-100">
+                                <div class="mb-2">
+                                    <img src="foto.png" alt="Abdul Kadir - Kadus Timbuseng I" class="profile-img-frame" onerror="this.onerror=null; this.src='foto.png';">
                                 </div>
-                                <span class="badge badge-soft-success rounded-pill px-3 py-1 fw-bold mb-2">Kepala Dusun Timbuseng I</span>
-                                <h5 class="fw-bold text-dark mb-1">Abdul Kadir</h5>
+                                <span class="badge badge-soft-success rounded-pill px-2.5 py-1 fw-bold mb-2" style="font-size: 0.75rem;">Kepala Dusun Timbuseng I</span>
+                                <h5 class="fw-bold text-dark mb-1 fs-6">Abdul Kadir</h5>
                                 
-                                <div class="bg-light rounded-3 p-3 text-start small mt-3 border">
-                                    <div class="d-flex justify-content-between mb-2">
+                                <div class="bg-light rounded-3 p-2.5 text-start small mt-2 border" style="font-size: 0.8rem;">
+                                    <div class="d-flex justify-content-between mb-1.5">
                                         <span class="text-muted"><i class="fas fa-id-card me-1"></i> NIK:</span>
                                         <span class="fw-semibold text-dark">7305040905850004</span>
                                     </div>
-                                    <div class="d-flex justify-content-between mb-2">
+                                    <div class="d-flex justify-content-between mb-1.5">
                                         <span class="text-muted"><i class="fas fa-calendar-alt me-1"></i> TTL:</span>
                                         <span class="fw-semibold text-dark">09 Mei 1985</span>
                                     </div>
-                                    <div class="d-flex justify-content-between mb-2">
-                                        <span class="text-muted"><i class="fas fa-clock me-1"></i> Masa Jabatan:</span>
+                                    <div class="d-flex justify-content-between mb-1.5">
+                                        <span class="text-muted"><i class="fas fa-clock me-1"></i> Jabatan:</span>
                                         <span class="fw-semibold text-dark">2025 – Sekarang</span>
                                     </div>
                                     <div class="d-flex justify-content-between">
-                                        <span class="text-muted"><i class="fas fa-home me-1"></i> Patokan Rumah:</span>
+                                        <span class="text-muted"><i class="fas fa-home me-1"></i> Rumah:</span>
                                         <span class="fw-semibold text-dark text-end">Rumah batu putih</span>
                                     </div>
                                 </div>
 
-                                <div class="mt-3">
-                                    <a href="https://wa.me/6285756614977" target="_blank" class="btn btn-outline-success btn-sm w-100 rounded-pill fw-semibold">
-                                        <i class="fab fa-whatsapp me-1 fs-6"></i> Hubungi Kadus (0857-5661-4977)
+                                <div class="mt-2.5">
+                                    <a href="https://wa.me/6285756614977" target="_blank" class="btn btn-outline-success btn-sm w-100 rounded-pill fw-semibold" style="font-size: 0.8rem;">
+                                        <i class="fab fa-whatsapp me-1"></i> Hubungi Kadus
                                     </a>
                                 </div>
                             </div>
@@ -288,24 +320,24 @@
 
                         <!-- IMAM DESA -->
                         <div class="col-md-6">
-                            <div class="card-custom p-4 text-center h-100 position-relative">
-                                <div class="mb-3">
-                                    <img src="foto.PNG" alt="Muh. Fajar S.Ag - Imam Desa" class="profile-img-frame" onerror="this.onerror=null; this.src='foto.PNG';">
+                            <div class="card-custom p-3 text-center h-100">
+                                <div class="mb-2">
+                                    <img src="foto.png" alt="Muh. Fajar S.Ag - Imam Desa" class="profile-img-frame" onerror="this.onerror=null; this.src='foto.png';">
                                 </div>
-                                <span class="badge badge-soft-warning rounded-pill px-3 py-1 fw-bold mb-2">Imam Desa Timbuseng</span>
-                                <h5 class="fw-bold text-dark mb-1">Muh. Fajar, S.Ag.</h5>
+                                <span class="badge badge-soft-warning rounded-pill px-2.5 py-1 fw-bold mb-2" style="font-size: 0.75rem;">Imam Desa Timbuseng</span>
+                                <h5 class="fw-bold text-dark mb-1 fs-6">Muh. Fajar, S.Ag.</h5>
                                 
-                                <div class="bg-light rounded-3 p-3 text-start small mt-3 border">
-                                    <div class="d-flex justify-content-between mb-2">
+                                <div class="bg-light rounded-3 p-2.5 text-start small mt-2 border" style="font-size: 0.8rem;">
+                                    <div class="d-flex justify-content-between mb-1.5">
                                         <span class="text-muted"><i class="fas fa-id-card me-1"></i> NIK:</span>
                                         <span class="fw-semibold text-dark">7305041507750001</span>
                                     </div>
-                                    <div class="d-flex justify-content-between mb-2">
+                                    <div class="d-flex justify-content-between mb-1.5">
                                         <span class="text-muted"><i class="fas fa-calendar-alt me-1"></i> TTL:</span>
                                         <span class="fw-semibold text-dark">Parangbaddo, 15 Jul 1975</span>
                                     </div>
-                                    <div class="d-flex justify-content-between mb-2">
-                                        <span class="text-muted"><i class="fas fa-clock me-1"></i> Masa Jabatan:</span>
+                                    <div class="d-flex justify-content-between mb-1.5">
+                                        <span class="text-muted"><i class="fas fa-clock me-1"></i> Jabatan:</span>
                                         <span class="fw-semibold text-dark">2008 – Sekarang</span>
                                     </div>
                                     <div class="d-flex justify-content-between">
@@ -314,9 +346,9 @@
                                     </div>
                                 </div>
 
-                                <div class="mt-3">
-                                    <a href="https://wa.me/6285299636971" target="_blank" class="btn btn-outline-warning text-dark btn-sm w-100 rounded-pill fw-semibold">
-                                        <i class="fab fa-whatsapp me-1 fs-6"></i> Hubungi Imam Desa (0852-9963-6971)
+                                <div class="mt-2.5">
+                                    <a href="https://wa.me/6285299636971" target="_blank" class="btn btn-outline-warning text-dark btn-sm w-100 rounded-pill fw-semibold" style="font-size: 0.8rem;">
+                                        <i class="fab fa-whatsapp me-1"></i> Hubungi Imam Desa
                                     </a>
                                 </div>
                             </div>
@@ -324,13 +356,13 @@
                     </div>
 
                     <!-- DESKRIPSI & POTENSI WILAYAH -->
-                    <div class="card-custom p-4">
-                        <h5 class="fw-bold text-dark mb-3"><i class="fas fa-layer-group text-success me-2"></i>Gambaran Umum & Potensi Kewilayahan</h5>
-                        <p class="text-secondary small leading-relaxed">
+                    <div class="card-custom p-3">
+                        <h5 class="fw-bold text-dark mb-2" style="font-size: 1.05rem;"><i class="fas fa-layer-group text-success me-1"></i> Gambaran Umum & Potensi</h5>
+                        <p class="text-secondary small leading-relaxed mb-2" style="font-size: 0.83rem;">
                             <strong>Dusun Timbuseng I</strong> berkedudukan sebagai pusat kegiatan administrasi dan pemerintahan Desa Timbuseng. Wilayah ini memiliki cakupan luas sebesar <strong>188,85 Ha</strong> atau sekitar 17,43% dari total luas Desa Timbuseng (1.083,47 Ha).
                         </p>
-                        <p class="text-secondary small leading-relaxed mb-0">
-                            Sebagai wilayah pusat desa, Dusun Timbuseng I didukung oleh infrastruktur jalan publik, fasilitas layanan publik utama kantor desa, sarana ibadah, serta fasilitas posyandu masyarakat. Sektor perkebunan tebu dan pertanian sawah menjadi mata pencaharian utama warga setempat, disokong oleh kegiatan perniagaan UMKM skala pemukiman.
+                        <p class="text-secondary small leading-relaxed mb-0" style="font-size: 0.83rem;">
+                            Sebagai wilayah pusat desa, Dusun Timbuseng I didukung oleh infrastruktur jalan publik, fasilitas layanan publik utama kantor desa, sarana ibadah, serta fasilitas posyandu masyarakat.
                         </p>
                     </div>
                 </div>
@@ -339,59 +371,59 @@
                 <div class="col-lg-4">
                     
                     <!-- BATAS WILAYAH DUSUN -->
-                    <div class="card-custom p-4 mb-4">
-                        <h5 class="fw-bold text-dark mb-3"><i class="fas fa-compass text-success me-2"></i>Batas Wilayah Dusun</h5>
-                        <div class="list-group list-group-flush border-0">
-                            <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 border-bottom">
-                                <span class="text-muted small"><i class="fas fa-arrow-up text-primary me-2"></i>Utara</span>
-                                <span class="fw-semibold small text-dark">Dusun Timbuseng II</span>
+                    <div class="card-custom p-3 mb-3">
+                        <h5 class="fw-bold text-dark mb-2" style="font-size: 1.05rem;"><i class="fas fa-compass text-success me-1"></i> Batas Wilayah Dusun</h5>
+                        <div class="list-group list-group-flush border-0" style="font-size: 0.85rem;">
+                            <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-1.5 border-bottom bg-transparent">
+                                <span class="text-muted"><i class="fas fa-arrow-up text-primary me-1"></i> Utara</span>
+                                <span class="fw-semibold text-dark">Dusun Timbuseng II</span>
                             </div>
-                            <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 border-bottom">
-                                <span class="text-muted small"><i class="fas fa-arrow-down text-danger me-2"></i>Selatan</span>
-                                <span class="fw-semibold small text-dark">Dusun Sauleya</span>
+                            <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-1.5 border-bottom bg-transparent">
+                                <span class="text-muted"><i class="fas fa-arrow-down text-danger me-1"></i> Selatan</span>
+                                <span class="fw-semibold text-dark">Dusun Sauleya</span>
                             </div>
-                            <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 border-bottom">
-                                <span class="text-muted small"><i class="fas fa-arrow-right text-warning me-2"></i>Timur</span>
-                                <span class="fw-semibold small text-dark">Areal Perkebunan PTPN</span>
+                            <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-1.5 border-bottom bg-transparent">
+                                <span class="text-muted"><i class="fas fa-arrow-right text-warning me-1"></i> Timur</span>
+                                <span class="fw-semibold text-dark">Perkebunan PTPN</span>
                             </div>
-                            <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 border-0">
-                                <span class="text-muted small"><i class="fas fa-arrow-left text-success me-2"></i>Barat</span>
-                                <span class="fw-semibold small text-dark">Dusun Panaikang I</span>
+                            <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-1.5 border-0 bg-transparent">
+                                <span class="text-muted"><i class="fas fa-arrow-left text-success me-1"></i> Barat</span>
+                                <span class="fw-semibold text-dark">Dusun Panaikang I</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- FASILITAS UMUM DI DUSUN -->
-                    <div class="card-custom p-4">
-                        <h5 class="fw-bold text-dark mb-3"><i class="fas fa-building text-success me-2"></i>Fasilitas Umum & Sanitasi</h5>
+                    <div class="card-custom p-3">
+                        <h5 class="fw-bold text-dark mb-2" style="font-size: 1.05rem;"><i class="fas fa-building text-success me-1"></i> Fasilitas Umum</h5>
                         
-                        <div class="d-flex align-items-center gap-3 mb-3 p-2 bg-light rounded-3 border">
+                        <div class="d-flex align-items-center gap-2 mb-2 p-2 bg-light rounded-3 border">
                             <div class="icon-box bg-success text-white">
                                 <i class="fas fa-landmark"></i>
                             </div>
                             <div>
-                                <h6 class="fw-bold mb-0 text-dark small">Kantor Desa Timbuseng</h6>
-                                <small class="text-muted">Pusat Pelayanan Publik Desa</small>
+                                <h6 class="fw-bold mb-0 text-dark" style="font-size: 0.85rem;">Kantor Desa Timbuseng</h6>
+                                <small class="text-muted" style="font-size: 0.72rem;">Pusat Pelayanan Publik</small>
                             </div>
                         </div>
 
-                        <div class="d-flex align-items-center gap-3 mb-3 p-2 bg-light rounded-3 border">
+                        <div class="d-flex align-items-center gap-2 mb-2 p-2 bg-light rounded-3 border">
                             <div class="icon-box bg-warning text-dark">
                                 <i class="fas fa-mosque"></i>
                             </div>
                             <div>
-                                <h6 class="fw-bold mb-0 text-dark small">Masjid Desa Timbuseng</h6>
-                                <small class="text-muted">Pusat Peribadatan & Keagamaan</small>
+                                <h6 class="fw-bold mb-0 text-dark" style="font-size: 0.85rem;">Masjid Desa Timbuseng</h6>
+                                <small class="text-muted" style="font-size: 0.72rem;">Pusat Peribadatan</small>
                             </div>
                         </div>
 
-                        <div class="d-flex align-items-center gap-3 p-2 bg-light rounded-3 border">
+                        <div class="d-flex align-items-center gap-2 p-2 bg-light rounded-3 border">
                             <div class="icon-box bg-danger text-white">
                                 <i class="fas fa-clinic-medical"></i>
                             </div>
                             <div>
-                                <h6 class="fw-bold mb-0 text-dark small">Posyandu Timbuseng I</h6>
-                                <small class="text-muted">Layanan Posyandu Balita & Lansia</small>
+                                <h6 class="fw-bold mb-0 text-dark" style="font-size: 0.85rem;">Posyandu Timbuseng I</h6>
+                                <small class="text-muted" style="font-size: 0.72rem;">Layanan Kesehatan Warga</small>
                             </div>
                         </div>
                     </div>
@@ -403,15 +435,15 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-dark text-white pt-5 pb-4 border-top border-success border-3">
+    <footer class="bg-dark text-white pt-4 pb-3 border-top border-success border-3">
         <div class="container text-center">
-            <div class="mb-3">
-                <img src="logo.PNG" alt="Logo Desa" height="48" onerror="this.onerror=null; this.src='image.PNG';">
+            <div class="mb-2">
+                <img src="logo.png" alt="Logo Desa" height="38" onerror="this.onerror=null; this.src='image.png';">
             </div>
-            <h6 class="fw-bold text-white mb-1">Pemerintah Desa Timbuseng</h6>
-            <p class="small text-white-50 mb-3">Kecamatan Polongbangkeng Timur, Kabupaten Takalar, Sulawesi Selatan</p>
-            <hr class="border-secondary my-3">
-            <p class="small text-white-50 mb-0">©2026 P10 KKN UHM — Website Resmi Profil Dusun Timbuseng I</p>
+            <h6 class="fw-bold text-white mb-1 fs-6">Pemerintah Desa Timbuseng</h6>
+            <p class="small text-white-50 mb-2" style="font-size: 0.75rem;">Kecamatan Polongbangkeng Timur, Kabupaten Takalar, Sulawesi Selatan</p>
+            <hr class="border-secondary my-2">
+            <p class="small text-white-50 mb-0" style="font-size: 0.72rem;">©2026 P10 KKN UHM — Website Resmi Profil Dusun Timbuseng I</p>
         </div>
     </footer>
 
