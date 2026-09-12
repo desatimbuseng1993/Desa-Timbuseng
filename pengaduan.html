@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pengaduan Warga & Aspirasi - Desa Timbuseng Kab. Takalar</title>
+    <title>Pengaduan Warga & Aspirasi - Desa Timbuseng</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome 6 Icons -->
@@ -152,33 +152,6 @@
             border-top: 1px solid #1a2e22;
             font-size: 0.875rem;
         }
-
-        /* FLOATING ADMIN BUTTON */
-        .admin-fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1050;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background-color: #1a202c;
-            color: #f39c12;
-            border: 2px solid #2d3748;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .admin-fab:hover {
-            background-color: #f39c12;
-            color: #1a202c;
-            transform: scale(1.1) rotate(15deg);
-        }
     </style>
 </head>
 <body>
@@ -247,19 +220,19 @@
                 <div class="col-md-4">
                     <div class="step-box">
                         <div class="text-success fw-bold fs-4 mb-2"><i class="fas fa-edit"></i> 1. Tulis Laporan</div>
-                        <p class="text-secondary small mb-0">Isi formulir pengaduan dengan melampirkan identitas yang valid serta kronologi permasalahan atau usulan yang jelas.</p>
+                        <p class="text-secondary small mb-0">Isi formulir pengaduan dengan melampirkan identitas yang valid serta kronologi permasalahan atau usulan yang jelas[cite: 21].</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="step-box">
                         <div class="text-success fw-bold fs-4 mb-2"><i class="fas fa-sync-alt"></i> 2. Verifikasi Desa</div>
-                        <p class="text-secondary small mb-0">Aparatur pemerintah desa akan memverifikasi dan meneruskan aduan Anda kepada bidang terkait atau dusun bersangkutan.</p>
+                        <p class="text-secondary small mb-0">Aparatur pemerintah desa akan memverifikasi dan meneruskan aduan Anda kepada bidang terkait atau dusun bersangkutan[cite: 21].</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="step-box">
                         <div class="text-success fw-bold fs-4 mb-2"><i class="fas fa-check-circle"></i> 3. Tindak Lanjut</div>
-                        <p class="text-secondary small mb-0">Pengaduan akan diproses, ditindaklanjuti, dan diberikan tanggapan resmi oleh pihak Pemerintah Desa Timbuseng.</p>
+                        <p class="text-secondary small mb-0">Pengaduan akan terkumpul di dasbor admin untuk dikelola, diedit, dihapus, atau diunduh dalam format Excel oleh pihak desa[cite: 21].</p>
                     </div>
                 </div>
             </div>
@@ -288,36 +261,36 @@
                     <div class="complaint-card p-4 p-md-5">
                         <div class="text-center mb-4">
                             <h3 class="fw-bold text-dark mb-1">Formulir Pengaduan / Aspirasi Daring</h3>
-                            <p class="text-muted small">Semua kolom bertanda bintang (<span class="text-danger">*</span>) wajib diisi dengan benar.</p>
+                            <p class="text-muted small">Semua kolom bertanda bintang (<span class="text-danger">*</span>) wajib diisi dengan benar[cite: 21]. Data yang masuk akan otomatis tersimpan ke pusat admin.</p>
                         </div>
 
                         <form id="formPengaduanWarga">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold small">Nama Lengkap <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Masukkan nama Anda..." required>
+                                    <input type="text" class="form-control" id="pengaduNama" placeholder="Masukkan nama Anda..." required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold small">Nomor WhatsApp / HP <span class="text-danger">*</span></label>
-                                    <input type="tel" class="form-control" placeholder="Contoh: 081234567890" required>
+                                    <input type="tel" class="form-control" id="pengaduPhone" placeholder="Contoh: 081234567890" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold small">Asal Dusun <span class="text-danger">*</span></label>
-                                    <select class="form-select" required>
+                                    <select class="form-select" id="pengaduDusun" required>
                                         <option value="" selected disabled>-- Pilih Wilayah Dusun --</option>
-                                        <option value="Timbuseng I">Dusun Timbuseng I</option>
-                                        <option value="Timbuseng II">Dusun Timbuseng II</option>
-                                        <option value="Sauleya">Dusun Sauleya</option>
-                                        <option value="Tanasambayang">Dusun Tanasambayang</option>
-                                        <option value="Bontobaddo">Dusun Bontobaddo</option>
-                                        <option value="Panaikang I">Dusun Panaikang I</option>
-                                        <option value="Panaikang II">Dusun Panaikang II</option>
-                                        <option value="Luar Desa">Warga Luar / Umum</option>
+                                        <option value="Dusun Timbuseng I">Dusun Timbuseng I</option>
+                                        <option value="Dusun Timbuseng II">Dusun Timbuseng II</option>
+                                        <option value="Dusun Sauleya">Dusun Sauleya</option>
+                                        <option value="Dusun Tanasambayang">Dusun Tanasambayang</option>
+                                        <option value="Dusun Bontobaddo">Dusun Bontobaddo</option>
+                                        <option value="Dusun Panaikang I">Dusun Panaikang I</option>
+                                        <option value="Dusun Panaikang II">Dusun Panaikang II</option>
+                                        <option value="Warga Luar / Umum">Warga Luar / Umum</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold small">Kategori Pengaduan / Aspirasi <span class="text-danger">*</span></label>
-                                    <select class="form-select" required>
+                                    <select class="form-select" id="pengaduKategori" required>
                                         <option value="" selected disabled>-- Pilih Kategori --</option>
                                         <option value="Infrastruktur & Jalan">Infrastruktur, Jalan Tani & Irigasi</option>
                                         <option value="Pelayanan Administrasi">Pelayanan Administrasi Kependudukan</option>
@@ -329,17 +302,17 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label fw-bold small">Judul / Perihal Laporan <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Ringkasan singkat aduan (contoh: Perbaikan jalan tani dusun...)" required>
+                                    <input type="text" class="form-control" id="pengaduJudul" placeholder="Ringkasan singkat aduan (contoh: Perbaikan jalan tani dusun...)" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label fw-bold small">Isi Pengaduan / Kronologi / Aspirasi <span class="text-danger">*</span></label>
-                                    <textarea class="form-control" rows="5" placeholder="Jelaskan permasalahan atau usulan secara lengkap dan jelas di sini..." required></textarea>
+                                    <textarea class="form-control" id="pengaduIsi" rows="5" placeholder="Jelaskan permasalahan atau usulan secara lengkap dan jelas di sini..." required></textarea>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-check mb-3">
                                         <input class="form-check-input" type="checkbox" value="" id="validasiCheck" required>
                                         <label class="form-check-label small text-muted" for="validasiCheck">
-                                            Saya menyatakan bahwa data dan laporan yang saya sampaikan adalah benar serta dapat dipertanggungjawabkan.
+                                            Saya menyatakan bahwa data dan laporan yang saya sampaikan adalah benar serta dapat dipertanggungjawabkan[cite: 21].
                                         </label>
                                     </div>
                                 </div>
@@ -356,6 +329,45 @@
 
         </div>
     </section>
+
+    <!-- SCRIPT PENYIMPANAN DATA PENGADUAN KE LOCALSTORAGE ADMIN -->
+    <script>
+        document.getElementById("formPengaduanWarga").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            // Ambil nilai dari form
+            const nama = document.getElementById("pengaduNama").value;
+            const phone = document.getElementById("pengaduPhone").value;
+            const dusun = document.getElementById("pengaduDusun").value;
+            const kategori = document.getElementById("pengaduKategori").value;
+            const judul = document.getElementById("pengaduJudul").value;
+            const isi = document.getElementById("pengaduIsi").value;
+            const tanggal = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' });
+
+            // Buat objek laporan baru
+            const newComplaint = {
+                id: Date.now(),
+                date: tanggal,
+                name: nama,
+                phone: phone,
+                dusun: dusun,
+                category: kategori,
+                title: judul,
+                content: isi,
+                status: 'Menunggu'
+            };
+
+            // Ambil data pengaduan yang sudah ada di localStorage atau buat array baru
+            let complaints = JSON.parse(localStorage.getItem('desa_complaints')) || [];
+            complaints.unshift(newComplaint); // Tambahkan di awal array
+
+            // Simpan kembali ke localStorage agar bisa diakses di halaman admin
+            localStorage.setItem('desa_complaints', JSON.stringify(complaints));
+
+            alert("Terima kasih! Pengaduan / aspirasi Anda telah berhasil dikirim ke sistem Pemerintah Desa Timbuseng dan masuk ke pusat data admin untuk ditindaklanjuti.");
+            this.reset();
+        });
+    </script>
 
     <!-- FOOTER UTAMA -->
     <footer class="pt-5">
@@ -437,63 +449,7 @@
         </div>
     </footer>
 
-    <!-- FLOATING ADMIN BUTTON -->
-    <button class="admin-fab" data-bs-toggle="modal" data-bs-target="#loginModal" title="Akses Admin">
-        <i class="fas fa-user-shield"></i>
-    </button>
-
-    <!-- MODAL OTORISASI ADMIN -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg">
-                <div class="modal-header bg-dark text-white">
-                    <h5 class="modal-title fw-bold" id="loginModalLabel"><i class="fas fa-lock me-2 text-warning"></i>Otorisasi Admin</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <p class="text-muted small mb-3">Masukkan kata sandi administrator untuk masuk ke Halaman Dasbor Admin (`admin.html`).</p>
-                    <div class="mb-3">
-                        <label for="adminPassword" class="form-label fw-bold">Kata Sandi</label>
-                        <input type="password" class="form-control" id="adminPassword" placeholder="Masukkan sandi...">
-                        <div id="passwordError" class="text-danger small mt-2 d-none"><i class="fas fa-exclamation-circle me-1"></i>Sandi yang Anda masukkan salah.</div>
-                    </div>
-                    <button type="button" class="btn btn-warning w-100 fw-bold" onclick="verifyPassword()">Masuk Ke Halaman Admin</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Skrip Formulir Pengaduan & Verifikasi Admin -->
-    <script>
-        document.getElementById("formPengaduanWarga").addEventListener("submit", function(e) {
-            e.preventDefault();
-            alert("Terima kasih! Pengaduan / aspirasi Anda telah berhasil dikirim ke sistem Pemerintah Desa Timbuseng dan akan segera ditindaklanjuti.");
-            this.reset();
-        });
-
-        const ADMIN_PASSWORD = "admintimbuseng";
-
-        function verifyPassword() {
-            const input = document.getElementById("adminPassword").value;
-            const errorMsg = document.getElementById("passwordError");
-            
-            if(input === ADMIN_PASSWORD) {
-                errorMsg.classList.add("d-none");
-                window.location.href = "admin.html";
-            } else {
-                errorMsg.classList.remove("d-none");
-            }
-        }
-
-        document.getElementById("adminPassword").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                verifyPassword();
-            }
-        });
-    </script>
 </body>
 </html>
