@@ -106,33 +106,6 @@
         .social-link { color: var(--accent-color); transition: transform 0.2s ease; display: inline-block; }
         .social-link:hover { color: #ffffff; transform: scale(1.1); }
         .copyright-bar { background-color: #050a07; border-top: 1px solid #1a2e22; font-size: 0.875rem; }
-
-        /* FLOATING ADMIN BUTTON */
-        .admin-fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1050;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background-color: #1a202c;
-            color: #f39c12;
-            border: 2px solid #2d3748;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .admin-fab:hover {
-            background-color: #f39c12;
-            color: #1a202c;
-            transform: scale(1.1) rotate(15deg);
-        }
     </style>
 </head>
 <body>
@@ -322,7 +295,6 @@
                     </p>
                     <div class="d-flex gap-3 fs-5 mt-3">
                         <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="social-link" title="WhatsApp Resmi"><i class="fab fa-whatsapp"></i></a>
-                        <!-- Tautan Instagram -->
                         <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram Resmi"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
@@ -334,6 +306,7 @@
                         <li><a href="profil.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Profil Desa & Perangkat</a></li>
                         <li><a href="peta.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Peta Digital Wilayah</a></li>
                         <li><a href="informasi.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Informasi & Berita Desa</a></li>
+                        <li><a href="pengaduan.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Pengaduan Warga</a></li>
                     </ul>
                 </div>
                 <div class="col-md-8 col-lg-4">
@@ -364,57 +337,7 @@
         </div>
     </footer>
 
-    <!-- FLOATING ADMIN BUTTON -->
-    <button class="admin-fab" data-bs-toggle="modal" data-bs-target="#loginModal" title="Akses Admin">
-        <i class="fas fa-user-shield"></i>
-    </button>
-
-    <!-- MODAL OTORISASI ADMIN -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg">
-                <div class="modal-header bg-dark text-white">
-                    <h5 class="modal-title fw-bold" id="loginModalLabel"><i class="fas fa-lock me-2 text-warning"></i>Otorisasi Admin</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <p class="text-muted small mb-3">Masukkan kata sandi administrator untuk masuk ke Halaman Dasbor Admin (`admin.html`).</p>
-                    <div class="mb-3">
-                        <label for="adminPassword" class="form-label fw-bold">Kata Sandi</label>
-                        <input type="password" class="form-control" id="adminPassword" placeholder="Masukkan sandi...">
-                        <div id="passwordError" class="text-danger small mt-2 d-none"><i class="fas fa-exclamation-circle me-1"></i>Sandi yang Anda masukkan salah.</div>
-                    </div>
-                    <button type="button" class="btn btn-warning w-100 fw-bold" onclick="verifyPassword()">Masuk Ke Halaman Admin</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap 5 JS Bundle -->
+    <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Skrip Verifikasi Sandi Admin -->
-    <script>
-        const ADMIN_PASSWORD = "admintimbuseng";
-
-        function verifyPassword() {
-            const input = document.getElementById("adminPassword").value;
-            const errorMsg = document.getElementById("passwordError");
-            
-            if(input === ADMIN_PASSWORD) {
-                errorMsg.classList.add("d-none");
-                window.location.href = "admin.html";
-            } else {
-                errorMsg.classList.remove("d-none");
-            }
-        }
-
-        document.getElementById("adminPassword").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                verifyPassword();
-            }
-        });
-    </script>
 </body>
 </html>
