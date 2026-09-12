@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Dusun Panaikang II - Desa Timbuseng</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -21,81 +21,107 @@
             --dark-text: #1e293b;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #f4f6f8;
             color: var(--dark-text);
             line-height: 1.6;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
         }
 
         .bg-desa { background-color: var(--primary-color) !important; }
         .text-desa { color: var(--primary-color) !important; }
 
         .navbar {
-            padding: 0.8rem 1rem;
+            padding: 0.75rem 1rem;
+        }
+        .navbar-brand img {
+            height: 38px;
+            width: auto;
+            object-fit: contain;
+        }
+        .nav-link {
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.5rem 0.8rem !important;
+            transition: all 0.2s ease;
         }
         .dropdown-menu .dropdown-item.active, 
         .dropdown-menu .dropdown-item:active {
             background-color: var(--primary-color);
         }
 
-        /* Hero Header Dusun */
+        /* Hero Header Dusun dengan image.png (huruf kecil) */
         .page-hero {
-            background: linear-gradient(rgba(7, 59, 36, 0.88), rgba(13, 92, 58, 0.92)), url('image.PNG') center/cover no-repeat;
+            background: linear-gradient(rgba(7, 59, 36, 0.88), rgba(13, 92, 58, 0.92)), url('image.png') center/cover no-repeat;
             color: white;
-            padding: 4.5rem 0 3.5rem;
-            border-bottom: 5px solid var(--accent-color);
+            padding: 3.5rem 1rem 3rem;
+            border-bottom: 4px solid var(--accent-color);
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: clamp(1.6rem, 4vw, 2.3rem);
+            font-weight: 800;
+        }
+        .page-hero p {
+            font-size: clamp(0.88rem, 2vw, 1rem);
         }
 
         /* Stat Cards */
         .stat-card {
             background: #ffffff;
-            border-radius: 16px;
-            padding: 1.4rem;
+            border-radius: 14px;
+            padding: 1rem;
             border: 1px solid #e2e8f0;
-            border-left: 5px solid var(--primary-color);
+            border-left: 4px solid var(--primary-color);
             box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            height: 100%;
         }
-        .stat-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        .stat-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+        .stat-card small {
+            font-size: 0.75rem;
         }
         .stat-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
             background-color: var(--primary-light);
             color: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
+            flex-shrink: 0;
         }
 
         /* Profile Cards */
         .profile-card {
             background: #ffffff;
-            border-radius: 20px;
+            border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.04);
             border: 1px solid #e2e8f0;
             overflow: hidden;
             transition: all 0.3s ease;
         }
-        .profile-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
-        }
         .profile-header-bg {
-            height: 70px;
+            height: 60px;
             background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
         }
         .profile-img-wrapper {
-            margin-top: -45px;
+            margin-top: -40px;
         }
         .profile-img {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             object-fit: cover;
             border-radius: 50%;
             border: 4px solid #ffffff;
@@ -106,43 +132,55 @@
         /* Content Cards */
         .content-card {
             background: #ffffff;
-            border-radius: 20px;
+            border-radius: 16px;
             border: 1px solid #e2e8f0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            padding: 1.75rem;
+            padding: 1.25rem;
+            margin-bottom: 1.25rem;
         }
 
         .section-title {
             position: relative;
-            padding-bottom: 12px;
-            margin-bottom: 24px;
+            padding-bottom: 10px;
+            margin-bottom: 18px;
             font-weight: 700;
+            font-size: 1.2rem;
         }
         .section-title::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 50px;
-            height: 4px;
+            width: 40px;
+            height: 3px;
             border-radius: 2px;
             background-color: var(--accent-color);
         }
 
         .badge-custom {
             font-weight: 600;
-            padding: 0.45em 0.85em;
+            padding: 0.35em 0.75em;
             border-radius: 30px;
+            font-size: 0.75rem;
         }
 
         .gallery-img {
-            height: 190px;
+            height: 160px;
             object-fit: cover;
-            border-radius: 14px;
-            transition: transform 0.3s ease;
+            border-radius: 10px;
+            width: 100%;
         }
-        .gallery-img:hover {
-            transform: scale(1.02);
+
+        /* Footer Sama Persis dengan Timbuseng 1 & 2 */
+        footer {
+            background-color: #212529;
+            color: #ffffff;
+        }
+
+        .container, .container-fluid {
+            max-width: 100% !important;
+            padding-left: 15px;
+            padding-right: 15px;
         }
     </style>
 </head>
@@ -152,10 +190,10 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-                <img src="logo.PNG" alt="Logo Desa" height="40" onerror="this.style.display='none'">
-                <span class="fw-bold text-white fs-5">Desa Timbuseng</span>
+                <img src="logo.png" alt="Logo Desa" height="38" onerror="this.style.display='none'">
+                <span class="fw-bold text-white fs-6">Desa Timbuseng</span>
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -175,14 +213,14 @@
                         <a class="nav-link dropdown-toggle active fw-bold" href="#" id="navbarDropdownDusun" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-map-marked-alt me-1"></i> Wilayah Dusun
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="navbarDropdownDusun">
-                            <li><a class="dropdown-item active fw-bold" href="dusun-timbuseng1.html"><i class="fas fa-chevron-right me-2 text-warning"></i>Dusun Timbuseng I</a></li>
-                            <li><a class="dropdown-item" href="dusun-timbuseng2.html">Dusun Timbuseng II</a></li>
-                            <li><a class="dropdown-item" href="dusun-sauleya.html">Dusun Sauleya</a></li>
-                            <li><a class="dropdown-item" href="dusun-tanasambayang.html">Dusun Tanasambayang</a></li>
-                            <li><a class="dropdown-item" href="dusun-bontobaddo.html">Dusun Bontobaddo</a></li>
-                            <li><a class="dropdown-item" href="dusun-panaikang1.html">Dusun Panaikang I</a></li>
-                            <li><a class="dropdown-item" href="dusun-panaikang2.html">Dusun Panaikang II</a></li>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-3 mt-2" aria-labelledby="navbarDropdownDusun">
+                            <li><a class="dropdown-item" href="dusun-timbuseng1.html"><i class="fas fa-chevron-right me-2 text-success"></i>Dusun Timbuseng I</a></li>
+                            <li><a class="dropdown-item" href="dusun-timbuseng2.html"><i class="fas fa-chevron-right me-2 text-success"></i>Dusun Timbuseng II</a></li>
+                            <li><a class="dropdown-item" href="dusun-sauleya.html"><i class="fas fa-chevron-right me-2 text-success"></i>Dusun Sauleya</a></li>
+                            <li><a class="dropdown-item" href="dusun-tanasambayang.html"><i class="fas fa-chevron-right me-2 text-success"></i>Dusun Tanasambayang</a></li>
+                            <li><a class="dropdown-item" href="dusun-bontobaddo.html"><i class="fas fa-chevron-right me-2 text-success"></i>Dusun Bontobaddo</a></li>
+                            <li><a class="dropdown-item" href="dusun-panaikang1.html"><i class="fas fa-chevron-right me-2 text-success"></i>Dusun Panaikang I</a></li>
+                            <li><a class="dropdown-item active fw-bold" href="dusun-panaikang2.html"><i class="fas fa-chevron-right me-2 text-warning"></i>Dusun Panaikang II</a></li>
                         </ul>
                     </li>
 
@@ -203,78 +241,78 @@
     <!-- HERO HEADER -->
     <header class="page-hero text-center">
         <div class="container">
-            <span class="badge bg-warning text-dark badge-custom mb-3 shadow-sm"><i class="fas fa-map-marker-alt me-1"></i> Profil Wilayah Dusun</span>
-            <h1 class="fw-extrabold display-5 text-white">Dusun Panaikang II</h1>
-            <p class="lead mb-0 text-white-50 max-w-700 mx-auto">Kawasan Pemukiman & Agraris Berkembang Desa Timbuseng, Kec. Polongbangkeng Timur</p>
+            <span class="badge bg-warning text-dark badge-custom mb-2 shadow-sm"><i class="fas fa-map-marker-alt me-1"></i> Profil Wilayah Dusun</span>
+            <h1 class="text-white mb-2">Dusun Panaikang II</h1>
+            <p class="mb-0 text-white-50 mx-auto" style="max-width: 600px;">Kawasan Pemukiman & Agraris Berkembang Desa Timbuseng, Kec. Polongbangkeng Timur</p>
         </div>
     </header>
 
     <!-- KONTEN UTAMA -->
-    <section class="py-5">
+    <section class="py-4">
         <div class="container">
 
             <!-- METRIK STATISTIK -->
-            <div class="row g-3 mb-5">
+            <div class="row g-2 mb-4">
                 <div class="col-6 col-md-3">
-                    <div class="stat-card d-flex align-items-center gap-3">
+                    <div class="stat-card d-flex align-items-center gap-2">
                         <div class="stat-icon"><i class="fas fa-users"></i></div>
                         <div>
-                            <small class="text-muted fw-semibold d-block">Jumlah Penduduk</small>
-                            <h3 class="fw-bold text-dark mb-0">168 <small class="fs-6 text-muted fw-normal">Jiwa</small></h3>
+                            <small class="text-muted fw-semibold d-block">Penduduk</small>
+                            <h3 class="fw-bold text-dark">168 <small class="fs-6 text-muted fw-normal">Jiwa</small></h3>
                         </div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
-                    <div class="stat-card d-flex align-items-center gap-3">
+                    <div class="stat-card d-flex align-items-center gap-2">
                         <div class="stat-icon"><i class="fas fa-house-user"></i></div>
                         <div>
                             <small class="text-muted fw-semibold d-block">Suasana Wilayah</small>
-                            <h3 class="fw-bold text-dark mb-0 fs-5">Kondusif & Asri</h3>
+                            <h3 class="fw-bold text-dark fs-6">Kondusif & Asri</h3>
                         </div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
-                    <div class="stat-card d-flex align-items-center gap-3">
+                    <div class="stat-card d-flex align-items-center gap-2">
                         <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
                         <div>
-                            <small class="text-muted fw-semibold d-block">Kategori Wilayah</small>
-                            <h3 class="fw-bold text-dark mb-0 fs-5">Pemukiman & Kebun</h3>
+                            <small class="text-muted fw-semibold d-block">Kategori</small>
+                            <h3 class="fw-bold text-dark fs-6">Pemukiman & Kebun</h3>
                         </div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
-                    <div class="stat-card d-flex align-items-center gap-3">
+                    <div class="stat-card d-flex align-items-center gap-2">
                         <div class="stat-icon"><i class="fas fa-seedling"></i></div>
                         <div>
-                            <small class="text-muted fw-semibold d-block">Komoditas Utama</small>
-                            <h3 class="fw-bold text-success mb-0 fs-5">Padi & Palawija</h3>
+                            <small class="text-muted fw-semibold d-block">Komoditas</small>
+                            <h3 class="fw-bold text-success fs-6">Padi & Palawija</h3>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row g-4">
+            <div class="row g-3">
                 
                 <!-- TOKOH PEMIMPIN & APARATUR -->
                 <div class="col-lg-8">
-                    <b class="d-block fs-5 text-dark mb-3">Aparatur & Tokoh Masyarakat Dusun Panaikang II</b>
+                    <h4 class="section-title text-dark">Aparatur & Tokoh Masyarakat Dusun Panaikang II</h4>
                     
-                    <div class="row g-4 mb-4">
+                    <div class="row g-3 mb-3">
                         <!-- KEPALA DUSUN -->
                         <div class="col-md-6">
                             <div class="profile-card h-100 text-center">
                                 <div class="profile-header-bg"></div>
-                                <div class="profile-img-wrapper mb-3">
-                                    <img src="foto.PNG" alt="Yustang" class="profile-img" onerror="this.src='foto.PNG'">
+                                <div class="profile-img-wrapper mb-2">
+                                    <img src="foto.png" alt="Yustang" class="profile-img" onerror="this.src='foto.png'">
                                 </div>
                                 <div class="p-3 pt-0">
                                     <span class="badge bg-success badge-custom mb-2">Kepala Dusun</span>
-                                    <h5 class="fw-bold text-dark mb-1">Yustang</h5>
-                                    <p class="text-muted small mb-2"><i class="fas fa-id-card me-1 text-secondary"></i>NIK: 7305044305840001</p>
-                                    <p class="text-muted small mb-3"><i class="fas fa-birthday-cake me-1 text-secondary"></i>Panaikang, 23 Mei 1984</p>
+                                    <h5 class="fw-bold text-dark mb-1 fs-6">Yustang</h5>
+                                    <p class="text-muted small mb-1" style="font-size:0.8rem;"><i class="fas fa-id-card me-1 text-secondary"></i>NIK: 7305044305840001</p>
+                                    <p class="text-muted small mb-2" style="font-size:0.8rem;"><i class="fas fa-birthday-cake me-1 text-secondary"></i>Panaikang, 23 Mei 1984</p>
                                     <hr class="my-2">
-                                    <div class="d-grid mt-3">
-                                        <a href="https://wa.me/" class="btn btn-outline-success btn-sm rounded-pill fw-semibold"><i class="fab fa-whatsapp me-1"></i> Kontak Kadus</a>
+                                    <div class="d-grid mt-2">
+                                        <a href="https://wa.me/" class="btn btn-outline-success btn-sm rounded-pill fw-semibold" style="font-size:0.8rem;"><i class="fab fa-whatsapp me-1"></i> Kontak Kadus</a>
                                     </div>
                                 </div>
                             </div>
@@ -284,19 +322,18 @@
                         <div class="col-md-6">
                             <div class="profile-card h-100 text-center">
                                 <div class="profile-header-bg"></div>
-                                <div class="profile-img-wrapper mb-3">
-                                    <img src="foto.PNG" alt="Sirajuddin Ngalle" class="profile-img" onerror="this.src='foto.PNG'">
+                                <div class="profile-img-wrapper mb-2">
+                                    <img src="foto.png" alt="Sirajuddin Ngalle" class="profile-img" onerror="this.src='foto.png'">
                                 </div>
                                 <div class="p-3 pt-0">
                                     <span class="badge bg-warning text-dark badge-custom mb-2">Imam Dusun Panaikang II</span>
-                                    <h5 class="fw-bold text-dark mb-1">Sirajuddin Ngalle</h5>
-                                    <p class="text-muted small mb-1"><i class="fas fa-id-card me-1 text-secondary"></i>NIK: 7305041103670001</p>
-                                    <p class="text-muted small mb-1"><i class="fas fa-calendar-day me-1 text-secondary"></i>TTL: Malalo, 11 Maret 1967</p>
-                                    <p class="text-muted small mb-2"><i class="fas fa-history me-1 text-secondary"></i>Masa Jabatan: 2008 – Sekarang</p>
-                                    <p class="text-muted small mb-3"><i class="fab fa-whatsapp me-1 text-success"></i>085656674036</p>
+                                    <h5 class="fw-bold text-dark mb-1 fs-6">Sirajuddin Ngalle</h5>
+                                    <p class="text-muted small mb-1" style="font-size:0.8rem;"><i class="fas fa-id-card me-1 text-secondary"></i>NIK: 7305041103670001</p>
+                                    <p class="text-muted small mb-1" style="font-size:0.8rem;"><i class="fas fa-calendar-day me-1 text-secondary"></i>Malalo, 11 Mar 1967</p>
+                                    <p class="text-muted small mb-2" style="font-size:0.8rem;"><i class="fab fa-whatsapp me-1 text-success"></i>085656674036</p>
                                     <hr class="my-2">
-                                    <div class="d-grid mt-3">
-                                        <a href="https://wa.me/6285656674036" target="_blank" class="btn btn-outline-success btn-sm rounded-pill fw-semibold"><i class="fab fa-whatsapp me-1"></i> Hubungi Imam</a>
+                                    <div class="d-grid mt-2">
+                                        <a href="https://wa.me/6285656674036" target="_blank" class="btn btn-outline-success btn-sm rounded-pill fw-semibold" style="font-size:0.8rem;"><i class="fab fa-whatsapp me-1"></i> Hubungi Imam</a>
                                     </div>
                                 </div>
                             </div>
@@ -304,31 +341,31 @@
                     </div>
 
                     <!-- DESKRIPSI & POTENSI -->
-                    <div class="content-card mb-4">
-                        <b class="d-block fs-6 text-dark mb-3"><i class="fas fa-info-circle text-success me-2"></i>Gambaran Umum & Kependudukan</b>
-                        <p class="text-secondary small leading-relaxed mb-3">
+                    <div class="content-card mb-3">
+                        <h5 class="fw-bold text-dark mb-2" style="font-size:1.05rem;"><i class="fas fa-info-circle text-success me-1"></i> Gambaran Umum & Kependudukan</h5>
+                        <p class="text-secondary small leading-relaxed mb-2" style="font-size:0.83rem;">
                             Dusun Panaikang II merupakan salah satu wilayah yang berada di kawasan strategis Desa Timbuseng, Kecamatan Polongbangkeng Timur. Dengan total populasi tercatat sebanyak <strong>168 jiwa</strong>, dusun ini memiliki tatanan kehidupan bermasyarakat yang hangat, harmonis, dan berasaskan kegotongroyongan.
                         </p>
-                        <p class="text-secondary small leading-relaxed mb-0">
+                        <p class="text-secondary small leading-relaxed mb-0" style="font-size:0.83rem;">
                             Di bawah kepemimpinan Kepala Dusun Bapak <strong>Yustang</strong> dan dibantu pengayoman keagamaan oleh Imam Dusun Bapak <strong>Sirajuddin Ngalle</strong>, warga Dusun Panaikang II aktif berpartisipasi dalam berbagai program pembangunan, peningkatan sarana keagamaan, serta pengelolaan potensi agraris lokal.
                         </p>
                     </div>
 
                     <!-- DOKUMENTASI -->
                     <div class="content-card">
-                        <b class="d-block fs-6 text-dark mb-3"><i class="fas fa-images text-success me-2"></i>Dokumentasi & Potensi Dusun</b>
-                        <div class="row g-3">
+                        <h5 class="fw-bold text-dark mb-2" style="font-size:1.05rem;"><i class="fas fa-images text-success me-1"></i> Dokumentasi & Potensi Dusun</h5>
+                        <div class="row g-2">
                             <div class="col-md-6">
                                 <div class="overflow-hidden rounded-3 border">
-                                    <img src="image.PNG" alt="Lingkungan Dusun Panaikang II" class="img-fluid w-100 gallery-img" onerror="this.src='image.PNG'">
+                                    <img src="image.png" alt="Lingkungan Dusun Panaikang II" class="img-fluid w-100 gallery-img" onerror="this.src='image.png'">
                                 </div>
-                                <small class="text-muted d-block text-center mt-1" style="font-size:0.78rem;">Suasana Pemukiman Dusun Panaikang II</small>
+                                <small class="text-muted d-block text-center mt-1" style="font-size:0.75rem;">Suasana Pemukiman Dusun Panaikang II</small>
                             </div>
                             <div class="col-md-6">
                                 <div class="overflow-hidden rounded-3 border">
-                                    <img src="image.PNG" alt="Lahan Agraris Dusun Panaikang II" class="img-fluid w-100 gallery-img" onerror="this.src='image.PNG'">
+                                    <img src="image.png" alt="Lahan Agraris Dusun Panaikang II" class="img-fluid w-100 gallery-img" onerror="this.src='image.png'">
                                 </div>
-                                <small class="text-muted d-block text-center mt-1" style="font-size:0.78rem;">Lahan Pertanian & Sawah Produktif</small>
+                                <small class="text-muted d-block text-center mt-1" style="font-size:0.75rem;">Lahan Pertanian & Sawah Produktif</small>
                             </div>
                         </div>
                     </div>
@@ -339,62 +376,62 @@
                 <div class="col-lg-4">
                     
                     <!-- BATAS WILAYAH -->
-                    <div class="content-card mb-4">
-                        <b class="d-block fs-6 text-dark mb-3"><i class="fas fa-map-marked-alt text-success me-2"></i>Batas Wilayah Dusun</b>
-                        <ul class="list-group list-group-flush small">
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-                                <span class="text-muted"><i class="fas fa-arrow-up text-primary me-2"></i>Utara</span>
+                    <div class="content-card mb-3">
+                        <h5 class="fw-bold text-dark mb-2" style="font-size:1.05rem;"><i class="fas fa-map-marked-alt text-success me-1"></i> Batas Wilayah Dusun</h5>
+                        <ul class="list-group list-group-flush small" style="font-size:0.85rem;">
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1.5 bg-transparent border-bottom">
+                                <span class="text-muted"><i class="fas fa-arrow-up text-primary me-1"></i> Utara</span>
                                 <span class="fw-semibold text-dark">Dusun Panaikang I</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-                                <span class="text-muted"><i class="fas fa-arrow-down text-danger me-2"></i>Selatan</span>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1.5 bg-transparent border-bottom">
+                                <span class="text-muted"><i class="fas fa-arrow-down text-danger me-1"></i> Selatan</span>
                                 <span class="fw-semibold text-dark">Batas Wilayah Desa</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-                                <span class="text-muted"><i class="fas fa-arrow-right text-warning me-2"></i>Timur</span>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1.5 bg-transparent border-bottom">
+                                <span class="text-muted"><i class="fas fa-arrow-right text-warning me-1"></i> Timur</span>
                                 <span class="fw-semibold text-dark">Area Perkebunan</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-                                <span class="text-muted"><i class="fas fa-arrow-left text-info me-2"></i>Barat</span>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1.5 bg-transparent border-0">
+                                <span class="text-muted"><i class="fas fa-arrow-left text-info me-1"></i> Barat</span>
                                 <span class="fw-semibold text-dark">Dusun Timbuseng I</span>
                             </li>
                         </ul>
                     </div>
 
                     <!-- FASILITAS UMUM -->
-                    <div class="content-card mb-4">
-                        <b class="d-block fs-6 text-dark mb-3"><i class="fas fa-city text-success me-2"></i>Fasilitas & Sarana Publik</b>
+                    <div class="content-card mb-3">
+                        <h5 class="fw-bold text-dark mb-2" style="font-size:1.05rem;"><i class="fas fa-city text-success me-1"></i> Fasilitas & Sarana Publik</h5>
                         
-                        <div class="d-flex align-items-center gap-3 mb-2 p-2.5 bg-light rounded-3">
-                            <i class="fas fa-mosque text-warning fs-4"></i>
+                        <div class="d-flex align-items-center gap-2 mb-2 p-2 bg-light rounded-3">
+                            <i class="fas fa-mosque text-warning fs-5"></i>
                             <div>
-                                <h6 class="fw-bold mb-0 text-dark small">Masjid Dusun Panaikang II</h6>
-                                <small class="text-muted" style="font-size:0.75rem;">Pusat Peribadatan & Keagamaan Warga</small>
+                                <h6 class="fw-bold mb-0 text-dark" style="font-size:0.85rem;">Masjid Dusun Panaikang II</h6>
+                                <small class="text-muted" style="font-size:0.72rem;">Pusat Peribadatan & Keagamaan Warga</small>
                             </div>
                         </div>
 
-                        <div class="d-flex align-items-center gap-3 mb-2 p-2.5 bg-light rounded-3">
-                            <i class="fas fa-clinic-medical text-danger fs-4"></i>
+                        <div class="d-flex align-items-center gap-2 mb-2 p-2 bg-light rounded-3">
+                            <i class="fas fa-clinic-medical text-danger fs-5"></i>
                             <div>
-                                <h6 class="fw-bold mb-0 text-dark small">Posyandu Panaikang II</h6>
-                                <small class="text-muted" style="font-size:0.75rem;">Pos Layanan Kesehatan Ibu & Balita</small>
+                                <h6 class="fw-bold mb-0 text-dark" style="font-size:0.85rem;">Posyandu Panaikang II</h6>
+                                <small class="text-muted" style="font-size:0.72rem;">Pos Layanan Kesehatan Ibu & Balita</small>
                             </div>
                         </div>
 
-                        <div class="d-flex align-items-center gap-3 p-2.5 bg-light rounded-3">
-                            <i class="fas fa-road text-success fs-4"></i>
+                        <div class="d-flex align-items-center gap-2 p-2 bg-light rounded-3">
+                            <i class="fas fa-road text-success fs-5"></i>
                             <div>
-                                <h6 class="fw-bold mb-0 text-dark small">Jalan Tani & Akses Warga</h6>
-                                <small class="text-muted" style="font-size:0.75rem;">Infrastruktur Mobilisasi Hasil Panen</small>
+                                <h6 class="fw-bold mb-0 text-dark" style="font-size:0.85rem;">Jalan Tani & Akses Warga</h6>
+                                <small class="text-muted" style="font-size:0.72rem;">Infrastruktur Mobilisasi Hasil Panen</small>
                             </div>
                         </div>
                     </div>
 
                     <!-- PENGADUAN -->
-                    <div class="card border-0 bg-success text-white rounded-4 p-4 shadow-sm">
-                        <h6 class="fw-bold mb-2"><i class="fas fa-headset me-2"></i>Layanan Warga Dusun</h6>
-                        <p class="small text-white-50 mb-3">Membutuhkan pelayanan administrasi atau ingin menyampaikan usulan di Dusun Panaikang II?</p>
-                        <a href="pengaduan.html" class="btn btn-light btn-sm text-success fw-bold rounded-pill"><i class="fas fa-paper-plane me-1"></i> Ajukan Pengaduan / Usulan</a>
+                    <div class="card border-0 bg-success text-white rounded-4 p-3 shadow-sm">
+                        <h6 class="fw-bold mb-1 fs-6"><i class="fas fa-headset me-1"></i> Layanan Warga Dusun</h6>
+                        <p class="small text-white-50 mb-2" style="font-size:0.78rem;">Membutuhkan pelayanan administrasi atau ingin menyampaikan usulan di Dusun Panaikang II?</p>
+                        <a href="pengaduan.html" class="btn btn-light btn-sm text-success fw-bold rounded-pill w-100" style="font-size:0.8rem;"><i class="fas fa-paper-plane me-1"></i> Ajukan Pengaduan / Usulan</a>
                     </div>
 
                 </div>
@@ -404,9 +441,15 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-dark text-white pt-4 pb-3">
+    <footer class="bg-dark text-white pt-4 pb-3 border-top border-success border-3">
         <div class="container text-center">
-            <p class="small text-white-50 mb-0">©2026 Posko 10 KKN UHM | Wilayah Dusun Panaikang II, Desa Timbuseng, Kec. Polongbangkeng Timur, Takalar.</p>
+            <div class="mb-2">
+                <img src="logo.png" alt="Logo Desa" height="38" onerror="this.onerror=null; this.src='image.png';">
+            </div>
+            <h6 class="fw-bold text-white mb-1 fs-6">Pemerintah Desa Timbuseng</h6>
+            <p class="small text-white-50 mb-2" style="font-size: 0.75rem;">Kecamatan Polongbangkeng Timur, Kabupaten Takalar, Sulawesi Selatan</p>
+            <hr class="border-secondary my-2">
+            <p class="small text-white-50 mb-0" style="font-size: 0.72rem;">©2026 Posko 10 KKN UHM — Wilayah Dusun Panaikang II, Desa Timbuseng, Takalar.</p>
         </div>
     </footer>
 
