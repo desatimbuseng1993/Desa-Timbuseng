@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informasi Publik & Berita - Desa Timbuseng Kab. Takalar</title>
+    <title>Informasi Publik, Pengumuman & Berita - Desa Timbuseng</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome 6 Icons -->
@@ -82,7 +82,7 @@
             padding: 80px 0 60px 0;
         }
 
-        /* Card Berita & Informasi */
+        /* Card Berita & Pengumuman */
         .info-card {
             border: 1px solid #e2e8f0;
             border-radius: 16px;
@@ -133,6 +133,22 @@
             z-index: 2;
         }
 
+        /* Jadwal Kegiatan Card */
+        .schedule-card {
+            border-left: 5px solid var(--accent-color);
+            background: #fff;
+            border-radius: 12px;
+            border-top: 1px solid #e2e8f0;
+            border-right: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .schedule-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
         /* Footer */
         footer {
             background-color: #0b1510;
@@ -173,33 +189,6 @@
             background-color: #050a07;
             border-top: 1px solid #1a2e22;
             font-size: 0.875rem;
-        }
-
-        /* FLOATING ADMIN BUTTON */
-        .admin-fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1050;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background-color: #1a202c;
-            color: #f39c12;
-            border: 2px solid #2d3748;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .admin-fab:hover {
-            background-color: #f39c12;
-            color: #1a202c;
-            transform: scale(1.1) rotate(15deg);
         }
     </style>
 </head>
@@ -250,98 +239,149 @@
     <!-- HEADER INFORMASI PUBLIK -->
     <header class="info-header text-center">
         <div class="container">
-            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill text-uppercase fw-bold mb-3">Pusat Transparansi Desa</span>
-            <h1 class="display-6 display-md-5 fw-extrabold mb-2">Informasi Publik & Berita Desa</h1>
+            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill text-uppercase fw-bold mb-3">Pusat Pengumuman & Berita</span>
+            <h1 class="display-6 display-md-5 fw-extrabold mb-2">Informasi Publik & Agenda Desa</h1>
             <p class="lead text-white-50 mx-auto fs-6 fs-md-5" style="max-width: 750px;">
-                Dapatkan pengumuman resmi pemerintah desa, jadwal kegiatan kemasyarakatan, liputan program pembangunan, serta berita terbaru dari Desa Timbuseng.
+                Pantau jadwal kegiatan mendatang, pengumuman resmi pemerintahan, serta liputan berita kompleks Desa Timbuseng yang diperbarui langsung melalui dasbor admin.
             </p>
         </div>
     </header>
 
-    <!-- KONTEN UTAMA INFORMASI & BERITA -->
+    <!-- KONTEN UTAMA: JADWAL KEGIATAN & BERITA KOMPLEKS -->
     <section class="py-5">
         <div class="container">
             
-            <!-- PENGUMUMAN PENTING -->
-            <div class="alert alert-warning border-0 shadow-sm rounded-4 p-4 mb-5 d-flex align-items-center gap-3">
-                <div class="fs-1 text-warning flex-shrink-0"><i class="fas fa-bullhorn"></i></div>
-                <div>
-                    <h5 class="fw-bold text-dark mb-1">Pengumuman Pelayanan Administrasi</h5>
-                    <p class="text-secondary small mb-0">Kantor Desa Timbuseng melayani pengurusan administrasi kependudukan (KTP, KK, Surat Pengantar) setiap hari kerja Senin s/d Jumat pukul 08:00 - 16:00 WITA. Pastikan membawa kelengkapan berkas yang diperlukan.</p>
-                </div>
-            </div>
-
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <div>
-                    <h3 class="fw-bold text-dark mb-1">Berita & Kegiatan Terbaru</h3>
-                    <p class="text-muted small mb-0">Informasi seputar agenda dan kegiatan pemerintahan serta warga Desa Timbuseng.</p>
-                </div>
-            </div>
-
-            <!-- GRID ARTIKEL / BERITA -->
-            <div class="row g-4">
-                <!-- BERITA 1 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="info-card shadow-sm">
-                        <div>
-                            <div class="info-img-wrapper">
-                                <span class="info-badge">Pemerintahan</span>
-                                <img src="kantor.png" alt="Kantor Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Desa+Timbuseng';">
-                            </div>
-                            <div class="p-4">
-                                <small class="text-muted d-block mb-2"><i class="far fa-calendar-alt me-1 text-success"></i> 2026 | Kantor Desa Timbuseng</small>
-                                <h5 class="fw-bold text-dark mb-2">Optimalisasi Pelayanan Publik Berbasis Digital di Kantor Desa</h5>
-                                <p class="text-muted small mb-3">Pemerintah Desa Timbuseng terus meningkatkan kualitas pelayanan administratif warga melalui pemanfaatan portal sistem informasi desa terpadu...</p>
-                            </div>
-                        </div>
-                        <div class="px-4 pb-4 pt-0">
-                            <button type="button" class="btn btn-outline-success btn-sm w-100 fw-semibold rounded-pill" data-bs-toggle="modal" data-bs-target="#modalBerita1">
-                                Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i>
-                            </button>
-                        </div>
+            <!-- BAGIAN 1: JADWAL & PENGUMUMAN KEGIATAN YANG AKAN DATANG -->
+            <div class="mb-5">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <div>
+                        <span class="text-success fw-bold text-uppercase tracking-wider small"><i class="fas fa-calendar-check me-1"></i> Agenda & Jadwal</span>
+                        <h3 class="fw-bold text-dark mt-1">Pengumuman & Kegiatan Mendatang</h3>
                     </div>
                 </div>
 
-                <!-- BERITA 2 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="info-card shadow-sm">
-                        <div>
-                            <div class="info-img-wrapper">
-                                <span class="info-badge" style="background-color: var(--accent-color); color: #000;">Kearifan Lokal</span>
-                                <img src="image.png" alt="Tradisi Desa" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Tradisi+Desa';">
+                <div class="row g-4" id="dynamicScheduleContainer">
+                    <!-- Item Jadwal 1 -->
+                    <div class="col-md-4">
+                        <div class="schedule-card p-4 h-100 shadow-sm">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <span class="badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold">18 Mar 2026</span>
+                                <small class="text-muted"><i class="fas fa-clock me-1"></i> 09:00 WITA</small>
                             </div>
-                            <div class="p-4">
-                                <small class="text-muted d-block mb-2"><i class="far fa-calendar-alt me-1 text-success"></i> Tradisi & Budaya</small>
-                                <h5 class="fw-bold text-dark mb-2">Pelestarian Mata Air Sakral Je'ne Timbusu' di Desa Timbuseng</h5>
-                                <p class="text-muted small mb-3">Masyarakat senantiasa merawat nilai sejarah asal-usul nama desa serta melestarikan ritual budaya lokal yang diwariskan secara turun-temurun...</p>
+                            <h5 class="fw-bold text-dark mb-2">Musyawarah Perencanaan Pembangunan (Musrenbang) Desa</h5>
+                            <p class="text-muted small mb-3">Pembahasan final RKPDes dan penetapan prioritas pembangunan infrastruktur jalan tani di 7 wilayah dusun.</p>
+                            <div class="d-flex align-items-center gap-2 text-success small fw-semibold">
+                                <i class="fas fa-map-marker-alt"></i> Aula Kantor Desa Timbuseng
                             </div>
                         </div>
-                        <div class="px-4 pb-4 pt-0">
-                            <button type="button" class="btn btn-outline-success btn-sm w-100 fw-semibold rounded-pill" data-bs-toggle="modal" data-bs-target="#modalBerita2">
-                                Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i>
-                            </button>
+                    </div>
+
+                    <!-- Item Jadwal 2 -->
+                    <div class="col-md-4">
+                        <div class="schedule-card p-4 h-100 shadow-sm">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <span class="badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold">25 Mar 2026</span>
+                                <small class="text-muted"><i class="fas fa-clock me-1"></i> 08:00 WITA</small>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-2">Pelayanan Posyandu & Pemeriksaan Kesehatan Warga</h5>
+                            <p class="text-muted small mb-3">Pemeriksaan kesehatan gratis bagi balita, ibu hamil, dan lansia bekerja sama dengan Kasi Pemberdayaan.</p>
+                            <div class="d-flex align-items-center gap-2 text-success small fw-semibold">
+                                <i class="fas fa-map-marker-alt"></i> Puskesmas Pembantu Desa
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item Jadwal 3 -->
+                    <div class="col-md-4">
+                        <div class="schedule-card p-4 h-100 shadow-sm">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <span class="badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold">02 Apr 2026</span>
+                                <small class="text-muted"><i class="fas fa-clock me-1"></i> 14:00 WITA</small>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-2">Kerja Bakti Massal Kebersihan Lingkungan Dusun</h5>
+                            <p class="text-muted small mb-3">Pembersihan saluran irigasi teknis seluas 216,53 Ha dan pemeliharaan fasilitas umum menyambut musim tanam.</p>
+                            <div class="d-flex align-items-center gap-2 text-success small fw-semibold">
+                                <i class="fas fa-map-marker-alt"></i> Seluruh Wilayah Dusun
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- BERITA 3 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="info-card shadow-sm">
-                        <div>
-                            <div class="info-img-wrapper">
-                                <span class="info-badge bg-secondary">Pembangunan</span>
-                                <img src="kantor.png" alt="Pembangunan Desa" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Pembangunan';">
+            <!-- BAGIAN 2: BERITA KOMPLEKS & LIPUTAN DESA -->
+            <div class="pt-4 border-top">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <div>
+                        <span class="text-success fw-bold text-uppercase tracking-wider small"><i class="fas fa-newspaper me-1"></i> Liputan & Artikel</span>
+                        <h3 class="fw-bold text-dark mt-1">Berita Kompleks & Kegiatan Desa</h3>
+                    </div>
+                </div>
+
+                <!-- GRID BERITA KOMPLEKS (Dinamis / Terhubung ke Admin) -->
+                <div class="row g-4" id="dynamicNewsContainer">
+                    <!-- BERITA 1 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="info-card shadow-sm">
+                            <div>
+                                <div class="info-img-wrapper">
+                                    <span class="info-badge">Pemerintahan</span>
+                                    <img src="kantor.png" alt="Kantor Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Desa+Timbuseng';">
+                                </div>
+                                <div class="p-4">
+                                    <small class="text-muted d-block mb-2"><i class="far fa-calendar-alt me-1 text-success"></i> 2026 | Kantor Desa Timbuseng</small>
+                                    <h5 class="fw-bold text-dark mb-2">Optimalisasi Pelayanan Publik Berbasis Digital di Kantor Desa</h5>
+                                    <p class="text-muted small mb-3">Pemerintah Desa Timbuseng terus meningkatkan kualitas pelayanan administratif warga melalui pemanfaatan portal sistem informasi desa terpadu...</p>
+                                </div>
                             </div>
-                            <div class="p-4">
-                                <small class="text-muted d-block mb-2"><i class="far fa-calendar-alt me-1 text-success"></i> Infrastruktur Desa</small>
-                                <h5 class="fw-bold text-dark mb-2">Percepatan Pembangunan Jalan Tani & Irigasi 7 Dusun</h5>
-                                <p class="text-muted small mb-3">Fokus pembangunan infrastruktur diarahkan untuk mempermudah mobilitas perkebunan tebu serta kelancaran irigasi sawah warga...</p>
+                            <div class="px-4 pb-4 pt-0">
+                                <button type="button" class="btn btn-outline-success btn-sm w-100 fw-semibold rounded-pill" data-bs-toggle="modal" data-bs-target="#modalBerita1">
+                                    Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i>
+                                </button>
                             </div>
                         </div>
-                        <div class="px-4 pb-4 pt-0">
-                            <button type="button" class="btn btn-outline-success btn-sm w-100 fw-semibold rounded-pill" data-bs-toggle="modal" data-bs-target="#modalBerita3">
-                                Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i>
-                            </button>
+                    </div>
+
+                    <!-- BERITA 2 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="info-card shadow-sm">
+                            <div>
+                                <div class="info-img-wrapper">
+                                    <span class="info-badge" style="background-color: var(--accent-color); color: #000;">Kearifan Lokal</span>
+                                    <img src="image.png" alt="Tradisi Desa" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Tradisi+Desa';">
+                                </div>
+                                <div class="p-4">
+                                    <small class="text-muted d-block mb-2"><i class="far fa-calendar-alt me-1 text-success"></i> Tradisi & Budaya</small>
+                                    <h5 class="fw-bold text-dark mb-2">Pelestarian Mata Air Sakral Je'ne Timbusu' di Desa Timbuseng</h5>
+                                    <p class="text-muted small mb-3">Masyarakat senantiasa merawat nilai sejarah asal-usul nama desa serta melestarikan ritual budaya lokal yang diwariskan secara turun-temurun...</p>
+                                </div>
+                            </div>
+                            <div class="px-4 pb-4 pt-0">
+                                <button type="button" class="btn btn-outline-success btn-sm w-100 fw-semibold rounded-pill" data-bs-toggle="modal" data-bs-target="#modalBerita2">
+                                    Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BERITA 3 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="info-card shadow-sm">
+                            <div>
+                                <div class="info-img-wrapper">
+                                    <span class="info-badge bg-secondary">Pembangunan</span>
+                                    <img src="kantor.png" alt="Pembangunan Desa" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Pembangunan';">
+                                </div>
+                                <div class="p-4">
+                                    <small class="text-muted d-block mb-2"><i class="far fa-calendar-alt me-1 text-success"></i> Infrastruktur Desa</small>
+                                    <h5 class="fw-bold text-dark mb-2">Percepatan Pembangunan Jalan Tani & Irigasi 7 Dusun</h5>
+                                    <p class="text-muted small mb-3">Fokus pembangunan infrastruktur diarahkan untuk mempermudah mobilitas perkebunan tebu serta kelancaran irigasi sawah warga...</p>
+                                </div>
+                            </div>
+                            <div class="px-4 pb-4 pt-0">
+                                <button type="button" class="btn btn-outline-success btn-sm w-100 fw-semibold rounded-pill" data-bs-toggle="modal" data-bs-target="#modalBerita3">
+                                    Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -437,6 +477,104 @@
         </div>
     </div>
 
+    <!-- SCRIPT JS UNTUK SINKRONISASI DATA DINAMIS DARI ADMIN DASHBOARD -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Memuat Jadwal/Pengumuman dari LocalStorage admin jika ada
+            const savedSchedules = localStorage.getItem('desa_schedules');
+            if (savedSchedules) {
+                try {
+                    const schedules = JSON.parse(savedSchedules);
+                    if (schedules && schedules.length > 0) {
+                        const container = document.getElementById('dynamicScheduleContainer');
+                        container.innerHTML = '';
+                        schedules.forEach(item => {
+                            container.innerHTML += `
+                                <div class="col-md-4">
+                                    <div class="schedule-card p-4 h-100 shadow-sm">
+                                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                            <span class="badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold">${item.date}</span>
+                                            <small class="text-muted"><i class="fas fa-clock me-1"></i> ${item.time}</small>
+                                        </div>
+                                        <h5 class="fw-bold text-dark mb-2">${item.title}</h5>
+                                        <p class="text-muted small mb-3">${item.desc}</p>
+                                        <div class="d-flex align-items-center gap-2 text-success small fw-semibold">
+                                            <i class="fas fa-map-marker-alt"></i> ${item.location}
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    }
+                } catch (e) {
+                    console.error("Gagal memuat jadwal dari admin storage", e);
+                }
+            }
+
+            // Memuat Berita Kompleks dari LocalStorage admin jika ada
+            const savedNews = localStorage.getItem('desa_news');
+            if (savedNews) {
+                try {
+                    const newsList = JSON.parse(savedNews);
+                    if (newsList && newsList.length > 0) {
+                        const newsContainer = document.getElementById('dynamicNewsContainer');
+                        newsContainer.innerHTML = '';
+                        newsList.forEach((news, index) => {
+                            newsContainer.innerHTML += `
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="info-card shadow-sm">
+                                        <div>
+                                            <div class="info-img-wrapper">
+                                                <span class="info-badge">${news.category || 'Berita'}</span>
+                                                <img src="${news.image || 'kantor.png'}" alt="${news.title}" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Desa+Timbuseng';">
+                                            </div>
+                                            <div class="p-4">
+                                                <small class="text-muted d-block mb-2"><i class="far fa-calendar-alt me-1 text-success"></i> ${news.date || '2026'}</small>
+                                                <h5 class="fw-bold text-dark mb-2">${news.title}</h5>
+                                                <p class="text-muted small mb-3">${news.summary || news.content.substring(0, 100)}...</p>
+                                            </div>
+                                        </div>
+                                        <div class="px-4 pb-4 pt-0">
+                                            <button type="button" class="btn btn-outline-success btn-sm w-100 fw-semibold rounded-pill" data-bs-toggle="modal" data-bs-target="#modalDynamicNews${index}">
+                                                Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Modal Dinamis untuk Berita Admin -->
+                                <div class="modal fade" id="modalDynamicNews${index}" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                        <div class="modal-content border-0 shadow-lg">
+                                            <div class="modal-header bg-desa text-white">
+                                                <h5 class="modal-title fw-bold"><i class="fas fa-bullhorn me-2 text-warning"></i>${news.title}</h5>
+                                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body p-4">
+                                                <span class="badge bg-success mb-2">${news.category || 'Berita'}</span>
+                                                <h3 class="fw-bold text-dark mb-3">${news.title}</h3>
+                                                <small class="text-muted d-block mb-4"><i class="far fa-calendar-alt me-1 text-success"></i> ${news.date || '2026'}</small>
+                                                <div class="mb-4 text-center">
+                                                    <img src="${news.image || 'kantor.png'}" class="img-fluid rounded-4 shadow-sm" alt="${news.title}" style="max-height: 300px; width: 100%; object-fit: cover;">
+                                                </div>
+                                                <p class="text-secondary leading-relaxed">${news.content}</p>
+                                            </div>
+                                            <div class="modal-footer bg-light">
+                                                <button type="button" class="btn btn-secondary btn-sm rounded-pill px-4" data-bs-dismiss="modal">Tutup</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    }
+                } catch (e) {
+                    console.error("Gagal memuat berita dari admin storage", e);
+                }
+            }
+        });
+    </script>
+
     <!-- FOOTER UTAMA -->
     <footer class="pt-5">
         <div class="container pb-4">
@@ -512,57 +650,7 @@
         </div>
     </footer>
 
-    <!-- FLOATING ADMIN BUTTON -->
-    <button class="admin-fab" data-bs-toggle="modal" data-bs-target="#loginModal" title="Akses Admin">
-        <i class="fas fa-user-shield"></i>
-    </button>
-
-    <!-- MODAL OTORISASI ADMIN -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg">
-                <div class="modal-header bg-dark text-white">
-                    <h5 class="modal-title fw-bold" id="loginModalLabel"><i class="fas fa-lock me-2 text-warning"></i>Otorisasi Admin</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <p class="text-muted small mb-3">Masukkan kata sandi administrator untuk masuk ke Halaman Dasbor Admin (`admin.html`).</p>
-                    <div class="mb-3">
-                        <label for="adminPassword" class="form-label fw-bold">Kata Sandi</label>
-                        <input type="password" class="form-control" id="adminPassword" placeholder="Masukkan sandi...">
-                        <div id="passwordError" class="text-danger small mt-2 d-none"><i class="fas fa-exclamation-circle me-1"></i>Sandi yang Anda masukkan salah.</div>
-                    </div>
-                    <button type="button" class="btn btn-warning w-100 fw-bold" onclick="verifyPassword()">Masuk Ke Halaman Admin</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Skrip Verifikasi Sandi Admin -->
-    <script>
-        const ADMIN_PASSWORD = "admintimbuseng";
-
-        function verifyPassword() {
-            const input = document.getElementById("adminPassword").value;
-            const errorMsg = document.getElementById("passwordError");
-            
-            if(input === ADMIN_PASSWORD) {
-                errorMsg.classList.add("d-none");
-                window.location.href = "admin.html";
-            } else {
-                errorMsg.classList.remove("d-none");
-            }
-        }
-
-        document.getElementById("adminPassword").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                verifyPassword();
-            }
-        });
-    </script>
 </body>
 </html>
