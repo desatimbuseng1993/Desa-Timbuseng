@@ -2,8 +2,8 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>BUMDes Desa Timbuseng - Badan Usaha Milik Desa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>KMP Desa Timbuseng - Kawasan Mandiri Pangan</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome 6 Icons -->
@@ -172,7 +172,7 @@
             }
         }
 
-        /* Profile Card */
+        /* Profile Manager Card */
         .profile-card {
             background: #ffffff;
             border-radius: 18px;
@@ -210,8 +210,8 @@
             font-size: 0.9rem;
         }
 
-        /* Unit Usaha Cards */
-        .unit-card {
+        /* Program Cards */
+        .program-card {
             border: 1px solid var(--border-color);
             border-radius: 14px;
             padding: 1.2rem;
@@ -222,7 +222,7 @@
             flex-direction: column;
             justify-content: space-between;
         }
-        .unit-card:hover {
+        .program-card:hover {
             border-color: var(--primary-color);
             background-color: #fcfdfe;
             box-shadow: 0 6px 20px rgba(13, 92, 58, 0.08);
@@ -311,15 +311,15 @@
     <header class="page-hero text-center">
         <div class="container" data-aos="fade-up">
             <div class="hero-badge mb-3 shadow-sm">
-                <i class="fas fa-store"></i> Badan Usaha Milik Desa
+                <i class="fas fa-leaf"></i> Kawasan Mandiri Pangan
             </div>
-            <h1 class="fw-extrabold text-white mb-2">BUMDes Desa Timbuseng</h1>
+            <h1 class="fw-extrabold text-white mb-2">KMP Desa Timbuseng</h1>
             <p class="lead text-white-50 mx-auto mb-4" style="max-width: 685px;">
-                Menggerakkan perekonomian lokal, mengelola unit usaha produktif, dan meningkatkan Pendapatan Asli Desa (PADes) demi kesejahteraan bersama warga Desa Timbuseng.
+                Mendorong kemandirian kelompok masyarakat dalam pemenuhan kebutuhan pangan keluarga, pemanfaatan pekarangan, serta penguatan sektor pertanian dan pangan lokal.
             </p>
             <div class="d-flex justify-content-center gap-2 flex-wrap">
-                <a href="#profil-direktur" class="btn btn-warning rounded-pill px-4 py-2 fw-bold shadow-sm"><i class="fas fa-user-tie me-2"></i>Direktur BUMDes</a>
-                <a href="#unit-usaha" class="btn btn-outline-light rounded-pill px-4 py-2 fw-semibold"><i class="fas fa-boxes me-2"></i>Unit Usaha</a>
+                <a href="#profil-ketua-kmp" class="btn btn-warning rounded-pill px-4 py-2 fw-bold shadow-sm"><i class="fas fa-user-circle me-2"></i>Ketua / Pengelola KMP</a>
+                <a href="#program-kmp" class="btn btn-outline-light rounded-pill px-4 py-2 fw-semibold"><i class="fas fa-tasks me-2"></i>Program Pangan</a>
             </div>
         </div>
     </header>
@@ -332,37 +332,37 @@
             <div class="row g-3 mb-4 mb-md-5" data-aos="fade-up">
                 <div class="col-6 col-md-3">
                     <div class="stat-card d-flex align-items-center gap-3">
-                        <div class="stat-icon"><i class="fas fa-briefcase"></i></div>
-                        <div>
-                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Badan Usaha</span>
-                            <h3 class="fw-bold text-dark mb-0" style="font-size: 1.15rem;">Resmi <small class="fs-6 text-muted fw-normal">Desa</small></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-card d-flex align-items-center gap-3">
-                        <div class="stat-icon"><i class="fas fa-store-alt"></i></div>
-                        <div>
-                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Unit Produktif</span>
-                            <h3 class="fw-bold text-dark mb-0" style="font-size: 1.15rem;">Aktif <small class="fs-6 text-muted fw-normal">Berjalan</small></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-card d-flex align-items-center gap-3">
-                        <div class="stat-icon"><i class="fas fa-hand-holding-usd"></i></div>
-                        <div>
-                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Kontribusi</span>
-                            <h3 class="fw-bold text-dark mb-0" style="font-size: 1.15rem;">PADes <small class="fs-6 text-muted fw-normal">Tumbuh</small></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-card d-flex align-items-center gap-3">
                         <div class="stat-icon"><i class="fas fa-users"></i></div>
                         <div>
-                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Pemberdayaan</span>
-                            <h3 class="fw-bold text-success mb-0" style="font-size: 1.15rem;">Warga <small class="fs-6 text-muted fw-normal">Lokal</small></h3>
+                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Kelompok Tani / Warga</span>
+                            <h3 class="fw-bold text-dark mb-0" style="font-size: 1.15rem;">Aktif <small class="fs-6 text-muted fw-normal">Binaan</small></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card d-flex align-items-center gap-3">
+                        <div class="stat-icon"><i class="fas fa-seedling"></i></div>
+                        <div>
+                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Pemanfaatan</span>
+                            <h3 class="fw-bold text-dark mb-0" style="font-size: 1.15rem;">Pekarangan <small class="fs-6 text-muted fw-normal">Sehat</small></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card d-flex align-items-center gap-3">
+                        <div class="stat-icon"><i class="fas fa-map-marked-alt"></i></div>
+                        <div>
+                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Wilayah Kerja</span>
+                            <h3 class="fw-bold text-dark mb-0">7 <small class="fs-6 text-muted fw-normal">Dusun</small></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card d-flex align-items-center gap-3">
+                        <div class="stat-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div>
+                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Ketahanan</span>
+                            <h3 class="fw-bold text-success mb-0" style="font-size: 1.15rem;">Pangan <small class="fs-6 text-muted fw-normal">Keluarga</small></h3>
                         </div>
                     </div>
                 </div>
@@ -370,115 +370,115 @@
 
             <div class="row g-4">
                 
-                <!-- KOLOM KIRI: PROFIL DIREKTUR & UNIT USAHA -->
+                <!-- KOLOM KIRI: PROFIL KETUA & PROGRAM UTAMA -->
                 <div class="col-lg-8">
                     
-                    <!-- PROFIL DIREKTUR BUMDES -->
-                    <div class="profile-card mb-4" id="profil-direktur" data-aos="fade-up">
+                    <!-- PROFIL KETUA / PENGELOLA KMP -->
+                    <div class="profile-card mb-4" id="profil-ketua-kmp" data-aos="fade-up">
                         <div class="profile-card-header d-flex align-items-center px-4">
-                            <span class="badge bg-warning text-dark fw-bold px-3 py-1 rounded-pill" style="font-size: 0.75rem;"><i class="fas fa-store me-1"></i> BADAN USAHA MILIK DESA</span>
+                            <span class="badge bg-warning text-dark fw-bold px-3 py-1 rounded-pill" style="font-size: 0.75rem;"><i class="fas fa-leaf me-1"></i> KAWASAN MANDIRI PANGAN</span>
                         </div>
                         <div class="px-4 pb-4">
                             <div class="d-flex flex-column flex-md-row align-items-center align-items-md-end gap-3 profile-img-wrapper mb-3">
-                                <img src="profil_bumdes.png" alt="Direktur BUMDes Desa Timbuseng" class="ketua-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/130?text=DIREKTUR';">
+                                <img src="profil_kmp.png" alt="Pengelola KMP Desa Timbuseng" class="ketua-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/130?text=KMP';">
                                 <div class="text-center text-md-start">
-                                    <span class="badge badge-soft-primary px-3 py-1 rounded-pill mb-2" style="font-size: 0.75rem;"><i class="fas fa-user-shield me-1"></i> Direktur BUMDes Timbuseng</span>
-                                    <h3 class="fw-bold text-dark mb-1" style="font-size: 1.25rem;">Nama Direktur BUMDes</h3>
-                                    <p class="text-muted small mb-0" style="font-size: 0.82rem;"><i class="fas fa-building me-1 text-success"></i> BUMDes "Timbuseng Mandiri"</p>
+                                    <span class="badge badge-soft-primary px-3 py-1 rounded-pill mb-2" style="font-size: 0.75rem;"><i class="fas fa-user-shield me-1 text-success"></i> Pengelola KMP Desa Timbuseng</span>
+                                    <h3 class="fw-bold text-dark mb-1" style="font-size: 1.25rem;">Ketua / Pengelola KMP</h3>
+                                    <p class="text-muted small mb-0" style="font-size: 0.82rem;"><i class="fas fa-building me-1 text-success"></i> Kawasan Mandiri Pangan Desa Timbuseng</p>
                                 </div>
                             </div>
 
                             <div class="quote-box my-3">
                                 <p class="mb-1 text-dark">
-                                    "BUMDes hadir bukan sekadar mencari keuntungan, melainkan menjadi motor penggerak ekonomi kerakyatan di Desa Timbuseng. Kami berkomitmen mengelola potensi lokal secara profesional demi kemandirian dan kesejahteraan seluruh warga."
+                                    "Kemandirian pangan dimulai dari pekarangan rumah dan kebersamaan kelompok tani di desa. Melalui program KMP Desa Timbuseng, kami berupaya memberdayakan warga agar mampu memproduksi pangan secara mandiri, sehat, dan berkelanjutan."
                                 </p>
-                                <small class="fw-bold text-success d-block mt-1">— Sambutan Direktur BUMDes Timbuseng</small>
+                                <small class="fw-bold text-success d-block mt-1">— Pengelola KMP Desa Timbuseng</small>
                             </div>
 
                             <div class="d-flex flex-wrap gap-2 pt-1">
-                                <a href="https://wa.me/" target="_blank" class="btn btn-outline-success btn-sm rounded-pill px-3 fw-semibold" style="font-size: 0.8rem;"><i class="fab fa-whatsapp me-1"></i> Kontak BUMDes</a>
-                                <button type="button" class="btn btn-success btn-sm rounded-pill px-3 fw-semibold" data-bs-toggle="modal" data-bs-target="#kerjasamaModal" style="font-size: 0.8rem;"><i class="fas fa-handshake me-1"></i> Penawaran Kerja Sama</button>
+                                <a href="https://wa.me/" target="_blank" class="btn btn-outline-success btn-sm rounded-pill px-3 fw-semibold" style="font-size: 0.8rem;"><i class="fab fa-whatsapp me-1"></i> Kontak KMP</a>
+                                <button type="button" class="btn btn-success btn-sm rounded-pill px-3 fw-semibold" data-bs-toggle="modal" data-bs-target="#partisipasiKMPModal" style="font-size: 0.8rem;"><i class="fas fa-hands-helping me-1"></i> Bergabung / Konsultasi</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- UNIT USAHA BUMDES -->
-                    <div class="content-card" id="unit-usaha" data-aos="fade-up">
+                    <!-- PROGRAM UTAMA KMP -->
+                    <div class="content-card" id="program-kmp" data-aos="fade-up">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="section-title mb-0">Unit Usaha BUMDes</h4>
-                            <span class="badge bg-success rounded-pill px-3 py-1.5" style="font-size: 0.75rem;">Pilar Ekonomi</span>
+                            <h4 class="section-title mb-0">Program & Kegiatan Utama KMP</h4>
+                            <span class="badge bg-success rounded-pill px-3 py-1.5" style="font-size: 0.75rem;">Fokus Pangan</span>
                         </div>
-                        <p class="text-muted small mb-4" style="font-size: 0.85rem;">Berbagai lini usaha produktif yang dikelola oleh BUMDes Desa Timbuseng untuk melayani kebutuhan warga dan mendongkrak ekonomi desa.</p>
+                        <p class="text-muted small mb-4" style="font-size: 0.85rem;">Berbagai kegiatan nyata yang digerakkan untuk memperkuat ketahanan pangan warga di tingkat dusun dan keluarga.</p>
 
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <div class="unit-card">
-                                    <div>
-                                        <div class="d-flex align-items-center gap-3 mb-3">
-                                            <div class="stat-icon"><i class="fas fa-tint text-primary"></i></div>
-                                            <div>
-                                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Pengelolaan Air Bersih / PAMSIMAS</h6>
-                                                <span class="badge badge-soft-primary small" style="font-size: 0.7rem;">Layanan Publik</span>
-                                            </div>
-                                        </div>
-                                        <p class="small text-secondary mb-0" style="font-size: 0.85rem;">Penyediaan dan distribusi air bersih yang higienis dan terjangkau untuk kebutuhan rumah tangga warga desa.</p>
-                                    </div>
-                                    <div class="mt-3 pt-2 border-top">
-                                        <small class="text-muted" style="font-size: 0.78rem;"><i class="far fa-clock me-1"></i>Status: Beroperasi Aktif</small>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="unit-card">
+                                <div class="program-card">
                                     <div>
                                         <div class="d-flex align-items-center gap-3 mb-3">
                                             <div class="stat-icon"><i class="fas fa-seedling text-success"></i></div>
                                             <div>
-                                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Sarana Produksi & Pertanian</h6>
-                                                <span class="badge badge-soft-warning small" style="font-size: 0.7rem;">Agribisnis</span>
+                                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Pemanfaatan Pekarangan (KRPL)</h6>
+                                                <span class="badge badge-soft-primary small" style="font-size: 0.7rem;">Pangan Lestari</span>
                                             </div>
                                         </div>
-                                        <p class="small text-secondary mb-0" style="font-size: 0.85rem;">Penyediaan pupuk, bibit unggul, serta penyaluran alat pendukung pertanian lokal bagi para petani Timbuseng.</p>
+                                        <p class="small text-secondary mb-0" style="font-size: 0.85rem;">Edukasi dan pendampingan penanaman sayuran, buah, serta tanaman obat keluarga (Toga) di pekarangan rumah warga.</p>
                                     </div>
                                     <div class="mt-3 pt-2 border-top">
-                                        <small class="text-muted" style="font-size: 0.78rem;"><i class="far fa-clock me-1"></i>Status: Layanan Warga</small>
+                                        <small class="text-muted" style="font-size: 0.78rem;"><i class="far fa-clock me-1"></i>Pelaksanaan: Berkelanjutan</small>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
-                                <div class="unit-card">
+                                <div class="program-card">
                                     <div>
                                         <div class="d-flex align-items-center gap-3 mb-3">
-                                            <div class="stat-icon"><i class="fas fa-store text-warning"></i></div>
+                                            <div class="stat-icon"><i class="fas fa-carrot text-warning"></i></div>
                                             <div>
-                                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Toko / Grosir Desa (Retail)</h6>
-                                                <span class="badge badge-soft-primary small" style="font-size: 0.7rem;">Perdagangan</span>
+                                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Budidaya Hortikultura & Sayur</h6>
+                                                <span class="badge badge-soft-warning small" style="font-size: 0.7rem;">Pertanian</span>
                                             </div>
                                         </div>
-                                        <p class="small text-secondary mb-0" style="font-size: 0.85rem;">Penyediaan kebutuhan pokok sehari-hari dengan harga bersaing untuk mendukung perekonomian warga lokal.</p>
+                                        <p class="small text-secondary mb-0" style="font-size: 0.85rem;">Pengembangan kelompok tani hortikultura untuk memenuhi kebutuhan pasar lokal dan pasokan pangan harian desa.</p>
                                     </div>
                                     <div class="mt-3 pt-2 border-top">
-                                        <small class="text-muted" style="font-size: 0.78rem;"><i class="far fa-clock me-1"></i>Status: Buka Setiap Hari</small>
+                                        <small class="text-muted" style="font-size: 0.78rem;"><i class="far fa-clock me-1"></i>Pelaksanaan: Musim Tanam Aktif</small>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
-                                <div class="unit-card">
+                                <div class="program-card">
                                     <div>
                                         <div class="d-flex align-items-center gap-3 mb-3">
-                                            <div class="stat-icon"><i class="fas fa-hand-holding-usd text-success"></i></div>
+                                            <div class="stat-icon"><i class="fas fa-fish text-primary"></i></div>
                                             <div>
-                                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Simpan Pinjam / Layanan Mikro</h6>
-                                                <span class="badge badge-soft-warning small" style="font-size: 0.7rem;">Keuangan</span>
+                                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Kolam Gizi & Perikanan Darat</h6>
+                                                <span class="badge badge-soft-primary small" style="font-size: 0.7rem;">Protein Hewani</span>
                                             </div>
                                         </div>
-                                        <p class="small text-secondary mb-0" style="font-size: 0.85rem;">Fasilitas permodalan mikro yang mudah dan aman bagi pelaku UMKM serta wirausaha pemula di desa.</p>
+                                        <p class="small text-secondary mb-0" style="font-size: 0.85rem;">Pengembangan kolam terpal / pekarangan untuk budidaya ikan air tawar guna mencukupi kebutuhan gizi keluarga.</p>
                                     </div>
                                     <div class="mt-3 pt-2 border-top">
-                                        <small class="text-muted" style="font-size: 0.78rem;"><i class="far fa-clock me-1"></i>Status: Konsultasi Terbuka</small>
+                                        <small class="text-muted" style="font-size: 0.78rem;"><i class="far fa-clock me-1"></i>Pelaksanaan: Kelompok Warga</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="program-card">
+                                    <div>
+                                        <div class="d-flex align-items-center gap-3 mb-3">
+                                            <div class="stat-icon"><i class="fas fa-graduation-cap text-success"></i></div>
+                                            <div>
+                                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Pelatihan Pengolahan Pangan</h6>
+                                                <span class="badge badge-soft-warning small" style="font-size: 0.7rem;">Pelatihan</span>
+                                            </div>
+                                        </div>
+                                        <p class="small text-secondary mb-0" style="font-size: 0.85rem;">Pelatihan bagi ibu-ibu dan kelompok tani dalam mengolah hasil panen menjadi produk bernilai ekonomis.</p>
+                                    </div>
+                                    <div class="mt-3 pt-2 border-top">
+                                        <small class="text-muted" style="font-size: 0.78rem;"><i class="far fa-clock me-1"></i>Pelaksanaan: Berkala / Event</small>
                                     </div>
                                 </div>
                             </div>
@@ -487,39 +487,39 @@
 
                 </div>
 
-                <!-- KOLOM KANAN: STRUKTUR PENGURUS & KERJASAMA -->
+                <!-- KOLOM KANAN: STRUKTUR & BANNER GABUNG -->
                 <div class="col-lg-4">
 
-                    <!-- SEKSI STRUKTUR PENGURUS BUMDES -->
+                    <!-- SEKSI STRUKTUR / BIDANG KMP -->
                     <div class="content-card" data-aos="fade-left">
-                        <h5 class="fw-bold text-dark mb-3" style="font-size: 1.05rem;"><i class="fas fa-sitemap text-success me-2"></i>Struktur Pengelola BUMDes</h5>
+                        <h5 class="fw-bold text-dark mb-3" style="font-size: 1.05rem;"><i class="fas fa-sitemap text-success me-2"></i>Struktur Pengelola KMP</h5>
                         
                         <div class="d-flex flex-column gap-2">
                             <div class="org-card">
-                                <span class="badge bg-success text-white mb-1" style="font-size: 0.7rem;">Penasihat</span>
-                                <h6 class="fw-bold text-dark mb-1" style="font-size: 0.9rem;">Kepala Desa Timbuseng</h6>
-                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Bertindak sebagai komisaris/penasihat utama arah kebijakan usaha desa.</p>
+                                <span class="badge bg-success text-white mb-1" style="font-size: 0.7rem;">Pembina</span>
+                                <h6 class="fw-bold text-dark mb-1" style="font-size: 0.9rem;">Pemerintah Desa Timbuseng</h6>
+                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Pengarah kebijakan program ketahanan pangan desa.</p>
                             </div>
 
                             <div class="org-card">
-                                <span class="badge bg-success text-white mb-1" style="font-size: 0.7rem;">Pengurus Harian</span>
-                                <h6 class="fw-bold text-dark mb-1" style="font-size: 0.9rem;">Direktur & Sekretaris/Bendahara</h6>
-                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Mengelola operasional harian, administrasi, dan laporan keuangan.</p>
+                                <span class="badge bg-success text-white mb-1" style="font-size: 0.7rem;">Pengurus</span>
+                                <h6 class="fw-bold text-dark mb-1" style="font-size: 0.9rem;">Ketua, Sekretaris & Bendahara</h6>
+                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Koordinator pelaksana harian program kelompok mandiri pangan.</p>
                             </div>
 
                             <div class="org-card">
-                                <span class="badge bg-success text-white mb-1" style="font-size: 0.7rem;">Unit Operasional</span>
-                                <h6 class="fw-bold text-dark mb-1" style="font-size: 0.9rem;">Kepala Unit Usaha</h6>
-                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Pengelola teknis lapangan untuk masing-masing lini unit usaha BUMDes.</p>
+                                <span class="badge bg-success text-white mb-1" style="font-size: 0.7rem;">Anggota</span>
+                                <h6 class="fw-bold text-dark mb-1" style="font-size: 0.9rem;">Kelompok Tani & PKK Dusun</h6>
+                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Pelaksana langsung di 7 wilayah dusun Timbuseng.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- BANNER KERJASAMA -->
+                    <!-- BANNER GABUNG PROGRAM -->
                     <div class="card border-0 bg-success text-white rounded-4 p-4 shadow-sm" data-aos="fade-left" data-aos-delay="200">
-                        <h5 class="fw-bold mb-2" style="font-size: 1.05rem;"><i class="fas fa-handshake me-2"></i>Mitra & Kerja Sama</h5>
-                        <p class="small text-white-50 mb-3" style="font-size: 0.85rem;">Punya produk lokal, gagasan bisnis, atau ingin menjalin kemitraan strategis dengan BUMDes Timbuseng? Mari bergabung.</p>
-                        <button type="button" class="btn btn-light text-success fw-bold rounded-pill shadow-sm btn-sm px-3 py-2" data-bs-toggle="modal" data-bs-target="#kerjasamaModal" style="font-size: 0.85rem;"><i class="fas fa-edit me-1"></i> Ajukan Proposal / Pesan</button>
+                        <h5 class="fw-bold mb-2" style="font-size: 1.05rem;"><i class="fas fa-users me-2"></i>Ingin Ikut Serta?</h5>
+                        <p class="small text-white-50 mb-3" style="font-size: 0.85rem;">Mari bergabung dalam kelompok pemanfaatan pekarangan dan ketahanan pangan mandiri di dusun Anda.</p>
+                        <button type="button" class="btn btn-light text-success fw-bold rounded-pill shadow-sm btn-sm px-3 py-2" data-bs-toggle="modal" data-bs-target="#partisipasiKMPModal" style="font-size: 0.85rem;"><i class="fas fa-edit me-1"></i> Form Pendaftaran / Info</button>
                     </div>
 
                 </div>
@@ -528,39 +528,42 @@
         </div>
     </section>
 
-    <!-- MODAL PENAWARAN KERJA SAMA & USULAN USAHA -->
-    <div class="modal fade" id="kerjasamaModal" tabindex="-1" aria-labelledby="kerjasamaModalLabel" aria-hidden="true">
+    <!-- MODAL PARTISIPASI / KONSULTASI KMP -->
+    <div class="modal fade" id="partisipasiKMPModal" tabindex="-1" aria-labelledby="partisipasiKMPModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-4 border-0 shadow">
                 <div class="modal-header bg-desa text-white rounded-top-4">
-                    <h5 class="modal-title fw-bold fs-6" id="kerjasamaModalLabel"><i class="fas fa-store-alt me-2"></i>Form Kerja Sama / Usulan BUMDes</h5>
+                    <h5 class="modal-title fw-bold fs-6" id="partisipasiKMPModalLabel"><i class="fas fa-leaf me-2"></i>Form Partisipasi Program KMP</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
-                    <form id="formBumdes">
+                    <form id="formKMP">
                         <div class="mb-3">
-                            <label class="form-label small fw-bold">Nama Lengkap / Instansi</label>
-                            <input type="text" class="form-control rounded-3 form-control-sm" placeholder="Nama Anda atau nama usaha..." required>
+                            <label class="form-label small fw-bold">Nama Lengkap</label>
+                            <input type="text" class="form-control rounded-3 form-control-sm" placeholder="Masukkan nama Anda..." required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Asal Dusun</label>
+                            <select class="form-select rounded-3 form-select-sm" required>
+                                <option value="" selected disabled>-- Pilih Dusun --</option>
+                                <option value="Timbuseng I">Dusun Timbuseng I</option>
+                                <option value="Timbuseng II">Dusun Timbuseng II</option>
+                                <option value="Sauleya">Dusun Sauleya</option>
+                                <option value="Tanasambayang">Dusun Tanasambayang</option>
+                                <option value="Bontobaddo">Dusun Bontobaddo</option>
+                                <option value="Panaikang I">Dusun Panaikang I</option>
+                                <option value="Panaikang II">Dusun Panaikang II</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Nomor WhatsApp</label>
                             <input type="tel" class="form-control rounded-3 form-control-sm" placeholder="08xxxxxxxxxx" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label small fw-bold">Perihal / Kategori</label>
-                            <select class="form-select rounded-3 form-select-sm" required>
-                                <option value="" selected disabled>-- Pilih Kategori --</option>
-                                <option value="Penawaran Produk Lokal / UMKM">Penawaran Produk Lokal / UMKM</option>
-                                <option value="Kerja Sama Bisnis / Supplier">Kerja Sama Bisnis / Supplier</option>
-                                <option value="Layanan Unit Usaha">Pertanyaan Layanan Unit Usaha</option>
-                                <option value="Lainnya">Lainnya</option>
-                            </select>
+                            <label class="form-label small fw-bold">Pesan / Minat Program</label>
+                            <textarea class="form-control rounded-3 form-control-sm" rows="3" placeholder="Tuliskan ketertarikan Anda (misal: bibit sayur, kolam gizi, dll)..." required></textarea>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label small fw-bold">Pesan / Detail Usulan</label>
-                            <textarea class="form-control rounded-3 form-control-sm" rows="3" placeholder="Tuliskan detail penawaran atau pesan Anda di sini..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-success btn-sm w-100 rounded-pill fw-bold"><i class="fas fa-paper-plane me-1"></i> Kirim Pesan</button>
+                        <button type="submit" class="btn btn-success btn-sm w-100 rounded-pill fw-bold"><i class="fas fa-paper-plane me-1"></i> Kirim Pendaftaran</button>
                     </form>
                 </div>
             </div>
@@ -568,14 +571,14 @@
     </div>
 
     <!-- FLOATING ACTION BUTTON -->
-    <a href="https://wa.me/" target="_blank" class="btn btn-success rounded-circle p-3 floating-cta d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;" title="Hubungi BUMDes Via WA">
+    <a href="https://wa.me/" target="_blank" class="btn btn-success rounded-circle p-3 floating-cta d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;" title="Hubungi KMP Via WA">
         <i class="fab fa-whatsapp fs-4"></i>
     </a>
 
     <!-- FOOTER -->
     <footer class="bg-dark text-white pt-4 pb-3">
         <div class="container text-center">
-            <p class="small text-white-50 mb-0" style="font-size: 0.8rem;">©2026 P10 KKN UHM | BUMDes Desa Timbuseng, Kec. Polongbangkeng Timur, Kabupaten Takalar.</p>
+            <p class="small text-white-50 mb-0" style="font-size: 0.8rem;">©2026 P10 KKN UHM | KMP Desa Timbuseng, Kec. Polongbangkeng Timur, Kabupaten Takalar.</p>
         </div>
     </footer>
 
@@ -589,10 +592,10 @@
             once: true
         });
 
-        document.getElementById('formBumdes').addEventListener('submit', function(e) {
+        document.getElementById('formKMP').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Terima kasih! Pesan dan penawaran kerja sama Anda telah dikirim ke pengelola BUMDes Desa Timbuseng.');
-            var modal = bootstrap.Modal.getInstance(document.getElementById('kerjasamaModal'));
+            alert('Terima kasih! Pendaftaran dan partisipasi Anda telah dikirim ke pengelola KMP Desa Timbuseng.');
+            var modal = bootstrap.Modal.getInstance(document.getElementById('partisipasiKMPModal'));
             modal.hide();
             this.reset();
         });
