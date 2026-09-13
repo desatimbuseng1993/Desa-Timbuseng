@@ -873,7 +873,7 @@
                         <div class="col-md-6">
                             <label class="form-label">Upload File Foto Baru</label>
                             <input type="file" class="form-control" id="tab-kdmp-file" accept="image/*">
-                            <small class="text-muted" style="font-size: 0.75rem;">Gambar akan diunggah otomatis ke repositori dan disinkronkan ke web.</small>
+                            <small class="text-muted" style="font-size: 0.75rem;">Nama file foto beserta formatnya (.jpg/.png/dll) akan otomatis menggantikan foto lama di web.</small>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Program Pangan KDMP (Catatan)</label>
@@ -1110,12 +1110,12 @@
             try {
                 const targetFile = filename.trim();
 
-                // 1. Jika modul KDMP dan ada file foto yang dipilih, unggah file gambarnya terlebih dahulu ke GitHub
+                // 1. Jika modul KDMP dan ada file foto yang dipilih, unggah file gambarnya secara dinamis beserta nama & format aslinya
                 if(targetFile === 'kdmp.html') {
                     const fileInput = document.getElementById('tab-kdmp-file');
                     if(fileInput && fileInput.files.length > 0) {
                         const imageFile = fileInput.files[0];
-                        const imageName = imageFile.name;
+                        const imageName = imageFile.name; // Mengambil nama asli beserta format (png, jpg, jpeg, dll)
 
                         // Baca file gambar ke base64
                         const base64Image = await new Promise((resolve, reject) => {
@@ -1140,7 +1140,7 @@
 
                         // Kirim file gambar baru ke root direktori repositori GitHub
                         const imgPutPayload = {
-                            message: `CMS Upload Gambar Baru: ${imageName}`,
+                            message: `CMS Upload Foto: ${imageName}`,
                             content: base64Image
                         };
                         if(imgSha) imgPutPayload.sha = imgSha;
@@ -1160,7 +1160,7 @@
                             throw new Error(`Gagal mengunggah file gambar: ${errJson.message}`);
                         }
 
-                        // Setelah gambar terunggah, update atribut src pada file kdmp.html di server
+                        // Setelah gambar terunggah, ambil file kdmp.html untuk memperbarui nama file src-nya
                         const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/kdmp.html`;
                         const htmlGetRes = await fetch(htmlGetUrl, {
                             headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
@@ -1179,10 +1179,16 @@
                                 }
                             }
 
-                            // Update nama file gambar pada atribut src tag img id="foto-pengelola"
+                            // Otomatis mengganti atribut src pada tag img id="foto-pengelola" dengan nama file baru beserta formatnya
                             const regexImgSrc = /(<img[^>]*id="foto-pengelola"[^>]*src=")([^"]*)(")/;
                             if(regexImgSrc.test(currentHtml)) {
                                 currentHtml = currentHtml.replace(regexImgSrc, `$1${imageName}$3`);
+                            } else {
+                                // Fallback jika id tidak ditemukan, cari tag img pertama di bagian pengelola
+                                const fallbackImgRegex = /(<img[^>]*src=")([^"]*)("[^>]*id="foto-pengelola")/;
+                                if(fallbackImgRegex.test(currentHtml)) {
+                                    currentHtml = currentHtml.replace(fallbackImgRegex, `$1${imageName}$3`);
+                                }
                             }
 
                             // Commit pembaruan file kdmp.html
@@ -1194,14 +1200,14 @@
                                     'Accept': 'vnd.github.v3+json'
                                 },
                                 body: JSON.stringify({
-                                    message: `CMS Update: memperbarui foto dan nama pengelola di kdmp.html`,
+                                    message: `CMS Update: sinkronisasi nama file foto (${imageName}) di kdmp.html`,
                                     content: utf8_to_b64(currentHtml),
                                     sha: htmlData.sha
                                 })
                             });
 
                             if(htmlPutRes.ok) {
-                                showAlert("Sukses! File gambar berhasil diunggah ke GitHub dan halaman kdmp.html diperbarui.");
+                                showAlert("Sukses! File gambar (" + imageName + ") berhasil diunggah dan otomatis terpasang di kdmp.html.");
                                 return;
                             }
                         }
