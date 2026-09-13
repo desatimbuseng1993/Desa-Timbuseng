@@ -23,7 +23,6 @@
             --light-bg: #f8faf9;
             --dark-text: #1e293b;
             --border-color: #e2e8f0;
-            --pkk-pink: #d63384; /* Aksen tambahan khas PKK */
         }
 
         body {
@@ -32,6 +31,7 @@
             color: var(--dark-text);
             line-height: 1.6;
             overflow-x: hidden;
+            font-size: 0.95rem;
         }
 
         /* Utility Classes */
@@ -41,7 +41,7 @@
 
         /* Navigation Bar */
         .navbar {
-            padding: 0.85rem 1rem;
+            padding: 0.75rem 1rem;
             transition: all 0.3s ease;
         }
         .navbar-brand img {
@@ -79,19 +79,25 @@
 
         /* Hero Header */
         .page-hero {
-            background: linear-gradient(rgba(7, 59, 36, 0.9), rgba(13, 92, 58, 0.85)), url('image.PNG') center/cover no-repeat fixed;
+            background: linear-gradient(rgba(7, 59, 36, 0.9), rgba(13, 92, 58, 0.85)), url('image.png') center/cover no-repeat fixed;
             color: white;
-            padding: 5.5rem 0 4.5rem;
+            padding: 4.5rem 1rem 3.5rem;
             border-bottom: 5px solid var(--accent-color);
             position: relative;
+        }
+        .page-hero h1 {
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+        }
+        .page-hero p {
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
         }
         .hero-badge {
             background: rgba(243, 156, 18, 0.2);
             color: #ffd166;
             border: 1px solid rgba(243, 156, 18, 0.5);
-            padding: 0.5em 1.2em;
+            padding: 0.4em 1em;
             border-radius: 50px;
-            font-size: 0.88rem;
+            font-size: 0.8rem;
             font-weight: 600;
             letter-spacing: 0.5px;
             display: inline-flex;
@@ -102,108 +108,120 @@
         /* Key Performance Cards */
         .stat-card {
             background: #ffffff;
-            border-radius: 18px;
-            padding: 1.5rem;
+            border-radius: 14px;
+            padding: 1rem 1.25rem;
             border: 1px solid var(--border-color);
-            border-left: 5px solid var(--primary-color);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
             height: 100%;
         }
         .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 28px rgba(13, 92, 58, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(13, 92, 58, 0.08);
+        }
+        .stat-card h3 {
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
         }
         .stat-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 14px;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
             background-color: var(--primary-light);
             color: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             flex-shrink: 0;
         }
 
         /* Section Titles */
         .section-title {
             position: relative;
-            padding-bottom: 12px;
-            margin-bottom: 24px;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
             font-weight: 700;
             color: var(--dark-text);
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
         }
         .section-title::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 55px;
-            height: 4px;
+            width: 45px;
+            height: 3px;
             border-radius: 2px;
             background-color: var(--accent-color);
         }
 
         .content-card {
             background: #ffffff;
-            border-radius: 20px;
+            border-radius: 16px;
             border: 1px solid var(--border-color);
-            box-shadow: 0 4px 18px rgba(0,0,0,0.03);
-            padding: 1.8rem;
-            margin-bottom: 1.8rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        /* Profile Chairman Card */
+        @media (min-width: 768px) {
+            .content-card {
+                padding: 1.8rem;
+                margin-bottom: 1.8rem;
+            }
+        }
+
+        /* Profile Card */
         .profile-card {
             background: #ffffff;
-            border-radius: 22px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+            border-radius: 18px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.05);
             border: 1px solid var(--border-color);
             overflow: hidden;
             transition: all 0.3s ease;
         }
         .profile-card-header {
-            height: 110px;
+            height: 90px;
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
             position: relative;
         }
         .profile-img-wrapper {
-            margin-top: -65px;
+            margin-top: -55px;
             position: relative;
             z-index: 2;
         }
         .ketua-img {
-            width: 150px;
-            height: 150px;
+            width: 130px;
+            height: 130px;
             object-fit: cover;
             border-radius: 50%;
-            border: 5px solid #ffffff;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border: 4px solid #ffffff;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
             background-color: #ffffff;
         }
 
         .quote-box {
             background-color: var(--primary-light);
             border-left: 4px solid var(--primary-color);
-            padding: 1.25rem 1.5rem;
-            border-radius: 0 16px 16px 0;
+            padding: 1rem 1.25rem;
+            border-radius: 0 12px 12px 0;
             font-style: italic;
+            font-size: 0.9rem;
         }
 
         /* Organizational Structure Cards */
         .org-card {
-            border-radius: 14px;
+            border-radius: 12px;
             border: 1px dashed var(--border-color);
-            padding: 1rem;
+            padding: 0.9rem 1rem;
             background-color: var(--light-bg);
             transition: all 0.25s ease;
         }
         .org-card:hover {
             border-color: var(--primary-color);
             background-color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
         }
 
         /* Floating Contact Button */
@@ -221,11 +239,6 @@
             color: var(--primary-color);
             font-weight: 600;
         }
-        .badge-soft-warning {
-            background-color: #fef5e7;
-            color: #d35400;
-            font-weight: 600;
-        }
     </style>
 </head>
 <body>
@@ -233,14 +246,14 @@
     <!-- NAVBAR / NAVIGATION -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-3" href="index.html">
-                <img src="logo.PNG" alt="Logo Desa Timbuseng" height="42" onerror="this.onerror=null; this.src='https://via.placeholder.com/42?text=DESA';">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="logo.png" alt="Logo Desa Timbuseng" height="38" onerror="this.onerror=null; this.src='https://via.placeholder.com/38?text=DESA';">
                 <div class="lh-sm">
-                    <span class="d-block fs-5 text-white fw-bold tracking-wide">DESA TIMBUSENG</span>
-                    <small class="fw-normal text-white-50 text-uppercase" style="font-size: 0.72rem;">Kec. Polongbangkeng Timur, Takalar</small>
+                    <span class="d-block fs-6 text-white fw-bold tracking-wide">DESA TIMBUSENG</span>
+                    <small class="fw-normal text-white-50 text-uppercase d-block" style="font-size: 0.65rem;">Kec. Polongbangkeng Timur, Takalar</small>
                 </div>
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -261,7 +274,7 @@
                             <li><a class="dropdown-item" href="dusun-tanasambayang.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Tanasambayang</a></li>
                             <li><a class="dropdown-item" href="dusun-bontobaddo.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Bontobaddo</a></li>
                             <li><a class="dropdown-item" href="dusun-panaikang1.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Panaikang I</a></li>
-                            <li><a class="dropdown-item" href="dusun-panaikang2.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Panaikang2</a></li>
+                            <li><a class="dropdown-item" href="dusun-panaikang2.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Panaikang II</a></li>
                         </ul>
                     </li>
 
@@ -277,29 +290,29 @@
             <div class="hero-badge mb-3 shadow-sm">
                 <i class="fas fa-female"></i> Gerakan Pemberdayaan Keluarga Desa
             </div>
-            <h1 class="fw-extrabold display-4 text-white mb-2">TP PKK Desa Timbuseng</h1>
-            <p class="lead text-white-50 max-w-700 mx-auto mb-4" style="max-width: 720px;">
+            <h1 class="fw-extrabold text-white mb-2">TP PKK Desa Timbuseng</h1>
+            <p class="lead text-white-50 mx-auto mb-4" style="max-width: 685px;">
                 Mitra kerja pemerintah desa yang bergerak memberdayakan keluarga untuk meningkatkan kesejahteraan mental, spiritual, ekonomi, serta kesehatan masyarakat di 7 dusun.
             </p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="#profil-ketua-pkk" class="btn btn-warning btn-lg rounded-pill px-4 fw-bold shadow-sm"><i class="fas fa-user-circle me-2"></i>Ketua TP PKK</a>
-                <a href="#program-pkk" class="btn btn-outline-light btn-lg rounded-pill px-4 fw-semibold"><i class="fas fa-list-check me-2"></i>10 Program Pokok</a>
+            <div class="d-flex justify-content-center gap-2 flex-wrap">
+                <a href="#profil-ketua-pkk" class="btn btn-warning rounded-pill px-4 py-2 fw-bold shadow-sm"><i class="fas fa-user-circle me-2"></i>Ketua TP PKK</a>
+                <a href="#program-pkk" class="btn btn-outline-light rounded-pill px-4 py-2 fw-semibold"><i class="fas fa-list-check me-2"></i>10 Program Pokok</a>
             </div>
         </div>
     </header>
 
     <!-- MAIN CONTENT SECTION -->
-    <section class="py-5">
+    <section class="py-4 py-md-5">
         <div class="container">
 
             <!-- STATISTIK / HIGHLIGHT METRICS -->
-            <div class="row g-3 mb-5" data-aos="fade-up">
+            <div class="row g-3 mb-4 mb-md-5" data-aos="fade-up">
                 <div class="col-6 col-md-3">
                     <div class="stat-card d-flex align-items-center gap-3">
                         <div class="stat-icon"><i class="fas fa-users"></i></div>
                         <div>
-                            <span class="text-muted small fw-semibold d-block">Kader Aktif</span>
-                            <h3 class="fw-bold text-dark mb-0">Puluhan <small class="fs-6 text-muted fw-normal">Kader</small></h3>
+                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Kader Aktif</span>
+                            <h3 class="fw-bold text-dark mb-0" style="font-size: 1.15rem;">Puluhan <small class="fs-6 text-muted fw-normal">Kader</small></h3>
                         </div>
                     </div>
                 </div>
@@ -307,8 +320,8 @@
                     <div class="stat-card d-flex align-items-center gap-3">
                         <div class="stat-icon"><i class="fas fa-home"></i></div>
                         <div>
-                            <span class="text-muted small fw-semibold d-block">Kelompok Dasawisma</span>
-                            <h3 class="fw-bold text-dark mb-0">Aktif <small class="fs-6 text-muted fw-normal">Binaan</small></h3>
+                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Kelompok Dasawisma</span>
+                            <h3 class="fw-bold text-dark mb-0" style="font-size: 1.15rem;">Aktif <small class="fs-6 text-muted fw-normal">Binaan</small></h3>
                         </div>
                     </div>
                 </div>
@@ -316,7 +329,7 @@
                     <div class="stat-card d-flex align-items-center gap-3">
                         <div class="stat-icon"><i class="fas fa-map-marked-alt"></i></div>
                         <div>
-                            <span class="text-muted small fw-semibold d-block">Wilayah Kerja</span>
+                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Wilayah Kerja</span>
                             <h3 class="fw-bold text-dark mb-0">7 <small class="fs-6 text-muted fw-normal">Dusun</small></h3>
                         </div>
                     </div>
@@ -325,8 +338,8 @@
                     <div class="stat-card d-flex align-items-center gap-3">
                         <div class="stat-icon"><i class="fas fa-heart"></i></div>
                         <div>
-                            <span class="text-muted small fw-semibold d-block">Fokus Utama</span>
-                            <h3 class="fw-bold text-success mb-0">Keluarga <small class="fs-6 text-muted fw-normal">Sejahtera</small></h3>
+                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Fokus Utama</span>
+                            <h3 class="fw-bold text-success mb-0" style="font-size: 1.15rem;">Keluarga <small class="fs-6 text-muted fw-normal">Sejahtera</small></h3>
                         </div>
                     </div>
                 </div>
@@ -339,27 +352,29 @@
                     
                     <!-- PROFIL KETUA TP PKK -->
                     <div class="profile-card mb-4" id="profil-ketua-pkk" data-aos="fade-up">
-                        <div class="profile-card-header"></div>
+                        <div class="profile-card-header d-flex align-items-center px-4">
+                            <span class="badge bg-warning text-dark fw-bold px-3 py-1 rounded-pill" style="font-size: 0.75rem;"><i class="fas fa-female me-1"></i> TIM PENGGERAK PKK</span>
+                        </div>
                         <div class="px-4 pb-4">
-                            <div class="d-flex flex-column flex-md-row align-items-center align-items-md-end gap-4 profile-img-wrapper mb-3">
-                                <img src="profil_pkk.jpg" alt="Ketua TP PKK Desa Timbuseng" class="ketua-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/150?text=KETUA+PKK';">
+                            <div class="d-flex flex-column flex-md-row align-items-center align-items-md-end gap-3 profile-img-wrapper mb-3">
+                                <img src="profil_pkk.png" alt="Ketua TP PKK Desa Timbuseng" class="ketua-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/130?text=KETUA+PKK';">
                                 <div class="text-center text-md-start">
-                                    <span class="badge badge-soft-primary px-3 py-1 rounded-pill mb-2"><i class="fas fa-user-shield me-1"></i> Ketua TP PKK Desa Timbuseng</span>
-                                    <h3 class="fw-bold text-dark mb-1">Ketua TP PKK Desa Timbuseng</h3>
-                                    <p class="text-muted small mb-0"><i class="fas fa-building me-1 text-success"></i>Tim Penggerak PKK Desa Timbuseng</p>
+                                    <span class="badge badge-soft-primary px-3 py-1 rounded-pill mb-2" style="font-size: 0.75rem;"><i class="fas fa-user-shield me-1"></i> Ketua TP PKK Desa Timbuseng</span>
+                                    <h3 class="fw-bold text-dark mb-1" style="font-size: 1.25rem;">Ketua TP PKK Desa Timbuseng</h3>
+                                    <p class="text-muted small mb-0" style="font-size: 0.82rem;"><i class="fas fa-building me-1 text-success"></i> Tim Penggerak PKK Desa Timbuseng</p>
                                 </div>
                             </div>
 
-                            <div class="quote-box my-4">
-                                <p class="mb-2 text-dark fs-6">
+                            <div class="quote-box my-3">
+                                <p class="mb-1 text-dark">
                                     "Keluarga adalah unit terkecil dalam masyarakat yang menjadi fondasi utama pembangunan bangsa. Melalui Tim Penggerak PKK Desa Timbuseng, kami berkomitmen membimbing ibu-ibu rumah tangga dan keluarga agar mandiri secara ekonomi, sehat secara fisik, serta berakhlak mulia."
                                 </p>
-                                <small class="fw-bold text-success d-block">— Sambutan Ketua TP PKK Desa Timbuseng</small>
+                                <small class="fw-bold text-success d-block mt-1">— Sambutan Ketua TP PKK Desa Timbuseng</small>
                             </div>
 
                             <div class="d-flex flex-wrap gap-2 pt-1">
-                                <a href="https://wa.me/" target="_blank" class="btn btn-outline-success btn-sm rounded-pill px-3 fw-semibold"><i class="fab fa-whatsapp me-1"></i> Kontak TP PKK</a>
-                                <button type="button" class="btn btn-success btn-sm rounded-pill px-3 fw-semibold" data-bs-toggle="modal" data-bs-target="#kegiatanPKKModal"><i class="fas fa-calendar-alt me-1"></i> Jadwal Kegiatan Kader</button>
+                                <a href="https://wa.me/" target="_blank" class="btn btn-outline-success btn-sm rounded-pill px-3 fw-semibold" style="font-size: 0.8rem;"><i class="fab fa-whatsapp me-1"></i> Kontak TP PKK</a>
+                                <button type="button" class="btn btn-success btn-sm rounded-pill px-3 fw-semibold" data-bs-toggle="modal" data-bs-target="#kegiatanPKKModal" style="font-size: 0.8rem;"><i class="fas fa-calendar-alt me-1"></i> Jadwal Kegiatan Kader</button>
                             </div>
                         </div>
                     </div>
@@ -367,13 +382,13 @@
                     <!-- 10 PROGRAM POKOK PKK -->
                     <div class="content-card" id="program-pkk" data-aos="fade-up">
                         <h4 class="section-title">10 Program Pokok PKK</h4>
-                        <p class="text-muted small mb-4">Landasan gerak operasional TP PKK Desa Timbuseng dalam membina kesejahteraan keluarga dari tingkat dasawisma hingga desa.</p>
+                        <p class="text-muted small mb-4" style="font-size: 0.85rem;">Landasan gerak operasional TP PKK Desa Timbuseng dalam membina kesejahteraan keluarga dari tingkat dasawisma hingga desa.</p>
 
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="p-3 bg-light rounded-3 h-100">
-                                    <h6 class="fw-bold text-dark mb-2"><i class="fas fa-check-circle text-success me-2"></i>Program Utama (1 - 5)</h6>
-                                    <ul class="small text-secondary ps-3 mb-0">
+                                    <h6 class="fw-bold text-dark mb-2" style="font-size: 0.95rem;"><i class="fas fa-check-circle text-success me-2"></i>Program Utama (1 - 5)</h6>
+                                    <ul class="small text-secondary ps-3 mb-0" style="font-size: 0.85rem;">
                                         <li class="mb-2">Penghayatan dan Pengamalan Pancasila</li>
                                         <li class="mb-2">Gotong Royong</li>
                                         <li class="mb-2">Pangan (Ketahanan pangan keluarga)</li>
@@ -384,8 +399,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="p-3 bg-light rounded-3 h-100">
-                                    <h6 class="fw-bold text-dark mb-2"><i class="fas fa-check-circle text-success me-2"></i>Program Lanjutan (6 - 10)</h6>
-                                    <ul class="small text-secondary ps-3 mb-0">
+                                    <h6 class="fw-bold text-dark mb-2" style="font-size: 0.95rem;"><i class="fas fa-check-circle text-success me-2"></i>Program Lanjutan (6 - 10)</h6>
+                                    <ul class="small text-secondary ps-3 mb-0" style="font-size: 0.85rem;">
                                         <li class="mb-2">Pendidikan dan Keterampilan</li>
                                         <li class="mb-2">Kesehatan (Posyandu, gizi keluarga, & balita)</li>
                                         <li class="mb-2">Pengembangan Koperasi & UMKM</li>
@@ -404,41 +419,41 @@
 
                     <!-- SEKSI POKJA PKK -->
                     <div class="content-card" data-aos="fade-left">
-                        <h5 class="fw-bold text-dark mb-3"><i class="fas fa-sitemap text-success me-2"></i>Kelompok Kerja (Pokja)</h5>
-                        <p class="small text-muted mb-3">Pelaksanaan program operasional TP PKK didukung oleh 4 Pokja utama:</p>
+                        <h5 class="fw-bold text-dark mb-3" style="font-size: 1.05rem;"><i class="fas fa-sitemap text-success me-2"></i>Kelompok Kerja (Pokja)</h5>
+                        <p class="small text-muted mb-3" style="font-size: 0.85rem;">Pelaksanaan program operasional TP PKK didukung oleh 4 Pokja utama:</p>
                         
                         <div class="d-flex flex-column gap-2">
                             <div class="org-card">
-                                <span class="badge bg-success text-white mb-1">Pokja I</span>
-                                <h6 class="fw-bold text-dark mb-1">Penghayatan Pancasila & Gotong Royong</h6>
-                                <p class="small text-muted mb-00">Fokus pembinaan mental spiritual, kerukunan, dan kesadaran hukum.</p>
+                                <span class="badge bg-success text-white mb-1" style="font-size: 0.7rem;">Pokja I</span>
+                                <h6 class="fw-bold text-dark mb-1" style="font-size: 0.9rem;">Penghayatan Pancasila & Gotong Royong</h6>
+                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Fokus pembinaan mental spiritual, kerukunan, dan kesadaran hukum.</p>
                             </div>
 
                             <div class="org-card">
-                                <span class="badge bg-success text-white mb-1">Pokja II</span>
-                                <h6 class="fw-bold text-dark mb-1">Pendidikan, Keterampilan & Koperasi</h6>
-                                <p class="small text-muted mb-0">Pengembangan Taman Baca, UP2K PKK, dan pelatihan keterampilan.</p>
+                                <span class="badge bg-success text-white mb-1" style="font-size: 0.7rem;">Pokja II</span>
+                                <h6 class="fw-bold text-dark mb-1" style="font-size: 0.9rem;">Pendidikan, Keterampilan & Koperasi</h6>
+                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Pengembangan Taman Baca, UP2K PKK, dan pelatihan keterampilan.</p>
                             </div>
 
                             <div class="org-card">
-                                <span class="badge bg-success text-white mb-1">Pokja III</span>
-                                <h6 class="fw-bold text-dark mb-1">Pangan, Sandang & Perumahan</h6>
-                                <p class="small text-muted mb-0">Pemanfaatan pekarangan rumah (Hatinya PKK) dan tata rumah sehat.</p>
+                                <span class="badge bg-success text-white mb-1" style="font-size: 0.7rem;">Pokja III</span>
+                                <h6 class="fw-bold text-dark mb-1" style="font-size: 0.9rem;">Pangan, Sandang & Perumahan</h6>
+                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Pemanfaatan pekarangan rumah (Hatinya PKK) dan tata rumah sehat.</p>
                             </div>
 
                             <div class="org-card">
-                                <span class="badge bg-success text-white mb-1">Pokja IV</span>
-                                <h6 class="fw-bold text-dark mb-1">Kesehatan, Lingkungan & Perencanaan</h6>
-                                <p class="small text-muted mb-0">Pendampingan Posyandu, pencegahan stunting, dan kebersihan lingkungan.</p>
+                                <span class="badge bg-success text-white mb-1" style="font-size: 0.7rem;">Pokja IV</span>
+                                <h6 class="fw-bold text-dark mb-1" style="font-size: 0.9rem;">Kesehatan, Lingkungan & Perencanaan</h6>
+                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Pendampingan Posyandu, pencegahan stunting, dan kebersihan lingkungan.</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- BANNER PARTISIPASI WARGA -->
                     <div class="card border-0 bg-success text-white rounded-4 p-4 shadow-sm" data-aos="fade-left" data-aos-delay="100">
-                        <h5 class="fw-bold mb-2"><i class="fas fa-hands-holding-child me-2"></i>Kegiatan Dasawisma</h5>
-                        <p class="small text-white-50 mb-3">Mari aktif mengikuti pertemuan kelompok dasawisma di lingkungan RT/Dusun masing-masing demi kesehatan dan kemajuan keluarga.</p>
-                        <button type="button" class="btn btn-light text-success fw-bold rounded-pill shadow-sm" data-bs-toggle="modal" data-bs-target="#kegiatanPKKModal"><i class="fas fa-info-circle me-1"></i> Info Jadwal PKK</button>
+                        <h5 class="fw-bold mb-2" style="font-size: 1.05rem;"><i class="fas fa-hands-holding-child me-2"></i>Kegiatan Dasawisma</h5>
+                        <p class="small text-white-50 mb-3" style="font-size: 0.85rem;">Mari aktif mengikuti pertemuan kelompok dasawisma di lingkungan RT/Dusun masing-masing demi kesehatan dan kemajuan keluarga.</p>
+                        <button type="button" class="btn btn-light text-success fw-bold rounded-pill shadow-sm btn-sm px-3 py-2" data-bs-toggle="modal" data-bs-target="#kegiatanPKKModal" style="font-size: 0.85rem;"><i class="fas fa-info-circle me-1"></i> Info Jadwal PKK</button>
                     </div>
 
                 </div>
@@ -452,7 +467,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-4 border-0 shadow">
                 <div class="modal-header bg-desa text-white rounded-top-4">
-                    <h5 class="modal-title fw-bold" id="kegiatanPKKModalLabel"><i class="fas fa-calendar-alt me-2"></i>Agenda & Kegiatan TP PKK</h5>
+                    <h5 class="modal-title fw-bold fs-6" id="kegiatanPKKModalLabel"><i class="fas fa-calendar-alt me-2"></i>Agenda & Kegiatan TP PKK</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
@@ -470,21 +485,21 @@
                             <span class="text-muted">Koordinasi langsung oleh Kader PKK Dusun</span>
                         </li>
                     </ul>
-                    <button type="button" class="btn btn-success w-100 rounded-pill fw-bold mt-3" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-success btn-sm w-100 rounded-pill fw-bold mt-3" data-bs-dismiss="modal">Tutup</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- FLOATING ACTION BUTTON -->
-    <a href="https://wa.me/" target="_blank" class="btn btn-success rounded-circle p-3 floating-cta d-flex align-items-center justify-content-center" style="width: 55px; height: 55px;" title="Hubungi TP PKK Via WA">
-        <i class="fab fa-whatsapp fs-3"></i>
+    <a href="https://wa.me/" target="_blank" class="btn btn-success rounded-circle p-3 floating-cta d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;" title="Hubungi TP PKK Via WA">
+        <i class="fab fa-whatsapp fs-4"></i>
     </a>
 
     <!-- FOOTER -->
     <footer class="bg-dark text-white pt-4 pb-3">
         <div class="container text-center">
-            <p class="small text-white-50 mb-0">©2026 P10 KKN UHM | TP PKK Desa Timbuseng, Kec. Polongbangkeng Timur, Kabupaten Takalar.</p>
+            <p class="small text-white-50 mb-0" style="font-size: 0.8rem;">©2026 P10 KKN UHM | TP PKK Desa Timbuseng, Kec. Polongbangkeng Timur, Kabupaten Takalar.</p>
         </div>
     </footer>
 
