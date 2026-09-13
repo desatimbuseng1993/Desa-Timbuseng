@@ -868,7 +868,7 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label">Nama Ketua / Pengelola KDMP</label>
-                            <input type="text" class="form-control" id="tab-kdmp-kdmp-chair" value="Nama Pengelola / Ketua KDMP">
+                            <input type="text" class="form-control" id="tab-kdmp-kdmp-chair" value="Tai">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Upload Foto Pengelola KDMP Baru</label>
@@ -1014,7 +1014,7 @@
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-panaikang2.html - Dusun Panaikang II</h4>
                 <form onsubmit="handleFormSubmit(event, 'dusun-panaikang2.html', 'tab-dusun-panaikang2')">
                     <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Nama Kepala Dusun II</label><input type="text" class="form-control" id="tab-dusun-panaikang2-d7-kadus" value="Kepala Dusun Panaikang II"></div>
+                        <div class="col-md-6"><label class="form-label">Nama Kepala Dusun Panaikang II</label><input type="text" class="form-control" id="tab-dusun-panaikang2-d7-kadus" value="Kepala Dusun Panaikang II"></div>
                         <div class="col-md-6"><label class="form-label">Kontak Kadus</label><input type="text" class="form-control" id="tab-dusun-panaikang2-d7-phone" value="0852xxxxxxxx"></div>
                         <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="tab-dusun-panaikang2-d7-stats" value="± 500 Jiwa"></div>
                         <div class="col-md-6"><label class="form-label">Status Publikasi</label><select class="form-select" id="tab-dusun-panaikang2-status"><option value="published" selected>Live</option></select></div>
@@ -1075,7 +1075,7 @@
             setTimeout(() => box.classList.add('d-none'), 5000);
         }
 
-        // Fungsi bantu untuk mengubah file ke Base64
+        // Fungsi bantu konversi file ke Base64
         function getFileBase64(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
@@ -1115,19 +1115,19 @@
             try {
                 const targetFile = filename.trim();
 
-                // 1. Jika ada file gambar yang diunggah di tab KDMP
+                // Logika khusus untuk kdmp.html (Menangani Update Nama dan Foto Otomatis)
                 if(targetFile === 'kdmp.html') {
                     const fileInput = document.getElementById('tab-kdmp-file');
+                    let uploadedImageName = null;
+
+                    // Jika user mengunggah foto baru
                     if(fileInput && fileInput.files.length > 0) {
                         const imageFile = fileInput.files[0];
-                        const imageName = imageFile.name; // Mendapatkan nama asli file foto yang diunggah
+                        uploadedImageName = imageFile.name;
                         const base64Image = await getFileBase64(imageFile);
 
-                        // Upload file gambar baru ke repositori GitHub secara terpisah
-                        const imgUploadUrl = `https://api.github.com/repos/${user}/${repo}/contents/${imageName}`;
+                        const imgUploadUrl = `https://api.github.com/repos/${user}/${repo}/contents/${uploadedImageName}`;
                         let imgSha = undefined;
-                        
-                        // Cek apakah file dengan nama yang sama sudah ada di repo (untuk mendapatkan SHA jika overwrite)
                         try {
                             const checkImgRes = await fetch(imgUploadUrl, {
                                 headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
@@ -1137,10 +1137,10 @@
                                 imgSha = existingImgData.sha;
                             }
                         } catch(err) {
-                            // File belum ada, aman dilanjutkan
+                            // File baru belum ada
                         }
 
-                        // Kirim file gambar ke GitHub
+                        // Upload file gambar baru ke repositori
                         await fetch(imgUploadUrl, {
                             method: 'PUT',
                             headers: {
@@ -1149,62 +1149,70 @@
                                 'Accept': 'vnd.github.v3+json'
                             },
                             body: JSON.stringify({
-                                message: `CMS Upload Foto: ${imageName}`,
+                                message: `CMS Upload Foto: ${uploadedImageName}`,
                                 content: base64Image,
                                 sha: imgSha
                             })
                         });
-
-                        // Ambil isi HTML kdmp.html untuk memperbarui atribut src gambar
-                        const getUrl = `https://api.github.com/repos/${user}/${repo}/contents/${targetFile}`;
-                        const getRes = await fetch(getUrl, {
-                            headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
-                        });
-                        if(getRes.ok) {
-                            const fileData = await getRes.json();
-                            let currentHtml = decodeURIComponent(escape(atob(fileData.content)));
-                            
-                            // Ganti nama file foto pada atribut src tag img dengan id="foto-pengelola"
-                            const regexImg = /(<img[^>]*id="foto-pengelola"[^>]*src=")([^"]*)(")/;
-                            if(regexImg.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexImg, `$1${imageName}$3`);
-                            } else {
-                                // Fallback pencarian umum tag img ketua
-                                currentHtml = currentHtml.replace(/(<img[^>]*class="ketua-img"[^>]*src=")([^"]*)(")/, `$1${imageName}$3`);
-                            }
-
-                            // Update nama ketua jika diisi
-                            const newName = document.getElementById('tab-kdmp-kdmp-chair').value;
-                            if(newName) {
-                                const regexName = /(<h3[^>]*id="nama-ketua"[^>]*>)([^<]*)(<\/h3>)/;
-                                if(regexName.test(currentHtml)) {
-                                    currentHtml = currentHtml.replace(regexName, `$1${newName}$3`);
-                                }
-                            }
-
-                            // Commit perubahan HTML kembali ke GitHub
-                            const encodedHtml = btoa(unescape(encodeURIComponent(currentHtml)));
-                            await fetch(getUrl, {
-                                method: 'PUT',
-                                headers: {
-                                    'Authorization': `token ${token}`,
-                                    'Content-Type': 'application/json',
-                                    'Accept': 'vnd.github.v3+json'
-                                },
-                                body: JSON.stringify({
-                                    message: `CMS Update Parsial: memperbarui nama dan foto pada ${targetFile}`,
-                                    content: encodedHtml,
-                                    sha: fileData.sha
-                                })
-                            });
-                        }
-
-                        showAlert(`Sukses! Foto (${imageName}) dan data teks berhasil diperbarui di GitHub.`);
-                        return;
                     }
+
+                    // Ambil file kdmp.html dari GitHub
+                    const getUrl = `https://api.github.com/repos/${user}/${repo}/contents/${targetFile}`;
+                    const getRes = await fetch(getUrl, {
+                        headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
+                    });
+                    if(!getRes.ok) {
+                        throw new Error("Gagal mengambil file kdmp.html dari repositori GitHub.");
+                    }
+                    const fileData = await getRes.json();
+                    let currentHtml = decodeURIComponent(escape(atob(fileData.content)));
+
+                    // 1. Update nama ketua berdasarkan id="nama-ketua"
+                    const newName = document.getElementById('tab-kdmp-kdmp-chair').value;
+                    if(newName) {
+                        const regexName = /(<h3[^>]*id="nama-ketua"[^>]*>)([^<]*)(<\/h3>)/;
+                        if(regexName.test(currentHtml)) {
+                            currentHtml = currentHtml.replace(regexName, `$1${newName}$3`);
+                        }
+                    }
+
+                    // 2. Update sumber gambar berdasarkan id="foto-pengelola" jika ada file baru di-upload
+                    if(uploadedImageName) {
+                        const regexImg = /(<img[^>]*id="foto-pengelola"[^>]*src=")([^"]*)(")/;
+                        if(regexImg.test(currentHtml)) {
+                            currentHtml = currentHtml.replace(regexImg, `$1${uploadedImageName}$3`);
+                        } else {
+                            // Fallback jika id tidak ditemukan
+                            currentHtml = currentHtml.replace(/(<img[^>]*class="ketua-img"[^>]*src=")([^"]*)(")/, `$1${uploadedImageName}$3`);
+                        }
+                    }
+
+                    // Commit perubahan HTML kdmp.html ke GitHub
+                    const encodedHtml = btoa(unescape(encodeURIComponent(currentHtml)));
+                    const putRes = await fetch(getUrl, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Content-Type': 'application/json',
+                            'Accept': 'vnd.github.v3+json'
+                        },
+                        body: JSON.stringify({
+                            message: `CMS Update Parsial: memperbarui data ${targetFile}`,
+                            content: encodedHtml,
+                            sha: fileData.sha
+                        })
+                    });
+
+                    if(putRes.ok) {
+                        showAlert(`Sukses! Data teks dan foto pada ${targetFile} berhasil diperbarui di GitHub.`);
+                    } else {
+                        const err = await putRes.json();
+                        alert(`Gagal Commit GitHub: ${err.message}`);
+                    }
+                    return;
                 }
 
-                // 2. Penanganan standar jika tidak mengunggah foto di KDMP
+                // Penanganan standar untuk halaman lain
                 const getUrl = `https://api.github.com/repos/${user}/${repo}/contents/${targetFile}`;
                 const getRes = await fetch(getUrl, {
                     headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
@@ -1215,19 +1223,25 @@
                 const fileData = await getRes.json();
                 let currentHtml = decodeURIComponent(escape(atob(fileData.content)));
 
-                if(targetFile === 'kdmp.html') {
-                    const newName = document.getElementById('tab-kdmp-kdmp-chair').value;
-                    const regexName = /(<h3[^>]*id="nama-ketua"[^>]*>)([^<]*)(<\/h3>)/;
-                    if(regexName.test(currentHtml)) {
-                        currentHtml = currentHtml.replace(regexName, `$1${newName}$3`);
-                    }
-                } else if(targetFile === 'index.html') {
+                if(targetFile === 'index.html') {
                     const newTitle = document.getElementById('tab-index-hero-title').value;
                     currentHtml = currentHtml.replace(/(<h1[^>]*>)([^<]*)(<\/h1>)/, `$1${newTitle}$3`);
                 }
 
                 const encodedContent = btoa(unescape(encodeURIComponent(currentHtml)));
-                const putRes = await fetch(getUrl, {
+                const putRes =.await ? fetch(getUrl, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Content-Type': 'application/json',
+                        'Accept': 'vnd.github.v3+json'
+                    },
+                    body: JSON.stringify({
+                        message: `CMS Update Parsial: memperbarui data ${targetFile} via admin dasbor`,
+                        content: encodedContent,
+                        sha: fileData.sha
+                    })
+                }) : await fetch(getUrl, {
                     method: 'PUT',
                     headers: {
                         'Authorization': `token ${token}`,
