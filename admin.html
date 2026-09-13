@@ -1075,6 +1075,13 @@
             setTimeout(() => box.classList.add('d-none'), 5000);
         }
 
+        // Fungsi bantu aman untuk melakukan enkode string UTF-8 ke Base64 (Mencegah error karakter khusus/spasi pada GitHub API)
+        function utf8_to_b64(str) {
+            return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+                return String.fromCharCode('0x' + p1);
+            }));
+        }
+
         async function handleFormSubmit(e, filename, moduleName) {
             e.preventDefault();
             if(moduleName === 'tab-github') {
@@ -1107,9 +1114,12 @@
                     throw new Error("Gagal mengambil file asal dari repositori GitHub.");
                 }
                 const fileData = await getRes.json();
+                
+                // Decode aman isi file HTML lama
                 let currentHtml = decodeURIComponent(escape(atob(fileData.content)));
 
                 if(targetFile === 'kdmp.html') {
+                    // 1. Perbarui Nama Ketua
                     const newName = document.getElementById('tab-kdmp-kdmp-chair').value;
                     if(newName) {
                         const regexName = /(<h3[^>]*id="nama-ketua"[^>]*>)([^<]*)(<\/h3>)/;
@@ -1118,6 +1128,7 @@
                         }
                     }
 
+                    // 2. Perbarui Foto dengan konversi langsung ke Base64 di dalam tag img src
                     const fileInput = document.getElementById('tab-kdmp-file');
                     if(fileInput && fileInput.files.length > 0) {
                         const imageFile = fileInput.files[0];
@@ -1137,7 +1148,8 @@
                     }
                 }
 
-                const encodedContent = btoa(unescape(encodeURIComponent(currentHtml)));
+                // Kirim perubahan kembali ke GitHub menggunakan enkoder UTF-8 Base64 yang aman
+                const encodedContent = utf8_to_b64(currentHtml);
                 const putRes = await fetch(getUrl, {
                     method: 'PUT',
                     headers: {
@@ -1153,14 +1165,14 @@
                 });
 
                 if(putRes.ok) {
-                    showAlert(`Sukses! Perubahan pada ${targetFile} (nama dan foto) berhasil diperbarui dan langsung aktif.`);
+                    showAlert(`Sukses! Perubahan pada ${targetFile} (nama dan foto) berhasil di-commit dan langsung aktif.`);
                 } else {
                     const err = await putRes.json();
                     alert(`Gagal Commit GitHub: ${err.message}`);
                 }
             } catch (error) {
                 console.error(error);
-                alert("Terjadi kesalahan jaringan atau file tidak ditemukan di repositori GitHub.");
+                alert("Terjadi kesalahan jaringan atau koneksi ke GitHub gagal. Periksa token PAT Anda.");
             }
         }
     </script>
