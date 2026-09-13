@@ -863,7 +863,7 @@
         <div id="tab-kdmp" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>kdmp.html - Kawasan Mandiri Pangan</h4>
-                <p class="text-muted small mb-4">Perbarui nama ketua pengelola dan foto profil khusus halaman KDMP tanpa mengubah struktur layout lainnya.</p>
+                <p class="text-muted small mb-4">Perbarui nama ketua pengelola dan foto profil khusus halaman KDMP secara otomatis.</p>
                 <form onsubmit="handleFormSubmit(event, 'kdmp.html', 'tab-kdmp')">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -871,9 +871,9 @@
                             <input type="text" class="form-control" id="tab-kdmp-kdmp-chair" value="Nama Pengelola / Ketua KDMP">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Upload Foto Pengelola KDMP (profil_kdmp.png)</label>
+                            <label class="form-label">Upload Foto Pengelola KDMP Baru</label>
                             <input type="file" class="form-control" id="tab-kdmp-file" accept="image/*">
-                            <small class="text-muted" style="font-size: 0.75rem;">File foto akan disesuaikan untuk mengganti `profil_kdmp.png`.</small>
+                            <small class="text-muted" style="font-size: 0.75rem;">Nama file foto apa pun yang diunggah akan otomatis menggantikan foto lama di web.</small>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Program Pangan KDMP (Opsional Catatan)</label>
@@ -1014,7 +1014,7 @@
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-panaikang2.html - Dusun Panaikang II</h4>
                 <form onsubmit="handleFormSubmit(event, 'dusun-panaikang2.html', 'tab-dusun-panaikang2')">
                     <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Nama Kepala Dusun Panaikang II</label><input type="text" class="form-control" id="tab-dusun-panaikang2-d7-kadus" value="Kepala Dusun Panaikang II"></div>
+                        <div class="col-md-6"><label class="form-label">Nama Kepala Dusun II</label><input type="text" class="form-control" id="tab-dusun-panaikang2-d7-kadus" value="Kepala Dusun Panaikang II"></div>
                         <div class="col-md-6"><label class="form-label">Kontak Kadus</label><input type="text" class="form-control" id="tab-dusun-panaikang2-d7-phone" value="0852xxxxxxxx"></div>
                         <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="tab-dusun-panaikang2-d7-stats" value="± 500 Jiwa"></div>
                         <div class="col-md-6"><label class="form-label">Status Publikasi</label><select class="form-select" id="tab-dusun-panaikang2-status"><option value="published" selected>Live</option></select></div>
@@ -1075,6 +1075,22 @@
             setTimeout(() => box.classList.add('d-none'), 5000);
         }
 
+        // Fungsi bantu untuk mengubah file ke Base64
+        function getFileBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => {
+                    let encoded = reader.result.toString().replace(/^data:(.*,)?/, '');
+                    if ((encoded.length % 4) > 0) {
+                        encoded += '='.repeat(4 - (encoded.length % 4));
+                    }
+                    resolve(encoded);
+                };
+                reader.onerror = error => reject(error);
+            });
+        }
+
         async function handleFormSubmit(e, filename, moduleName) {
             e.preventDefault();
             if(moduleName === 'tab-github') {
@@ -1095,9 +1111,100 @@
                 switchTab('tab-github', document.querySelector('.sidebar-menu .nav-link'));
                 return;
             }
-            showAlert(`Mengambil file ${filename} dari GitHub untuk diperbarui bagian tertentu saja...`);
+            showAlert(`Memproses pembaruan data ${filename} ke GitHub...`);
             try {
                 const targetFile = filename.trim();
+
+                // 1. Jika ada file gambar yang diunggah di tab KDMP
+                if(targetFile === 'kdmp.html') {
+                    const fileInput = document.getElementById('tab-kdmp-file');
+                    if(fileInput && fileInput.files.length > 0) {
+                        const imageFile = fileInput.files[0];
+                        const imageName = imageFile.name; // Mendapatkan nama asli file foto yang diunggah
+                        const base64Image = await getFileBase64(imageFile);
+
+                        // Upload file gambar baru ke repositori GitHub secara terpisah
+                        const imgUploadUrl = `https://api.github.com/repos/${user}/${repo}/contents/${imageName}`;
+                        let imgSha = undefined;
+                        
+                        // Cek apakah file dengan nama yang sama sudah ada di repo (untuk mendapatkan SHA jika overwrite)
+                        try {
+                            const checkImgRes = await fetch(imgUploadUrl, {
+                                headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
+                            });
+                            if(checkImgRes.ok) {
+                                const existingImgData = await checkImgRes.json();
+                                imgSha = existingImgData.sha;
+                            }
+                        } catch(err) {
+                            // File belum ada, aman dilanjutkan
+                        }
+
+                        // Kirim file gambar ke GitHub
+                        await fetch(imgUploadUrl, {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': `token ${token}`,
+                                'Content-Type': 'application/json',
+                                'Accept': 'vnd.github.v3+json'
+                            },
+                            body: JSON.stringify({
+                                message: `CMS Upload Foto: ${imageName}`,
+                                content: base64Image,
+                                sha: imgSha
+                            })
+                        });
+
+                        // Ambil isi HTML kdmp.html untuk memperbarui atribut src gambar
+                        const getUrl = `https://api.github.com/repos/${user}/${repo}/contents/${targetFile}`;
+                        const getRes = await fetch(getUrl, {
+                            headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
+                        });
+                        if(getRes.ok) {
+                            const fileData = await getRes.json();
+                            let currentHtml = decodeURIComponent(escape(atob(fileData.content)));
+                            
+                            // Ganti nama file foto pada atribut src tag img dengan id="foto-pengelola"
+                            const regexImg = /(<img[^>]*id="foto-pengelola"[^>]*src=")([^"]*)(")/;
+                            if(regexImg.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexImg, `$1${imageName}$3`);
+                            } else {
+                                // Fallback pencarian umum tag img ketua
+                                currentHtml = currentHtml.replace(/(<img[^>]*class="ketua-img"[^>]*src=")([^"]*)(")/, `$1${imageName}$3`);
+                            }
+
+                            // Update nama ketua jika diisi
+                            const newName = document.getElementById('tab-kdmp-kdmp-chair').value;
+                            if(newName) {
+                                const regexName = /(<h3[^>]*id="nama-ketua"[^>]*>)([^<]*)(<\/h3>)/;
+                                if(regexName.test(currentHtml)) {
+                                    currentHtml = currentHtml.replace(regexName, `$1${newName}$3`);
+                                }
+                            }
+
+                            // Commit perubahan HTML kembali ke GitHub
+                            const encodedHtml = btoa(unescape(encodeURIComponent(currentHtml)));
+                            await fetch(getUrl, {
+                                method: 'PUT',
+                                headers: {
+                                    'Authorization': `token ${token}`,
+                                    'Content-Type': 'application/json',
+                                    'Accept': 'vnd.github.v3+json'
+                                },
+                                body: JSON.stringify({
+                                    message: `CMS Update Parsial: memperbarui nama dan foto pada ${targetFile}`,
+                                    content: encodedHtml,
+                                    sha: fileData.sha
+                                })
+                            });
+                        }
+
+                        showAlert(`Sukses! Foto (${imageName}) dan data teks berhasil diperbarui di GitHub.`);
+                        return;
+                    }
+                }
+
+                // 2. Penanganan standar jika tidak mengunggah foto di KDMP
                 const getUrl = `https://api.github.com/repos/${user}/${repo}/contents/${targetFile}`;
                 const getRes = await fetch(getUrl, {
                     headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
@@ -1108,26 +1215,15 @@
                 const fileData = await getRes.json();
                 let currentHtml = decodeURIComponent(escape(atob(fileData.content)));
 
-                // Penanganan Spesifik Parsial Berdasarkan File Target
                 if(targetFile === 'kdmp.html') {
                     const newName = document.getElementById('tab-kdmp-kdmp-chair').value;
                     const regexName = /(<h3[^>]*id="nama-ketua"[^>]*>)([^<]*)(<\/h3>)/;
                     if(regexName.test(currentHtml)) {
                         currentHtml = currentHtml.replace(regexName, `$1${newName}$3`);
-                    } else {
-                        currentHtml = currentHtml.replace(/(<h3 class="fw-bold text-dark mb-1">)([^<]*)(<\/h3>)/, `$1${newName}$3`);
                     }
                 } else if(targetFile === 'index.html') {
                     const newTitle = document.getElementById('tab-index-hero-title').value;
                     currentHtml = currentHtml.replace(/(<h1[^>]*>)([^<]*)(<\/h1>)/, `$1${newTitle}$3`);
-                } else {
-                    const inputs = e.target.querySelectorAll('input[type="text"], textarea');
-                    inputs.forEach(input => {
-                        const val = input.value;
-                        if(val && !input.id.includes('file')) {
-                            // Penanganan input umum
-                        }
-                    });
                 }
 
                 const encodedContent = btoa(unescape(encodeURIComponent(currentHtml)));
