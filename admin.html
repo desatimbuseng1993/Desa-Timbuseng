@@ -864,7 +864,7 @@
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>kdmp.html - Kawasan Mandiri Pangan</h4>
                 <p class="text-muted small mb-4">Perbarui nama ketua pengelola dan foto profil khusus halaman KDMP tanpa mengubah struktur layout lainnya.</p>
-                <form onsubmit="handleFormSubmit(event, 'kdmp.html', 'tab-kdmp')">
+                <form onsubmit="handleFormSubmit(event, 'kdmp_2.html', 'tab-kdmp')">
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label">Nama Ketua / Pengelola KDMP</label>
@@ -1097,7 +1097,7 @@
             }
             showAlert(`Mengambil file ${filename} dari GitHub untuk diperbarui bagian tertentu saja...`);
             try {
-                const targetFile = filename.split(" - ")[0].trim();
+                const targetFile = filename.trim();
                 const getUrl = `https://api.github.com/repos/${user}/${repo}/contents/${targetFile}`;
                 const getRes = await fetch(getUrl, {
                     headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
@@ -1108,21 +1108,24 @@
                 const fileData = await getRes.json();
                 let currentHtml = decodeURIComponent(escape(atob(fileData.content)));
 
-                // Penanganan Spesifik Berdasarkan Halaman Target Tanpa Merusak Struktur Lain
-                if(targetFile === 'kdmp.html') {
+                // Penanganan Spesifik Parsial Berdasarkan File Target
+                if(targetFile === 'kdmp_2.html') {
                     const newName = document.getElementById('tab-kdmp-kdmp-chair').value;
-                    // Ganti teks nama pengelola pada tag h3 di profil card kdmp
-                    currentHtml = currentHtml.replace(/(<h3 class="fw-bold text-dark mb-1">)([^<]*)(<\/h3>)/, `$1${newName}$3`);
+                    const regexName = /(<h3[^>]*id="nama-ketua"[^>]*>)([^<]*)(<\/h3>)/;
+                    if(regexName.test(currentHtml)) {
+                        currentHtml = currentHtml.replace(regexName, `$1${newName}$3`);
+                    } else {
+                        currentHtml = currentHtml.replace(/(<h3 class="fw-bold text-dark mb-1">)([^<]*)(<\/h3>)/, `$1${newName}$3`);
+                    }
                 } else if(targetFile === 'index.html') {
                     const newTitle = document.getElementById('tab-index-hero-title').value;
                     currentHtml = currentHtml.replace(/(<h1[^>]*>)([^<]*)(<\/h1>)/, `$1${newTitle}$3`);
                 } else {
-                    // Penanganan umum aman jika elemen teks ditemukan
                     const inputs = e.target.querySelectorAll('input[type="text"], textarea');
                     inputs.forEach(input => {
                         const val = input.value;
                         if(val && !input.id.includes('file')) {
-                            // Coba update teks placeholder umum jika ada pencocokan
+                            // Penanganan input umum
                         }
                     });
                 }
@@ -1136,7 +1139,7 @@
                         'Accept': 'vnd.github.v3+json'
                     },
                     body: JSON.stringify({
-                        message: `CMS Update: memperbarui data parsial ${targetFile} via admin dasbor`,
+                        message: `CMS Update Parsial: memperbarui data ${targetFile} via admin dasbor`,
                         content: encodedContent,
                         sha: fileData.sha
                     })
