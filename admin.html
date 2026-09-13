@@ -863,7 +863,7 @@
         <div id="tab-kdmp" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>kdmp.html - Kawasan Mandiri Pangan</h4>
-                <p class="text-muted small mb-4">Perbarui nama ketua pengelola dan foto profil khusus halaman KDMP secara otomatis.</p>
+                <p class="text-muted small mb-4">Perbarui nama ketua pengelola dan foto profil khusus halaman KDMP.</p>
                 <form onsubmit="handleFormSubmit(event, 'kdmp.html', 'tab-kdmp')">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -871,12 +871,12 @@
                             <input type="text" class="form-control" id="tab-kdmp-kdmp-chair" value="Tai">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Upload Foto Pengelola KDMP Baru</label>
+                            <label class="form-label">Upload File Foto Baru</label>
                             <input type="file" class="form-control" id="tab-kdmp-file" accept="image/*">
-                            <small class="text-muted" style="font-size: 0.75rem;">Nama file foto apa pun yang diunggah akan otomatis menggantikan foto lama di web.</small>
+                            <small class="text-muted" style="font-size: 0.75rem;">Gambar akan diunggah otomatis ke repositori dan disinkronkan ke web.</small>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Program Pangan KDMP (Opsional Catatan)</label>
+                            <label class="form-label">Program Pangan KDMP (Catatan)</label>
                             <textarea class="form-control" id="tab-kdmp-kdmp-programs" rows="2">Pengelolaan lumbung pangan dan stabilisasi harga komoditas pokok.</textarea>
                         </div>
                         <div class="col-md-6">
@@ -1075,7 +1075,7 @@
             setTimeout(() => box.classList.add('d-none'), 5000);
         }
 
-        // Fungsi bantu aman untuk melakukan enkode string UTF-8 ke Base64 (Mencegah error karakter khusus/spasi pada GitHub API)
+        // Enkoder aman UTF-8 ke Base64 untuk payload GitHub REST API
         function utf8_to_b64(str) {
             return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
                 return String.fromCharCode('0x' + p1);
@@ -1094,61 +1094,133 @@
                 showAlert("Konfigurasi GitHub berhasil disimpan di browser lokal!");
                 return;
             }
+
             const user = localStorage.getItem('gh_user');
             const repo = localStorage.getItem('gh_repo');
             const token = localStorage.getItem('gh_token');
+
             if(!token || !user || !repo) {
                 alert("Harap isi konfigurasi GitHub (Username, Repo, dan PAT) terlebih dahulu pada tab GitHub & Auth!");
                 switchTab('tab-github', document.querySelector('.sidebar-menu .nav-link'));
                 return;
             }
+
             showAlert(`Memproses pembaruan data ${filename} ke GitHub...`);
+
             try {
                 const targetFile = filename.trim();
 
+                // 1. Jika modul KDMP dan ada file foto yang dipilih, unggah file gambarnya terlebih dahulu ke GitHub
+                if(targetFile === 'kdmp.html') {
+                    const fileInput = document.getElementById('tab-kdmp-file');
+                    if(fileInput && fileInput.files.length > 0) {
+                        const imageFile = fileInput.files[0];
+                        const imageName = imageFile.name;
+
+                        // Baca file gambar ke base64
+                        const base64Image = await new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.readAsDataURL(imageFile);
+                            reader.onload = () => resolve(reader.result.split(',')[1]);
+                            reader.onerror = error => reject(error);
+                        });
+
+                        // Cek apakah file gambar tersebut sudah ada di repo (untuk mengambil SHA jika ingin ditimpa)
+                        const imgGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/${imageName}`;
+                        let imgSha = null;
+                        try {
+                            const checkRes = await fetch(imgGetUrl, {
+                                headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
+                            });
+                            if(checkRes.ok) {
+                                const imgInfo = await checkRes.json();
+                                imgSha = imgInfo.sha;
+                            }
+                        } catch(err) {}
+
+                        // Kirim file gambar baru ke root direktori repositori GitHub
+                        const imgPutPayload = {
+                            message: `CMS Upload Gambar Baru: ${imageName}`,
+                            content: base64Image
+                        };
+                        if(imgSha) imgPutPayload.sha = imgSha;
+
+                        const imgUploadRes = await fetch(imgGetUrl, {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': `token ${token}`,
+                                'Content-Type': 'application/json',
+                                'Accept': 'vnd.github.v3+json'
+                            },
+                            body: JSON.stringify(imgPutPayload)
+                        });
+
+                        if(!imgUploadRes.ok) {
+                            const errJson = await imgUploadRes.json();
+                            throw new Error(`Gagal mengunggah file gambar: ${errJson.message}`);
+                        }
+
+                        // Setelah gambar terunggah, update atribut src pada file kdmp.html di server
+                        const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/kdmp.html`;
+                        const htmlGetRes = await fetch(htmlGetUrl, {
+                            headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
+                        });
+                        
+                        if(htmlGetRes.ok) {
+                            const htmlData = await htmlGetRes.json();
+                            let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
+
+                            // Update nama ketua jika diisi
+                            const newName = document.getElementById('tab-kdmp-kdmp-chair').value;
+                            if(newName) {
+                                const regexName = /(<h3[^>]*id="nama-ketua"[^>]*>)([^<]*)(<\/h3>)/;
+                                if(regexName.test(currentHtml)) {
+                                    currentHtml = currentHtml.replace(regexName, `$1${newName}$3`);
+                                }
+                            }
+
+                            // Update nama file gambar pada atribut src tag img id="foto-pengelola"
+                            const regexImgSrc = /(<img[^>]*id="foto-pengelola"[^>]*src=")([^"]*)(")/;
+                            if(regexImgSrc.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexImgSrc, `$1${imageName}$3`);
+                            }
+
+                            // Commit pembaruan file kdmp.html
+                            const htmlPutRes = await fetch(htmlGetUrl, {
+                                method: 'PUT',
+                                headers: {
+                                    'Authorization': `token ${token}`,
+                                    'Content-Type': 'application/json',
+                                    'Accept': 'vnd.github.v3+json'
+                                },
+                                body: JSON.stringify({
+                                    message: `CMS Update: memperbarui foto dan nama pengelola di kdmp.html`,
+                                    content: utf8_to_b64(currentHtml),
+                                    sha: htmlData.sha
+                                })
+                            });
+
+                            if(htmlPutRes.ok) {
+                                showAlert("Sukses! File gambar berhasil diunggah ke GitHub dan halaman kdmp.html diperbarui.");
+                                return;
+                            }
+                        }
+                    }
+                }
+
+                // 2. Penanganan Standar untuk file HTML lainnya
                 const getUrl = `https://api.github.com/repos/${user}/${repo}/contents/${targetFile}`;
                 const getRes = await fetch(getUrl, {
                     headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
                 });
-                if(!getRes.ok) {
-                    throw new Error("Gagal mengambil file asal dari repositori GitHub.");
-                }
-                const fileData = await getRes.json();
                 
-                // Decode aman isi file HTML lama
+                if(!getRes.ok) {
+                    throw new Error(`File ${targetFile} tidak ditemukan di dalam repositori GitHub Anda.`);
+                }
+                
+                const fileData = await getRes.json();
                 let currentHtml = decodeURIComponent(escape(atob(fileData.content)));
 
-                if(targetFile === 'kdmp.html') {
-                    // 1. Perbarui Nama Ketua
-                    const newName = document.getElementById('tab-kdmp-kdmp-chair').value;
-                    if(newName) {
-                        const regexName = /(<h3[^>]*id="nama-ketua"[^>]*>)([^<]*)(<\/h3>)/;
-                        if(regexName.test(currentHtml)) {
-                            currentHtml = currentHtml.replace(regexName, `$1${newName}$3`);
-                        }
-                    }
-
-                    // 2. Perbarui Foto dengan konversi langsung ke Base64 di dalam tag img src
-                    const fileInput = document.getElementById('tab-kdmp-file');
-                    if(fileInput && fileInput.files.length > 0) {
-                        const imageFile = fileInput.files[0];
-                        await new Promise((resolve, reject) => {
-                            const base64Reader = new FileReader();
-                            base64Reader.onload = function(uploadEvent) {
-                                const base64String = uploadEvent.target.result;
-                                const regexImg = /(<img[^>]*id="foto-pengelola"[^>]*src=")([^"]*)(")/;
-                                if(regexImg.test(currentHtml)) {
-                                    currentHtml = currentHtml.replace(regexImg, `$1${base64String}$3`);
-                                }
-                                resolve();
-                            };
-                            base64Reader.onerror = error => reject(error);
-                            base64Reader.readAsDataURL(imageFile);
-                        });
-                    }
-                }
-
-                // Kirim perubahan kembali ke GitHub menggunakan enkoder UTF-8 Base64 yang aman
                 const encodedContent = utf8_to_b64(currentHtml);
                 const putRes = await fetch(getUrl, {
                     method: 'PUT',
@@ -1158,21 +1230,21 @@
                         'Accept': 'vnd.github.v3+json'
                     },
                     body: JSON.stringify({
-                        message: `CMS Update Parsial: memperbarui data dan foto pada ${targetFile}`,
+                        message: `CMS Update Parsial: memperbarui data ${targetFile}`,
                         content: encodedContent,
                         sha: fileData.sha
                     })
                 });
 
                 if(putRes.ok) {
-                    showAlert(`Sukses! Perubahan pada ${targetFile} (nama dan foto) berhasil di-commit dan langsung aktif.`);
+                    showAlert(`Sukses! Perubahan pada ${targetFile} berhasil disimpan ke GitHub.`);
                 } else {
                     const err = await putRes.json();
                     alert(`Gagal Commit GitHub: ${err.message}`);
                 }
             } catch (error) {
                 console.error(error);
-                alert("Terjadi kesalahan jaringan atau koneksi ke GitHub gagal. Periksa token PAT Anda.");
+                alert(`Terjadi kesalahan: ${error.message}`);
             }
         }
     </script>
