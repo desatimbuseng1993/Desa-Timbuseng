@@ -382,111 +382,109 @@
             </div>
         </div>
 
-        <!-- TAB 4: INFORMASI.HTML (Manajemen Pengumuman & Berita) -->
+        <!-- TAB 4: INFORMASI.HTML (MANAJEMEN PENGUMUMAN & BERITA KOMPLEKS) -->
         <div id="tab-informasi" class="tab-pane">
             <div class="cms-card mb-4">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-bullhorn text-success me-2"></i>Kelola Pengumuman & Agenda Desa</h4>
-                <p class="text-muted small mb-4">Tambah, edit, atau hapus jadwal pengumuman kegiatan mendatang yang tampil di halaman informasi publik.</p>
-                
-                <form id="form-add-schedule" onsubmit="handleAddSchedule(event)">
-                    <div class="row g-3 p-3 bg-light rounded-3 border mb-4">
-                        <div class="col-12"><h6 class="fw-bold text-success mb-0"><i class="fas fa-plus-circle me-1"></i> Tambah / Perbarui Jadwal Agenda</h6></div>
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-bullhorn text-success me-2"></i>Manajemen Agenda & Pengumuman Desa</h4>
+                <p class="text-muted small mb-4">Tambah, edit, atau hapus jadwal pengumuman kegiatan yang akan tampil di halaman informasi publik.</p>
+                <form id="formAddSchedule" onsubmit="handleAddSchedule(event)">
+                    <div class="row g-3">
                         <div class="col-md-4">
-                            <label class="form-label">Tanggal (Cth: 18 Mar 2026)</label>
-                            <input type="text" class="form-control" id="sched-date" required placeholder="Cth: 18 Mar 2026">
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Waktu (Cth: 09:00 WITA)</label>
-                            <input type="text" class="form-control" id="sched-time" required placeholder="Cth: 09:00 WITA">
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Lokasi Kegiatan</label>
-                            <input type="text" class="form-control" id="sched-location" required placeholder="Cth: Aula Kantor Desa">
-                        </div>
-                        <div class="col-md-12">
                             <label class="form-label">Judul Agenda / Pengumuman</label>
-                            <input type="text" class="form-control" id="sched-title" required placeholder="Cth: Musyawarah Desa...">
+                            <input type="text" class="form-control" id="sch-title" placeholder="Cth: Penyuluhan Pertanian" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Tanggal Pelaksanaan</label>
+                            <input type="text" class="form-control" id="sch-date" placeholder="Cth: 20 Mar 2026" required>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Jam (WITA)</label>
+                            <input type="text" class="form-control" id="sch-time" placeholder="Cth: 09:00 WITA" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Lokasi Kegiatan</label>
+                            <input type="text" class="form-control" id="sch-location" placeholder="Cth: Aula Kantor Desa" required>
                         </div>
                         <div class="col-md-12">
                             <label class="form-label">Deskripsi Singkat Agenda</label>
-                            <textarea class="form-control" id="sched-desc" rows="2" required placeholder="Rincian kegiatan..."></textarea>
+                            <textarea class="form-control" id="sch-desc" rows="2" placeholder="Rincian kegiatan..." required></textarea>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-desa btn-sm"><i class="fas fa-save me-1"></i> Simpan / Tambah Agenda</button>
+                            <button type="submit" class="btn btn-desa btn-sm"><i class="fas fa-plus me-1"></i> Tambah Agenda Baru</button>
                         </div>
                     </div>
                 </form>
-
-                <h6 class="fw-bold text-dark mb-3">Daftar Agenda Aktif Saat Ini:</h6>
+                <hr class="my-4">
+                <h6 class="fw-bold text-dark mb-3">Daftar Agenda Aktif:</h6>
                 <div class="table-responsive">
-                    <table class="table table-bordered align-middle bg-white">
+                    <table class="table table-bordered align-middle small">
                         <thead class="table-light">
                             <tr>
-                                <th>Tanggal & Waktu</th>
+                                <th>Tanggal</th>
                                 <th>Judul Agenda</th>
                                 <th>Lokasi</th>
                                 <th class="text-center" style="width: 100px;">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody id="admin-schedule-table-body">
+                        <tbody id="scheduleTableBody">
                             <!-- Diisi via JS -->
                         </tbody>
                     </table>
                 </div>
             </div>
 
+            <!-- MANAJEMEN BERITA KOMPLEKS & LIPUTAN -->
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-newspaper text-success me-2"></i>Kelola Berita & Liputan Desa</h4>
-                <p class="text-muted small mb-4">Tambah, ubah, atau hapus artikel berita dan liputan kegiatan desa.</p>
-
-                <form id="form-add-news" onsubmit="handleAddNews(event)">
-                    <div class="row g-3 p-3 bg-light rounded-3 border mb-4">
-                        <div class="col-12"><h6 class="fw-bold text-success mb-0"><i class="fas fa-plus-circle me-1"></i> Tambah Berita / Liputan Baru</h6></div>
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-newspaper text-success me-2"></i>Manajemen Berita Kompleks & Liputan Desa</h4>
+                <p class="text-muted small mb-4">Tambah berita baru lengkap dengan gambar unggahan, kategori, dan isi artikel komprehensif.</p>
+                <form id="formAddNews" onsubmit="handleAddNews(event)">
+                    <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label">Judul Berita</label>
-                            <input type="text" class="form-control" id="news-title" required placeholder="Judul berita utama...">
+                            <label class="form-label">Judul Berita / Liputan</label>
+                            <input type="text" class="form-control" id="news-title" placeholder="Judul berita..." required>
                         </div>
                         <div class="col-md-3">
-                            <label class="form-label">Kategori</label>
-                            <input type="text" class="form-control" id="news-category" required placeholder="Cth: Pemerintahan / Budaya">
+                            <label class="form-label">Kategori Berita</label>
+                            <input type="text" class="form-control" id="news-category" placeholder="Cth: Pemerintahan / Budaya" required>
                         </div>
                         <div class="col-md-3">
-                            <label class="form-label">Tanggal / Tahun</label>
-                            <input type="text" class="form-control" id="news-date" required placeholder="Cth: 2026">
+                            <label class="form-label">Tanggal / Keterangan Waktu</label>
+                            <input type="text" class="form-control" id="news-date" placeholder="Cth: 2026 / 14 Mar" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Upload Gambar Berita / Liputan</label>
+                            <input type="file" class="form-control" id="news-image-file" accept="image/*">
+                            <small class="text-muted" style="font-size: 0.75rem;">Maksimal 5MB (JPG, PNG, WEBP).</small>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Ringkasan Singkat (Preview)</label>
+                            <input type="text" class="form-control" id="news-summary" placeholder="Ringkasan singkat untuk kartu berita..." required>
                         </div>
                         <div class="col-md-12">
-                            <label class="form-label">Nama File Gambar (Cth: kantor.png atau image.png)</label>
-                            <input type="text" class="form-control" id="news-image" value="kantor.png" required>
+                            <label class="form-label">Isi Lengkap Artikel Berita</label>
+                            <textarea class="form-control" id="news-content" rows="4" placeholder="Tuliskan isi berita secara komprehensif di sini..." required></textarea>
                         </div>
-                        <div class="col-md-12">
-                            <label class="form-label">Isi Lengkap Berita (Artikel)</label>
-                            <textarea class="form-control" id="news-content" rows="4" required placeholder="Tulis rincian lengkap berita di sini..."></textarea>
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-desa btn-sm"><i class="fas fa-plus me-1"></i> Tambahkan Berita ke Web</button>
+                        <div class="col-12 mt-3">
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan & Publikasikan Berita ke Web & GitHub</button>
                         </div>
                     </div>
                 </form>
-
-                <h6 class="fw-bold text-dark mb-3">Daftar Berita Aktif Saat Ini:</h6>
+                <hr class="my-4">
+                <h6 class="fw-bold text-dark mb-3">Daftar Berita Aktif:</h6>
                 <div class="table-responsive">
-                    <table class="table table-bordered align-middle bg-white">
+                    <table class="table table-bordered align-middle small">
                         <thead class="table-light">
                             <tr>
-                                <th>Judul Berita</th>
                                 <th>Kategori</th>
+                                <th>Judul Berita</th>
                                 <th>Tanggal</th>
                                 <th class="text-center" style="width: 100px;">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody id="admin-news-table-body">
+                        <tbody id="newsTableBody">
                             <!-- Diisi via JS -->
                         </tbody>
                     </table>
-                </div>
-
-                <div class="mt-4">
-                    <button type="button" class="btn btn-desa w-100" onclick="commitInformasiToGitHub()"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan & Commit Perubahan Informasi ke GitHub</button>
                 </div>
             </div>
         </div>
@@ -1106,162 +1104,6 @@
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // State data default untuk Agenda & Berita Informasi Publik
-        let defaultSchedules = [
-            { date: "18 Mar 2026", time: "09:00 WITA", title: "Musyawarah Perencanaan Pembangunan (Musrenbang) Desa", desc: "Pembahasan final RKPDes dan penetapan prioritas pembangunan infrastruktur jalan tani di 7 wilayah dusun.", location: "Aula Kantor Desa Timbuseng" },
-            { date: "25 Mar 2026", time: "08:00 WITA", title: "Pelayanan Posyandu & Pemeriksaan Kesehatan Warga", desc: "Pemeriksaan kesehatan gratis bagi balita, ibu hamil, dan lansia bekerja sama dengan Kasi Pemberdayaan.", location: "Puskesmas Pembantu Desa" },
-            { date: "02 Apr 2026", time: "14:00 WITA", title: "Kerja Bakti Massal Kebersihan Lingkungan Dusun", desc: "Pembersihan saluran irigasi teknis seluas 216,53 Ha dan pemeliharaan fasilitas umum menyambut musim tanam.", location: "Seluruh Wilayah Dusun" }
-        ];
-
-        let defaultNews = [
-            { title: "Optimalisasi Pelayanan Publik Berbasis Digital di Kantor Desa", category: "Pemerintahan", date: "2026", image: "kantor.png", content: "Pemerintah Desa Timbuseng terus meningkatkan kualitas pelayanan administratif warga melalui pemanfaatan portal sistem informasi desa terpadu." },
-            { title: "Pelestarian Mata Air Sakral Je'ne Timbusu' di Desa Timbuseng", category: "Kearifan Lokal", date: "Tradisi & Budaya", image: "image.png", content: "Masyarakat senantiasa merawat nilai sejarah asal-usul nama desa serta melestarikan ritual budaya lokal yang diwariskan secara turun-temurun." },
-            { title: "Percepatan Pembangunan Jalan Tani & Irigasi 7 Dusun", category: "Pembangunan", date: "Infrastruktur Desa", image: "kantor.png", content: "Fokus pembangunan infrastruktur diarahkan untuk mempermudah mobilitas perkebunan tebu serta kelancaran irigasi sawah warga." }
-        ];
-
-        function getSchedules() {
-            const data = localStorage.getItem('desa_schedules');
-            return data ? JSON.parse(data) : defaultSchedules;
-        }
-
-        function getNews() {
-            const data = localStorage.getItem('desa_news');
-            return data ? JSON.parse(data) : defaultNews;
-        }
-
-        function renderAdminInformasiTables() {
-            const scheds = getSchedules();
-            const schedBody = document.getElementById('admin-schedule-table-body');
-            schedBody.innerHTML = '';
-            scheds.forEach((item, index) => {
-                schedBody.innerHTML += `
-                    <tr>
-                        <td><strong>${item.date}</strong><br><small class="text-muted">${item.time}</small></td>
-                        <td>${item.title}</td>
-                        <td>${item.location}</td>
-                        <td class="text-center">
-                            <button class="btn btn-danger btn-sm" onclick="deleteSchedule(${index})"><i class="fas fa-trash"></i></button>
-                        </td>
-                    </tr>
-                `;
-            });
-
-            const newsList = getNews();
-            const newsBody = document.getElementById('admin-news-table-body');
-            newsBody.innerHTML = '';
-            newsList.forEach((news, index) => {
-                newsBody.innerHTML += `
-                    <tr>
-                        <td><strong>${news.title}</strong></td>
-                        <td><span class="badge bg-success">${news.category}</span></td>
-                        <td>${news.date}</td>
-                        <td class="text-center">
-                            <button class="btn btn-danger btn-sm" onclick="deleteNews(${index})"><i class="fas fa-trash"></i></button>
-                        </td>
-                    </tr>
-                `;
-            });
-        }
-
-        function handleAddSchedule(e) {
-            e.preventDefault();
-            const newSched = {
-                date: document.getElementById('sched-date').value.trim(),
-                time: document.getElementById('sched-time').value.trim(),
-                title: document.getElementById('sched-title').value.trim(),
-                desc: document.getElementById('sched-desc').value.trim(),
-                location: document.getElementById('sched-location').value.trim()
-            };
-            const scheds = getSchedules();
-            scheds.push(newSched);
-            localStorage.setItem('desa_schedules', JSON.stringify(scheds));
-            document.getElementById('form-add-schedule').reset();
-            renderAdminInformasiTables();
-            showAlert("Agenda baru berhasil ditambahkan secara lokal!");
-        }
-
-        function deleteSchedule(index) {
-            let scheds = getSchedules();
-            scheds.splice(index, 1);
-            localStorage.setItem('desa_schedules', JSON.stringify(scheds));
-            renderAdminInformasiTables();
-            showAlert("Agenda berhasil dihapus.");
-        }
-
-        function handleAddNews(e) {
-            e.preventDefault();
-            const newArticle = {
-                title: document.getElementById('news-title').value.trim(),
-                category: document.getElementById('news-category').value.trim(),
-                date: document.getElementById('news-date').value.trim(),
-                image: document.getElementById('news-image').value.trim(),
-                content: document.getElementById('news-content').value.trim()
-            };
-            const newsList = getNews();
-            newsList.push(newArticle);
-            localStorage.setItem('desa_news', JSON.stringify(newsList));
-            document.getElementById('form-add-news').reset();
-            renderAdminInformasiTables();
-            showAlert("Berita baru berhasil ditambahkan secara lokal!");
-        }
-
-        function deleteNews(index) {
-            let newsList = getNews();
-            newsList.splice(index, 1);
-            localStorage.setItem('desa_news', JSON.stringify(newsList));
-            renderAdminInformasiTables();
-            showAlert("Berita berhasil dihapus.");
-        }
-
-        async function commitInformasiToGitHub() {
-            const user = localStorage.getItem('gh_user');
-            const repo = localStorage.getItem('gh_repo');
-            const token = localStorage.getItem('gh_token');
-
-            if(!token || !user || !repo) {
-                alert("Harap isi konfigurasi GitHub terlebih dahulu pada tab GitHub & Auth!");
-                switchTab('tab-github', document.querySelector('.sidebar-menu .nav-link'));
-                return;
-            }
-
-            showAlert("Menghubungkan ke GitHub untuk memperbarui informasi.html...");
-
-            try {
-                const getUrl = `https://api.github.com/repos/${user}/${repo}/contents/informasi.html`;
-                const getRes = await fetch(getUrl, {
-                    headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
-                });
-
-                if(!getRes.ok) throw new Error("File informasi.html tidak ditemukan di repositori GitHub.");
-                const fileData = await getRes.json();
-                let currentHtml = decodeURIComponent(escape(atob(fileData.content)));
-
-                const putRes = await fetch(getUrl, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Content-Type': 'application/json',
-                        'Accept': 'vnd.github.v3+json'
-                    },
-                    body: JSON.stringify({
-                        message: `CMS Update: memperbarui daftar berita & pengumuman di informasi.html`,
-                        content: utf8_to_b64(currentHtml),
-                        sha: fileData.sha
-                    })
-                });
-
-                if(putRes.ok) {
-                    showAlert("Sukses! Perubahan informasi.html berhasil dikomit ke GitHub.");
-                } else {
-                    const err = await putRes.json();
-                    alert(`Gagal Commit GitHub: ${err.message}`);
-                }
-            } catch(error) {
-                console.error(error);
-                alert(`Terjadi kesalahan: ${error.message}`);
-            }
-        }
-
         function toggleSidebar() {
             document.getElementById('appSidebar').classList.toggle('show');
             document.getElementById('sidebarBackdrop').classList.toggle('show');
@@ -1287,7 +1129,8 @@
             if(repo) document.getElementById('tab-github-gh-repo').value = repo;
             if(token) document.getElementById('tab-github-gh-token').value = token;
 
-            renderAdminInformasiTables();
+            loadAdminSchedules();
+            loadAdminNews();
         });
 
         function showAlert(msg) {
@@ -1297,6 +1140,192 @@
             setTimeout(() => box.classList.add('d-none'), 5000);
         }
 
+        // --- MANAJEMEN PENGUMUMAN & AGENDA ---
+        function getSchedules() {
+            const data = localStorage.getItem('desa_schedules');
+            if(data) {
+                try { return JSON.parse(data); } catch(e) {}
+            }
+            return [
+                { title: "Musyawarah Perencanaan Pembangunan (Musrenbang) Desa", date: "18 Mar 2026", time: "09:00 WITA", location: "Aula Kantor Desa Timbuseng", desc: "Pembahasan final RKPDes dan penetapan prioritas pembangunan infrastruktur jalan tani di 7 wilayah dusun." },
+                { title: "Pelayanan Posyandu & Pemeriksaan Kesehatan Warga", date: "25 Mar 2026", time: "08:00 WITA", location: "Puskesmas Pembantu Desa", desc: "Pemeriksaan kesehatan gratis bagi balita, ibu hamil, dan lansia bekerja sama dengan Kasi Pemberdayaan." },
+                { title: "Kerja Bakti Massal Kebersihan Lingkungan Dusun", date: "02 Apr 2026", time: "14:00 WITA", location: "Seluruh Wilayah Dusun", desc: "Pembersihan saluran irigasi teknis seluas 216,53 Ha dan pemeliharaan fasilitas umum menyambut musim tanam." }
+            ];
+        }
+
+        function loadAdminSchedules() {
+            const tbody = document.getElementById('scheduleTableBody');
+            if(!tbody) return;
+            const schedules = getSchedules();
+            tbody.innerHTML = '';
+            schedules.forEach((item, index) => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td><strong>${item.date}</strong><br><small class="text-muted">${item.time}</small></td>
+                        <td>${item.title}</td>
+                        <td>${item.location}</td>
+                        <td class="text-center">
+                            <button class="btn btn-outline-danger btn-sm px-2 py-1" onclick="deleteSchedule(${index})"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function handleAddSchedule(e) {
+            e.preventDefault();
+            const title = document.getElementById('sch-title').value.trim();
+            const date = document.getElementById('sch-date').value.trim();
+            const time = document.getElementById('sch-time').value.trim();
+            const location = document.getElementById('sch-location').value.trim();
+            const desc = document.getElementById('sch-desc').value.trim();
+
+            let schedules = getSchedules();
+            schedules.unshift({ title, date, time, location, desc });
+            localStorage.setItem('desa_schedules', JSON.stringify(schedules));
+
+            document.getElementById('formAddSchedule').reset();
+            loadAdminSchedules();
+            showAlert("Agenda & pengumuman berhasil ditambahkan!");
+        }
+
+        function deleteSchedule(index) {
+            let schedules = getSchedules();
+            schedules.splice(index, 1);
+            localStorage.setItem('desa_schedules', JSON.stringify(schedules));
+            loadAdminSchedules();
+            showAlert("Agenda berhasil dihapus.");
+        }
+
+        // --- MANAJEMEN BERITA KOMPLEKS ---
+        function getNews() {
+            const data = localStorage.getItem('desa_news');
+            if(data) {
+                try { return JSON.parse(data); } catch(e) {}
+            }
+            return [
+                {
+                    title: "Optimalisasi Pelayanan Publik Berbasis Digital di Kantor Desa",
+                    category: "Pemerintahan",
+                    date: "2026 | Kantor Desa Timbuseng",
+                    image: "kantor.png",
+                    summary: "Pemerintah Desa Timbuseng terus meningkatkan kualitas pelayanan administratif warga melalui pemanfaatan portal sistem informasi desa terpadu...",
+                    content: "Pemerintah Desa Timbuseng terus meningkatkan kualitas pelayanan administratif warga melalui pemanfaatan portal sistem informasi desa terpadu. Langkah ini diambil untuk memastikan seluruh warga mendapatkan akses informasi yang transparan, cepat, dan efisien tanpa hambatan birokrasi yang rumit. Dengan sistem digital ini, masyarakat dapat memantau berita desa, data kependudukan per dusun, serta menyampaikan aspirasi langsung secara daring."
+                },
+                {
+                    title: "Pelestarian Mata Air Sakral Je'ne Timbusu' di Desa Timbuseng",
+                    category: "Kearifan Lokal",
+                    date: "Tradisi & Budaya",
+                    image: "image.png",
+                    summary: "Masyarakat senantiasa merawat nilai sejarah asal-usul nama desa serta melestarikan ritual budaya lokal yang diwariskan secara turun-temurun...",
+                    content: "Masyarakat senantiasa merawat nilai sejarah asal-usul nama desa serta melestarikan ritual budaya lokal yang diwariskan secara turun-temurun. Nama Desa Timbuseng berakar dari mata air murni Je'ne Timbusu' yang menjadi simbol kehidupan dan sumber berkah warga. Setiap kegiatan adat dan pernikahan di desa senantiasa melibatkan tradisi pengambilan air sakral ini yang diiringi tabuhan gendang khas budaya setempat sebagai wujud penghormatan kepada leluhur."
+                },
+                {
+                    title: "Percepatan Pembangunan Jalan Tani & Irigasi 7 Dusun",
+                    category: "Pembangunan",
+                    date: "Infrastruktur Desa",
+                    image: "kantor.png",
+                    summary: "Fokus pembangunan infrastruktur diarahkan untuk mempermudah mobilitas perkebunan tebu serta kelancaran irigasi sawah warga...",
+                    content: "Fokus pembangunan infrastruktur diarahkan untuk mempermudah mobilitas perkebunan tebu seluas 705,39 Ha serta kelancaran irigasi sawah produktif seluas 216,53 Ha yang tersebar di 7 wilayah dusun. Pemerintah Desa berkomitmen untuk terus membuka akses logistik pertanian yang lebih baik demi meningkatkan perekonomian seluruh warga masyarakat Timbuseng."
+                }
+            ];
+        }
+
+        function loadAdminNews() {
+            const tbody = document.getElementById('newsTableBody');
+            if(!tbody) return;
+            const newsList = getNews();
+            tbody.innerHTML = '';
+            newsList.forEach((news, index) => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td><span class="badge bg-success">${news.category}</span></td>
+                        <td><strong>${news.title}</strong></td>
+                        <td>${news.date}</td>
+                        <td class="text-center">
+                            <button class="btn btn-outline-danger btn-sm px-2 py-1" onclick="deleteNews(${index})"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        async function handleAddNews(e) {
+            e.preventDefault();
+            const title = document.getElementById('news-title').value.trim();
+            const category = document.getElementById('news-category').value.trim();
+            const date = document.getElementById('news-date').value.trim();
+            const summary = document.getElementById('news-summary').value.trim();
+            const content = document.getElementById('news-content').value.trim();
+            const fileInput = document.getElementById('news-image-file');
+
+            let imageUrl = 'kantor.png';
+
+            if(fileInput && fileInput.files.length > 0) {
+                const imageFile = fileInput.files[0];
+                imageUrl = imageFile.name;
+                const base64Image = await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(imageFile);
+                    reader.onload = () => resolve(reader.result.split(',')[1]);
+                    reader.onerror = error => reject(error);
+                });
+
+                const user = localStorage.getItem('gh_user');
+                const repo = localStorage.getItem('gh_repo');
+                const token = localStorage.getItem('gh_token');
+
+                if(token && user && repo) {
+                    try {
+                        const imgGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/${imageUrl}`;
+                        let imgSha = null;
+                        const checkRes = await fetch(imgGetUrl, {
+                            headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
+                        });
+                        if(checkRes.ok) {
+                            const imgInfo = await checkRes.json();
+                            imgSha = imgInfo.sha;
+                        }
+
+                        const imgPutPayload = {
+                            message: `CMS Upload Berita Image: ${imageUrl}`,
+                            content: base64Image
+                        };
+                        if(imgSha) imgPutPayload.sha = imgSha;
+
+                        await fetch(imgGetUrl, {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': `token ${token}`,
+                                'Content-Type': 'application/json',
+                                'Accept': 'vnd.github.v3+json'
+                            },
+                            body: JSON.stringify(imgPutPayload)
+                        });
+                    } catch(err) {
+                        console.error("Gagal upload gambar ke GitHub", err);
+                    }
+                }
+            }
+
+            let newsList = getNews();
+            newsList.unshift({ title, category, date, image: imageUrl, summary, content });
+            localStorage.setItem('desa_news', JSON.stringify(newsList));
+
+            document.getElementById('formAddNews').reset();
+            loadAdminNews();
+            showAlert("Berita kompleks baru berhasil ditambahkan dan disinkronkan!");
+        }
+
+        function deleteNews(index) {
+            let newsList = getNews();
+            newsList.splice(index, 1);
+            localStorage.setItem('desa_news', JSON.stringify(newsList));
+            loadAdminNews();
+            showAlert("Berita berhasil dihapus.");
+        }
+
+        // Enkoder aman UTF-8 ke Base64 untuk payload GitHub REST API
         function utf8_to_b64(str) {
             return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
                 return String.fromCharCode('0x' + p1);
@@ -1321,7 +1350,7 @@
             const token = localStorage.getItem('gh_token');
 
             if(!token || !user || !repo) {
-                alert("Harap isi konfigurasi GitHub terlebih dahulu pada tab GitHub & Auth!");
+                alert("Harap isi konfigurasi GitHub (Username, Repo, dan PAT) terlebih dahulu pada tab GitHub & Auth!");
                 switchTab('tab-github', document.querySelector('.sidebar-menu .nav-link'));
                 return;
             }
@@ -1330,16 +1359,20 @@
 
             try {
                 const targetFile = filename.trim();
+
                 const getUrl = `https://api.github.com/repos/${user}/${repo}/contents/${targetFile}`;
                 const getRes = await fetch(getUrl, {
                     headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
                 });
                 
-                if(!getRes.ok) throw new Error(`File ${targetFile} tidak ditemukan di repositori GitHub.`);
+                if(!getRes.ok) {
+                    throw new Error(`File ${targetFile} tidak ditemukan di dalam repositori GitHub Anda.`);
+                }
                 
                 const fileData = await getRes.json();
                 let currentHtml = decodeURIComponent(escape(atob(fileData.content)));
 
+                const encodedContent = utf8_to_b64(currentHtml);
                 const putRes = await fetch(getUrl, {
                     method: 'PUT',
                     headers: {
@@ -1349,7 +1382,7 @@
                     },
                     body: JSON.stringify({
                         message: `CMS Update: memperbarui data ${targetFile}`,
-                        content: utf8_to_b64(currentHtml),
+                        content: encodedContent,
                         sha: fileData.sha
                     })
                 });
