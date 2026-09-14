@@ -293,28 +293,28 @@
         <div id="tab-index" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>index.html - Beranda Desa</h4>
-                <p class="text-muted small mb-4">Perbarui Running Text, Total Penduduk, Luas Wilayah, Jumlah Wilayah Dusun, dan Kepala Keluarga (KK).</p>
+                <p class="text-muted small mb-4">Perbarui bagian yang diinginkan secara fleksibel (kosongkan kotak jika tidak ingin mengubah bagian tertentu).</p>
                 <form onsubmit="handleFormSubmit(event, 'index.html', 'tab-index')">
                     <div class="row g-3">
-                        <div class="col-12">
-                            <label class="form-label">Running Text / Pengumuman Berjalan</label>
-                            <textarea class="form-control" id="tab-index-running-text" rows="3" placeholder="Masukkan teks pengumuman beranda...">Selamat Datang di Portal Resmi Sistem Informasi Desa Timbuseng. Pelayanan Administrasi Kantor Desa Buka Setiap Hari Kerja Jam 08.00 - 16.00 WITA. Ikuti Instagram Resmi Kami @desa_timbuseng Untuk Informasi Terbaru!</textarea>
+                        <div class="col-md-12">
+                            <label class="form-label">Running Text / Pengumuman Singkat (Marquee)</label>
+                            <textarea class="form-control" id="tab-index-running-text" rows="2" placeholder="Kosongkan jika tidak diubah"></textarea>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label class="form-label">Total Penduduk (Jiwa)</label>
-                            <input type="text" class="form-control" id="tab-index-total-pop" value="2.709">
+                            <input type="text" class="form-control" id="tab-index-total-pop" placeholder="Cth: 2.709">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label class="form-label">Luas Wilayah (Ha)</label>
-                            <input type="text" class="form-control" id="tab-index-total-area" value="1.083,47">
+                            <input type="text" class="form-control" id="tab-index-total-area" placeholder="Cth: 1.083,47">
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Wilayah Dusun (Jumlah Dusun)</label>
-                            <input type="text" class="form-control" id="tab-index-total-dusun" value="7">
+                        <div class="col-md-3">
+                            <label class="form-label">Wilayah Dusun</label>
+                            <input type="text" class="form-control" id="tab-index-total-dusun" placeholder="Cth: 7">
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Kepala Keluarga / KK</label>
-                            <input type="text" class="form-control" id="tab-index-total-kk" value="884">
+                        <div class="col-md-3">
+                            <label class="form-label">Kepala Keluarga (KK)</label>
+                            <input type="text" class="form-control" id="tab-index-total-kk" placeholder="Cth: 884">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Status Publikasi</label>
@@ -1094,13 +1094,13 @@
             try {
                 const targetFile = filename.trim();
 
-                // 1. Penanganan Khusus Modul INDEX.HTML (Running Text, Penduduk, Luas Wilayah, Dusun, KK)
+                // 1. Penanganan Khusus Modul INDEX.HTML (Fleksibel: Bisa ganti salah satu atau beberapa data saja)
                 if(targetFile === 'index.html') {
-                    const newRunningText = document.getElementById('tab-index-running-text').value.trim();
-                    const newPop = document.getElementById('tab-index-total-pop').value.trim();
-                    const newArea = document.getElementById('tab-index-total-area').value.trim();
-                    const newDusun = document.getElementById('tab-index-total-dusun').value.trim();
-                    const newKk = document.getElementById('tab-index-total-kk').value.trim();
+                    const runningTextVal = document.getElementById('tab-index-running-text').value.trim();
+                    const totalPopVal = document.getElementById('tab-index-total-pop').value.trim();
+                    const totalAreaVal = document.getElementById('tab-index-total-area').value.trim();
+                    const totalDusunVal = document.getElementById('tab-index-total-dusun').value.trim();
+                    const totalKkVal = document.getElementById('tab-index-total-kk').value.trim();
 
                     const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/index.html`;
                     const htmlGetRes = await fetch(htmlGetUrl, {
@@ -1111,48 +1111,48 @@
                         const htmlData = await htmlGetRes.json();
                         let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
 
-                        // Update Running Text (di dalam tag <marquee>)
-                        if(newRunningText !== "") {
-                            const regexMarquee = /(<marquee[^>]*>)([\s\S]*?)(<\/marquee>)/;
-                            if(regexMarquee.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexMarquee, `$1${newRunningText}$3`);
+                        // Update Running Text jika diisi
+                        if(runningTextVal !== "") {
+                            const marqueeRegex = /(<marquee[^>]*>)([\s\S]*?)(<\/marquee>)/;
+                            if(marqueeRegex.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(marqueeRegex, `$1${runningTextVal}$3`);
                             }
                         }
 
-                        // Update Total Penduduk (Jiwa) - Kartu Statistik 1
-                        if(newPop !== "") {
-                            const regexPop = /(<p class="text-muted small mb-0">Total Penduduk \(Jiwa\)<\/p>\s*<\/div>\s*<\/div>\s*<div class="col-6 col-md-3">\s*<div class="stat-card text-center">\s*<i class="fas fa-vector-square stat-icon mb-2"><\/i>\s*<h3 class="fw-bold mb-1 fs-4 fs-md-3">)([^<]*)(<\/h3>)/;
-                            // Pola alternatif menggunakan urutan card statistik berdasar teks
-                            const regexPopSimple = /(<p class="text-muted small mb-0">Total Penduduk \(Jiwa\)<\/p>[\s\S]*?<h3 class="fw-bold mb-1 fs-4 fs-md-3">)([^<]*)(<\/h3>)/;
-                            if(regexPopSimple.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexPopSimple, `$1${newPop}$3`);
+                        // Update Total Penduduk (Jiwa) jika diisi
+                        if(totalPopVal !== "") {
+                            // Mencari elemen h3 statistik penduduk yang diikuti teks "Total Penduduk"
+                            const popRegex = /(<h3[^>]*>)([^<]*)(<\/h3>\s*<p[^>]*>\s*Total Penduduk)/i;
+                            if(popRegex.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(popRegex, `$1${totalPopVal}$3`);
                             }
                         }
 
-                        // Update Luas Wilayah (Ha) - Kartu Statistik 2
-                        if(newArea !== "") {
-                            const regexArea = /(<p class="text-muted small mb-0">Luas Wilayah \(Ha\)<\/p>[\s\S]*?<h3 class="fw-bold mb-1 fs-4 fs-md-3">)([^<]*)(<\/h3>)/;
-                            if(regexArea.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexArea, `$1${newArea}$3`);
+                        // Update Luas Wilayah (Ha) jika diisi
+                        if(totalAreaVal !== "") {
+                            const areaRegex = /(<h3[^>]*>)([^<]*)(<\/h3>\s*<p[^>]*>\s*Luas Wilayah)/i;
+                            if(areaRegex.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(areaRegex, `$1${totalAreaVal}$3`);
                             }
                         }
 
-                        // Update Wilayah Dusun - Kartu Statistik 3
-                        if(newDusun !== "") {
-                            const regexDusun = /(<p class="text-muted small mb-0">Wilayah Dusun<\/p>[\s\S]*?<h3 class="fw-bold mb-1 fs-4 fs-md-3">)([^<]*)(<\/h3>)/;
-                            if(regexDusun.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexDusun, `$1${newDusun}$3`);
+                        // Update Wilayah Dusun jika diisi
+                        if(totalDusunVal !== "") {
+                            const dusunRegex = /(<h3[^>]*>)([^<]*)(<\/h3>\s*<p[^>]*>\s*Wilayah Dusun)/i;
+                            if(dusunRegex.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(dusunRegex, `$1${totalDusunVal}$3`);
                             }
                         }
 
-                        // Update Kepala Keluarga (KK) - Kartu Statistik 4
-                        if(newKk !== "") {
-                            const regexKk = /(<p class="text-muted small mb-0">Kepala Keluarga \(KK\)<\/p>[\s\S]*?<h3 class="fw-bold mb-1 fs-4 fs-md-3">)([^<]*)(<\/h3>)/;
-                            if(regexKk.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexKk, `$1${newKk}$3`);
+                        // Update Kepala Keluarga (KK) jika diisi
+                        if(totalKkVal !== "") {
+                            const kkRegex = /(<h3[^>]*>)([^<]*)(<\/h3>\s*<p[^>]*>\s*Kepala Keluarga)/i;
+                            if(kkRegex.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(kkRegex, `$1${totalKkVal}$3`);
                             }
                         }
 
+                        // Commit pembaruan file index.html ke GitHub
                         const htmlPutRes = await fetch(htmlGetUrl, {
                             method: 'PUT',
                             headers: {
@@ -1161,7 +1161,7 @@
                                 'Accept': 'vnd.github.v3+json'
                             },
                             body: JSON.stringify({
-                                message: `CMS Update: memperbarui data running text dan statistik index.html`,
+                                message: `CMS Update: memperbarui data index.html secara parsial/akurat`,
                                 content: utf8_to_b64(currentHtml),
                                 sha: htmlData.sha
                             })
