@@ -293,28 +293,33 @@
         <div id="tab-index" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>index.html - Beranda Desa</h4>
-                <p class="text-muted small mb-4">Perbarui bagian yang diinginkan secara fleksibel (kosongkan kotak jika tidak ingin mengubah bagian tertentu).</p>
+                <p class="text-muted small mb-4">Perbarui running text, foto latar belakang hero, total penduduk, luas wilayah, wilayah dusun, atau kepala keluarga secara fleksibel (bisa diubah salah satu saja).</p>
                 <form onsubmit="handleFormSubmit(event, 'index.html', 'tab-index')">
                     <div class="row g-3">
                         <div class="col-md-12">
-                            <label class="form-label">Running Text / Pengumuman Singkat (Marquee)</label>
-                            <textarea class="form-control" id="tab-index-running-text" rows="2" placeholder="Kosongkan jika tidak diubah"></textarea>
+                            <label class="form-label">Running Text / Pengumuman Singkat</label>
+                            <textarea class="form-control" id="tab-index-running-text" rows="2" placeholder="Kosongkan jika tidak ingin diubah..."></textarea>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <label class="form-label">Total Penduduk (Jiwa)</label>
                             <input type="text" class="form-control" id="tab-index-total-pop" placeholder="Cth: 2.709">
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <label class="form-label">Luas Wilayah (Ha)</label>
                             <input type="text" class="form-control" id="tab-index-total-area" placeholder="Cth: 1.083,47">
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <label class="form-label">Wilayah Dusun</label>
                             <input type="text" class="form-control" id="tab-index-total-dusun" placeholder="Cth: 7">
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <label class="form-label">Kepala Keluarga (KK)</label>
                             <input type="text" class="form-control" id="tab-index-total-kk" placeholder="Cth: 884">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Upload Foto Poster Latar Belakang (Hero Background)</label>
+                            <input type="file" class="form-control" id="tab-index-file" accept="image/*">
+                            <small class="text-muted" style="font-size: 0.75rem;">Nama file foto beserta formatnya akan otomatis menggantikan gambar latar belakang di web.</small>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Status Publikasi</label>
@@ -1094,14 +1099,63 @@
             try {
                 const targetFile = filename.trim();
 
-                // 1. Penanganan Khusus Modul INDEX.HTML (Fleksibel: Bisa ganti salah satu atau beberapa data saja)
+                // 1. Penanganan Khusus Modul INDEX.HTML (Fleksibel: Bisa ganti running text, background, penduduk, luas, dusun, atau KK secara terpisah)
                 if(targetFile === 'index.html') {
                     const runningTextVal = document.getElementById('tab-index-running-text').value.trim();
-                    const totalPopVal = document.getElementById('tab-index-total-pop').value.trim();
-                    const totalAreaVal = document.getElementById('tab-index-total-area').value.trim();
-                    const totalDusunVal = document.getElementById('tab-index-total-dusun').value.trim();
-                    const totalKkVal = document.getElementById('tab-index-total-kk').value.trim();
+                    const popVal = document.getElementById('tab-index-total-pop').value.trim();
+                    const areaVal = document.getElementById('tab-index-total-area').value.trim();
+                    const dusunVal = document.getElementById('tab-index-total-dusun').value.trim();
+                    const kkVal = document.getElementById('tab-index-total-kk').value.trim();
+                    const fileInput = document.getElementById('tab-index-file');
+                    let uploadedImageName = null;
 
+                    // Jika user mengunggah foto poster latar belakang baru (hero background)
+                    if(fileInput && fileInput.files.length > 0) {
+                        const imageFile = fileInput.files[0];
+                        uploadedImageName = imageFile.name; // Mengambil nama asli beserta formatnya (.png/.jpg/dll)
+
+                        const base64Image = await new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.readAsDataURL(imageFile);
+                            reader.onload = () => resolve(reader.result.split(',')[1]);
+                            reader.onerror = error => reject(error);
+                        });
+
+                        const imgGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/${uploadedImageName}`;
+                        let imgSha = null;
+                        try {
+                            const checkRes = await fetch(imgGetUrl, {
+                                headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
+                            });
+                            if(checkRes.ok) {
+                                const imgInfo = await checkRes.json();
+                                imgSha = imgInfo.sha;
+                            }
+                        } catch(err) {}
+
+                        const imgPutPayload = {
+                            message: `CMS Upload Background Hero: ${uploadedImageName}`,
+                            content: base64Image
+                        };
+                        if(imgSha) imgPutPayload.sha = imgSha;
+
+                        const imgUploadRes = await fetch(imgGetUrl, {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': `token ${token}`,
+                                'Content-Type': 'application/json',
+                                'Accept': 'vnd.github.v3+json'
+                            },
+                            body: JSON.stringify(imgPutPayload)
+                        });
+
+                        if(!imgUploadRes.ok) {
+                            const errJson = await imgUploadRes.json();
+                            throw new Error(`Gagal mengunggah file latar belakang: ${errJson.message}`);
+                        }
+                    }
+
+                    // Ambil file index.html dari GitHub
                     const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/index.html`;
                     const htmlGetRes = await fetch(htmlGetUrl, {
                         headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
@@ -1111,44 +1165,55 @@
                         const htmlData = await htmlGetRes.json();
                         let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
 
-                        // Update Running Text jika diisi
+                        // 1. Update Running Text jika diisi
                         if(runningTextVal !== "") {
-                            const marqueeRegex = /(<marquee[^>]*>)([\s\S]*?)(<\/marquee>)/;
-                            if(marqueeRegex.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(marqueeRegex, `$1${runningTextVal}$3`);
+                            // Mengganti isi di dalam tag <marquee>...</marquee>
+                            const regexMarquee = /(<marquee[^>]*>)([\s\S]*?)(<\/marquee>)/;
+                            if(regexMarquee.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexMarquee, `$1${runningTextVal}$3`);
                             }
                         }
 
-                        // Update Total Penduduk (Jiwa) jika diisi
-                        if(totalPopVal !== "") {
-                            // Mencari elemen h3 statistik penduduk yang diikuti teks "Total Penduduk"
-                            const popRegex = /(<h3[^>]*>)([^<]*)(<\/h3>\s*<p[^>]*>\s*Total Penduduk)/i;
-                            if(popRegex.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(popRegex, `$1${totalPopVal}$3`);
+                        // 2. Update Total Penduduk secara akurat berdasarkan struktur kartu statistik di index.html
+                        if(popVal !== "") {
+                            // Mencari heading statistik penduduk (berdasarkan label "Total Penduduk (Jiwa)")
+                            const regexPop = /(<p class="text-muted small mb-0">\s*Total Penduduk\s*\(Jiwa\)\s*<\/p>\s*<\/div>\s*<\/div>\s*<div class="col-6 col-md-3">\s*<div class="stat-card text-center">\s*<i[^>]*><\/i>\s*<h3[^>]*>)([^<]*)(<\/h3>)/i;
+                            // Pola alternatif universal untuk mendeteksi teks angka penduduk di card index
+                            const generalPopRegex = /(<i class="fas fa-users stat-icon mb-2"><\/i>\s*<h3[^>]*>)([^<]*)(<\/h3>\s*<p class="text-muted small mb-0">Total Penduduk)/i;
+                            if(generalPopRegex.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(generalPopRegex, `$1${popVal}$3`);
                             }
                         }
 
-                        // Update Luas Wilayah (Ha) jika diisi
-                        if(totalAreaVal !== "") {
-                            const areaRegex = /(<h3[^>]*>)([^<]*)(<\/h3>\s*<p[^>]*>\s*Luas Wilayah)/i;
-                            if(areaRegex.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(areaRegex, `$1${totalAreaVal}$3`);
+                        // 3. Update Luas Wilayah secara akurat
+                        if(areaVal !== "") {
+                            const generalAreaRegex = /(<i class="fas fa-vector-square stat-icon mb-2"><\/i>\s*<h3[^>]*>)([^<]*)(<\/h3>\s*<p class="text-muted small mb-0">Luas Wilayah)/i;
+                            if(generalAreaRegex.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(generalAreaRegex, `$1${areaVal}$3`);
                             }
                         }
 
-                        // Update Wilayah Dusun jika diisi
-                        if(totalDusunVal !== "") {
-                            const dusunRegex = /(<h3[^>]*>)([^<]*)(<\/h3>\s*<p[^>]*>\s*Wilayah Dusun)/i;
-                            if(dusunRegex.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(dusunRegex, `$1${totalDusunVal}$3`);
+                        // 4. Update Wilayah Dusun secara akurat
+                        if(dusunVal !== "") {
+                            const generalDusunRegex = /(<i class="fas fa-map-signs stat-icon mb-2"><\/i>\s*<h3[^>]*>)([^<]*)(<\/h3>\s*<p class="text-muted small mb-0">Wilayah Dusun)/i;
+                            if(generalDusunRegex.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(generalDusunRegex, `$1${dusunVal}$3`);
                             }
                         }
 
-                        // Update Kepala Keluarga (KK) jika diisi
-                        if(totalKkVal !== "") {
-                            const kkRegex = /(<h3[^>]*>)([^<]*)(<\/h3>\s*<p[^>]*>\s*Kepala Keluarga)/i;
-                            if(kkRegex.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(kkRegex, `$1${totalKkVal}$3`);
+                        // 5. Update Kepala Keluarga (KK) secara akurat
+                        if(kkVal !== "") {
+                            const generalKkRegex = /(<i class="fas fa-home stat-icon mb-2"><\/i>\s*<h3[^>]*>)([^<]*)(<\/h3>\s*<p class="text-muted small mb-0">Kepala Keluarga)/i;
+                            if(generalKkRegex.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(generalKkRegex, `$1${kkVal}$3`);
+                            }
+                        }
+
+                        // 6. Update Foto Poster Latar Belakang Hero (menggantikan url('...'))
+                        if(uploadedImageName) {
+                            const regexHeroBg = /(url\(')([^']*)('\))/;
+                            if(regexHeroBg.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexHeroBg, `$1${uploadedImageName}$3`);
                             }
                         }
 
@@ -1161,7 +1226,7 @@
                                 'Accept': 'vnd.github.v3+json'
                             },
                             body: JSON.stringify({
-                                message: `CMS Update: memperbarui data index.html secara parsial/akurat`,
+                                message: `CMS Update: memperbarui data index.html secara fleksibel`,
                                 content: utf8_to_b64(currentHtml),
                                 sha: htmlData.sha
                             })
