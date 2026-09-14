@@ -293,44 +293,41 @@
         <div id="tab-index" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>index.html - Beranda Desa</h4>
-                <p class="text-muted small mb-4">Perbarui teks utama, statistik kependudukan, serta sambutan kepala desa pada halaman depan.</p>
+                <p class="text-muted small mb-4">Perbarui teks hero, running text pengumuman, statistik kependudukan, atau banner kantor secara fleksibel.</p>
                 <form onsubmit="handleFormSubmit(event, 'index.html', 'tab-index')">
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label">Hero Title</label>
-                            <input type="text" class="form-control" id="tab-index-hero-title" value="Selamat Datang di Website Resmi Desa Timbuseng">
+                            <label class="form-label">Hero Title (Judul Utama Beranda)</label>
+                            <input type="text" class="form-control" id="tab-index-hero-title" placeholder="Kosongkan jika tidak ingin diubah">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Hero Subtitle</label>
-                            <input type="text" class="form-control" id="tab-index-hero-subtitle" value="Pusat Informasi Pelayanan Publik, Pemerintahan, dan Potensi Desa">
+                            <label class="form-label">Hero Subtitle (Deskripsi Singkat)</label>
+                            <input type="text" class="form-control" id="tab-index-hero-subtitle" placeholder="Kosongkan jika tidak ingin diubah">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <label class="form-label">Running Text / Pengumuman Singkat</label>
-                            <textarea class="form-control" id="tab-index-running-text" rows="3">Selamat datang di website resmi Desa Timbuseng, Kec. Polongbangkeng Timur, Kab. Takalar.</textarea>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Sambutan Kepala Desa</label>
-                            <textarea class="form-control" id="tab-index-kades-speech" rows="3">Puji syukur kita panjatkan ke hadirat Allah SWT, website ini hadir sebagai wujud transparansi informasi.</textarea>
+                            <textarea class="form-control" id="tab-index-running-text" rows="2" placeholder="Kosongkan jika tidak ingin diubah"></textarea>
                         </div>
                         <div class="col-md-3">
-                            <label class="form-label">Total Penduduk</label>
-                            <input type="text" class="form-control" id="tab-index-total-pop" value="3.450 Jiwa">
+                            <label class="form-label">Total Penduduk (Jiwa)</label>
+                            <input type="text" class="form-control" id="tab-index-total-pop" placeholder="Cth: 2.709">
                         </div>
                         <div class="col-md-3">
-                            <label class="form-label">Luas Wilayah</label>
-                            <input type="text" class="form-control" id="tab-index-total-area" value="12.5 Km²">
+                            <label class="form-label">Luas Wilayah (Ha)</label>
+                            <input type="text" class="form-control" id="tab-index-total-area" placeholder="Cth: 1.083,47">
                         </div>
                         <div class="col-md-3">
                             <label class="form-label">Jumlah Dusun</label>
-                            <input type="text" class="form-control" id="tab-index-total-dusun" value="7 Dusun">
+                            <input type="text" class="form-control" id="tab-index-total-dusun" placeholder="Cth: 7">
                         </div>
                         <div class="col-md-3">
                             <label class="form-label">Jumlah KK</label>
-                            <input type="text" class="form-control" id="tab-index-total-kk" value="980 KK">
+                            <input type="text" class="form-control" id="tab-index-total-kk" placeholder="Cth: 884">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Upload Gambar / Banner Utama</label>
-                            <input type="file" class="form-control" id="tab-index-file">
+                            <label class="form-label">Upload Gambar / Banner Kantor (Opsional)</label>
+                            <input type="file" class="form-control" id="tab-index-file" accept="image/*">
+                            <small class="text-muted" style="font-size: 0.75rem;">Otomatis menggantikan background kantor.png jika diunggah.</small>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Status Publikasi</label>
@@ -340,7 +337,7 @@
                             </select>
                         </div>
                         <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan & Commit ke GitHub</button>
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan Index & Commit ke GitHub</button>
                         </div>
                     </div>
                 </form>
@@ -1110,17 +1107,175 @@
             try {
                 const targetFile = filename.trim();
 
-                // 1. Penanganan Khusus Modul KDMP (Fleksibel: Bisa ganti nama saja, foto saja, kontak saja, atau ketiganya sekaligus)
+                // 1. PENANGANAN KHUSUS INDEX.HTML (Fleksibel: Teks, Statistik, Banner/Gambar)
+                if(targetFile === 'index.html') {
+                    const fileInput = document.getElementById('tab-index-file');
+                    const newTitle = document.getElementById('tab-index-hero-title').value.trim();
+                    const newSubtitle = document.getElementById('tab-index-hero-subtitle').value.trim();
+                    const newRunningText = document.getElementById('tab-index-running-text').value.trim();
+                    const newPop = document.getElementById('tab-index-total-pop').value.trim();
+                    const newArea = document.getElementById('tab-index-total-area').value.trim();
+                    const newDusun = document.getElementById('tab-index-total-dusun').value.trim();
+                    const newKk = document.getElementById('tab-index-total-kk').value.trim();
+                    let uploadedImageName = null;
+
+                    // Jika user melampirkan file gambar/banner baru (kantor.png)
+                    if(fileInput && fileInput.files.length > 0) {
+                        const imageFile = fileInput.files[0];
+                        uploadedImageName = imageFile.name; // Mengambil nama file asli beserta formatnya
+
+                        const base64Image = await new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.readAsDataURL(imageFile);
+                            reader.onload = () => resolve(reader.result.split(',')[1]);
+                            reader.onerror = error => reject(error);
+                        });
+
+                        const imgGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/${uploadedImageName}`;
+                        let imgSha = null;
+                        try {
+                            const checkRes = await fetch(imgGetUrl, {
+                                headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
+                            });
+                            if(checkRes.ok) {
+                                const imgInfo = await checkRes.json();
+                                imgSha = imgInfo.sha;
+                            }
+                        } catch(err) {}
+
+                        const imgPutPayload = {
+                            message: `CMS Upload Banner Index: ${uploadedImageName}`,
+                            content: base64Image
+                        };
+                        if(imgSha) imgPutPayload.sha = imgSha;
+
+                        const imgUploadRes = await fetch(imgGetUrl, {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': `token ${token}`,
+                                'Content-Type': 'application/json',
+                                'Accept': 'vnd.github.v3+json'
+                            },
+                            body: JSON.stringify(imgPutPayload)
+                        });
+
+                        if(!imgUploadRes.ok) {
+                            const errJson = await imgUploadRes.json();
+                            throw new Error(`Gagal mengunggah file banner: ${errJson.message}`);
+                        }
+                    }
+
+                    // Ambil file index.html dari GitHub untuk diperbarui isinya secara parsial
+                    const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/index.html`;
+                    const htmlGetRes = await fetch(htmlGetUrl, {
+                        headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
+                    });
+                    
+                    if(htmlGetRes.ok) {
+                        const htmlData = await htmlGetRes.json();
+                        let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
+
+                        // 1. Update Hero Title jika diisi
+                        if(newTitle !== "") {
+                            const regexTitle = /(<h1[^>]*class="[^"]*display-5[^"]*"[^>]*>)([^<]*)(<\/h1>)/;
+                            if(regexTitle.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexTitle, `$1${newTitle}$3`);
+                            }
+                        }
+
+                        // 2. Update Hero Subtitle jika diisi
+                        if(newSubtitle !== "") {
+                            const regexSub = /(<p[^>]*class="[^"]*lead text-white-50[^"]*"[^>]*>)([\s\S]*?)(<\/p>)/;
+                            if(regexSub.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexSub, `$1${newSubtitle}$3`);
+                            }
+                        }
+
+                        // 3. Update Running Text jika diisi
+                        if(newRunningText !== "") {
+                            const regexMarquee = /(<marquee[^>]*>)([\s\S]*?)(<\/marquee>)/;
+                            if(regexMarquee.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexMarquee, `$1${newRunningText}$3`);
+                            }
+                        }
+
+                        // 4. Update Statistik Penduduk jika diisi
+                        if(newPop !== "") {
+                            const regexPop = /(<h3[^>]*class="[^"]*fw-bold mb-1 fs-4 fs-md-3"[^>]*>)([^<]*)(<\/h3>\s*<p[^>]*>Total Penduduk)/;
+                            if(regexPop.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexPop, `$1${newPop}$3`);
+                            }
+                        }
+
+                        // 5. Update Luas Wilayah jika diisi
+                        if(newArea !== "") {
+                            const regexArea = /(Luas Wilayah<\/p>\s*<\/div>\s*<\/div>\s*<div[^>]*>\s*<div[^>]*>\s*<i[^>]*><\/i>\s*<h3[^>]*>)([^<]*)(<\/h3>)/;
+                            // Menggunakan pendekatan universal pencarian angka pada card statistik kedua
+                            const statCards = currentHtml.split('stat-card');
+                            if(statCards.length >= 3) {
+                                statCards[2] = statCards[2].replace(/(<h3[^>]*>)([^<]*)(<\/h3>)/, `$1${newArea}$3`);
+                                currentHtml = statCards.join('stat-card');
+                            }
+                        }
+
+                        // 6. Update Jumlah Dusun jika diisi
+                        if(newDusun !== "") {
+                            const statCards = currentHtml.split('stat-card');
+                            if(statCards.length >= 4) {
+                                statCards[3] = statCards[3].replace(/(<h3[^>]*>)([^<]*)(<\/h3>)/, `$1${newDusun}$3`);
+                                currentHtml = statCards.join('stat-card');
+                            }
+                        }
+
+                        // 7. Update Jumlah KK jika diisi
+                        if(newKk !== "") {
+                            const statCards = currentHtml.split('stat-card');
+                            if(statCards.length >= 5) {
+                                statCards[4] = statCards[4].replace(/(<h3[^>]*>)([^<]*)(<\/h3>)/, `$1${newKk}$3`);
+                                currentHtml = statCards.join('stat-card');
+                            }
+                        }
+
+                        // 8. Update Background Banner Kantor (kantor.png) jika file baru diunggah
+                        if(uploadedImageName) {
+                            const regexHeroBg = /(url\(')([^']*)('\))/;
+                            if(regexHeroBg.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexHeroBg, `$1${uploadedImageName}$3`);
+                            }
+                        }
+
+                        // Commit pembaruan file index.html ke GitHub
+                        const htmlPutRes = await fetch(htmlGetUrl, {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': `token ${token}`,
+                                'Content-Type': 'application/json',
+                                'Accept': 'vnd.github.v3+json'
+                            },
+                            body: JSON.stringify({
+                                message: `CMS Update: memperbarui data index.html secara fleksibel`,
+                                content: utf8_to_b64(currentHtml),
+                                sha: htmlData.sha
+                            })
+                        });
+
+                        if(htmlPutRes.ok) {
+                            showAlert("Sukses! Perubahan pada halaman index.html berhasil diperbarui di GitHub.");
+                            return;
+                        }
+                    }
+                }
+
+                // 2. PENANGANAN KHUSUS MODUL KDMP (Fleksibel: Bisa ganti nama saja, foto saja, kontak saja, atau ketiganya sekaligus)
                 if(targetFile === 'kdmp.html') {
                     const fileInput = document.getElementById('tab-kdmp-file');
                     const newName = document.getElementById('tab-kdmp-kdmp-chair').value.trim();
                     const newContact = document.getElementById('tab-kdmp-kdmp-contact').value.trim();
                     let uploadedImageName = null;
 
-                    // Jika user melampirkan file foto, unggah dulu ke GitHub
                     if(fileInput && fileInput.files.length > 0) {
                         const imageFile = fileInput.files[0];
-                        uploadedImageName = imageFile.name; // Mengambil nama asli beserta formatnya (.png/.jpg/dll)
+                        uploadedImageName = imageFile.name;
 
                         const base64Image = await new Promise((resolve, reject) => {
                             const reader = new FileReader();
@@ -1163,7 +1318,6 @@
                         }
                     }
 
-                    // Ambil file kdmp.html dari GitHub untuk diperbarui bagian teks / fotonya
                     const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/kdmp.html`;
                     const htmlGetRes = await fetch(htmlGetUrl, {
                         headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
@@ -1173,7 +1327,6 @@
                         const htmlData = await htmlGetRes.json();
                         let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
 
-                        // Update Nama Ketua jika diisi
                         if(newName !== "") {
                             const regexName = /(<h3[^>]*id="nama-ketua"[^>]*>)([^<]*)(<\/h3>)/;
                             if(regexName.test(currentHtml)) {
@@ -1181,13 +1334,11 @@
                             }
                         }
 
-                        // Update Kontak WhatsApp KDMP jika diisi (mencari tautan dengan pola wa.me/)
                         if(newContact !== "") {
                             const regexWa = /(href="https:\/\/wa\.me\/)([^"]*)(")/g;
                             currentHtml = currentHtml.replace(regexWa, `$1${newContact}$3`);
                         }
 
-                        // Update Foto jika ada file baru yang diunggah
                         if(uploadedImageName) {
                             const regexImgSrc = /(<img[^>]*id="foto-pengelola"[^>]*src=")([^"]*)(")/;
                             if(regexImgSrc.test(currentHtml)) {
@@ -1200,7 +1351,6 @@
                             }
                         }
 
-                        // Commit pembaruan file kdmp.html ke GitHub
                         const htmlPutRes = await fetch(htmlGetUrl, {
                             method: 'PUT',
                             headers: {
@@ -1222,7 +1372,7 @@
                     }
                 }
 
-                // 2. Penanganan Standar untuk file HTML lainnya
+                // 3. Penanganan Standar untuk file HTML lainnya
                 const getUrl = `https://api.github.com/repos/${user}/${repo}/contents/${targetFile}`;
                 const getRes = await fetch(getUrl, {
                     headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
