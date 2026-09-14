@@ -473,25 +473,33 @@
         <!-- TAB 6: PETA.HTML -->
         <div id="tab-peta" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>peta.html - Peta & Fasilitas Umum</h4>
-                <p class="text-muted small mb-4">Perbarui titik koordinat peta lokasi kantor desa serta data fasilitas umum (sekolah, kesehatan).</p>
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>peta.html - Peta, Luas Wilayah & Statistik Lahan</h4>
+                <p class="text-muted small mb-4">Perbarui luas total wilayah, judul serta luas perkebunan tebu, judul serta luas sawah irigasi teknis, dan koordinat peta.</p>
                 <form onsubmit="handleFormSubmit(event, 'peta.html', 'tab-peta')">
                     <div class="row g-3">
                         <div class="col-md-6">
+                            <label class="form-label">Luas Total Wilayah (Ha)</label>
+                            <input type="text" class="form-control" id="tab-peta-total-area" placeholder="Cth: 1.083,47">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Judul / Label Perkebunan Tebu</label>
+                            <input type="text" class="form-control" id="tab-peta-sugar-title" placeholder="Cth: Perkebunan Tebu">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Luas Perkebunan Tebu (Ha)</label>
+                            <input type="text" class="form-control" id="tab-peta-sugar-area" placeholder="Cth: 705,39">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Judul / Label Sawah Irigasi Teknis</label>
+                            <input type="text" class="form-control" id="tab-peta-rice-title" placeholder="Cth: Sawah Irigasi Teknis">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Luas Sawah Irigasi Teknis (Ha)</label>
+                            <input type="text" class="form-control" id="tab-peta-rice-area" placeholder="Cth: 216,53">
+                        </div>
+                        <div class="col-md-6">
                             <label class="form-label">Google Maps Embed URL</label>
-                            <input type="text" class="form-control" id="tab-peta-embed-map-url" value="https://www.google.com/maps/embed?pb=...">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Koordinat Kantor</label>
-                            <input type="text" class="form-control" id="tab-peta-office-coords" value="-5.3850, 119.5500">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Data Fasilitas Sekolah</label>
-                            <input type="text" class="form-control" id="tab-peta-facility-school" value="SD Inpres Timbuseng, SMP Negeri 2">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Data Fasilitas Kesehatan</label>
-                            <input type="text" class="form-control" id="tab-peta-facility-health" value="Pustu Desa Timbuseng & Posyandu 7 Dusun">
+                            <input type="text" class="form-control" id="tab-peta-embed-map-url" placeholder="https://www.google.com/maps/embed?pb=...">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Status Publikasi</label>
@@ -501,7 +509,7 @@
                             </select>
                         </div>
                         <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan & Commit ke GitHub</button>
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan Peta & Commit ke GitHub</button>
                         </div>
                     </div>
                 </form>
@@ -1224,7 +1232,7 @@
                     }
                 }
 
-                // 2. Penanganan Khusus Modul PROFIL.HTML (Visi, Misi, Tata Kelola & Struktur, Kades, Sekdes)
+                // 2. Penanganan Khusus Modul PROFIL.HTML
                 if(targetFile === 'profil.html') {
                     const newVision = document.getElementById('tab-profil-vision-text').value.trim();
                     const newMission = document.getElementById('tab-profil-mission-text').value.trim();
@@ -1282,35 +1290,22 @@
                         const htmlData = await htmlGetRes.json();
                         let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
 
-                        // Update Visi Desa
                         if(newVision !== "") {
                             const regexVision = /(<span class="badge bg-warning text-dark mb-3 px-3 py-1 fw-bold">VISI DESA<\/span>\s*<h3 class="fw-bold mb-3">)([^<]*)(<\/h3>)/i;
                             if(regexVision.test(currentHtml)) {
                                 currentHtml = currentHtml.replace(regexVision, `$1${newVision}$3`);
                             }
                         }
-
-                        // Update Misi Strategis (menggantikan elemen teks misi dalam card misi)
-                        if(newMission !== "") {
-                            // Untuk fleksibilitas, kita tangkap blok wadah isi misi atau paragraf terkait
-                            const regexMission = /(<span class="text-success fw-bold text-uppercase tracking-wider">MISI STRATEGIS<\/span>\s*<h3 class="fw-bold text-dark mt-1 mb-4">Misi Pembangunan Desa<\/h3>\s*<div class="d-flex flex-column gap-3">)([\s\S]*?)(<\/div>\s*<\/div>\s*<\/div>\s*<\/div>\s*<\/section>)/i;
-                            // Alternatif penulisan aman berbasis paragraf isi misi jika diperlukan
-                        }
-
-                        // Update Nama Kepala Desa di banner profil
                         if(newKades !== "") {
                             const regexKades = /(Kepala Desa\s*<strong>)([^<]*)(<\/strong>)/i;
                             if(regexKades.test(currentHtml)) {
                                 currentHtml = currentHtml.replace(regexKades, `$1${newKades}$3`);
                             }
-                            // Juga perbarui bagian badge bawah jika ada
                             const regexKadesBadge = /(<i class="fas fa-user-tie text-warning me-1.5"><\/i>\s*Kades:\s*)([^<]*)(<\/span>)/i;
                             if(regexKadesBadge.test(currentHtml)) {
                                 currentHtml = currentHtml.replace(regexKadesBadge, `$1${newKades}$3`);
                             }
                         }
-
-                        // Update Nama Sekretaris Desa
                         if(newSekdes !== "") {
                             const regexSekdes = /(Sekretaris Desa\s*<strong>)([^<]*)(<\/strong>)/i;
                             if(regexSekdes.test(currentHtml)) {
@@ -1321,8 +1316,6 @@
                                 currentHtml = currentHtml.replace(regexSekdesBadge, `$1${newSekdes}$3`);
                             }
                         }
-
-                        // Update Tata Kelola / Deskripsi Perangkat Desa jika diisi
                         if(newGovernance !== "") {
                             const regexGov = /(<p class="text-white-50 leading-relaxed mb-4">)([\s\S]*?)(<\/p>)/i;
                             if(regexGov.test(currentHtml)) {
@@ -1351,7 +1344,99 @@
                     }
                 }
 
-                // 3. Penanganan Khusus Modul KDMP
+                // 3. Penanganan Khusus Modul PETA.HTML (Luas Total, Judul/Luas Perkebunan Tebu, Judul/Luas Sawah Irigasi)
+                if(targetFile === 'peta.html') {
+                    const totalAreaVal = document.getElementById('tab-peta-total-area').value.trim();
+                    const sugarTitleVal = document.getElementById('tab-peta-sugar-title').value.trim();
+                    const sugarAreaVal = document.getElementById('tab-peta-sugar-area').value.trim();
+                    const riceTitleVal = document.getElementById('tab-peta-rice-title').value.trim();
+                    const riceAreaVal = document.getElementById('tab-peta-rice-area').value.trim();
+                    const embedMapUrlVal = document.getElementById('tab-peta-embed-map-url').value.trim();
+
+                    const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/peta.html`;
+                    const htmlGetRes = await fetch(htmlGetUrl, {
+                        headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
+                    });
+                    
+                    if(htmlGetRes.ok) {
+                        const htmlData = await htmlGetRes.json();
+                        let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
+
+                        // 1. Update Luas Total Wilayah
+                        if(totalAreaVal !== "") {
+                            const regexTotalArea = /(<div class="text-success fs-3 mb-2"><i class="fas fa-vector-square"><\/i><\/div>\s*<h5 class="fw-bold text-dark">Luas Total Wilayah<\/h5>\s*<h3 class="fw-extrabold text-success mb-2">)([^<]*)(<\/h3>)/i;
+                            if(regexTotalArea.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexTotalArea, `$1${totalAreaVal} Ha$3`);
+                            } else {
+                                const fallbackAreaRegex = /(<h5 class="fw-bold text-dark">Luas Total Wilayah<\/h5>\s*<h3 class="fw-extrabold text-success mb-2">)([^<]*)(<\/h3>)/i;
+                                if(fallbackAreaRegex.test(currentHtml)) {
+                                    currentHtml = currentHtml.replace(fallbackAreaRegex, `$1${totalAreaVal} Ha$3`);
+                                }
+                            }
+                        }
+
+                        // 2. Update Judul Perkebunan Tebu
+                        if(sugarTitleVal !== "") {
+                            const regexSugarTitle = /(<div class="text-success fs-3 mb-2"><i class="fas fa-seedling"><\/i><\/div>\s*<h5 class="fw-bold text-dark">)([^<]*)(<\/h5>)/i;
+                            if(regexSugarTitle.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexSugarTitle, `$1${sugarTitleVal}$3`);
+                            }
+                        }
+
+                        // 3. Update Luas Perkebunan Tebu
+                        if(sugarAreaVal !== "") {
+                            const regexSugarArea = /(<h5 class="fw-bold text-dark">[^<]*Perkebunan[^<]*<\/h5>\s*<h3 class="fw-extrabold text-success mb-2">)([^<]*)(<\/h3>)/i;
+                            if(regexSugarArea.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexSugarArea, `$1${sugarAreaVal} Ha$3`);
+                            }
+                        }
+
+                        // 4. Update Judul Sawah Irigasi Teknis
+                        if(riceTitleVal !== "") {
+                            const regexRiceTitle = /(<div class="text-success fs-3 mb-2"><i class="fas fa-water"><\/i><\/div>\s*<h5 class="fw-bold text-dark">)([^<]*)(<\/h5>)/i;
+                            if(regexRiceTitle.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexRiceTitle, `$1${riceTitleVal}$3`);
+                            }
+                        }
+
+                        // 5. Update Luas Sawah Irigasi Teknis
+                        if(riceAreaVal !== "") {
+                            const regexRiceArea = /(<h5 class="fw-bold text-dark">[^<]*Sawah[^<]*<\/h5>\s*<h3 class="fw-extrabold text-success mb-2">)([^<]*)(<\/h3>)/i;
+                            if(regexRiceArea.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexRiceArea, `$1${riceAreaVal} Ha$3`);
+                            }
+                        }
+
+                        // 6. Update Google Maps Embed URL
+                        if(embedMapUrlVal !== "") {
+                            const regexMapEmbed = /(<iframe[^>]*src=")([^"]*)("[^>]*><\/iframe>)/i;
+                            if(regexMapEmbed.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexMapEmbed, `$1${embedMapUrlVal}$3`);
+                            }
+                        }
+
+                        const htmlPutRes = await fetch(htmlGetUrl, {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': `token ${token}`,
+                                'Content-Type': 'application/json',
+                                'Accept': 'vnd.github.v3+json'
+                            },
+                            body: JSON.stringify({
+                                message: `CMS Update: memperbarui data peta.html secara fleksibel`,
+                                content: utf8_to_b64(currentHtml),
+                                sha: htmlData.sha
+                            })
+                        });
+
+                        if(htmlPutRes.ok) {
+                            showAlert("Sukses! Perubahan pada halaman peta.html berhasil diperbarui di GitHub.");
+                            return;
+                        }
+                    }
+                }
+
+                // 4. Penanganan Khusus Modul KDMP
                 if(targetFile === 'kdmp.html') {
                     const fileInput = document.getElementById('tab-kdmp-file');
                     const newName = document.getElementById('tab-kdmp-kdmp-chair').value.trim();
@@ -1444,7 +1529,7 @@
                     }
                 }
 
-                // 4. Penanganan Standar untuk file HTML lainnya
+                // 5. Penanganan Standar untuk file HTML lainnya
                 const getUrl = `https://api.github.com/repos/${user}/${repo}/contents/${targetFile}`;
                 const getRes = await fetch(getUrl, {
                     headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
