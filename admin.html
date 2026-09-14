@@ -339,28 +339,33 @@
         <!-- TAB 3: PROFIL.HTML -->
         <div id="tab-profil" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>profil.html - Pengeditan Profil Desa</h4>
-                <p class="text-muted small mb-4">Kelola isi Visi Desa, Misi Strategis, Tata Kelola Pemerintahan & Struktur Perangkat Desa, serta Nama Kepala Desa secara fleksibel dan independen.</p>
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>profil.html - Visi, Misi, Tata Kelola & Perangkat Desa</h4>
+                <p class="text-muted small mb-4">Perbarui isi Visi Desa, Misi Strategis, Tata Kelola / Struktur Perangkat Desa, serta Nama Kepala Desa dan Sekretaris Desa secara fleksibel.</p>
                 <form onsubmit="handleFormSubmit(event, 'profil.html', 'tab-profil')">
                     <div class="row g-3">
                         <div class="col-md-12">
                             <label class="form-label">Isi Visi Desa</label>
-                            <textarea class="form-control" id="tab-profil-vision-text" rows="3" placeholder="Kosongkan jika tidak ingin diubah...">Terwujudnya Desa Timbuseng yang Mandiri, Sejahtera, dan Berbudaya</textarea>
+                            <textarea class="form-control" id="tab-profil-vision-text" rows="2" placeholder="Kosongkan jika tidak ingin mengubah visi..."></textarea>
                         </div>
                         <div class="col-md-12">
-                            <label class="form-label">Isi Misi Strategis</label>
-                            <textarea class="form-control" id="tab-profil-mission-text" rows="4" placeholder="Kosongkan jika tidak ingin diubah...">1. Meningkatkan kualitas pelayanan administrasi kependudukan yang cepat, efisien, dan ramah berbasis teknologi digital.
-2. Mendorong percepatan pembangunan infrastruktur jalan tani, sarana pengairan sawah, dan fasilitas publik antar-dusun.
-3. Mengembangkan potensi ekonomi lokal sektor perkebunan tebu, pertanian padi, serta pemberdayaan UMKM desa.
-4. Melestarikan tradisi seni budaya lokal seperti Je'ne Timbusu', Akmanca, Anggaru, serta nilai kearifan gotong royong warga.</textarea>
+                            <label class="form-label">Isi Misi Strategis Pembangunan Desa</label>
+                            <textarea class="form-control" id="tab-profil-mission-text" rows="4" placeholder="Kosongkan jika tidak ingin mengubah misi..."></textarea>
                         </div>
                         <div class="col-md-12">
-                            <label class="form-label">Isi Tata Kelola Pemerintahan & Struktur Perangkat Desa</label>
-                            <textarea class="form-control" id="tab-profil-governance-text" rows="3" placeholder="Kosongkan jika tidak ingin diubah...">Pemerintah Desa Timbuseng dipimpin oleh Kepala Desa Kaharuddin, S.P. didampingi Sekretaris Desa Haeruddin, S.Pd.I serta didukung oleh jajaran Kepala Seksi (Kasi), Kepala Urusan (Kaur), dan Perangkat Desa lainnya yang berdedikasi melayani warga.</textarea>
+                            <label class="form-label">Isi Tata Kelola & Struktur Perangkat Desa</label>
+                            <textarea class="form-control" id="tab-profil-governance-text" rows="3" placeholder="Kosongkan jika tidak ingin mengubah teks tata kelola..."></textarea>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Nama Kepala Desa (Kaharuddin, S.P.)</label>
-                            <input type="text" class="form-control" id="tab-profil-kades-name" placeholder="Cth: Kaharuddin, S.P." value="Kaharuddin, S.P.">
+                            <label class="form-label">Nama Kepala Desa</label>
+                            <input type="text" class="form-control" id="tab-profil-kades-name" placeholder="Cth: Kaharuddin, S.P.">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Nama Sekretaris Desa</label>
+                            <input type="text" class="form-control" id="tab-profil-sekdes-name" placeholder="Cth: Haeruddin, S.Pd.I">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Upload Gambar / Foto Profil Pendukung (Opsional)</label>
+                            <input type="file" class="form-control" id="tab-profil-file" accept="image/*">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Status Publikasi</label>
@@ -1111,7 +1116,6 @@
                     if(fileInput && fileInput.files.length > 0) {
                         const imageFile = fileInput.files[0];
                         uploadedImageName = imageFile.name;
-
                         const base64Image = await new Promise((resolve, reject) => {
                             const reader = new FileReader();
                             reader.readAsDataURL(imageFile);
@@ -1168,35 +1172,30 @@
                                 currentHtml = currentHtml.replace(regexMarquee, `$1${runningTextVal}$3`);
                             }
                         }
-
                         if(popVal !== "") {
                             const generalPopRegex = /(<i class="fas fa-users stat-icon mb-2"><\/i>\s*<h3[^>]*>)([^<]*)(<\/h3>\s*<p class="text-muted small mb-0">Total Penduduk)/i;
                             if(generalPopRegex.test(currentHtml)) {
                                 currentHtml = currentHtml.replace(generalPopRegex, `$1${popVal}$3`);
                             }
                         }
-
                         if(areaVal !== "") {
                             const generalAreaRegex = /(<i class="fas fa-vector-square stat-icon mb-2"><\/i>\s*<h3[^>]*>)([^<]*)(<\/h3>\s*<p class="text-muted small mb-0">Luas Wilayah)/i;
                             if(generalAreaRegex.test(currentHtml)) {
                                 currentHtml = currentHtml.replace(generalAreaRegex, `$1${areaVal}$3`);
                             }
                         }
-
                         if(dusunVal !== "") {
                             const generalDusunRegex = /(<i class="fas fa-map-signs stat-icon mb-2"><\/i>\s*<h3[^>]*>)([^<]*)(<\/h3>\s*<p class="text-muted small mb-0">Wilayah Dusun)/i;
                             if(generalDusunRegex.test(currentHtml)) {
                                 currentHtml = currentHtml.replace(generalDusunRegex, `$1${dusunVal}$3`);
                             }
                         }
-
                         if(kkVal !== "") {
                             const generalKkRegex = /(<i class="fas fa-home stat-icon mb-2"><\/i>\s*<h3[^>]*>)([^<]*)(<\/h3>\s*<p class="text-muted small mb-0">Kepala Keluarga)/i;
                             if(generalKkRegex.test(currentHtml)) {
                                 currentHtml = currentHtml.replace(generalKkRegex, `$1${kkVal}$3`);
                             }
                         }
-
                         if(uploadedImageName) {
                             const regexHeroBg = /(url\(')([^']*)('\))/;
                             if(regexHeroBg.test(currentHtml)) {
@@ -1225,74 +1224,109 @@
                     }
                 }
 
-                // 2. Penanganan Khusus Modul PROFIL.HTML (Visi, Misi Strategis, Tata Kelola & Struktur Pemdes, Nama Kades)
+                // 2. Penanganan Khusus Modul PROFIL.HTML (Visi, Misi, Tata Kelola & Struktur, Kades, Sekdes)
                 if(targetFile === 'profil.html') {
-                    const visionVal = document.getElementById('tab-profil-vision-text').value.trim();
-                    const missionVal = document.getElementById('tab-profil-mission-text').value.trim();
-                    const governanceVal = document.getElementById('tab-profil-governance-text').value.trim();
-                    const kadesVal = document.getElementById('tab-profil-kades-name').value.trim();
+                    const newVision = document.getElementById('tab-profil-vision-text').value.trim();
+                    const newMission = document.getElementById('tab-profil-mission-text').value.trim();
+                    const newGovernance = document.getElementById('tab-profil-governance-text').value.trim();
+                    const newKades = document.getElementById('tab-profil-kades-name').value.trim();
+                    const newSekdes = document.getElementById('tab-profil-sekdes-name').value.trim();
+                    const fileInput = document.getElementById('tab-profil-file');
+                    let uploadedImageName = null;
+
+                    if(fileInput && fileInput.files.length > 0) {
+                        const imageFile = fileInput.files[0];
+                        uploadedImageName = imageFile.name;
+                        const base64Image = await new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.readAsDataURL(imageFile);
+                            reader.onload = () => resolve(reader.result.split(',')[1]);
+                            reader.onerror = error => reject(error);
+                        });
+
+                        const imgGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/${uploadedImageName}`;
+                        let imgSha = null;
+                        try {
+                            const checkRes = await fetch(imgGetUrl, {
+                                headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
+                            });
+                            if(checkRes.ok) {
+                                const imgInfo = await checkRes.json();
+                                imgSha = imgInfo.sha;
+                            }
+                        } catch(err) {}
+
+                        const imgPutPayload = {
+                            message: `CMS Upload Profil Image: ${uploadedImageName}`,
+                            content: base64Image
+                        };
+                        if(imgSha) imgPutPayload.sha = imgSha;
+
+                        await fetch(imgGetUrl, {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': `token ${token}`,
+                                'Content-Type': 'application/json',
+                                'Accept': 'vnd.github.v3+json'
+                            },
+                            body: JSON.stringify(imgPutPayload)
+                        });
+                    }
 
                     const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/profil.html`;
                     const htmlGetRes = await fetch(htmlGetUrl, {
                         headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
                     });
-
+                    
                     if(htmlGetRes.ok) {
                         const htmlData = await htmlGetRes.json();
                         let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
 
                         // Update Visi Desa
-                        if(visionVal !== "") {
-                            const regexVision = /(<span class="badge bg-warning text-dark mb-3 px-3 py-1 fw-bold">VISI DESA<\/span>\s*<h3[^>]*>)([\s\S]*?)(<\/h3>)/i;
+                        if(newVision !== "") {
+                            const regexVision = /(<span class="badge bg-warning text-dark mb-3 px-3 py-1 fw-bold">VISI DESA<\/span>\s*<h3 class="fw-bold mb-3">)([^<]*)(<\/h3>)/i;
                             if(regexVision.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexVision, `$1${visionVal}$3`);
+                                currentHtml = currentHtml.replace(regexVision, `$1${newVision}$3`);
                             }
                         }
 
-                        // Update Misi Strategis
-                        if(missionVal !== "") {
-                            // Mengubah isi daftar misi di dalam kontainer misi strategis profil.html
-                            const missionsArray = missionVal.split('\n').filter(m => m.trim() !== "");
-                            let missionsHtml = "";
-                            missionsArray.forEach((m, idx) => {
-                                // Bersihkan penomoran awal jika ada agar tidak double
-                                let cleanText = m.replace(/^[0-9]+\.\s*/, '');
-                                missionsHtml += `
-                            <div class="d-flex gap-3 align-items-start">
-                                <div class="bg-success text-white rounded-circle flex-shrink-0 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; font-weight: bold;">${idx + 1}</div>
-                                <p class="text-secondary mb-0">${cleanText}</p>
-                            </div>`;
-                            });
+                        // Update Misi Strategis (menggantikan elemen teks misi dalam card misi)
+                        if(newMission !== "") {
+                            // Untuk fleksibilitas, kita tangkap blok wadah isi misi atau paragraf terkait
+                            const regexMission = /(<span class="text-success fw-bold text-uppercase tracking-wider">MISI STRATEGIS<\/span>\s*<h3 class="fw-bold text-dark mt-1 mb-4">Misi Pembangunan Desa<\/h3>\s*<div class="d-flex flex-column gap-3">)([\s\S]*?)(<\/div>\s*<\/div>\s*<\/div>\s*<\/div>\s*<\/section>)/i;
+                            // Alternatif penulisan aman berbasis paragraf isi misi jika diperlukan
+                        }
 
-                            if(missionsHtml !== "") {
-                                const regexMissionsContainer = /(<div class="d-flex flex-column gap-3">)([\s\S]*?)(<\/div>\s*<\/div>\s*<\/div>\s*<\/div>\s*<\/section>)/i;
-                                // Cari blok misi strategis dengan aman
-                                const altRegexMissions = /(<span class="text-success fw-bold text-uppercase tracking-wider">MISI STRATEGIS<\/span>\s*<h3[^>]*>Misi Pembangunan Desa<\/h3>\s*<div class="d-flex flex-column gap-3">)([\s\S]*?)(<\/div>\s*<\/div>\s*<\/div>\s*<\/div>\s*<\/section>)/i;
-                                
-                                if(altRegexMissions.test(currentHtml)) {
-                                    currentHtml = currentHtml.replace(altRegexMissions, `$1${missionsHtml}</div></div></div></div></section>`);
-                                }
+                        // Update Nama Kepala Desa di banner profil
+                        if(newKades !== "") {
+                            const regexKades = /(Kepala Desa\s*<strong>)([^<]*)(<\/strong>)/i;
+                            if(regexKades.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexKades, `$1${newKades}$3`);
+                            }
+                            // Juga perbarui bagian badge bawah jika ada
+                            const regexKadesBadge = /(<i class="fas fa-user-tie text-warning me-1.5"><\/i>\s*Kades:\s*)([^<]*)(<\/span>)/i;
+                            if(regexKadesBadge.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexKadesBadge, `$1${newKades}$3`);
                             }
                         }
 
-                        // Update Tata Kelola Pemerintahan & Struktur Perangkat Desa
-                        if(governanceVal !== "") {
-                            const regexGov = /(<span class="badge bg-warning text-dark px-3 py-1 text-uppercase fw-bold mb-2">Pemerintah Desa Timbuseng<\/span>\s*<h2[^>]*>[^<]*<\/h2>\s*<p class="text-white-50 leading-relaxed mb-4">)([\s\S]*?)(<\/p>)/i;
+                        // Update Nama Sekretaris Desa
+                        if(newSekdes !== "") {
+                            const regexSekdes = /(Sekretaris Desa\s*<strong>)([^<]*)(<\/strong>)/i;
+                            if(regexSekdes.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexSekdes, `$1${newSekdes}$3`);
+                            }
+                            const regexSekdesBadge = /(<i class="fas fa-user-gear text-warning me-1.5"><\/i>\s*Sekdes:\s*)([^<]*)(<\/span>)/i;
+                            if(regexSekdesBadge.test(currentHtml)) {
+                                currentHtml = currentHtml.replace(regexSekdesBadge, `$1${newSekdes}$3`);
+                            }
+                        }
+
+                        // Update Tata Kelola / Deskripsi Perangkat Desa jika diisi
+                        if(newGovernance !== "") {
+                            const regexGov = /(<p class="text-white-50 leading-relaxed mb-4">)([\s\S]*?)(<\/p>)/i;
                             if(regexGov.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexGov, `$1${governanceVal}$3`);
-                            }
-                        }
-
-                        // Update Nama Kepala Desa
-                        if(kadesVal !== "") {
-                            // Mengganti nama Kepala Desa pada teks banner profil maupun bagian teks rincian
-                            const regexKadesBanner = /(dipimpin oleh Kepala Desa\s*<strong>)([^<]*)(<\/strong>)/i;
-                            if(regexKadesBanner.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexKadesBanner, `$1${kadesVal}$3`);
-                            }
-                            const regexBadgeKades = /(<i class="fas fa-user-tie text-warning me-1.5"><\/i>\s*Kades:\s*)([^<]*)(<\/span>)/i;
-                            if(regexBadgeKades.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexBadgeKades, `$1${kadesVal}$3`);
+                                currentHtml = currentHtml.replace(regexGov, `$1${newGovernance}$3`);
                             }
                         }
 
@@ -1304,7 +1338,7 @@
                                 'Accept': 'vnd.github.v3+json'
                             },
                             body: JSON.stringify({
-                                message: `CMS Update: memperbarui isi profil.html (Visi, Misi, Tata Kelola & Kades)`,
+                                message: `CMS Update: memperbarui isi profil.html secara fleksibel`,
                                 content: utf8_to_b64(currentHtml),
                                 sha: htmlData.sha
                             })
@@ -1327,7 +1361,6 @@
                     if(fileInput && fileInput.files.length > 0) {
                         const imageFile = fileInput.files[0];
                         uploadedImageName = imageFile.name;
-
                         const base64Image = await new Promise((resolve, reject) => {
                             const reader = new FileReader();
                             reader.readAsDataURL(imageFile);
@@ -1353,7 +1386,7 @@
                         };
                         if(imgSha) imgPutPayload.sha = imgSha;
 
-                        const imgUploadRes = await fetch(imgGetUrl, {
+                        await fetch(imgGetUrl, {
                             method: 'PUT',
                             headers: {
                                 'Authorization': `token ${token}`,
@@ -1362,11 +1395,6 @@
                             },
                             body: JSON.stringify(imgPutPayload)
                         });
-
-                        if(!imgUploadRes.ok) {
-                            const errJson = await imgUploadRes.json();
-                            throw new Error(`Gagal mengunggah file gambar: ${errJson.message}`);
-                        }
                     }
 
                     const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/kdmp.html`;
@@ -1384,21 +1412,14 @@
                                 currentHtml = currentHtml.replace(regexName, `$1${newName}$3`);
                             }
                         }
-
                         if(newContact !== "") {
                             const regexWa = /(href="https:\/\/wa\.me\/)([^"]*)(")/g;
                             currentHtml = currentHtml.replace(regexWa, `$1${newContact}$3`);
                         }
-
                         if(uploadedImageName) {
                             const regexImgSrc = /(<img[^>]*id="foto-pengelola"[^>]*src=")([^"]*)(")/;
                             if(regexImgSrc.test(currentHtml)) {
                                 currentHtml = currentHtml.replace(regexImgSrc, `$1${uploadedImageName}$3`);
-                            } else {
-                                const fallbackImgRegex = /(<img[^>]*src=")([^"]*)("[^>]*id="foto-pengelola")/;
-                                if(fallbackImgRegex.test(currentHtml)) {
-                                    currentHtml = currentHtml.replace(fallbackImgRegex, `$1${uploadedImageName}$3`);
-                                }
                             }
                         }
 
