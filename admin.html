@@ -1090,15 +1090,138 @@
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-// Memuat tabel daftar informasi di dasbor admin
+<script>
+        // ==========================================
+        // 1. FUNGSI UTAMA TABEL INFORMASI (TARIK DARI GITHUB)
+        // ==========================================
+        async function loadAdminInfoTable() {
+            const tableBody = document.getElementById('admin-info-list-table');
+            if (!tableBody) return;
+            
+            tableBody.innerHTML = '<tr><td colspan="4" class="text-center text-muted py-3"><i class="fas fa-spinner fa-spin me-2"></i>Memuat data dari GitHub...</td></tr>';
+            
+            const user = localStorage.getItem('gh_user');
+            const repo = localStorage.getItem('gh_repo');
+            const token = localStorage.getItem('gh_token');
 
+            if (!token || !user || !repo) {
+                renderTableFromStorage();
+                return;
+            }
 
-        // Fungsi Hapus Item dan Langsung Sinkronkan ke GitHub secara Live
+            try {
+                const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/informasi.html`;
+                const htmlGetRes = await fetch(htmlGetUrl, {
+                    headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
+                });
+
+                if (!htmlGetRes.ok) throw new Error("Gagal mengambil file dari GitHub");
+
+                const htmlData = await htmlGetRes.json();
+                let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
+
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(currentHtml, 'text/html');
+
+                let fetchedNews = [];
+                let fetchedSchedules = [];
+
+                doc.querySelectorAll('#dynamicNewsContainer .info-card').forEach((card, idx) => {
+                    const title = card.querySelector('h5')?.innerText || 'Berita Desa';
+                    const category = card.querySelector('.info-badge')?.innerText || 'Berita';
+                    const date = card.querySelector('small')?.innerText || '2026';
+                    const summary = card.querySelector('p')?.innerText || '';
+                    const img = card.querySelector('img')?.getAttribute('src') || 'kantor.png';
+
+                    fetchedNews.push({
+                        id: Date.now() + idx,
+                        title,
+                        category,
+                        date,
+                        summary,
+                        content: summary,
+                        image: img
+                    });
+                });
+
+                doc.querySelectorAll('#dynamicScheduleContainer .schedule-card').forEach((card, idx) => {
+                    const title = card.querySelector('h5')?.innerText || 'Agenda Desa';
+                    const date = card.querySelector('.badge')?.innerText || '2026';
+                    const time = card.querySelector('small')?.innerText || '';
+                    const desc = card.querySelector('p')?.innerText || '';
+                    const location = card.querySelector('.text-success')?.innerText || '';
+
+                    fetchedSchedules.push({
+                        id: Date.now() + 1000 + idx,
+                        title,
+                        date,
+                        time,
+                        desc,
+                        location
+                    });
+                });
+
+                if (fetchedNews.length > 0) {
+                    localStorage.setItem('desa_news', JSON.stringify(fetchedNews));
+                }
+                if (fetchedSchedules.length > 0) {
+                    localStorage.setItem('desa_schedules', JSON.stringify(fetchedSchedules));
+                }
+
+                renderTableFromStorage();
+
+            } catch (error) {
+                console.warn("Gagal sinkron dengan GitHub, menggunakan data lokal:", error);
+                renderTableFromStorage();
+            }
+        }
+
+        function renderTableFromStorage() {
+            const tableBody = document.getElementById('admin-info-list-table');
+            if (!tableBody) return;
+
+            tableBody.innerHTML = '';
+            const schedules = JSON.parse(localStorage.getItem('desa_schedules') || '[]');
+            const newsList = JSON.parse(localStorage.getItem('desa_news') || '[]');
+
+            if (schedules.length === 0 && newsList.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="4" class="text-center text-muted py-3">Belum ada data informasi aktif.</td></tr>';
+                return;
+            }
+
+            schedules.forEach((item) => {
+                tableBody.innerHTML += `
+                    <tr>
+                        <td><span class="badge bg-warning text-dark">Agenda</span></td>
+                        <td>${item.title}</td>
+                        <td>${item.date}</td>
+                        <td class="text-center">
+                            <button type="button" class="btn btn-outline-danger btn-sm py-0 px-2" onclick="deleteInfoItem('schedule', ${item.id})"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            newsList.forEach((item) => {
+                tableBody.innerHTML += `
+                    <tr>
+                        <td><span class="badge bg-success">Berita</span></td>
+                        <td>${item.title}</td>
+                        <td>${item.category}</td>
+                        <td class="text-center">
+                            <button type="button" class="btn btn-outline-danger btn-sm py-0 px-2" onclick="deleteInfoItem('news', ${item.id})"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        // ==========================================
+        // 2. FUNGSI HAPUS ITEM INFORMASI
+        // ==========================================
         async function deleteInfoItem(category, id) {
             if(!confirm("Yakin ingin menghapus item informasi ini? Perubahan akan langsung disinkronkan ke website publik.")) return;
 
-            // 1. Hapus data dari LocalStorage admin
             if(category === 'schedule') {
                 let schedules = JSON.parse(localStorage.getItem('desa_schedules') || '[]');
                 schedules = schedules.filter(i => i.id !== id);
@@ -1109,7 +1232,6 @@
                 localStorage.setItem('desa_news', JSON.stringify(newsList));
             }
 
-            // Refresh tabel admin
             loadAdminInfoTable();
             showAlert("Menghapus item dan memperbarui file informasi.html ke GitHub...");
 
@@ -1123,7 +1245,6 @@
             }
 
             try {
-                // 2. Ambil file informasi.html dari GitHub
                 const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/informasi.html`;
                 const htmlGetRes = await fetch(htmlGetUrl, {
                     headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
@@ -1133,7 +1254,6 @@
                 const htmlData = await htmlGetRes.json();
                 let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
 
-                // 3. Render ulang string HTML berdasarkan data terbaru di LocalStorage
                 const schedules = JSON.parse(localStorage.getItem('desa_schedules') || '[]');
                 let newScheduleHtml = '';
                 schedules.forEach(item => {
@@ -1145,9 +1265,9 @@
                                         <small class="text-muted"><i class="fas fa-clock me-1"></i> ${item.time}</small>
                                     </div>
                                     <h5 class="fw-bold text-dark mb-2">${item.title}</h5>
-                                    <p class="text-muted small mb-3">${item.desc}</p>
+                                    <p class="text-muted small mb-3">${item.desc || ''}</p>
                                     <div class="d-flex align-items-center gap-2 text-success small fw-semibold">
-                                        <i class="fas fa-map-marker-alt"></i> ${item.location}
+                                        <i class="fas fa-map-marker-alt"></i> ${item.location || ''}
                                     </div>
                                 </div>
                             </div>`;
@@ -1205,7 +1325,6 @@
             </div>`;
                 });
 
-                // 4. Timpa kontainer jadwal, berita, dan modal di dalam file informasi.html
                 currentHtml = currentHtml.replace(/(<div class="row g-4" id="dynamicScheduleContainer">)([\s\S]*?)(<\/div>\s*<\/div>\s*<!-- BAGIAN 2)/i, `$1\n${newScheduleHtml}\n                </div>\n            </div>\n            <!-- BAGIAN 2`);
                 currentHtml = currentHtml.replace(/(<div class="row g-4" id="dynamicNewsContainer">)([\s\S]*?)(<\/div>\s*<\/div>\s*<\/section>)/i, `$1\n${newNewsHtml}\n                </div>\n            </div>\n\n        </div>\n    </section>`);
 
@@ -1215,7 +1334,6 @@
                     currentHtml = parts[0] + modalSplitMarker + '\n    ' + newModalsHtml + '\n';
                 }
 
-                // 5. Commit perubahan ke GitHub
                 const putRes = await fetch(htmlGetUrl, {
                     method: 'PUT',
                     headers: {
@@ -1242,49 +1360,10 @@
                 alert(`Terjadi kesalahan sistem: ${error.message}`);
             }
         }
-        function toggleSidebar() {
-            document.getElementById('appSidebar').classList.toggle('show');
-            document.getElementById('sidebarBackdrop').classList.toggle('show');
-        }
 
-        function switchTab(tabId, element) {
-            document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.sidebar-menu .nav-link').forEach(el => el.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            element.classList.add('active');
-            document.getElementById('current-title').innerText = element.querySelector('span').innerText;
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            if(window.innerWidth < 992) {
-                toggleSidebar();
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const user = localStorage.getItem('gh_user') || '';
-            const repo = localStorage.getItem('gh_repo') || '';
-            const token = localStorage.getItem('gh_token') || '';
-            if(user) document.getElementById('tab-github-gh-user').value = user;
-            if(repo) document.getElementById('tab-github-gh-repo').value = repo;
-            if(token) document.getElementById('tab-github-gh-token').value = token;
-
-            // Panggil fungsi untuk memuat tabel dari GitHub/LocalStorage secara otomatis
-            loadAdminInfoTable();
-        });
-
-        function showAlert(msg) {
-            const box = document.getElementById('alert-box');
-            document.getElementById('alert-message').innerText = msg;
-            box.classList.remove('d-none');
-            setTimeout(() => box.classList.add('d-none'), 5000);
-        }
-
-        // Enkoder aman UTF-8 ke Base64 untuk payload GitHub REST API
-        function utf8_to_b64(str) {
-            return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
-                return String.fromCharCode('0x' + p1);
-            }));
-        }
-// Fungsi untuk mengatur tampilan field form informasi berdasarkan tipe (News / Schedule)
+        // ==========================================
+        // 3. FUNGSI TAMBAH ITEM INFORMASI
+        // ==========================================
         function toggleInfoFields() {
             const type = document.getElementById('info-content-type').value;
             const wrapperCategory = document.getElementById('wrapper-category');
@@ -1308,7 +1387,6 @@
             }
         }
 
-        // Fungsi Tambah Berita / Agenda & Auto Sync ke GitHub
         async function handleInformasiSubmit(e) {
             e.preventDefault();
 
@@ -1337,7 +1415,6 @@
             showAlert("Memproses penyimpanan item informasi dan gambar...");
 
             try {
-                // 1. Upload Gambar jika ada
                 if (fileInput && fileInput.files.length > 0) {
                     const imageFile = fileInput.files[0];
                     imageName = imageFile.name;
@@ -1377,7 +1454,6 @@
                     });
                 }
 
-                // 2. Simpan ke LocalStorage Admin
                 const newItem = {
                     id: Date.now(),
                     title,
@@ -1400,10 +1476,8 @@
                     localStorage.setItem('desa_news', JSON.stringify(newsList));
                 }
 
-                // Refresh tabel admin
                 loadAdminInfoTable();
 
-                // 3. Ambil dan Perbarui file informasi.html di GitHub
                 const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/informasi.html`;
                 const htmlGetRes = await fetch(htmlGetUrl, {
                     headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
@@ -1413,7 +1487,6 @@
                 const htmlData = await htmlGetRes.json();
                 let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
 
-                // Render ulang HTML Agenda & Berita
                 const schedules = JSON.parse(localStorage.getItem('desa_schedules') || '[]');
                 let newScheduleHtml = '';
                 schedules.forEach(item => {
@@ -1425,9 +1498,9 @@
                                         <small class="text-muted"><i class="fas fa-clock me-1"></i> ${item.time}</small>
                                     </div>
                                     <h5 class="fw-bold text-dark mb-2">${item.title}</h5>
-                                    <p class="text-muted small mb-3">${item.desc || item.summary}</p>
+                                    <p class="text-muted small mb-3">${item.desc || item.summary || ''}</p>
                                     <div class="d-flex align-items-center gap-2 text-success small fw-semibold">
-                                        <i class="fas fa-map-marker-alt"></i> ${item.location}
+                                        <i class="fas fa-map-marker-alt"></i> ${item.location || ''}
                                     </div>
                                 </div>
                             </div>`;
@@ -1449,7 +1522,7 @@
                                         <div class="p-4">
                                             <small class="text-muted d-block mb-2"><i class="far fa-calendar-alt me-1 text-success"></i> ${news.date || '2026'}</small>
                                             <h5 class="fw-bold text-dark mb-2">${news.title}</h5>
-                                            <p class="text-muted small mb-3">${news.summary || news.content.substring(0, 100)}...</p>
+                                            <p class="text-muted small mb-3">${news.summary || (news.content ? news.content.substring(0, 100) : '')}...</p>
                                         </div>
                                     </div>
                                     <div class="px-4 pb-4 pt-0">
@@ -1475,7 +1548,7 @@
                             <div class="mb-4 text-center">
                                 <img src="${news.image || 'kantor.png'}" class="img-fluid rounded-4 shadow-sm" alt="${news.title}" style="max-height: 300px; width: 100%; object-fit: cover;">
                             </div>
-                            <p class="text-secondary leading-relaxed">${news.content}</p>
+                            <p class="text-secondary leading-relaxed">${news.content || ''}</p>
                         </div>
                         <div class="modal-footer bg-light">
                             <button type="button" class="btn btn-secondary btn-sm rounded-pill px-4" data-bs-dismiss="modal">Tutup</button>
@@ -1485,7 +1558,6 @@
             </div>`;
                 });
 
-                // Timpa kontainer di string HTML
                 currentHtml = currentHtml.replace(/(<div class="row g-4" id="dynamicScheduleContainer">)([\s\S]*?)(<\/div>\s*<\/div>\s*<!-- BAGIAN 2)/i, `$1\n${newScheduleHtml}\n                </div>\n            </div>\n            <!-- BAGIAN 2`);
                 currentHtml = currentHtml.replace(/(<div class="row g-4" id="dynamicNewsContainer">)([\s\S]*?)(<\/div>\s*<\/div>\s*<\/section>)/i, `$1\n${newNewsHtml}\n                </div>\n            </div>\n\n        </div>\n    </section>`);
 
@@ -1495,7 +1567,6 @@
                     currentHtml = parts[0] + modalSplitMarker + '\n    ' + newModalsHtml + '\n';
                 }
 
-                // 4. Commit perubahan ke GitHub
                 const putRes = await fetch(htmlGetUrl, {
                     method: 'PUT',
                     headers: {
@@ -1523,6 +1594,52 @@
                 alert(`Terjadi kesalahan sistem: ${error.message}`);
             }
         }
+
+        // ==========================================
+        // 4. NAVIGASI, UI & HANDLER FORM UMUM
+        // ==========================================
+        function toggleSidebar() {
+            document.getElementById('appSidebar').classList.toggle('show');
+            document.getElementById('sidebarBackdrop').classList.toggle('show');
+        }
+
+        function switchTab(tabId, element) {
+            document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.sidebar-menu .nav-link').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            element.classList.add('active');
+            document.getElementById('current-title').innerText = element.querySelector('span').innerText;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if(window.innerWidth < 992) {
+                toggleSidebar();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const user = localStorage.getItem('gh_user') || '';
+            const repo = localStorage.getItem('gh_repo') || '';
+            const token = localStorage.getItem('gh_token') || '';
+            if(user) document.getElementById('tab-github-gh-user').value = user;
+            if(repo) document.getElementById('tab-github-gh-repo').value = repo;
+            if(token) document.getElementById('tab-github-gh-token').value = token;
+
+            // Otomatis muat tabel dari GitHub saat halaman dibuka
+            loadAdminInfoTable();
+        });
+
+        function showAlert(msg) {
+            const box = document.getElementById('alert-box');
+            document.getElementById('alert-message').innerText = msg;
+            box.classList.remove('d-none');
+            setTimeout(() => box.classList.add('d-none'), 5000);
+        }
+
+        function utf8_to_b64(str) {
+            return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+                return String.fromCharCode('0x' + p1);
+            }));
+        }
+
         async function handleFormSubmit(e, filename, moduleName) {
             e.preventDefault();
             if(moduleName === 'tab-github') {
@@ -1550,426 +1667,6 @@
 
             try {
                 const targetFile = filename.trim();
-
-                // 1. Penanganan Khusus Modul INDEX.HTML
-                if(targetFile === 'index.html') {
-                    const runningTextVal = document.getElementById('tab-index-running-text').value.trim();
-                    const popVal = document.getElementById('tab-index-total-pop').value.trim();
-                    const areaVal = document.getElementById('tab-index-total-area').value.trim();
-                    const dusunVal = document.getElementById('tab-index-total-dusun').value.trim();
-                    const kkVal = document.getElementById('tab-index-total-kk').value.trim();
-                    const fileInput = document.getElementById('tab-index-file');
-                    let uploadedImageName = null;
-
-                    if(fileInput && fileInput.files.length > 0) {
-                        const imageFile = fileInput.files[0];
-                        uploadedImageName = imageFile.name;
-                        const base64Image = await new Promise((resolve, reject) => {
-                            const reader = new FileReader();
-                            reader.readAsDataURL(imageFile);
-                            reader.onload = () => resolve(reader.result.split(',')[1]);
-                            reader.onerror = error => reject(error);
-                        });
-
-                        const imgGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/${uploadedImageName}`;
-                        let imgSha = null;
-                        try {
-                            const checkRes = await fetch(imgGetUrl, {
-                                headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
-                            });
-                            if(checkRes.ok) {
-                                const imgInfo = await checkRes.json();
-                                imgSha = imgInfo.sha;
-                            }
-                        } catch(err) {}
-
-                        const imgPutPayload = {
-                            message: `CMS Upload Background Hero: ${uploadedImageName}`,
-                            content: base64Image
-                        };
-                        if(imgSha) imgPutPayload.sha = imgSha;
-
-                        const imgUploadRes = await fetch(imgGetUrl, {
-                            method: 'PUT',
-                            headers: {
-                                'Authorization': `token ${token}`,
-                                'Content-Type': 'application/json',
-                                'Accept': 'vnd.github.v3+json'
-                            },
-                            body: JSON.stringify(imgPutPayload)
-                        });
-
-                        if(!imgUploadRes.ok) {
-                            const errJson = await imgUploadRes.json();
-                            throw new Error(`Gagal mengunggah file latar belakang: ${errJson.message}`);
-                        }
-                    }
-
-                    const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/index.html`;
-                    const htmlGetRes = await fetch(htmlGetUrl, {
-                        headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
-                    });
-                    
-                    if(htmlGetRes.ok) {
-                        const htmlData = await htmlGetRes.json();
-                        let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
-
-                        if(runningTextVal !== "") {
-                            const regexMarquee = /(<marquee[^>]*>)([\s\S]*?)(<\/marquee>)/;
-                            if(regexMarquee.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexMarquee, `$1${runningTextVal}$3`);
-                            }
-                        }
-                        if(popVal !== "") {
-                            const generalPopRegex = /(<i class="fas fa-users stat-icon mb-2"><\/i>\s*<h3[^>]*>)([^<]*)(<\/h3>\s*<p class="text-muted small mb-0">Total Penduduk)/i;
-                            if(generalPopRegex.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(generalPopRegex, `$1${popVal}$3`);
-                            }
-                        }
-                        if(areaVal !== "") {
-                            const generalAreaRegex = /(<i class="fas fa-vector-square stat-icon mb-2"><\/i>\s*<h3[^>]*>)([^<]*)(<\/h3>\s*<p class="text-muted small mb-0">Luas Wilayah)/i;
-                            if(generalAreaRegex.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(generalAreaRegex, `$1${areaVal}$3`);
-                            }
-                        }
-                        if(dusunVal !== "") {
-                            const generalDusunRegex = /(<i class="fas fa-map-signs stat-icon mb-2"><\/i>\s*<h3[^>]*>)([^<]*)(<\/h3>\s*<p class="text-muted small mb-0">Wilayah Dusun)/i;
-                            if(generalDusunRegex.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(generalDusunRegex, `$1${dusunVal}$3`);
-                            }
-                        }
-                        if(kkVal !== "") {
-                            const generalKkRegex = /(<i class="fas fa-home stat-icon mb-2"><\/i>\s*<h3[^>]*>)([^<]*)(<\/h3>\s*<p class="text-muted small mb-0">Kepala Keluarga)/i;
-                            if(generalKkRegex.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(generalKkRegex, `$1${kkVal}$3`);
-                            }
-                        }
-                        if(uploadedImageName) {
-                            const regexHeroBg = /(url\(')([^']*)('\))/;
-                            if(regexHeroBg.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexHeroBg, `$1${uploadedImageName}$3`);
-                            }
-                        }
-
-                        const htmlPutRes = await fetch(htmlGetUrl, {
-                            method: 'PUT',
-                            headers: {
-                                'Authorization': `token ${token}`,
-                                'Content-Type': 'application/json',
-                                'Accept': 'vnd.github.v3+json'
-                            },
-                            body: JSON.stringify({
-                                message: `CMS Update: memperbarui data index.html secara fleksibel`,
-                                content: utf8_to_b64(currentHtml),
-                                sha: htmlData.sha
-                            })
-                        });
-
-                        if(htmlPutRes.ok) {
-                            showAlert("Sukses! Perubahan pada halaman index.html berhasil diperbarui di GitHub.");
-                            return;
-                        }
-                    }
-                }
-
-                // 2. Penanganan Khusus Modul PROFIL.HTML
-                if(targetFile === 'profil.html') {
-                    const newVision = document.getElementById('tab-profil-vision-text').value.trim();
-                    const newMission = document.getElementById('tab-profil-mission-text').value.trim();
-                    const newGovernance = document.getElementById('tab-profil-governance-text').value.trim();
-                    const newKades = document.getElementById('tab-profil-kades-name').value.trim();
-                    const newSekdes = document.getElementById('tab-profil-sekdes-name').value.trim();
-                    const fileInput = document.getElementById('tab-profil-file');
-                    let uploadedImageName = null;
-
-                    if(fileInput && fileInput.files.length > 0) {
-                        const imageFile = fileInput.files[0];
-                        uploadedImageName = imageFile.name;
-                        const base64Image = await new Promise((resolve, reject) => {
-                            const reader = new FileReader();
-                            reader.readAsDataURL(imageFile);
-                            reader.onload = () => resolve(reader.result.split(',')[1]);
-                            reader.onerror = error => reject(error);
-                        });
-
-                        const imgGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/${uploadedImageName}`;
-                        let imgSha = null;
-                        try {
-                            const checkRes = await fetch(imgGetUrl, {
-                                headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
-                            });
-                            if(checkRes.ok) {
-                                const imgInfo = await checkRes.json();
-                                imgSha = imgInfo.sha;
-                            }
-                        } catch(err) {}
-
-                        const imgPutPayload = {
-                            message: `CMS Upload Profil Image: ${uploadedImageName}`,
-                            content: base64Image
-                        };
-                        if(imgSha) imgPutPayload.sha = imgSha;
-
-                        await fetch(imgGetUrl, {
-                            method: 'PUT',
-                            headers: {
-                                'Authorization': `token ${token}`,
-                                'Content-Type': 'application/json',
-                                'Accept': 'vnd.github.v3+json'
-                            },
-                            body: JSON.stringify(imgPutPayload)
-                        });
-                    }
-
-                    const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/profil.html`;
-                    const htmlGetRes = await fetch(htmlGetUrl, {
-                        headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
-                    });
-                    
-                    if(htmlGetRes.ok) {
-                        const htmlData = await htmlGetRes.json();
-                        let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
-
-                        if(newVision !== "") {
-                            const regexVision = /(<span class="badge bg-warning text-dark mb-3 px-3 py-1 fw-bold">VISI DESA<\/span>\s*<h3 class="fw-bold mb-3">)([^<]*)(<\/h3>)/i;
-                            if(regexVision.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexVision, `$1${newVision}$3`);
-                            }
-                        }
-                        if(newKades !== "") {
-                            const regexKades = /(Kepala Desa\s*<strong>)([^<]*)(<\/strong>)/i;
-                            if(regexKades.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexKades, `$1${newKades}$3`);
-                            }
-                            const regexKadesBadge = /(<i class="fas fa-user-tie text-warning me-1.5"><\/i>\s*Kades:\s*)([^<]*)(<\/span>)/i;
-                            if(regexKadesBadge.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexKadesBadge, `$1${newKades}$3`);
-                            }
-                        }
-                        if(newSekdes !== "") {
-                            const regexSekdes = /(Sekretaris Desa\s*<strong>)([^<]*)(<\/strong>)/i;
-                            if(regexSekdes.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexSekdes, `$1${newSekdes}$3`);
-                            }
-                            const regexSekdesBadge = /(<i class="fas fa-user-gear text-warning me-1.5"><\/i>\s*Sekdes:\s*)([^<]*)(<\/span>)/i;
-                            if(regexSekdesBadge.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexSekdesBadge, `$1${newSekdes}$3`);
-                            }
-                        }
-                        if(newGovernance !== "") {
-                            const regexGov = /(<p class="text-white-50 leading-relaxed mb-4">)([\s\S]*?)(<\/p>)/i;
-                            if(regexGov.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexGov, `$1${newGovernance}$3`);
-                            }
-                        }
-
-                        const htmlPutRes = await fetch(htmlGetUrl, {
-                            method: 'PUT',
-                            headers: {
-                                'Authorization': `token ${token}`,
-                                'Content-Type': 'application/json',
-                                'Accept': 'vnd.github.v3+json'
-                            },
-                            body: JSON.stringify({
-                                message: `CMS Update: memperbarui isi profil.html secara fleksibel`,
-                                content: utf8_to_b64(currentHtml),
-                                sha: htmlData.sha
-                            })
-                        });
-
-                        if(htmlPutRes.ok) {
-                            showAlert("Sukses! Perubahan pada halaman profil.html berhasil diperbarui di GitHub.");
-                            return;
-                        }
-                    }
-                }
-
-                // 3. Penanganan Khusus Modul PETA.HTML (Luas Total, Judul/Luas Perkebunan Tebu, Judul/Luas Sawah Irigasi)
-                if(targetFile === 'peta.html') {
-                    const totalAreaVal = document.getElementById('tab-peta-total-area').value.trim();
-                    const sugarTitleVal = document.getElementById('tab-peta-sugar-title').value.trim();
-                    const sugarAreaVal = document.getElementById('tab-peta-sugar-area').value.trim();
-                    const riceTitleVal = document.getElementById('tab-peta-rice-title').value.trim();
-                    const riceAreaVal = document.getElementById('tab-peta-rice-area').value.trim();
-                    const embedMapUrlVal = document.getElementById('tab-peta-embed-map-url').value.trim();
-
-                    const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/peta.html`;
-                    const htmlGetRes = await fetch(htmlGetUrl, {
-                        headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
-                    });
-                    
-                    if(htmlGetRes.ok) {
-                        const htmlData = await htmlGetRes.json();
-                        let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
-
-                        // 1. Update Luas Total Wilayah
-                        if(totalAreaVal !== "") {
-                            const regexTotalArea = /(<div class="text-success fs-3 mb-2"><i class="fas fa-vector-square"><\/i><\/div>\s*<h5 class="fw-bold text-dark">Luas Total Wilayah<\/h5>\s*<h3 class="fw-extrabold text-success mb-2">)([^<]*)(<\/h3>)/i;
-                            if(regexTotalArea.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexTotalArea, `$1${totalAreaVal} Ha$3`);
-                            } else {
-                                const fallbackAreaRegex = /(<h5 class="fw-bold text-dark">Luas Total Wilayah<\/h5>\s*<h3 class="fw-extrabold text-success mb-2">)([^<]*)(<\/h3>)/i;
-                                if(fallbackAreaRegex.test(currentHtml)) {
-                                    currentHtml = currentHtml.replace(fallbackAreaRegex, `$1${totalAreaVal} Ha$3`);
-                                }
-                            }
-                        }
-
-                        // 2. Update Judul Perkebunan Tebu
-                        if(sugarTitleVal !== "") {
-                            const regexSugarTitle = /(<div class="text-success fs-3 mb-2"><i class="fas fa-seedling"><\/i><\/div>\s*<h5 class="fw-bold text-dark">)([^<]*)(<\/h5>)/i;
-                            if(regexSugarTitle.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexSugarTitle, `$1${sugarTitleVal}$3`);
-                            }
-                        }
-
-                        // 3. Update Luas Perkebunan Tebu
-                        if(sugarAreaVal !== "") {
-                            const regexSugarArea = /(<h5 class="fw-bold text-dark">[^<]*Perkebunan[^<]*<\/h5>\s*<h3 class="fw-extrabold text-success mb-2">)([^<]*)(<\/h3>)/i;
-                            if(regexSugarArea.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexSugarArea, `$1${sugarAreaVal} Ha$3`);
-                            }
-                        }
-
-                        // 4. Update Judul Sawah Irigasi Teknis
-                        if(riceTitleVal !== "") {
-                            const regexRiceTitle = /(<div class="text-success fs-3 mb-2"><i class="fas fa-water"><\/i><\/div>\s*<h5 class="fw-bold text-dark">)([^<]*)(<\/h5>)/i;
-                            if(regexRiceTitle.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexRiceTitle, `$1${riceTitleVal}$3`);
-                            }
-                        }
-
-                        // 5. Update Luas Sawah Irigasi Teknis
-                        if(riceAreaVal !== "") {
-                            const regexRiceArea = /(<h5 class="fw-bold text-dark">[^<]*Sawah[^<]*<\/h5>\s*<h3 class="fw-extrabold text-success mb-2">)([^<]*)(<\/h3>)/i;
-                            if(regexRiceArea.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexRiceArea, `$1${riceAreaVal} Ha$3`);
-                            }
-                        }
-
-                        // 6. Update Google Maps Embed URL
-                        if(embedMapUrlVal !== "") {
-                            const regexMapEmbed = /(<iframe[^>]*src=")([^"]*)("[^>]*><\/iframe>)/i;
-                            if(regexMapEmbed.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexMapEmbed, `$1${embedMapUrlVal}$3`);
-                            }
-                        }
-
-                        const htmlPutRes = await fetch(htmlGetUrl, {
-                            method: 'PUT',
-                            headers: {
-                                'Authorization': `token ${token}`,
-                                'Content-Type': 'application/json',
-                                'Accept': 'vnd.github.v3+json'
-                            },
-                            body: JSON.stringify({
-                                message: `CMS Update: memperbarui data peta.html secara fleksibel`,
-                                content: utf8_to_b64(currentHtml),
-                                sha: htmlData.sha
-                            })
-                        });
-
-                        if(htmlPutRes.ok) {
-                            showAlert("Sukses! Perubahan pada halaman peta.html berhasil diperbarui di GitHub.");
-                            return;
-                        }
-                    }
-                }
-
-                // 4. Penanganan Khusus Modul KDMP
-                if(targetFile === 'kdmp.html') {
-                    const fileInput = document.getElementById('tab-kdmp-file');
-                    const newName = document.getElementById('tab-kdmp-kdmp-chair').value.trim();
-                    const newContact = document.getElementById('tab-kdmp-kdmp-contact').value.trim();
-                    let uploadedImageName = null;
-
-                    if(fileInput && fileInput.files.length > 0) {
-                        const imageFile = fileInput.files[0];
-                        uploadedImageName = imageFile.name;
-                        const base64Image = await new Promise((resolve, reject) => {
-                            const reader = new FileReader();
-                            reader.readAsDataURL(imageFile);
-                            reader.onload = () => resolve(reader.result.split(',')[1]);
-                            reader.onerror = error => reject(error);
-                        });
-
-                        const imgGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/${uploadedImageName}`;
-                        let imgSha = null;
-                        try {
-                            const checkRes = await fetch(imgGetUrl, {
-                                headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
-                            });
-                            if(checkRes.ok) {
-                                const imgInfo = await checkRes.json();
-                                imgSha = imgInfo.sha;
-                            }
-                        } catch(err) {}
-
-                        const imgPutPayload = {
-                            message: `CMS Upload Foto: ${uploadedImageName}`,
-                            content: base64Image
-                        };
-                        if(imgSha) imgPutPayload.sha = imgSha;
-
-                        await fetch(imgGetUrl, {
-                            method: 'PUT',
-                            headers: {
-                                'Authorization': `token ${token}`,
-                                'Content-Type': 'application/json',
-                                'Accept': 'vnd.github.v3+json'
-                            },
-                            body: JSON.stringify(imgPutPayload)
-                        });
-                    }
-
-                    const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/kdmp.html`;
-                    const htmlGetRes = await fetch(htmlGetUrl, {
-                        headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
-                    });
-                    
-                    if(htmlGetRes.ok) {
-                        const htmlData = await htmlGetRes.json();
-                        let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
-
-                        if(newName !== "") {
-                            const regexName = /(<h3[^>]*id="nama-ketua"[^>]*>)([^<]*)(<\/h3>)/;
-                            if(regexName.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexName, `$1${newName}$3`);
-                            }
-                        }
-                        if(newContact !== "") {
-                            const regexWa = /(href="https:\/\/wa\.me\/)([^"]*)(")/g;
-                            currentHtml = currentHtml.replace(regexWa, `$1${newContact}$3`);
-                        }
-                        if(uploadedImageName) {
-                            const regexImgSrc = /(<img[^>]*id="foto-pengelola"[^>]*src=")([^"]*)(")/;
-                            if(regexImgSrc.test(currentHtml)) {
-                                currentHtml = currentHtml.replace(regexImgSrc, `$1${uploadedImageName}$3`);
-                            }
-                        }
-
-                        const htmlPutRes = await fetch(htmlGetUrl, {
-                            method: 'PUT',
-                            headers: {
-                                'Authorization': `token ${token}`,
-                                'Content-Type': 'application/json',
-                                'Accept': 'vnd.github.v3+json'
-                            },
-                            body: JSON.stringify({
-                                message: `CMS Update: memperbarui data kdmp.html secara fleksibel`,
-                                content: utf8_to_b64(currentHtml),
-                                sha: htmlData.sha
-                            })
-                        });
-
-                        if(htmlPutRes.ok) {
-                            showAlert("Sukses! Perubahan pada halaman kdmp.html berhasil diperbarui di GitHub.");
-                            return;
-                        }
-                    }
-                }
-
-                // 5. Penanganan Standar untuk file HTML lainnya
                 const getUrl = `https://api.github.com/repos/${user}/${repo}/contents/${targetFile}`;
                 const getRes = await fetch(getUrl, {
                     headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
