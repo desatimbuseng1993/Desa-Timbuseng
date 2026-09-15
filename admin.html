@@ -381,53 +381,101 @@
                 </form>
             </div>
         </div>
-
+        
         <!-- TAB 4: INFORMASI.HTML -->
         <div id="tab-informasi" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>informasi.html - Berita & APBDes</h4>
-                <p class="text-muted small mb-4">Perbarui berita terkini, pengumuman, serta transparansi anggaran pendapatan dan belanja desa.</p>
-                <form onsubmit="handleFormSubmit(event, 'informasi.html', 'tab-informasi')">
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>informasi.html - Berita, Pengumuman & Agenda</h4>
+                <p class="text-muted small mb-4">Kelola daftar pengumuman, agenda kegiatan, serta berita lengkap dengan sisipan gambar untuk ditampilkan di halaman informasi publik.</p>
+                
+                <!-- Form Tambah / Kelola Berita & Pengumuman -->
+                <form onsubmit="handleInformasiSubmit(event)">
                     <div class="row g-3">
+                        <div class="col-md-12">
+                            <label class="form-label fw-bold text-success">Pilih Jenis Konten yang Dikelola</label>
+                            <select class="form-select" id="info-content-type" onchange="toggleInfoFields()">
+                                <option value="news">Berita Kompleks & Liputan</option>
+                                <option value="schedule">Pengumuman & Agenda Kegiatan</option>
+                            </select>
+                        </div>
+
                         <div class="col-md-6">
-                            <label class="form-label">Judul Berita Utama</label>
-                            <input type="text" class="form-control" id="tab-informasi-news-title-1" value="Penyaluran Bantuan Langsung Tunai (BLT) Tahap II">
+                            <label class="form-label">Judul Berita / Agenda</label>
+                            <input type="text" class="form-control" id="info-title" placeholder="Cth: Penyuluhan Pertanian Organik" required>
                         </div>
+
+                        <div class="col-md-6" id="wrapper-category">
+                            <label class="form-label">Kategori / Badge</label>
+                            <input type="text" class="form-control" id="info-category" placeholder="Cth: Pemerintahan / Pembangunan">
+                        </div>
+
+                        <div class="col-md-4" id="wrapper-date">
+                            <label class="form-label">Tanggal / Waktu (Cth: 18 Mar 2026)</label>
+                            <input type="text" class="form-control" id="info-date" placeholder="18 Mar 2026">
+                        </div>
+
+                        <div class="col-md-4" id="wrapper-time" style="display:none;">
+                            <label class="form-label">Jam Acara (Cth: 09:00 WITA)</label>
+                            <input type="text" class="form-control" id="info-time" placeholder="09:00 WITA">
+                        </div>
+
+                        <div class="col-md-4" id="wrapper-location" style="display:none;">
+                            <label class="form-label">Lokasi Kegiatan</label>
+                            <input type="text" class="form-control" id="info-location" placeholder="Aula Kantor Desa">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Isi Ringkasan / Deskripsi Singkat</label>
+                            <textarea class="form-control" id="info-summary" rows="2" placeholder="Ringkasan singkat yang tampil di kartu utama..."></textarea>
+                        </div>
+
+                        <div class="col-md-12" id="wrapper-content">
+                            <label class="form-label">Isi Lengkap Berita (Opsional untuk Modal Baca Selengkapnya)</label>
+                            <textarea class="form-control" id="info-content" rows="4" placeholder="Tulis uraian lengkap berita di sini..."></textarea>
+                        </div>
+
                         <div class="col-md-6">
-                            <label class="form-label">Isi Berita Utama</label>
-                            <textarea class="form-control" id="tab-informasi-news-desc-1" rows="3">Pemerintah Desa Timbuseng kembali menyalurkan BLT kepada warga yang berhak...</textarea>
+                            <label class="form-label">Upload Gambar / Foto Pendukung</label>
+                            <input type="file" class="form-control" id="info-image-file" accept="image/*">
+                            <small class="text-muted" style="font-size: 0.75rem;">Gambar akan otomatis disimpan dan disematkan pada item informasi.</small>
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Pengumuman Penting</label>
-                            <textarea class="form-control" id="tab-informasi-announcement-text" rows="3">Himbauan kepada seluruh warga untuk menjaga kebersihan lingkungan.</textarea>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label">Pendapatan APBDes</label>
-                            <input type="text" class="form-control" id="tab-informasi-apbd-pendapatan" value="Rp 2.150.000.000">
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label">Belanja APBDes</label>
-                            <input type="text" class="form-control" id="tab-informasi-apbd-belanja" value="Rp 2.100.000.000">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Upload Lampiran / Gambar Berita</label>
-                            <input type="file" class="form-control" id="tab-informasi-file">
-                        </div>
+
                         <div class="col-md-6">
                             <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="tab-informasi-status">
+                            <select class="form-select" id="info-status">
                                 <option value="published" selected>Publikasikan Langsung (Live)</option>
                                 <option value="draft">Simpan Draf</option>
                             </select>
                         </div>
+
                         <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan & Commit ke GitHub</button>
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-plus-circle me-2"></i>Tambahkan / Simpan ke Daftar Informasi</button>
                         </div>
                     </div>
                 </form>
+
+                <hr class="my-4">
+
+                <!-- Daftar Item yang Tersimpan di Storage -->
+                <h5 class="fw-bold text-dark fs-6 mb-3"><i class="fas fa-list me-2 text-success"></i>Daftar Informasi Aktif (Tersimpan)</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm align-middle small">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Tipe</th>
+                                <th>Judul</th>
+                                <th>Tanggal/Kategori</th>
+                                <th class="text-center" style="width: 100px;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-info-list-table">
+                            <!-- Dimuat lewat JS -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-
+  
         <!-- TAB 5: KONTAK.HTML -->
         <div id="tab-kontak" class="tab-pane">
             <div class="cms-card">
@@ -1043,6 +1091,177 @@
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Fungsi untuk mengatur tampilan field form berdasarkan jenis konten
+        function toggleInfoFields() {
+            const type = document.getElementById('info-content-type').value;
+            const timeWrapper = document.getElementById('wrapper-time');
+            const locationWrapper = document.getElementById('wrapper-location');
+            const contentWrapper = document.getElementById('wrapper-content');
+            const categoryWrapper = document.getElementById('wrapper-category');
+
+            if (type === 'schedule') {
+                timeWrapper.style.display = 'block';
+                locationWrapper.style.display = 'block';
+                contentWrapper.style.display = 'none';
+                categoryWrapper.style.display = 'none';
+            } else {
+                timeWrapper.style.display = 'none';
+                locationWrapper.style.display = 'none';
+                contentWrapper.style.display = 'block';
+                categoryWrapper.style.display = 'block';
+            }
+        }
+
+        // Fungsi Simpan / Tambah Data Informasi & Pengumuman ke LocalStorage + Commit GitHub
+        async function handleInformasiSubmit(e) {
+            e.preventDefault();
+            const type = document.getElementById('info-content-type').value;
+            const title = document.getElementById('info-title').value.trim();
+            const fileInput = document.getElementById('info-image-file');
+            let imageUrl = 'kantor.png'; // default fallback
+
+            if (!title) {
+                alert("Judul wajib diisi!");
+                return;
+            }
+
+            // Proses upload gambar jika ada
+            if (fileInput && fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                imageUrl = file.name; // Menggunakan nama file asli untuk repositori
+                
+                const user = localStorage.getItem('gh_user');
+                const repo = localStorage.getItem('gh_repo');
+                const token = localStorage.getItem('gh_token');
+
+                if (token && user && repo) {
+                    try {
+                        const base64Image = await new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.readAsDataURL(file);
+                            reader.onload = () => resolve(reader.result.split(',')[1]);
+                            reader.onerror = error => reject(error);
+                        });
+
+                        const imgGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/${imageUrl}`;
+                        let imgSha = null;
+                        const checkRes = await fetch(imgGetUrl, {
+                            headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
+                        });
+                        if (checkRes.ok) {
+                            const imgInfo = await checkRes.json();
+                            imgSha = imgInfo.sha;
+                        }
+
+                        const imgPutPayload = {
+                            message: `CMS Upload Info Image: ${imageUrl}`,
+                            content: base64Image
+                        };
+                        if (imgSha) imgPutPayload.sha = imgSha;
+
+                        await fetch(imgGetUrl, {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': `token ${token}`,
+                                'Content-Type': 'application/json',
+                                'Accept': 'vnd.github.v3+json'
+                            },
+                            body: JSON.stringify(imgPutPayload)
+                        });
+                    } catch (err) {
+                        console.error("Gagal mengunggah gambar ke GitHub:", err);
+                    }
+                }
+            }
+
+            if (type === 'schedule') {
+                let schedules = JSON.parse(localStorage.getItem('desa_schedules') || '[]');
+                const newSchedule = {
+                    id: Date.now(),
+                    date: document.getElementById('info-date').value || '2026',
+                    time: document.getElementById('info-time').value || '08:00 WITA',
+                    title: title,
+                    desc: document.getElementById('info-summary').value,
+                    location: document.getElementById('info-location').value || 'Kantor Desa'
+                };
+                schedules.unshift(newSchedule);
+                localStorage.setItem('desa_schedules', JSON.stringify(schedules));
+            } else {
+                let newsList = JSON.parse(localStorage.getItem('desa_news') || '[]');
+                const newNews = {
+                    id: Date.now(),
+                    title: title,
+                    category: document.getElementById('info-category').value || 'Berita Desa',
+                    date: document.getElementById('info-date').value || '2026',
+                    summary: document.getElementById('info-summary').value,
+                    content: document.getElementById('info-content').value || document.getElementById('info-summary').value,
+                    image: imageUrl
+                };
+                newsList.unshift(newNews);
+                localStorage.setItem('desa_news', JSON.stringify(newsList));
+            }
+
+            showAlert("Berhasil menambahkan informasi/pengumuman baru!");
+            loadAdminInfoTable();
+            // Panggil fungsi commit utama ke github untuk file informasi.html
+            handleFormSubmit(e, 'informasi.html', 'tab-informasi');
+        }
+
+        // Memuat tabel daftar informasi di dasbor admin
+        function loadAdminInfoTable() {
+            const tableBody = document.getElementById('admin-info-list-table');
+            if (!tableBody) return;
+            
+            tableBody.innerHTML = '';
+            const schedules = JSON.parse(localStorage.getItem('desa_schedules') || '[]');
+            const newsList = JSON.parse(localStorage.getItem('desa_news') || '[]');
+
+            schedules.forEach((item, idx) => {
+                tableBody.innerHTML += `
+                    <tr>
+                        <td><span class="badge bg-warning text-dark">Agenda</span></td>
+                        <td>${item.title}</td>
+                        <td>${item.date}</td>
+                        <td class="text-center">
+                            <button class="btn btn-outline-danger btn-sm py-0 px-2" onclick="deleteInfoItem('schedule', ${item.id})"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            newsList.forEach((item, idx) => {
+                tableBody.innerHTML += `
+                    <tr>
+                        <td><span class="badge bg-success">Berita</span></td>
+                        <td>${item.title}</td>
+                        <td>${item.category}</td>
+                        <td class="text-center">
+                            <button class="btn btn-outline-danger btn-sm py-0 px-2" onclick="deleteInfoItem('news', ${item.id})"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function deleteInfoItem(category, id) {
+            if(!confirm("Yakin ingin menghapus item informasi ini?")) return;
+            if(category === 'schedule') {
+                let schedules = JSON.parse(localStorage.getItem('desa_schedules') || '[]');
+                schedules = schedules.filter(i => i.id !== id);
+                localStorage.setItem('desa_schedules', JSON.stringify(schedules));
+            } else {
+                let newsList = JSON.parse(localStorage.getItem('desa_news') || '[]');
+                newsList = newsList.filter(i => i.id !== id);
+                localStorage.setItem('desa_news', JSON.stringify(newsList));
+            }
+            loadAdminInfoTable();
+            showAlert("Item berhasil dihapus.");
+        }
+
+        // Panggil saat halaman dimuat
+        window.addEventListener('DOMContentLoaded', () => {
+            loadAdminInfoTable();
+        });
         function toggleSidebar() {
             document.getElementById('appSidebar').classList.toggle('show');
             document.getElementById('sidebarBackdrop').classList.toggle('show');
