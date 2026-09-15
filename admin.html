@@ -1148,10 +1148,11 @@
             });
         }
 
+// Fungsi Hapus Item Berita/Agenda & Sinkronisasi Langsung ke GitHub
         async function deleteInfoItem(category, id) {
             if(!confirm("Yakin ingin menghapus item informasi ini? Perubahan akan langsung disinkronkan ke website publik.")) return;
 
-            // 1. Hapus data dari LocalStorage admin
+            // 1. Hapus dari LocalStorage
             if(category === 'schedule') {
                 let schedules = JSON.parse(localStorage.getItem('desa_schedules') || '[]');
                 schedules = schedules.filter(i => i.id !== id);
@@ -1162,7 +1163,7 @@
                 localStorage.setItem('desa_news', JSON.stringify(newsList));
             }
 
-            // Refresh tabel admin
+            // Refresh tabel di admin
             loadAdminInfoTable();
             showAlert("Menghapus item dan memperbarui file informasi.html ke GitHub...");
 
@@ -1186,7 +1187,7 @@
                 const htmlData = await htmlGetRes.json();
                 let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
 
-                // 3. Render ulang string HTML berdasarkan data terbaru di LocalStorage
+                // 3. Render ulang string HTML Jadwal & Berita terbaru
                 const schedules = JSON.parse(localStorage.getItem('desa_schedules') || '[]');
                 let newScheduleHtml = '';
                 schedules.forEach(item => {
@@ -1257,7 +1258,7 @@
             </div>`;
                 });
 
-                // 4. Timpa bagian kontainer jadwal dan berita dengan data yang sudah bersih dari item yang dihapus
+                // 4. Timpa bagian kontainer jadwal dan berita
                 currentHtml = currentHtml.replace(/(<div class="row g-4" id="dynamicScheduleContainer">)([\s\S]*?)(<\/div>\s*<\/div>\s*<!-- BAGIAN 2)/i, `$1\n${newScheduleHtml}\n                </div>\n            </div>\n            <!-- BAGIAN 2`);
                 currentHtml = currentHtml.replace(/(<div class="row g-4" id="dynamicNewsContainer">)([\s\S]*?)(<\/div>\s*<\/div>\s*<\/section>)/i, `$1\n${newNewsHtml}\n                </div>\n            </div>\n\n        </div>\n    </section>`);
 
@@ -1276,7 +1277,7 @@
                         'Accept': 'vnd.github.v3+json'
                     },
                     body: JSON.stringify({
-                        message: `CMS Update: Menghapus item dari informasi.html`,
+                        message: `CMS Update: Menghapus item dan memperbarui modal berita informasi.html`,
                         content: utf8_to_b64(currentHtml),
                         sha: htmlData.sha
                     })
@@ -1294,35 +1295,14 @@
                 alert(`Terjadi kesalahan sistem: ${error.message}`);
             }
         }
-        // Fungsi untuk mengatur tampilan field form berdasarkan jenis konten
-        function toggleInfoFields() {
-            const type = document.getElementById('info-content-type').value;
-            const timeWrapper = document.getElementById('wrapper-time');
-            const locationWrapper = document.getElementById('wrapper-location');
-            const contentWrapper = document.getElementById('wrapper-content');
-            const categoryWrapper = document.getElementById('wrapper-category');
 
-            if (type === 'schedule') {
-                timeWrapper.style.display = 'block';
-                locationWrapper.style.display = 'block';
-                contentWrapper.style.display = 'none';
-                categoryWrapper.style.display = 'none';
-            } else {
-                timeWrapper.style.display = 'none';
-                locationWrapper.style.display = 'none';
-                contentWrapper.style.display = 'block';
-                categoryWrapper.style.display = 'block';
-            }
-        }
-
-        // Fungsi Simpan / Tambah Data Informasi & Pengumuman ke LocalStorage + Commit GitHub
-// Fungsi Simpan / Tambah Data Informasi & Pengumuman ke LocalStorage + Commit GitHub
+        // Fungsi Tambah Berita/Agenda & Sinkronisasi Modal ke GitHub
         async function handleInformasiSubmit(e) {
             e.preventDefault();
             const type = document.getElementById('info-content-type').value;
             const title = document.getElementById('info-title').value.trim();
             const fileInput = document.getElementById('info-image-file');
-            let imageUrl = 'kantor.png'; // default fallback
+            let imageUrl = 'kantor.png';
 
             if (!title) {
                 alert("Judul wajib diisi!");
@@ -1340,7 +1320,6 @@
 
             showAlert("Memproses dan menyinkronkan data ke GitHub...");
 
-            // Proses upload gambar jika ada
             if (fileInput && fileInput.files.length > 0) {
                 const file = fileInput.files[0];
                 imageUrl = file.name; 
@@ -1384,19 +1363,18 @@
 
             if (type === 'schedule') {
                 let schedules = JSON.parse(localStorage.getItem('desa_schedules') || '[]');
-                const newSchedule = {
+                schedules.unshift({
                     id: Date.now(),
                     date: document.getElementById('info-date').value || '2026',
                     time: document.getElementById('info-time').value || '08:00 WITA',
                     title: title,
                     desc: document.getElementById('info-summary').value,
                     location: document.getElementById('info-location').value || 'Kantor Desa'
-                };
-                schedules.unshift(newSchedule);
+                });
                 localStorage.setItem('desa_schedules', JSON.stringify(schedules));
             } else {
                 let newsList = JSON.parse(localStorage.getItem('desa_news') || '[]');
-                const newNews = {
+                newsList.unshift({
                     id: Date.now(),
                     title: title,
                     category: document.getElementById('info-category').value || 'Berita Desa',
@@ -1404,15 +1382,13 @@
                     summary: document.getElementById('info-summary').value,
                     content: document.getElementById('info-content').value || document.getElementById('info-summary').value,
                     image: imageUrl
-                };
-                newsList.unshift(newNews);
+                });
                 localStorage.setItem('desa_news', JSON.stringify(newsList));
             }
 
             loadAdminInfoTable();
 
             try {
-                // Ambil file informasi.html dari GitHub
                 const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/informasi.html`;
                 const htmlGetRes = await fetch(htmlGetUrl, {
                     headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
@@ -1422,7 +1398,6 @@
                 const htmlData = await htmlGetRes.json();
                 let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
 
-                // Render ulang string HTML berdasarkan data terbaru
                 const schedules = JSON.parse(localStorage.getItem('desa_schedules') || '[]');
                 let newScheduleHtml = '';
                 schedules.forEach(item => {
@@ -1502,7 +1477,6 @@
                     currentHtml = parts[0] + modalSplitMarker + '\n    ' + newModalsHtml + '\n';
                 }
 
-                // Commit perubahan ke GitHub
                 const putRes = await fetch(htmlGetUrl, {
                     method: 'PUT',
                     headers: {
@@ -1511,7 +1485,7 @@
                         'Accept': 'vnd.github.v3+json'
                     },
                     body: JSON.stringify({
-                        message: `CMS Update: Menambahkan informasi/berita baru`,
+                        message: `CMS Update: Menambahkan informasi dan modal berita baru`,
                         content: utf8_to_b64(currentHtml),
                         sha: htmlData.sha
                     })
