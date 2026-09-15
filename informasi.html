@@ -251,7 +251,7 @@
     <section class="py-5">
         <div class="container">
             
-            <!-- BAGIAN 1: JADWAL & PENGUMUMAN KEGIATAN YANG AKAN DATANG -->
+            <!-- BAGIAN 1: JADWAL & PENGUMUMAN KEGIATAN -->
             <div class="mb-5">
                 <div class="d-flex align-items-center justify-content-between mb-4">
                     <div>
@@ -261,9 +261,12 @@
                 </div>
 
                 <div class="row g-4" id="dynamicScheduleContainer">
-
+                    <div class="col-12 text-center py-4 text-muted">
+                        <i class="fas fa-spinner fa-spin me-2"></i> Memuat agenda kegiatan...
+                    </div>
                 </div>
             </div>
+
             <!-- BAGIAN 2: BERITA KOMPLEKS & LIPUTAN DESA -->
             <div class="pt-4 border-top">
                 <div class="d-flex align-items-center justify-content-between mb-4">
@@ -273,56 +276,208 @@
                     </div>
                 </div>
 
-                <!-- GRID BERITA KOMPLEKS (Dinamis / Terhubung ke Admin) -->
+                <!-- GRID BERITA -->
                 <div class="row g-4" id="dynamicNewsContainer">
-
-                            <div class="col-md-6 col-lg-4">
-                                <div class="info-card shadow-sm">
-                                    <div>
-                                        <div class="info-img-wrapper">
-                                            <span class="info-badge">Apasih</span>
-                                            <img src="1001259187.jpg" alt="Pemeriksaan" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Desa+Timbuseng';">
-                                        </div>
-                                        <div class="p-4">
-                                            <small class="text-muted d-block mb-2"><i class="far fa-calendar-alt me-1 text-success"></i>         Tunggu</small>
-                                            <h5 class="fw-bold text-dark mb-2">Pemeriksaan</h5>
-                                            <p class="text-muted small mb-3">Keje...........................</p>
-                                        </div>
-                                    </div>
-                                    <div class="px-4 pb-4 pt-0">
-                                        <button type="button" class="btn btn-outline-success btn-sm w-100 fw-semibold rounded-pill" data-bs-toggle="modal" data-bs-target="#modalDynamicNews0">
-                                            Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-12 text-center py-4 text-muted">
+                        <i class="fas fa-spinner fa-spin me-2"></i> Memuat berita desa...
+                    </div>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- MODAL POPUP BACA LENGKAP BERITA 1 -->
-    
-            <div class="modal fade" id="modalDynamicNews0" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content border-0 shadow-lg">
-                        <div class="modal-header bg-desa text-white">
-                            <h5 class="modal-title fw-bold"><i class="fas fa-bullhorn me-2 text-warning"></i>Pemeriksaan</h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body p-4">
-                            <span class="badge bg-success mb-2">Apasih</span>
-                            <h3 class="fw-bold text-dark mb-3">Pemeriksaan</h3>
-                            <small class="text-muted d-block mb-4"><i class="far fa-calendar-alt me-1 text-success"></i>         Tunggu</small>
-                            <div class="mb-4 text-center">
-                                <img src="1001259187.jpg" class="img-fluid rounded-4 shadow-sm" alt="Pemeriksaan" style="max-height: 300px; width: 100%; object-fit: cover;">
-                            </div>
-                            <p class="text-secondary leading-relaxed">Keje........................</p>
-                        </div>
-                        <div class="modal-footer bg-light">
-                            <button type="button" class="btn btn-secondary btn-sm rounded-pill px-4" data-bs-dismiss="modal">Tutup</button>
+    <!-- CONTAINER MODAL DINAMIS UNTUK BERITA -->
+    <div id="dynamicModalsContainer"></div>
+
+    <!-- SCRIPT JS UNTUK SINKRONISASI DARI INFORMASI.JSON -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('informasi.json')
+                .then(response => {
+                    if (!response.ok) throw new Error("Gagal memuat file informasi.json");
+                    return response.json();
+                })
+                .then(data => {
+                    // 1. Render Agenda & Jadwal
+                    const scheduleContainer = document.getElementById('dynamicScheduleContainer');
+                    if (scheduleContainer && data.schedules) {
+                        if (data.schedules.length === 0) {
+                            scheduleContainer.innerHTML = '<div class="col-12 text-center text-muted py-3">Belum ada agenda kegiatan mendatang.</div>';
+                        } else {
+                            let htmlSch = '';
+                            data.schedules.forEach(item => {
+                                htmlSch += `
+                                    <div class="col-md-4">
+                                        <div class="schedule-card p-4 h-100 shadow-sm">
+                                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                                <span class="badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold">${item.date}</span>
+                                                <small class="text-muted"><i class="fas fa-clock me-1"></i> ${item.time || '09:00 WITA'}</small>
+                                            </div>
+                                            <h5 class="fw-bold text-dark mb-2">${item.title}</h5>
+                                            <p class="text-muted small mb-3">${item.summary || item.content || ''}</p>
+                                            <div class="d-flex align-items-center gap-2 text-success small fw-semibold">
+                                                <i class="fas fa-map-marker-alt"></i> ${item.location || 'Kantor Desa Timbuseng'}
+                                            </div>
+                                        </div>
+                                    </div>`;
+                            });
+                            scheduleContainer.innerHTML = htmlSch;
+                        }
+                    }
+
+                    // 2. Render Berita & Modal Popups
+                    const newsContainer = document.getElementById('dynamicNewsContainer');
+                    const modalsContainer = document.getElementById('dynamicModalsContainer');
+                    
+                    if (newsContainer && data.news) {
+                        if (data.news.length === 0) {
+                            newsContainer.innerHTML = '<div class="col-12 text-center text-muted py-3">Belum ada berita atau liputan desa aktif.</div>';
+                        } else {
+                            let htmlNews = '';
+                            let htmlModals = '';
+
+                            data.news.forEach((news, idx) => {
+                                const imgSrc = news.image && news.image !== 'kantor.png' ? news.image : 'kantor.png';
+                                
+                                htmlNews += `
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="info-card shadow-sm">
+                                            <div>
+                                                <div class="info-img-wrapper">
+                                                    <span class="info-badge">${news.category || 'Berita Desa'}</span>
+                                                    <img src="${imgSrc}" alt="${news.title}" onerror="this.onerror=null; this.src='kantor.png';">
+                                                </div>
+                                                <div class="p-4">
+                                                    <small class="text-muted d-block mb-2"><i class="far fa-calendar-alt me-1 text-success"></i> ${news.date || '2026'}</small>
+                                                    <h5 class="fw-bold text-dark mb-2">${news.title}</h5>
+                                                    <p class="text-muted small mb-3">${news.summary ? news.summary.substring(0, 100) + '...' : ''}</p>
+                                                </div>
+                                            </div>
+                                            <div class="px-4 pb-4 pt-0">
+                                                <button type="button" class="btn btn-outline-success btn-sm w-100 fw-semibold rounded-pill" data-bs-toggle="modal" data-bs-target="#modalNews${idx}">
+                                                    Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>`;
+
+                                htmlModals += `
+                                    <div class="modal fade" id="modalNews${idx}" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                            <div class="modal-content border-0 shadow-lg">
+                                                <div class="modal-header bg-desa text-white">
+                                                    <h5 class="modal-title fw-bold"><i class="fas fa-bullhorn me-2 text-warning"></i>${news.title}</h5>
+                                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body p-4">
+                                                    <span class="badge bg-success mb-2">${news.category || 'Berita Desa'}</span>
+                                                    <h3 class="fw-bold text-dark mb-3">${news.title}</h3>
+                                                    <small class="text-muted d-block mb-4"><i class="far fa-calendar-alt me-1 text-success"></i> ${news.date || '2026'}</small>
+                                                    <div class="mb-4 text-center">
+                                                        <img src="${imgSrc}" class="img-fluid rounded-4 shadow-sm" alt="${news.title}" style="max-height: 300px; width: 100%; object-fit: cover;" onerror="this.src='kantor.png';">
+                                                    </div>
+                                                    <p class="text-secondary leading-relaxed">${news.content || news.summary || ''}</p>
+                                                </div>
+                                                <div class="modal-footer bg-light">
+                                                    <button type="button" class="btn btn-secondary btn-sm rounded-pill px-4" data-bs-dismiss="modal">Tutup</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                            });
+
+                            newsContainer.innerHTML = htmlNews;
+                            if (modalsContainer) modalsContainer.innerHTML = htmlModals;
+                        }
+                    }
+                })
+                .catch(err => {
+                    console.error("Gagal memuat informasi.json:", err);
+                    const scheduleContainer = document.getElementById('dynamicScheduleContainer');
+                    const newsContainer = document.getElementById('dynamicNewsContainer');
+                    if(scheduleContainer) scheduleContainer.innerHTML = '<div class="col-12 text-center text-danger py-3">Gagal memuat data agenda. Pastikan file informasi.json sudah ada di repositori Anda.</div>';
+                    if(newsContainer) newsContainer.innerHTML = '<div class="col-12 text-center text-danger py-3">Gagal memuat data berita.</div>';
+                });
+        });
+    </script>
+
+    <!-- FOOTER UTAMA -->
+    <footer class="pt-5">
+        <div class="container pb-4">
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <img src="logo.png" alt="Logo Desa Timbuseng" style="height: 48px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                        <div>
+                            <h5 class="fw-bold text-white mb-0">Pemerintah Desa Timbuseng</h5>
+                            <small class="text-white-50">Kec. Polongbangkeng Timur, Kab. Takalar</small>
                         </div>
                     </div>
+                    <p class="text-white-50 small pe-lg-4">
+                        Portal resmi Sistem Informasi Desa Timbuseng. Menyajikan data profil, transparansi tata kelola pemerintahan, layanan pengaduan masyarakat, serta pemetaan wilayah desa.
+                    </p>
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram Resmi Desa">
+                            <i class="fab fa-instagram fs-5"></i>
+                        </a>
+                        <a href="#" class="social-btn" title="Facebook Desa">
+                            <i class="fab fa-facebook-f fs-5"></i>
+                        </a>
+                        <a href="#" class="social-btn" title="YouTube Desa">
+                            <i class="fab fa-youtube fs-5"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <h6 class="fw-bold text-white mb-3 text-uppercase">Navigasi Utama</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small">
+                        <li><a href="index.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Beranda</a></li>
+                        <li><a href="profil.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Profil Desa</a></li>
+                        <li><a href="pemdes.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Struktur Pemdes</a></li>
+                        <li><a href="peta.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Peta Digital Wilayah</a></li>
+                        <li><a href="informasi.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Informasi & Berita Desa</a></li>
+                        <li><a href="kontak.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Kontak & Lokasi Kantor</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-8 col-lg-4">
+                    <h6 class="fw-bold text-white mb-3 text-uppercase">Kontak Kantor Desa</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small text-white-50">
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-map-marker-alt text-warning mt-1"></i>
+                            <span>Kantor Desa Timbuseng, Kec. Polongbangkeng Timur, Kab. Takalar, Sulawesi Selatan 92221</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-phone-alt text-warning"></i>
+                            <span>+62 852-9957-6913</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-envelope text-warning"></i>
+                            <span>desatimbuseng1993@gmail.com</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fab fa-instagram text-warning"></i>
+                            <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                                @desa_timbuseng
+                            </a>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-clock text-warning"></i>
+                            <span>Senin - Jumat: 08:00 - 16:00 WITA</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </div>
+        <!-- COPYRIGHT BAR -->
+        <div class="copyright-bar py-3 text-center text-white-50">
+            <div class="container">
+                <p class="mb-0">©2026 P10 KKN UHM | Pemerintah Desa Timbuseng, Polongbangkeng Timur, Takalar. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
