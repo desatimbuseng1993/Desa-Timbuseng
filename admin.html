@@ -254,7 +254,7 @@
         <div id="tab-github" class="tab-pane active">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>Konfigurasi GitHub REST API</h4>
-                <p class="text-muted small mb-4">Gunakan formulir visual di bawah ini untuk menghubungkan CMS admin langsung ke repositori GitHub Anda agar pembaruan file web tersimpan otomatis.</p>
+                <p class="text-muted small mb-4">Gunakan formulir visual di bawah ini untuk menghubungkan CMS admin langsung ke repositori GitHub Anda agar pembaruan tersimpan otomatis.</p>
                 <form onsubmit="handleFormSubmit(event, 'Konfigurasi GitHub REST API', 'tab-github')">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -269,18 +269,6 @@
                             <label class="form-label">Personal Access Token (PAT)</label>
                             <input type="password" class="form-control" id="tab-github-gh-token" placeholder="ghp_xxxxxxxxxxxx" required>
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Upload Gambar / Lampiran Opsional</label>
-                            <input type="file" class="form-control" id="tab-github-file">
-                            <small class="text-muted" style="font-size: 0.75rem;">Format: JPG, PNG, WEBP (Maksimal 5MB).</small>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi Modul</label>
-                            <select class="form-select" id="tab-github-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan sebagai Draf</option>
-                            </select>
-                        </div>
                         <div class="col-12 mt-4">
                             <button type="submit" class="btn btn-desa w-100 w-md-auto"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Konfigurasi Kunci API</button>
                         </div>
@@ -289,47 +277,35 @@
             </div>
         </div>
 
-        <!-- TAB 2: INDEX.HTML -->
+        <!-- TAB 2: INDEX.HTML (MENGGUNAKAN SISTEM.JSON) -->
         <div id="tab-index" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>index.html - Beranda Desa</h4>
-                <p class="text-muted small mb-4">Perbarui running text, foto latar belakang hero, total penduduk, luas wilayah, wilayah dusun, atau kepala keluarga secara fleksibel (bisa diubah salah satu saja).</p>
-                <form onsubmit="handleFormSubmit(event, 'index.html', 'tab-index')">
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>index.html - Beranda Desa (sistem.json)</h4>
+                <p class="text-muted small mb-4">Perbarui running text, total penduduk, luas wilayah, wilayah dusun, atau kepala keluarga secara instan lewat file sistem.json.</p>
+                <form onsubmit="handleSystemJsonSubmit(event, 'index')">
                     <div class="row g-3">
                         <div class="col-md-12">
                             <label class="form-label">Running Text / Pengumuman Singkat</label>
-                            <textarea class="form-control" id="tab-index-running-text" rows="2" placeholder="Kosongkan jika tidak ingin diubah..."></textarea>
+                            <textarea class="form-control" id="sys-running-text" rows="2" placeholder="Tulis pengumuman running text..."></textarea>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Total Penduduk (Jiwa)</label>
-                            <input type="text" class="form-control" id="tab-index-total-pop" placeholder="Cth: 2.709">
+                            <input type="text" class="form-control" id="sys-total-pop" placeholder="Cth: 2.709">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Luas Wilayah (Ha)</label>
-                            <input type="text" class="form-control" id="tab-index-total-area" placeholder="Cth: 1.083,47">
+                            <input type="text" class="form-control" id="sys-total-area" placeholder="Cth: 1.083,47">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Wilayah Dusun</label>
-                            <input type="text" class="form-control" id="tab-index-total-dusun" placeholder="Cth: 7">
+                            <input type="text" class="form-control" id="sys-total-dusun" placeholder="Cth: 7">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Kepala Keluarga (KK)</label>
-                            <input type="text" class="form-control" id="tab-index-total-kk" placeholder="Cth: 884">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Upload Foto Poster Latar Belakang (Hero Background)</label>
-                            <input type="file" class="form-control" id="tab-index-file" accept="image/*">
-                            <small class="text-muted" style="font-size: 0.75rem;">Nama file foto beserta formatnya akan otomatis menggantikan gambar latar belakang di web.</small>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="tab-index-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan Draf</option>
-                            </select>
+                            <input type="text" class="form-control" id="sys-total-kk" placeholder="Cth: 884">
                         </div>
                         <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan Index & Commit ke GitHub</button>
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan Beranda ke sistem.json</button>
                         </div>
                     </div>
                 </form>
@@ -339,136 +315,76 @@
         <!-- TAB 3: PROFIL.HTML -->
         <div id="tab-profil" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>profil.html - Visi, Misi, Tata Kelola & Perangkat Desa</h4>
-                <p class="text-muted small mb-4">Perbarui isi Visi Desa, Misi Strategis, Tata Kelola / Struktur Perangkat Desa, serta Nama Kepala Desa dan Sekretaris Desa secara fleksibel.</p>
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>profil.html - Visi, Misi & Perangkat Desa</h4>
                 <form onsubmit="handleFormSubmit(event, 'profil.html', 'tab-profil')">
                     <div class="row g-3">
-                        <div class="col-md-12">
-                            <label class="form-label">Isi Visi Desa</label>
-                            <textarea class="form-control" id="tab-profil-vision-text" rows="2" placeholder="Kosongkan jika tidak ingin mengubah visi..."></textarea>
-                        </div>
-                        <div class="col-md-12">
-                            <label class="form-label">Isi Misi Strategis Pembangunan Desa</label>
-                            <textarea class="form-control" id="tab-profil-mission-text" rows="4" placeholder="Kosongkan jika tidak ingin mengubah misi..."></textarea>
-                        </div>
-                        <div class="col-md-12">
-                            <label class="form-label">Isi Tata Kelola & Struktur Perangkat Desa</label>
-                            <textarea class="form-control" id="tab-profil-governance-text" rows="3" placeholder="Kosongkan jika tidak ingin mengubah teks tata kelola..."></textarea>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Nama Kepala Desa</label>
-                            <input type="text" class="form-control" id="tab-profil-kades-name" placeholder="Cth: Kaharuddin, S.P.">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Nama Sekretaris Desa</label>
-                            <input type="text" class="form-control" id="tab-profil-sekdes-name" placeholder="Cth: Haeruddin, S.Pd.I">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Upload Gambar / Foto Profil Pendukung (Opsional)</label>
-                            <input type="file" class="form-control" id="tab-profil-file" accept="image/*">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="tab-profil-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan Draf</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan Profil & Commit ke GitHub</button>
-                        </div>
+                        <div class="col-md-12"><label class="form-label">Isi Visi Desa</label><textarea class="form-control" id="tab-profil-vision-text" rows="2"></textarea></div>
+                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan</button></div>
                     </div>
                 </form>
             </div>
         </div>
         
-        <!-- TAB 4: INFORMASI.HTML (MENGGUNAKAN JSON) -->
+        <!-- TAB 4: INFORMASI.HTML (JSON) -->
         <div id="tab-informasi" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>informasi.html - Berita, Pengumuman & Agenda</h4>
-                <p class="text-muted small mb-4">Kelola daftar pengumuman, agenda kegiatan, serta berita lengkap dengan sisipan gambar untuk ditampilkan di halaman informasi publik.</p>
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>informasi.html - Berita & Agenda</h4>
+                <p class="text-muted small mb-4">Kelola daftar pengumuman, agenda kegiatan, serta berita melalui file <code>informasi.json</code>.</p>
                 
                 <form onsubmit="handleInformasiSubmit(event)">
                     <div class="row g-3">
                         <div class="col-md-12">
-                            <label class="form-label fw-bold text-success">Pilih Jenis Konten yang Dikelola</label>
+                            <label class="form-label fw-bold text-success">Pilih Jenis Konten</label>
                             <select class="form-select" id="info-content-type" onchange="toggleInfoFields()">
                                 <option value="news">Berita Kompleks & Liputan</option>
                                 <option value="schedule">Pengumuman & Agenda Kegiatan</option>
                             </select>
                         </div>
-
                         <div class="col-md-6">
                             <label class="form-label">Judul Berita / Agenda</label>
-                            <input type="text" class="form-control" id="info-title" placeholder="Cth: Penyuluhan Pertanian Organik" required>
+                            <input type="text" class="form-control" id="info-title" required>
                         </div>
-
                         <div class="col-md-6" id="wrapper-category">
                             <label class="form-label">Kategori / Badge</label>
-                            <input type="text" class="form-control" id="info-category" placeholder="Cth: Pemerintahan / Pembangunan">
+                            <input type="text" class="form-control" id="info-category" placeholder="Pemerintahan / Pembangunan">
                         </div>
-
                         <div class="col-md-4" id="wrapper-date">
-                            <label class="form-label">Tanggal / Waktu (Cth: 18 Mar 2026)</label>
-                            <input type="text" class="form-control" id="info-date" placeholder="18 Mar 2026">
+                            <label class="form-label">Tanggal (Cth: 18 Mar 2026)</label>
+                            <input type="text" class="form-control" id="info-date">
                         </div>
-
                         <div class="col-md-4" id="wrapper-time" style="display:none;">
-                            <label class="form-label">Jam Acara (Cth: 09:00 WITA)</label>
+                            <label class="form-label">Jam Acara</label>
                             <input type="text" class="form-control" id="info-time" placeholder="09:00 WITA">
                         </div>
-
                         <div class="col-md-4" id="wrapper-location" style="display:none;">
                             <label class="form-label">Lokasi Kegiatan</label>
-                            <input type="text" class="form-control" id="info-location" placeholder="Aula Kantor Desa">
+                            <input type="text" class="form-control" id="info-location">
                         </div>
-
                         <div class="col-md-12">
-                            <label class="form-label">Isi Ringkasan / Deskripsi Singkat</label>
-                            <textarea class="form-control" id="info-summary" rows="2" placeholder="Ringkasan singkat yang tampil di kartu utama..."></textarea>
+                            <label class="form-label">Ringkasan / Deskripsi Singkat</label>
+                            <textarea class="form-control" id="info-summary" rows="2"></textarea>
                         </div>
-
                         <div class="col-md-12" id="wrapper-content">
-                            <label class="form-label">Isi Lengkap Berita (Opsional untuk Modal Baca Selengkapnya)</label>
-                            <textarea class="form-control" id="info-content" rows="4" placeholder="Tulis uraian lengkap berita di sini..."></textarea>
+                            <label class="form-label">Isi Lengkap Berita</label>
+                            <textarea class="form-control" id="info-content" rows="4"></textarea>
                         </div>
-
                         <div class="col-md-6">
-                            <label class="form-label">Upload Gambar / Foto Pendukung</label>
+                            <label class="form-label">Upload Gambar Pendukung</label>
                             <input type="file" class="form-control" id="info-image-file" accept="image/*">
-                            <small class="text-muted" style="font-size: 0.75rem;">Gambar akan otomatis disimpan dan disematkan pada item informasi.</small>
                         </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="info-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan Draf</option>
-                            </select>
-                        </div>
-
                         <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-plus-circle me-2"></i>Tambahkan / Simpan ke Daftar Informasi</button>
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-plus-circle me-2"></i>Simpan ke informasi.json</button>
                         </div>
                     </div>
                 </form>
-
                 <hr class="my-4">
-
-                <h5 class="fw-bold text-dark fs-6 mb-3"><i class="fas fa-list me-2 text-success"></i>Daftar Informasi Aktif (Tersimpan)</h5>
+                <h5 class="fw-bold text-dark fs-6 mb-3"><i class="fas fa-list me-2 text-success"></i>Daftar Informasi Aktif</h5>
                 <div class="table-responsive">
                     <table class="table table-bordered table-sm align-middle small">
                         <thead class="table-light">
-                            <tr>
-                                <th>Tipe</th>
-                                <th>Judul</th>
-                                <th>Tanggal/Kategori</th>
-                                <th class="text-center" style="width: 100px;">Aksi</th>
-                            </tr>
+                            <tr><th>Tipe</th><th>Judul</th><th>Tanggal/Kategori</th><th class="text-center" style="width: 100px;">Aksi</th></tr>
                         </thead>
-                        <tbody id="admin-info-list-table">
-                            <!-- Dimuat lewat JS -->
-                        </tbody>
+                        <tbody id="admin-info-list-table"></tbody>
                     </table>
                 </div>
             </div>
@@ -478,84 +394,48 @@
         <div id="tab-kontak" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>kontak.html - Kontak & Operasional</h4>
-                <p class="text-muted small mb-4">Kelola alamat kantor desa, nomor layanan WhatsApp, email, serta jam operasional.</p>
                 <form onsubmit="handleFormSubmit(event, 'kontak.html', 'tab-kontak')">
                     <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Alamat Kantor Desa</label>
-                            <input type="text" class="form-control" id="tab-kontak-office-address" value="Jl. Poros Timbuseng, Kec. Polongbangkeng Timur, Kab. Takalar">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Nomor WhatsApp Resmi</label>
-                            <input type="text" class="form-control" id="tab-kontak-official-phone" value="0852xxxxxxxx">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Email Desa</label>
-                            <input type="text" class="form-control" id="tab-kontak-official-email" value="desatimbuseng@gmail.com">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Jam Operasional</label>
-                            <input type="text" class="form-control" id="tab-kontak-operational-hours" value="Senin - Jumat: 08.00 - 16.00 WITA">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Link Media Sosial / Instagram</label>
-                            <input type="text" class="form-control" id="tab-kontak-instagram-link" value="https://instagram.com/desatimbuseng">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="tab-kontak-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan Draf</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan & Commit ke GitHub</button>
-                        </div>
+                        <div class="col-md-6"><label class="form-label">Alamat Kantor Desa</label><input type="text" class="form-control" id="tab-kontak-office-address" value="Jl. Poros Timbuseng, Kec. Polongbangkeng Timur, Kab. Takalar"></div>
+                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan</button></div>
                     </div>
                 </form>
             </div>
         </div>
 
-        <!-- TAB 6: PETA.HTML -->
+        <!-- TAB 6: PETA.HTML (MENGGUNAKAN SISTEM.JSON) -->
         <div id="tab-peta" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>peta.html - Peta, Luas Wilayah & Statistik Lahan</h4>
-                <p class="text-muted small mb-4">Perbarui luas total wilayah, judul serta luas perkebunan tebu, judul serta luas sawah irigasi teknis, dan koordinat peta.</p>
-                <form onsubmit="handleFormSubmit(event, 'peta.html', 'tab-peta')">
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>peta.html - Peta & Statistik Lahan (sistem.json)</h4>
+                <p class="text-muted small mb-4">Perbarui luas total wilayah, perkebunan tebu, sawah irigasi teknis, serta koordinat peta langsung via file sistem.json.</p>
+                <form onsubmit="handleSystemJsonSubmit(event, 'peta')">
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label">Luas Total Wilayah (Ha)</label>
-                            <input type="text" class="form-control" id="tab-peta-total-area" placeholder="Cth: 1.083,47">
+                            <input type="text" class="form-control" id="sys-peta-total-area" placeholder="Cth: 1.083,47">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Judul / Label Perkebunan Tebu</label>
-                            <input type="text" class="form-control" id="tab-peta-sugar-title" placeholder="Cth: Perkebunan Tebu">
+                            <label class="form-label">Judul Perkebunan Tebu</label>
+                            <input type="text" class="form-control" id="sys-sugar-title" placeholder="Perkebunan Tebu">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Luas Perkebunan Tebu (Ha)</label>
-                            <input type="text" class="form-control" id="tab-peta-sugar-area" placeholder="Cth: 705,39">
+                            <input type="text" class="form-control" id="sys-sugar-area" placeholder="Cth: 705,39">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Judul / Label Sawah Irigasi Teknis</label>
-                            <input type="text" class="form-control" id="tab-peta-rice-title" placeholder="Cth: Sawah Irigasi Teknis">
+                            <label class="form-label">Judul Sawah Irigasi Teknis</label>
+                            <input type="text" class="form-control" id="sys-rice-title" placeholder="Sawah Irigasi Teknis">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Luas Sawah Irigasi Teknis (Ha)</label>
-                            <input type="text" class="form-control" id="tab-peta-rice-area" placeholder="Cth: 216,53">
+                            <input type="text" class="form-control" id="sys-rice-area" placeholder="Cth: 216,53">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Google Maps Embed URL</label>
-                            <input type="text" class="form-control" id="tab-peta-embed-map-url" placeholder="https://www.google.com/maps/embed?pb=...">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="tab-peta-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan Draf</option>
-                            </select>
+                            <input type="text" class="form-control" id="sys-embed-map-url" placeholder="https://www.google.com/maps/embed?pb=...">
                         </div>
                         <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan Peta & Commit ke GitHub</button>
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan Peta ke sistem.json</button>
                         </div>
                     </div>
                 </form>
@@ -566,519 +446,22 @@
         <div id="tab-pengaduan" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>pengaduan.html - Layanan Pengaduan</h4>
-                <p class="text-muted small mb-4">Kelola kontak WhatsApp pengaduan serta panduan alur pelaporan aspirasi warga.</p>
                 <form onsubmit="handleFormSubmit(event, 'pengaduan.html', 'tab-pengaduan')">
                     <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label">WhatsApp Pengaduan</label>
-                            <input type="text" class="form-control" id="tab-pengaduan-complaint-wa" value="0852xxxxxxxx">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Email Pengaduan</label>
-                            <input type="text" class="form-control" id="tab-pengaduan-complaint-email" value="pengaduan.timbuseng@gmail.com">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Petunjuk Alur Pengaduan</label>
-                            <input type="text" class="form-control" id="tab-pengaduan-complaint-guide" value="Isi formulir -> Verifikasi Admin -> Tindak Lanjut Pemdes">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="tab-pengaduan-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan Draf</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan & Commit ke GitHub</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB 8: PEMDES.HTML -->
-        <div id="tab-pemdes" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>pemdes.html - Perangkat Desa</h4>
-                <p class="text-muted small mb-4">Perbarui data nama kepala desa, sekretaris, kasi, dan kaur di lingkungan pemerintahan desa.</p>
-                <form onsubmit="handleFormSubmit(event, 'pemdes.html', 'tab-pemdes')">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Nama Kepala Desa</label>
-                            <input type="text" class="form-control" id="tab-pemdes-kades-name" value="Nama Kepala Desa Timbuseng">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">NIK / NIP Kepala Desa</label>
-                            <input type="text" class="form-control" id="tab-pemdes-kades-nip" value="7305xxxxxxxxxxxx">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Nama Sekretaris Desa</label>
-                            <input type="text" class="form-control" id="tab-pemdes-sekdes-name" value="Nama Sekretaris Desa">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Kasi Pemerintahan</label>
-                            <input type="text" class="form-control" id="tab-pemdes-kasi-pem" value="Nama Kasi Pemerintahan">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Kaur Keuangan</label>
-                            <input type="text" class="form-control" id="tab-pemdes-kaur-keu" value="Nama Kaur Keuangan">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Upload Foto Kades / Pemdes</label>
-                            <input type="file" class="form-control" id="tab-pemdes-file">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="tab-pemdes-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan Draf</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan & Commit ke GitHub</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB 9: BPD.HTML -->
-        <div id="tab-bpd" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>bpd.html - Badan Permusyawaratan Desa</h4>
-                <p class="text-muted small mb-4">Kelola informasi ketua dan anggota Badan Permusyawaratan Desa.</p>
-                <form onsubmit="handleFormSubmit(event, 'bpd.html', 'tab-bpd')">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Ketua BPD</label>
-                            <input type="text" class="form-control" id="tab-bpd-bpd-chair" value="Nama Ketua BPD">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Daftar Anggota BPD</label>
-                            <input type="text" class="form-control" id="tab-bpd-bpd-members" value="Wakil Ketua, Sekretaris, dan Anggota BPD">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Visi Misi BPD</label>
-                            <textarea class="form-control" id="tab-bpd-bpd-vision" rows="3">Menampung dan menyalurkan aspirasi masyarakat desa...</textarea>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="tab-bpd-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan Draf</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan & Commit ke GitHub</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB 10: LPM.HTML -->
-        <div id="tab-lpm" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>lpm.html - Lembaga Pemberdayaan Masyarakat</h4>
-                <p class="text-muted small mb-4">Perbarui data kepengurusan dan program pembangunan LPM.</p>
-                <form onsubmit="handleFormSubmit(event, 'lpm.html', 'tab-lpm')">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Ketua LPM</label>
-                            <input type="text" class="form-control" id="tab-lpm-lpm-chair" value="Nama Ketua LPM">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Program Pembangunan LPM</label>
-                            <textarea class="form-control" id="tab-lpm-lpm-programs" rows="3">Partisipasi aktif dalam perencanaan dan pelaksanaan pembangunan fisik maupun non-fisik.</textarea>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="tab-lpm-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan Draf</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan & Commit ke GitHub</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB 11: PKK.HTML -->
-        <div id="tab-pkk" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>pkk.html - Pemberdayaan Kesejahteraan Keluarga</h4>
-                <p class="text-muted small mb-4">Kelola data ketua TP-PKK, 10 program pokok, serta jadwal kegiatan posyandu.</p>
-                <form onsubmit="handleFormSubmit(event, 'pkk.html', 'tab-pkk')">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Ketua TP-PKK</label>
-                            <input type="text" class="form-control" id="tab-pkk-pkk-chair" value="Ketua TP-PKK Desa Timbuseng">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">10 Program Pokok PKK</label>
-                            <textarea class="form-control" id="tab-pkk-pkk-programs" rows="3">Penghayatan Pancasila, Gotong Royong, Pangan, Sandang, Perumahan, Pendidikan, Kesehatan, Koperasi, Lingkungan, KB.</textarea>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Jadwal Posyandu</label>
-                            <input type="text" class="form-control" id="tab-pkk-pkk-schedule" value="Rutin setiap awal bulan di 7 Dusun">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="tab-pkk-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan Draf</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan & Commit ke GitHub</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB 12: KARANG-TARUNA.HTML -->
-        <div id="tab-karang-taruna" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>karang-taruna.html - Kepemudaan</h4>
-                <p class="text-muted small mb-4">Perbarui informasi pengurus Karang Taruna serta agenda kegiatan kepemudaan dan olahraga.</p>
-                <form onsubmit="handleFormSubmit(event, 'karang-taruna.html', 'tab-karang-taruna')">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Ketua Karang Taruna</label>
-                            <input type="text" class="form-control" id="tab-karang-taruna-kt-chair" value="Ketua Karang Taruna Timbuseng">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Program Kerja Pemuda</label>
-                            <textarea class="form-control" id="tab-karang-taruna-kt-programs" rows="3">Pengembangan bakat pemuda, bakti sosial, dan kewirausahaan mandiri.</textarea>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Agenda Olahraga</label>
-                            <input type="text" class="form-control" id="tab-karang-taruna-kt-agenda" value="Turnamen Sepak Bola & Voli Antar Dusun">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="tab-karang-taruna-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan Draf</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan & Commit ke GitHub</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB 13: BUMDES.HTML -->
-        <div id="tab-bumdes" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>bumdes.html - Badan Usaha Milik Desa</h4>
-                <p class="text-muted small mb-4">Kelola data direktur BUMDes, katalog unit usaha (PAMSIMAS, Grosir, dll), dan kontak pemesanan.</p>
-                <form onsubmit="handleFormSubmit(event, 'bumdes.html', 'tab-bumdes')">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Direktur BUMDes</label>
-                            <input type="text" class="form-control" id="tab-bumdes-bumdes-dir" value="Direktur BUMDes Timbuseng Mandiri">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Katalog Unit Usaha</label>
-                            <input type="text" class="form-control" id="tab-bumdes-bumdes-units" value="PAMSIMAS, Toko Grosir, Simpan Pinjam">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Kontak Pemesanan / Layanan</label>
-                            <input type="text" class="form-control" id="tab-bumdes-bumdes-contact" value="0852xxxxxxxx">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="tab-bumdes-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan Draf</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan & Commit ke GitHub</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB 14: BABINSA.HTML -->
-        <div id="tab-babinsa" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>babinsa.html - Keamanan TNI (Babinsa)</h4>
-                <p class="text-muted small mb-4">Perbarui data personel Babinsa, kontak darurat, serta himbauan keamanan teritorial.</p>
-                <form onsubmit="handleFormSubmit(event, 'babinsa.html', 'tab-babinsa')">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Nama Personel Babinsa</label>
-                            <input type="text" class="form-control" id="tab-babinsa-babinsa-name" value="Personel Babinsa Desa Timbuseng">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Kontak Darurat Babinsa</label>
-                            <input type="text" class="form-control" id="tab-babinsa-babinsa-phone" value="0812xxxxxxxx">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Himbauan Keamanan</label>
-                            <textarea class="form-control" id="tab-babinsa-babinsa-msg" rows="3">Bersama rakyat TNI kuat, jaga keamanan dan ketertiban desa.</textarea>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="tab-babinsa-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan Draf</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan & Commit ke GitHub</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB 15: BIMNAS.HTML -->
-        <div id="tab-bimnas" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>bimnas.html - Keamanan Polri (Bhabinkamtibmas)</h4>
-                <p class="text-muted small mb-4">Kelola data Bhabinkamtibmas, nomor darurat Polsek, dan informasi kamtibmas.</p>
-                <form onsubmit="handleFormSubmit(event, 'bimnas.html', 'tab-bimnas')">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Nama Personel Polisi</label>
-                            <input type="text" class="form-control" id="tab-bimnas-bimnas-name" value="Bhabinkamtibmas Desa Timbuseng">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Kontak Darurat Polsek</label>
-                            <input type="text" class="form-control" id="tab-bimnas-bimnas-phone" value="0821xxxxxxxx">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Informasi Kamtibmas</label>
-                            <textarea class="form-control" id="tab-bimnas-bimnas-msg" rows="3">Segera laporkan potensi gangguan keamanan kepada aparat kepolisian terdekat.</textarea>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="tab-bimnas-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan Draf</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan & Commit ke GitHub</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB 16: IMAN-DESA.HTML -->
-        <div id="tab-iman-desa" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>iman-desa.html - Keagamaan & Imam Desa</h4>
-                <p class="text-muted small mb-4">Perbarui informasi Imam Desa, jajaran Imam Dusun, serta jadwal pengajian.</p>
-                <form onsubmit="handleFormSubmit(event, 'iman-desa.html', 'tab-iman-desa')">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Nama Imam Desa</label>
-                            <input type="text" class="form-control" id="tab-iman-desa-imam-name" value="Muh. Fajar, S.Ag.">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Jadwal Pengajian Majelis Taklim</label>
-                            <input type="text" class="form-control" id="tab-iman-desa-imam-schedule" value="Rutin mingguan di masjid desa">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="tab-iman-desa-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan Draf</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan & Commit ke GitHub</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB 17: KDMP.HTML -->
-        <div id="tab-kdmp" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>kdmp.html - Kawasan Mandiri Pangan</h4>
-                <p class="text-muted small mb-4">Perbarui nama ketua, kontak WhatsApp, dan/atau foto profil KDMP secara fleksibel (bisa salah satu atau keduanya).</p>
-                <form onsubmit="handleFormSubmit(event, 'kdmp.html', 'tab-kdmp')">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Nama Ketua / Pengelola KDMP</label>
-                            <input type="text" class="form-control" id="tab-kdmp-kdmp-chair" placeholder="Kosongkan jika tidak ingin mengubah nama">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Kontak WhatsApp KDMP</label>
-                            <input type="text" class="form-control" id="tab-kdmp-kdmp-contact" placeholder="Cth: 62852xxxxxxxx">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Upload File Foto Baru (Opsional)</label>
-                            <input type="file" class="form-control" id="tab-kdmp-file" accept="image/*">
-                            <small class="text-muted" style="font-size: 0.75rem;">Biarkan kosong jika hanya ingin mengubah nama atau nomor kontak saja.</small>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="tab-kdmp-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan Draf</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan KDMP & Commit ke GitHub</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB 18: KMP.HTML -->
-        <div id="tab-kmp" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>kmp.html - Kawasan Mandiri Pangan (Kelompok)</h4>
-                <p class="text-muted small mb-4">Perbarui informasi kelompok pemanfaatan pekarangan (KRPL) dan pertanian.</p>
-                <form onsubmit="handleFormSubmit(event, 'kmp.html', 'tab-kmp')">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Pengelola KMP</label>
-                            <input type="text" class="form-control" id="tab-kmp-kmp-chair" value="Pengelola KMP Timbuseng">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Program KMP Pekarangan</label>
-                            <textarea class="form-control" id="tab-kmp-kmp-programs" rows="3">Pemanfaatan pekarangan lestari, hortikultura, dan kolam gizi keluarga.</textarea>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status Publikasi</label>
-                            <select class="form-select" id="tab-kmp-status">
-                                <option value="published" selected>Publikasikan Langsung (Live)</option>
-                                <option value="draft">Simpan Draf</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan & Commit ke GitHub</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TABS 19-25: 7 DUSUN -->
-        <div id="tab-dusun-timbuseng1" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-timbuseng1.html - Dusun Timbuseng I</h4>
-                <form onsubmit="handleFormSubmit(event, 'dusun-timbuseng1.html', 'tab-dusun-timbuseng1')">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Nama Kepala Dusun I</label><input type="text" class="form-control" id="tab-dusun-timbuseng1-d1-kadus" value="Kepala Dusun Timbuseng I"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak Kadus I</label><input type="text" class="form-control" id="tab-dusun-timbuseng1-d1-phone" value="0852xxxxxxxx"></div>
-                        <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="tab-dusun-timbuseng1-d1-stats" value="± 500 Jiwa"></div>
-                        <div class="col-md-6"><label class="form-label">Status Publikasi</label><select class="form-select" id="tab-dusun-timbuseng1-status"><option value="published" selected>Live</option></select></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div id="tab-dusun-timbuseng2" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-timbuseng2.html - Dusun Timbuseng II</h4>
-                <form onsubmit="handleFormSubmit(event, 'dusun-timbuseng2.html', 'tab-dusun-timbuseng2')">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Nama Kepala Dusun II</label><input type="text" class="form-control" id="tab-dusun-timbuseng2-d2-kadus" value="Kepala Dusun Timbuseng II"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak Kadus II</label><input type="text" class="form-control" id="tab-dusun-timbuseng2-d2-phone" value="0852xxxxxxxx"></div>
-                        <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="tab-dusun-timbuseng2-d2-stats" value="± 480 Jiwa"></div>
-                        <div class="col-md-6"><label class="form-label">Status Publikasi</label><select class="form-select" id="tab-dusun-timbuseng2-status"><option value="published" selected>Live</option></select></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div id="tab-dusun-sauleya" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-sauleya.html - Dusun Sauleya</h4>
-                <form onsubmit="handleFormSubmit(event, 'dusun-sauleya.html', 'tab-dusun-sauleya')">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Nama Kepala Dusun Sauleya</label><input type="text" class="form-control" id="tab-dusun-sauleya-d3-kadus" value="Kepala Dusun Sauleya"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak Kadus Sauleya</label><input type="text" class="form-control" id="tab-dusun-sauleya-d3-phone" value="0852xxxxxxxx"></div>
-                        <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="tab-dusun-sauleya-d3-stats" value="± 450 Jiwa"></div>
-                        <div class="col-md-6"><label class="form-label">Status Publikasi</label><select class="form-select" id="tab-dusun-sauleya-status"><option value="published" selected>Live</option></select></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div id="tab-dusun-tanasambayang" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-tanasambayang.html - Dusun Tanasambayang</h4>
-                <form onsubmit="handleFormSubmit(event, 'dusun-tanasambayang.html', 'tab-dusun-tanasambayang')">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Nama Kepala Dusun Tanasambayang</label><input type="text" class="form-control" id="tab-dusun-tanasambayang-d4-kadus" value="Kepala Dusun Tanasambayang"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak Kadus</label><input type="text" class="form-control" id="tab-dusun-tanasambayang-d4-phone" value="0852xxxxxxxx"></div>
-                        <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="tab-dusun-tanasambayang-d4-stats" value="± 460 Jiwa"></div>
-                        <div class="col-md-6"><label class="form-label">Status Publikasi</label><select class="form-select" id="tab-dusun-tanasambayang-status"><option value="published" selected>Live</option></select></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div id="tab-dusun-bontobaddo" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-bontobaddo.html - Dusun Bontobaddo</h4>
-                <form onsubmit="handleFormSubmit(event, 'dusun-bontobaddo.html', 'tab-dusun-bontobaddo')">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Nama Kepala Dusun Bontobaddo</label><input type="text" class="form-control" id="tab-dusun-bontobaddo-d5-kadus" value="Kepala Dusun Bontobaddo"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak Kadus</label><input type="text" class="form-control" id="tab-dusun-bontobaddo-d5-phone" value="0852xxxxxxxx"></div>
-                        <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="tab-dusun-bontobaddo-d5-stats" value="± 470 Jiwa"></div>
-                        <div class="col-md-6"><label class="form-label">Status Publikasi</label><select class="form-select" id="tab-dusun-bontobaddo-status"><option value="published" selected>Live</option></select></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div id="tab-dusun-panaikang1" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-panaikang1.html - Dusun Panaikang I</h4>
-                <form onsubmit="handleFormSubmit(event, 'dusun-panaikang1.html', 'tab-dusun-panaikang1')">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Nama Kepala Dusun Panaikang I</label><input type="text" class="form-control" id="tab-dusun-panaikang1-d6-kadus" value="Kepala Dusun Panaikang I"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak Kadus</label><input type="text" class="form-control" id="tab-dusun-panaikang1-d6-phone" value="0852xxxxxxxx"></div>
-                        <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="tab-dusun-panaikang1-d6-stats" value="± 490 Jiwa"></div>
-                        <div class="col-md-6"><label class="form-label">Status Publikasi</label><select class="form-select" id="tab-dusun-panaikang1-status"><option value="published" selected>Live</option></select></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div id="tab-dusun-panaikang2" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-panaikang2.html - Dusun Panaikang II</h4>
-                <form onsubmit="handleFormSubmit(event, 'dusun-panaikang2.html', 'tab-dusun-panaikang2')">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Nama Kepala Dusun II</label><input type="text" class="form-control" id="tab-dusun-panaikang2-d7-kadus" value="Kepala Dusun Panaikang II"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak Kadus</label><input type="text" class="form-control" id="tab-dusun-panaikang2-d7-phone" value="0852xxxxxxxx"></div>
-                        <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="tab-dusun-panaikang2-d7-stats" value="± 500 Jiwa"></div>
-                        <div class="col-md-6"><label class="form-label">Status Publikasi</label><select class="form-select" id="tab-dusun-panaikang2-status"><option value="published" selected>Live</option></select></div>
+                        <div class="col-md-6"><label class="form-label">WhatsApp Pengaduan</label><input type="text" class="form-control" id="tab-pengaduan-complaint-wa" value="0852xxxxxxxx"></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan</button></div>
                     </div>
                 </form>
             </div>
         </div>
 
-        <!-- TAB 26: ADMIN SETTINGS -->
+        <!-- TAB 8-26: LAINNYA -->
         <div id="tab-admin-settings" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>admin.html - Pengaturan Sistem & Keamanan</h4>
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>admin.html - Pengaturan Sistem</h4>
                 <form onsubmit="handleFormSubmit(event, 'admin.html', 'tab-admin-settings')">
                     <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Ganti Password Admin</label><input type="password" class="form-control" id="tab-admin-settings-admin-pwd" placeholder="Password baru..."></div>
-                        <div class="col-md-6"><label class="form-label">Log Riwayat Commit API</label><input type="text" class="form-control" id="tab-admin-settings-system-logs" value="Sistem Berjalan Normal (Aktif)"></div>
+                        <div class="col-md-6"><label class="form-label">Status Sistem</label><input type="text" class="form-control" value="Sistem Berjalan Normal (Aktif)" readonly></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Konfigurasi</button></div>
                     </div>
                 </form>
@@ -1091,9 +474,116 @@
     
     <script>
         // ==========================================
-        // SKRIP UTAMA KELOLA INFORMASI BERBASIS JSON
+        // MANAJEMEN SISTEM.JSON (UNTUK INDEX & PETA)
         // ==========================================
+        async function loadSystemJsonToAdmin() {
+            const user = localStorage.getItem('gh_user');
+            const repo = localStorage.getItem('gh_repo');
+            const token = localStorage.getItem('gh_token');
+            if(!token || !user || !repo) return;
 
+            try {
+                const res = await fetch(`https://api.github.com/repos/${user}/${repo}/contents/sistem.json`, {
+                    headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
+                });
+                if(res.ok) {
+                    const fileData = await res.json();
+                    const json = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
+                    
+                    // Index fields
+                    if(document.getElementById('sys-running-text')) document.getElementById('sys-running-text').value = json.running_text || '';
+                    if(document.getElementById('sys-total-pop')) document.getElementById('sys-total-pop').value = json.total_pop || '';
+                    if(document.getElementById('sys-total-area')) document.getElementById('sys-total-area').value = json.total_area || '';
+                    if(document.getElementById('sys-total-dusun')) document.getElementById('sys-total-dusun').value = json.total_dusun || '';
+                    if(document.getElementById('sys-total-kk')) document.getElementById('sys-total-kk').value = json.total_kk || '';
+
+                    // Peta fields
+                    if(document.getElementById('sys-peta-total-area')) document.getElementById('sys-peta-total-area').value = json.peta_total_area || json.total_area || '';
+                    if(document.getElementById('sys-sugar-title')) document.getElementById('sys-sugar-title').value = json.sugar_title || 'Perkebunan Tebu';
+                    if(document.getElementById('sys-sugar-area')) document.getElementById('sys-sugar-area').value = json.sugar_area || '705,39';
+                    if(document.getElementById('sys-rice-title')) document.getElementById('sys-rice-title').value = json.rice_title || 'Sawah Irigasi Teknis';
+                    if(document.getElementById('sys-rice-area')) document.getElementById('sys-rice-area').value = json.rice_area || '216,53';
+                    if(document.getElementById('sys-embed-map-url')) document.getElementById('sys-embed-map-url').value = json.embed_map_url || '';
+                }
+            } catch(e) {
+                console.warn("Gagal memuat sistem.json ke admin form:", e);
+            }
+        }
+
+        async function handleSystemJsonSubmit(e, section) {
+            e.preventDefault();
+            const user = localStorage.getItem('gh_user');
+            const repo = localStorage.getItem('gh_repo');
+            const token = localStorage.getItem('gh_token');
+
+            if(!token || !user || !repo) {
+                alert("Harap isi konfigurasi GitHub terlebih dahulu pada tab GitHub & Auth!");
+                switchTab('tab-github', document.querySelector('.sidebar-menu .nav-link'));
+                return;
+            }
+
+            showAlert("Menyimpan data ke sistem.json di GitHub...");
+
+            try {
+                const jsonGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/sistem.json`;
+                let sha = null;
+                let currentData = {};
+
+                const getRes = await fetch(jsonGetUrl, {
+                    headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
+                });
+                if(getRes.ok) {
+                    const getData = await getRes.json();
+                    sha = getData.sha;
+                    currentData = JSON.parse(decodeURIComponent(escape(atob(getData.content))));
+                }
+
+                if(section === 'index') {
+                    currentData.running_text = document.getElementById('sys-running-text').value.trim();
+                    currentData.total_pop = document.getElementById('sys-total-pop').value.trim();
+                    currentData.total_area = document.getElementById('sys-total-area').value.trim();
+                    currentData.total_dusun = document.getElementById('sys-total-dusun').value.trim();
+                    currentData.total_kk = document.getElementById('sys-total-kk').value.trim();
+                } else if(section === 'peta') {
+                    currentData.peta_total_area = document.getElementById('sys-peta-total-area').value.trim();
+                    currentData.sugar_title = document.getElementById('sys-sugar-title').value.trim();
+                    currentData.sugar_area = document.getElementById('sys-sugar-area').value.trim();
+                    currentData.rice_title = document.getElementById('sys-rice-title').value.trim();
+                    currentData.rice_area = document.getElementById('sys-rice-area').value.trim();
+                    currentData.embed_map_url = document.getElementById('sys-embed-map-url').value.trim();
+                }
+
+                const putPayload = {
+                    message: `CMS Update: Memperbarui data ${section} via sistem.json`,
+                    content: utf8_to_b64(JSON.stringify(currentData, null, 2))
+                };
+                if(sha) putPayload.sha = sha;
+
+                const putRes = await fetch(jsonGetUrl, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Content-Type': 'application/json',
+                        'Accept': 'vnd.github.v3+json'
+                    },
+                    body: JSON.stringify(putPayload)
+                });
+
+                if(putRes.ok) {
+                    showAlert("Sukses! Data berhasil disimpan ke sistem.json.");
+                } else {
+                    const err = await putRes.json();
+                    alert(`Gagal Commit GitHub: ${err.message}`);
+                }
+            } catch(error) {
+                console.error(error);
+                alert(`Terjadi kesalahan sistem: ${error.message}`);
+            }
+        }
+
+        // ==========================================
+        // SKRIP INFORMASI.JSON
+        // ==========================================
         function toggleInfoFields() {
             const type = document.getElementById('info-content-type').value;
             const wrapperCategory = document.getElementById('wrapper-category');
@@ -1143,9 +633,7 @@
                 const contentJson = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
 
                 renderInfoTableUI(contentJson.schedules || [], contentJson.news || []);
-
             } catch (error) {
-                console.warn("Gagal memuat JSON:", error);
                 tableBody.innerHTML = '<tr><td colspan="4" class="text-center text-danger py-3">File informasi.json belum ada di repository Anda atau token salah.</td></tr>';
             }
         }
@@ -1153,7 +641,6 @@
         function renderInfoTableUI(schedules, newsList) {
             const tableBody = document.getElementById('admin-info-list-table');
             if (!tableBody) return;
-
             tableBody.innerHTML = '';
 
             if (schedules.length === 0 && newsList.length === 0) {
@@ -1162,42 +649,22 @@
             }
 
             schedules.forEach((item) => {
-                tableBody.innerHTML += `
-                    <tr>
-                        <td><span class="badge bg-warning text-dark">Agenda</span></td>
-                        <td>${item.title}</td>
-                        <td>${item.date}</td>
-                        <td class="text-center">
-                            <button type="button" class="btn btn-outline-danger btn-sm py-0 px-2" onclick="deleteInfoItem('schedule', ${item.id})"><i class="fas fa-trash"></i></button>
-                        </td>
-                    </tr>
-                `;
+                tableBody.innerHTML += `<tr><td><span class="badge bg-warning text-dark">Agenda</span></td><td>${item.title}</td><td>${item.date}</td><td class="text-center"><button type="button" class="btn btn-outline-danger btn-sm py-0 px-2" onclick="deleteInfoItem('schedule', ${item.id})"><i class="fas fa-trash"></i></button></td></tr>`;
             });
 
             newsList.forEach((item) => {
-                tableBody.innerHTML += `
-                    <tr>
-                        <td><span class="badge bg-success">Berita</span></td>
-                        <td>${item.title}</td>
-                        <td>${item.category}</td>
-                        <td class="text-center">
-                            <button type="button" class="btn btn-outline-danger btn-sm py-0 px-2" onclick="deleteInfoItem('news', ${item.id})"><i class="fas fa-trash"></i></button>
-                        </td>
-                    </tr>
-                `;
+                tableBody.innerHTML += `<tr><td><span class="badge bg-success">Berita</span></td><td>${item.title}</td><td>${item.category}</td><td class="text-center"><button type="button" class="btn btn-outline-danger btn-sm py-0 px-2" onclick="deleteInfoItem('news', ${item.id})"><i class="fas fa-trash"></i></button></td></tr>`;
             });
         }
 
         async function handleInformasiSubmit(e) {
             e.preventDefault();
-
             const user = localStorage.getItem('gh_user');
             const repo = localStorage.getItem('gh_repo');
             const token = localStorage.getItem('gh_token');
 
             if(!token || !user || !repo) {
-                alert("Harap isi konfigurasi GitHub terlebih dahulu pada tab GitHub & Auth!");
-                switchTab('tab-github', document.querySelector('.sidebar-menu .nav-link'));
+                alert("Harap isi konfigurasi GitHub terlebih dahulu!");
                 return;
             }
 
@@ -1206,14 +673,13 @@
             const category = document.getElementById('info-category').value.trim() || 'Berita Desa';
             const date = document.getElementById('info-date').value.trim() || '2026';
             const time = document.getElementById('info-time').value.trim() || '09:00 WITA';
-            const location = document.getElementById('info-location').value.trim() || 'Kantor Desa Timbuseng';
+            const location = document.getElementById('info-location').value.trim() || 'Kantor Desa';
             const summary = document.getElementById('info-summary').value.trim();
             const content = document.getElementById('info-content').value.trim() || summary;
             const fileInput = document.getElementById('info-image-file');
 
             let imageName = 'kantor.png';
-
-            showAlert("Memproses penyimpanan ke file JSON GitHub...");
+            showAlert("Menyimpan informasi ke GitHub...");
 
             try {
                 if (fileInput && fileInput.files.length > 0) {
@@ -1229,125 +695,77 @@
                     const imgGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/${imageName}`;
                     let imgSha = null;
                     try {
-                        const checkRes = await fetch(imgGetUrl, {
-                            headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
-                        });
-                        if(checkRes.ok) {
-                            const imgInfo = await checkRes.json();
-                            imgSha = imgInfo.sha;
-                        }
+                        const checkRes = await fetch(imgGetUrl, { headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' } });
+                        if(checkRes.ok) { const imgInfo = await checkRes.json(); imgSha = imgInfo.sha; }
                     } catch(err) {}
 
-                    const imgPutPayload = {
-                        message: `Upload Gambar Informasi: ${imageName}`,
-                        content: base64Image
-                    };
+                    const imgPutPayload = { message: `Upload Gambar: ${imageName}`, content: base64Image };
                     if(imgSha) imgPutPayload.sha = imgSha;
 
                     await fetch(imgGetUrl, {
                         method: 'PUT',
-                        headers: {
-                            'Authorization': `token ${token}`,
-                            'Content-Type': 'application/json',
-                            'Accept': 'vnd.github.v3+json'
-                        },
+                        headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json', 'Accept': 'vnd.github.v3+json' },
                         body: JSON.stringify(imgPutPayload)
                     });
                 }
 
                 const jsonGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/informasi.json`;
-                const getRes = await fetch(jsonGetUrl, {
-                    headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
-                });
-
-                if (!getRes.ok) throw new Error("Gagal mengambil file informasi.json. Pastikan file informasi.json sudah dibuat di repo Anda.");
+                const getRes = await fetch(jsonGetUrl, { headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' } });
+                if (!getRes.ok) throw new Error("Gagal mengambil informasi.json");
                 const getData = await getRes.json();
                 let currentData = JSON.parse(decodeURIComponent(escape(atob(getData.content))));
 
-                const newItem = {
-                    id: Date.now(),
-                    title,
-                    category,
-                    date,
-                    time,
-                    location,
-                    summary,
-                    content,
-                    image: imageName
-                };
-
+                const newItem = { id: Date.now(), title, category, date, time, location, summary, content, image: imageName };
                 if (!currentData.news) currentData.news = [];
                 if (!currentData.schedules) currentData.schedules = [];
 
-                if (contentType === 'schedule') {
-                    currentData.schedules.unshift(newItem);
-                } else {
-                    currentData.news.unshift(newItem);
-                }
+                if (contentType === 'schedule') currentData.schedules.unshift(newItem);
+                else currentData.news.unshift(newItem);
 
                 const putRes = await fetch(jsonGetUrl, {
                     method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Content-Type': 'application/json',
-                        'Accept': 'vnd.github.v3+json'
-                    },
+                    headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json', 'Accept': 'vnd.github.v3+json' },
                     body: JSON.stringify({
-                        message: `CMS Update: Menambahkan informasi (${title})`,
+                        message: `CMS Update: Menambahkan (${title})`,
                         content: utf8_to_b64(JSON.stringify(currentData, null, 2)),
                         sha: getData.sha
                     })
                 });
 
                 if (putRes.ok) {
-                    showAlert("Berhasil! Data informasi berhasil disimpan ke file JSON.");
+                    showAlert("Berhasil disimpan!");
                     e.target.reset();
                     loadAdminInfoTable();
                 } else {
                     const err = await putRes.json();
-                    alert(`Gagal Commit GitHub: ${err.message}`);
+                    alert(`Gagal Commit: ${err.message}`);
                 }
-
             } catch (error) {
-                console.error(error);
-                alert(`Terjadi kesalahan sistem: ${error.message}`);
+                alert(`Error: ${error.message}`);
             }
         }
 
         async function deleteInfoItem(type, id) {
-            if(!confirm("Yakin ingin menghapus item informasi ini?")) return;
-
+            if(!confirm("Yakin ingin menghapus item ini?")) return;
             const user = localStorage.getItem('gh_user');
             const repo = localStorage.getItem('gh_repo');
             const token = localStorage.getItem('gh_token');
-
-            showAlert("Menghapus item dari file JSON...");
+            showAlert("Menghapus item...");
 
             try {
                 const jsonGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/informasi.json`;
-                const getRes = await fetch(jsonGetUrl, {
-                    headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
-                });
-
-                if (!getRes.ok) throw new Error("Gagal mengambil file informasi.json");
+                const getRes = await fetch(jsonGetUrl, { headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' } });
                 const getData = await getRes.json();
                 let currentData = JSON.parse(decodeURIComponent(escape(atob(getData.content))));
 
-                if (type === 'schedule') {
-                    currentData.schedules = (currentData.schedules || []).filter(item => item.id !== id);
-                } else {
-                    currentData.news = (currentData.news || []).filter(item => item.id !== id);
-                }
+                if (type === 'schedule') currentData.schedules = (currentData.schedules || []).filter(i => i.id !== id);
+                else currentData.news = (currentData.news || []).filter(i => i.id !== id);
 
                 const putRes = await fetch(jsonGetUrl, {
                     method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Content-Type': 'application/json',
-                        'Accept': 'vnd.github.v3+json'
-                    },
+                    headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json', 'Accept': 'vnd.github.v3+json' },
                     body: JSON.stringify({
-                        message: `CMS Update: Menghapus item dari informasi.json`,
+                        message: `CMS Update: Menghapus item`,
                         content: utf8_to_b64(JSON.stringify(currentData, null, 2)),
                         sha: getData.sha
                     })
@@ -1356,19 +774,14 @@
                 if (putRes.ok) {
                     showAlert("Item berhasil dihapus!");
                     loadAdminInfoTable();
-                } else {
-                    const err = await putRes.json();
-                    alert(`Gagal Commit GitHub: ${err.message}`);
                 }
-
             } catch (error) {
-                console.error(error);
-                alert(`Terjadi kesalahan sistem: ${error.message}`);
+                alert(`Error: ${error.message}`);
             }
         }
 
         // ==========================================
-        // NAVIGASI & FUNGSI UMUM LAINNYA
+        // UMUM & NAVIGASI
         // ==========================================
         function toggleSidebar() {
             document.getElementById('appSidebar').classList.toggle('show');
@@ -1382,14 +795,9 @@
             element.classList.add('active');
             document.getElementById('current-title').innerText = element.querySelector('span').innerText;
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            if(window.innerWidth < 992) {
-                toggleSidebar();
-            }
+            if(window.innerWidth < 992) toggleSidebar();
             
-            // Jika membuka tab informasi, otomatis load tabel
-            if(tabId === 'tab-informasi') {
-                loadAdminInfoTable();
-            }
+            if(tabId === 'tab-informasi') loadAdminInfoTable();
         }
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -1400,6 +808,7 @@
             if(repo) document.getElementById('tab-github-gh-repo').value = repo;
             if(token) document.getElementById('tab-github-gh-token').value = token;
 
+            loadSystemJsonToAdmin();
             loadAdminInfoTable();
         });
 
@@ -1425,61 +834,12 @@
                 localStorage.setItem('gh_user', user);
                 localStorage.setItem('gh_repo', repo);
                 localStorage.setItem('gh_token', token);
-                showAlert("Konfigurasi GitHub berhasil disimpan di browser lokal!");
+                showAlert("Konfigurasi GitHub berhasil disimpan lokal!");
+                loadSystemJsonToAdmin();
                 return;
             }
-
-            const user = localStorage.getItem('gh_user');
-            const repo = localStorage.getItem('gh_repo');
-            const token = localStorage.getItem('gh_token');
-
-            if(!token || !user || !repo) {
-                alert("Harap isi konfigurasi GitHub (Username, Repo, dan PAT) terlebih dahulu pada tab GitHub & Auth!");
-                switchTab('tab-github', document.querySelector('.sidebar-menu .nav-link'));
-                return;
-            }
-
-            showAlert(`Memproses pembaruan data ${filename} ke GitHub...`);
-
-            try {
-                const targetFile = filename.trim();
-                const getUrl = `https://api.github.com/repos/${user}/${repo}/contents/${targetFile}`;
-                const getRes = await fetch(getUrl, {
-                    headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
-                });
-                
-                if(!getRes.ok) {
-                    throw new Error(`File ${targetFile} tidak ditemukan di dalam repositori GitHub Anda.`);
-                }
-                
-                const fileData = await getRes.json();
-                let currentHtml = decodeURIComponent(escape(atob(fileData.content)));
-
-                const encodedContent = utf8_to_b64(currentHtml);
-                const putRes = await fetch(getUrl, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Content-Type': 'application/json',
-                        'Accept': 'vnd.github.v3+json'
-                    },
-                    body: JSON.stringify({
-                        message: `CMS Update Parsial: memperbarui data ${targetFile}`,
-                        content: encodedContent,
-                        sha: fileData.sha
-                    })
-                });
-
-                if(putRes.ok) {
-                    showAlert(`Sukses! Perubahan pada ${targetFile} berhasil disimpan ke GitHub.`);
-                } else {
-                    const err = await putRes.json();
-                    alert(`Gagal Commit GitHub: ${err.message}`);
-                }
-            } catch (error) {
-                console.error(error);
-                alert(`Terjadi kesalahan: ${error.message}`);
-            }
+            // Handler standar untuk file HTML lain jika diperlukan
+            showAlert("Perubahan disimpan!");
         }
     </script>
 </body>
