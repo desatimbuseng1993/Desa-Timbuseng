@@ -1,4 +1,16 @@
 {
-  "news": [],
+  "news": [
+    {
+      "id": 1789471883052,
+      "title": "Pemeriksaan status perkawinan",
+      "category": "Pernikahan",
+      "date": "5 Maret 2025",
+      "time": "09:00 WITA",
+      "location": "Kantor Desa Timbuseng",
+      "summary": "Apapun yang mereka bilang",
+      "content": "Aku capek",
+      "image": "1001259187.jpg"
+    }
+  ],
   "schedules": []
 }
