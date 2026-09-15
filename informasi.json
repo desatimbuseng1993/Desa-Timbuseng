@@ -1,16 +1,4 @@
 {
-  "news": [
-    {
-      "id": 1789469453087,
-      "title": "Hehe",
-      "category": "Berita Desa",
-      "date": "Jeh",
-      "time": "09:00 WITA",
-      "location": "Hehe",
-      "summary": "Heh",
-      "content": "Heh",
-      "image": "1001260663.jpg"
-    }
-  ],
+  "news": [],
   "schedules": []
 }
