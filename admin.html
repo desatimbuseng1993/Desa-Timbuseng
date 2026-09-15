@@ -1314,7 +1314,245 @@
                 return String.fromCharCode('0x' + p1);
             }));
         }
+// Fungsi untuk mengatur tampilan field form informasi berdasarkan tipe (News / Schedule)
+        function toggleInfoFields() {
+            const type = document.getElementById('info-content-type').value;
+            const wrapperCategory = document.getElementById('wrapper-category');
+            const wrapperDate = document.getElementById('wrapper-date');
+            const wrapperTime = document.getElementById('wrapper-time');
+            const wrapperLocation = document.getElementById('wrapper-location');
+            const wrapperContent = document.getElementById('wrapper-content');
 
+            if (type === 'schedule') {
+                if(wrapperCategory) wrapperCategory.style.display = 'none';
+                if(wrapperDate) wrapperDate.className = 'col-md-4';
+                if(wrapperTime) wrapperTime.style.display = 'block';
+                if(wrapperLocation) wrapperLocation.style.display = 'block';
+                if(wrapperContent) wrapperContent.style.display = 'none';
+            } else {
+                if(wrapperCategory) wrapperCategory.style.display = 'block';
+                if(wrapperDate) wrapperDate.className = 'col-md-4';
+                if(wrapperTime) wrapperTime.style.display = 'none';
+                if(wrapperLocation) wrapperLocation.style.display = 'none';
+                if(wrapperContent) wrapperContent.style.display = 'block';
+            }
+        }
+
+        // Fungsi Tambah Berita / Agenda & Auto Sync ke GitHub
+        async function handleInformasiSubmit(e) {
+            e.preventDefault();
+
+            const user = localStorage.getItem('gh_user');
+            const repo = localStorage.getItem('gh_repo');
+            const token = localStorage.getItem('gh_token');
+
+            if(!token || !user || !repo) {
+                alert("Harap isi konfigurasi GitHub terlebih dahulu pada tab GitHub & Auth!");
+                switchTab('tab-github', document.querySelector('.sidebar-menu .nav-link'));
+                return;
+            }
+
+            const contentType = document.getElementById('info-content-type').value;
+            const title = document.getElementById('info-title').value.trim();
+            const category = document.getElementById('info-category').value.trim() || 'Berita Desa';
+            const date = document.getElementById('info-date').value.trim() || '2026';
+            const time = document.getElementById('info-time').value.trim() || '09:00 WITA';
+            const location = document.getElementById('info-location').value.trim() || 'Kantor Desa Timbuseng';
+            const summary = document.getElementById('info-summary').value.trim();
+            const content = document.getElementById('info-content').value.trim() || summary;
+            const fileInput = document.getElementById('info-image-file');
+
+            let imageName = 'kantor.png';
+
+            showAlert("Memproses penyimpanan item informasi dan gambar...");
+
+            try {
+                // 1. Upload Gambar jika ada
+                if (fileInput && fileInput.files.length > 0) {
+                    const imageFile = fileInput.files[0];
+                    imageName = imageFile.name;
+                    const base64Image = await new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.readAsDataURL(imageFile);
+                        reader.onload = () => resolve(reader.result.split(',')[1]);
+                        reader.onerror = error => reject(error);
+                    });
+
+                    const imgGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/${imageName}`;
+                    let imgSha = null;
+                    try {
+                        const checkRes = await fetch(imgGetUrl, {
+                            headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
+                        });
+                        if(checkRes.ok) {
+                            const imgInfo = await checkRes.json();
+                            imgSha = imgInfo.sha;
+                        }
+                    } catch(err) {}
+
+                    const imgPutPayload = {
+                        message: `CMS Upload Gambar Informasi: ${imageName}`,
+                        content: base64Image
+                    };
+                    if(imgSha) imgPutPayload.sha = imgSha;
+
+                    await fetch(imgGetUrl, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Content-Type': 'application/json',
+                            'Accept': 'vnd.github.v3+json'
+                        },
+                        body: JSON.stringify(imgPutPayload)
+                    });
+                }
+
+                // 2. Simpan ke LocalStorage Admin
+                const newItem = {
+                    id: Date.now(),
+                    title,
+                    category,
+                    date,
+                    time,
+                    location,
+                    summary,
+                    content,
+                    image: imageName
+                };
+
+                if (contentType === 'schedule') {
+                    let schedules = JSON.parse(localStorage.getItem('desa_schedules') || '[]');
+                    schedules.unshift(newItem);
+                    localStorage.setItem('desa_schedules', JSON.stringify(schedules));
+                } else {
+                    let newsList = JSON.parse(localStorage.getItem('desa_news') || '[]');
+                    newsList.unshift(newItem);
+                    localStorage.setItem('desa_news', JSON.stringify(newsList));
+                }
+
+                // Refresh tabel admin
+                loadAdminInfoTable();
+
+                // 3. Ambil dan Perbarui file informasi.html di GitHub
+                const htmlGetUrl = `https://api.github.com/repos/${user}/${repo}/contents/informasi.html`;
+                const htmlGetRes = await fetch(htmlGetUrl, {
+                    headers: { 'Authorization': `token ${token}`, 'Accept': 'vnd.github.v3+json' }
+                });
+
+                if (!htmlGetRes.ok) throw new Error("Gagal mengambil file informasi.html dari GitHub.");
+                const htmlData = await htmlGetRes.json();
+                let currentHtml = decodeURIComponent(escape(atob(htmlData.content)));
+
+                // Render ulang HTML Agenda & Berita
+                const schedules = JSON.parse(localStorage.getItem('desa_schedules') || '[]');
+                let newScheduleHtml = '';
+                schedules.forEach(item => {
+                    newScheduleHtml += `
+                            <div class="col-md-4">
+                                <div class="schedule-card p-4 h-100 shadow-sm">
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold">${item.date}</span>
+                                        <small class="text-muted"><i class="fas fa-clock me-1"></i> ${item.time}</small>
+                                    </div>
+                                    <h5 class="fw-bold text-dark mb-2">${item.title}</h5>
+                                    <p class="text-muted small mb-3">${item.desc || item.summary}</p>
+                                    <div class="d-flex align-items-center gap-2 text-success small fw-semibold">
+                                        <i class="fas fa-map-marker-alt"></i> ${item.location}
+                                    </div>
+                                </div>
+                            </div>`;
+                });
+
+                const newsList = JSON.parse(localStorage.getItem('desa_news') || '[]');
+                let newNewsHtml = '';
+                let newModalsHtml = '';
+                
+                newsList.forEach((news, index) => {
+                    newNewsHtml += `
+                            <div class="col-md-6 col-lg-4">
+                                <div class="info-card shadow-sm">
+                                    <div>
+                                        <div class="info-img-wrapper">
+                                            <span class="info-badge">${news.category || 'Berita'}</span>
+                                            <img src="${news.image || 'kantor.png'}" alt="${news.title}" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Desa+Timbuseng';">
+                                        </div>
+                                        <div class="p-4">
+                                            <small class="text-muted d-block mb-2"><i class="far fa-calendar-alt me-1 text-success"></i> ${news.date || '2026'}</small>
+                                            <h5 class="fw-bold text-dark mb-2">${news.title}</h5>
+                                            <p class="text-muted small mb-3">${news.summary || news.content.substring(0, 100)}...</p>
+                                        </div>
+                                    </div>
+                                    <div class="px-4 pb-4 pt-0">
+                                        <button type="button" class="btn btn-outline-success btn-sm w-100 fw-semibold rounded-pill" data-bs-toggle="modal" data-bs-target="#modalDynamicNews${index}">
+                                            Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>`;
+
+                    newModalsHtml += `
+            <div class="modal fade" id="modalDynamicNews${index}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content border-0 shadow-lg">
+                        <div class="modal-header bg-desa text-white">
+                            <h5 class="modal-title fw-bold"><i class="fas fa-bullhorn me-2 text-warning"></i>${news.title}</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-4">
+                            <span class="badge bg-success mb-2">${news.category || 'Berita'}</span>
+                            <h3 class="fw-bold text-dark mb-3">${news.title}</h3>
+                            <small class="text-muted d-block mb-4"><i class="far fa-calendar-alt me-1 text-success"></i> ${news.date || '2026'}</small>
+                            <div class="mb-4 text-center">
+                                <img src="${news.image || 'kantor.png'}" class="img-fluid rounded-4 shadow-sm" alt="${news.title}" style="max-height: 300px; width: 100%; object-fit: cover;">
+                            </div>
+                            <p class="text-secondary leading-relaxed">${news.content}</p>
+                        </div>
+                        <div class="modal-footer bg-light">
+                            <button type="button" class="btn btn-secondary btn-sm rounded-pill px-4" data-bs-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+                });
+
+                // Timpa kontainer di string HTML
+                currentHtml = currentHtml.replace(/(<div class="row g-4" id="dynamicScheduleContainer">)([\s\S]*?)(<\/div>\s*<\/div>\s*<!-- BAGIAN 2)/i, `$1\n${newScheduleHtml}\n                </div>\n            </div>\n            <!-- BAGIAN 2`);
+                currentHtml = currentHtml.replace(/(<div class="row g-4" id="dynamicNewsContainer">)([\s\S]*?)(<\/div>\s*<\/div>\s*<\/section>)/i, `$1\n${newNewsHtml}\n                </div>\n            </div>\n\n        </div>\n    </section>`);
+
+                const modalSplitMarker = '<!-- MODAL POPUP BACA LENGKAP BERITA 1 -->';
+                if (currentHtml.includes(modalSplitMarker)) {
+                    const parts = currentHtml.split(modalSplitMarker);
+                    currentHtml = parts[0] + modalSplitMarker + '\n    ' + newModalsHtml + '\n';
+                }
+
+                // 4. Commit perubahan ke GitHub
+                const putRes = await fetch(htmlGetUrl, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Content-Type': 'application/json',
+                        'Accept': 'vnd.github.v3+json'
+                    },
+                    body: JSON.stringify({
+                        message: `CMS Update: Menambahkan informasi baru (${title})`,
+                        content: utf8_to_b64(currentHtml),
+                        sha: htmlData.sha
+                    })
+                });
+
+                if (putRes.ok) {
+                    showAlert("Berhasil! Item informasi ditambahkan dan disinkronkan ke website secara live.");
+                    e.target.reset();
+                } else {
+                    const err = await putRes.json();
+                    alert(`Gagal Commit GitHub: ${err.message}`);
+                }
+
+            } catch (error) {
+                console.error(error);
+                alert(`Terjadi kesalahan sistem: ${error.message}`);
+            }
+        }
         async function handleFormSubmit(e, filename, moduleName) {
             e.preventDefault();
             if(moduleName === 'tab-github') {
