@@ -49,9 +49,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         .sidebar-brand img {
-            width: 38px; height: 38px;
-            object-fit: contain; border-radius: 8px;
-            background: #ffffff; padding: 3px;
+            width: 38px; height: 38px; object-fit: contain; border-radius: 8px; background: #ffffff; padding: 3px;
         }
         .sidebar-menu { padding: 1rem 0; list-style: none; margin: 0; }
         .sidebar-menu .nav-item { margin: 0.2rem 0.5rem; }
@@ -59,8 +57,11 @@
             color: rgba(255,255,255,0.8);
             padding: 0.65rem 0.85rem;
             border-radius: 8px;
-            font-weight: 500; font-size: 0.88rem;
-            display: flex; align-items: center; gap: 10px;
+            font-weight: 500;
+            font-size: 0.88rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             transition: all 0.25s ease;
         }
         .sidebar-menu .nav-link:hover, .sidebar-menu .nav-link.active {
@@ -69,27 +70,20 @@
             box-shadow: 0 4px 15px rgba(13,92,58,0.35);
         }
         .sidebar-heading {
-            font-size: 0.7rem; text-transform: uppercase;
-            letter-spacing: 1.2px; color: rgba(255,255,255,0.4);
-            padding: 1rem 1rem 0.4rem 1rem; font-weight: 700;
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; color: rgba(255,255,255,0.4); padding: 1rem 1rem 0.4rem 1rem; font-weight: 700;
         }
         .main-content {
-            margin-left: 0; min-height: 100vh; padding: 1.25rem;
-            transition: margin-left 0.3s ease-in-out;
+            margin-left: 0; min-height: 100vh; padding: 1.25rem; transition: margin-left 0.3s ease-in-out;
         }
         @media (min-width: 992px) {
             .main-content { margin-left: var(--sidebar-width); padding: 2.25rem; }
         }
         .top-navbar {
-            background: #ffffff; border-radius: 14px;
-            padding: 1rem 1.25rem; box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            margin-bottom: 1.8rem; display: flex; justify-content: space-between;
-            align-items: center; border: 1px solid var(--border-color);
+            background: #ffffff; border-radius: 14px; padding: 1rem 1.25rem; box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            margin-bottom: 1.8rem; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-color);
         }
         .cms-card {
-            background: #ffffff; border-radius: 16px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+            background: #ffffff; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 4px 16px rgba(0,0,0,0.03);
             padding: 1.5rem; margin-bottom: 1.5rem;
         }
         @media (min-width: 768px) { .cms-card { padding: 2.2rem; } }
@@ -97,19 +91,13 @@
         .form-control, .form-select { padding: 0.7rem 1rem; border-radius: 10px; border-color: #cbd5e1; font-size: 0.9rem; }
         .form-control:focus, .form-select:focus { border-color: var(--primary-color); box-shadow: 0 0 0 0.25rem rgba(13,92,58,0.15); }
         .btn-desa {
-            background-color: var(--primary-color); color: #ffffff;
-            font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 10px;
-            border: none; transition: all 0.25s ease; font-size: 0.9rem;
+            background-color: var(--primary-color); color: #ffffff; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 10px; border: none; transition: all 0.25s ease; font-size: 0.9rem;
         }
-        .btn-desa:hover {
-            background-color: var(--primary-dark); color: #ffffff;
-            transform: translateY(-2px); box-shadow: 0 6px 18px rgba(13,92,58,0.25);
-        }
+        .btn-desa:hover { background-color: var(--primary-dark); color: #ffffff; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(13,92,58,0.25); }
         .tab-pane { display: none; }
         .tab-pane.active { display: block; }
         .sidebar-backdrop {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.5); z-index: 1035; display: none;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1035; display: none;
         }
         .sidebar-backdrop.show { display: block; }
     </style>
@@ -117,476 +105,369 @@
 <body>
     <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
 
+    <!-- SIDEBAR NAVIGASI -->
     <nav class="sidebar" id="appSidebar">
         <div class="sidebar-brand d-flex align-items-center gap-3">
             <img src="logo.png" alt="Logo Desa" onerror="this.src='https://via.placeholder.com/38?text=DESA';">
             <div>
                 <span class="d-block fw-bold fs-6">CMS TIMBUSENG</span>
-                <small class="text-white-50" style="font-size: 0.7rem;">Dasbor Admin JSONBin</small>
+                <small class="text-white-50" style="font-size: 0.7rem;">JSONBin Cloud Sync</small>
             </div>
         </div>
         <ul class="sidebar-menu">
-            <li class="sidebar-heading">Konfigurasi API</li>
-            <li class="nav-item"><a class="nav-link active" href="#" onclick="switchTab('tab-auth', this)"><i class="fas fa-key"></i> <span>Konfigurasi JSONBin</span></a></li>
-            <li class="sidebar-heading">Halaman Utama & Info</li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-index', this)"><i class="fas fa-home"></i> <span>index.html</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-profil', this)"><i class="fas fa-landmark"></i> <span>profil.html</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-informasi', this)"><i class="fas fa-bullhorn"></i> <span>informasi.html</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-kontak', this)"><i class="fas fa-phone-alt"></i> <span>kontak.html</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-peta', this)"><i class="fas fa-map-marked-alt"></i> <span>peta.html</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-pengaduan', this)"><i class="fas fa-paper-plane"></i> <span>pengaduan.html</span></a></li>
-            <li class="sidebar-heading">Lembaga & Aparat Desa</li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-pemdes', this)"><i class="fas fa-users-cog"></i> <span>pemdes.html</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-bpd', this)"><i class="fas fa-university"></i> <span>bpd.html</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-lpm', this)"><i class="fas fa-hands-helping"></i> <span>lpm.html</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-pkk', this)"><i class="fas fa-female"></i> <span>pkk.html</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-karang-taruna', this)"><i class="fas fa-seedling"></i> <span>karang-taruna.html</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-bumdes', this)"><i class="fas fa-store"></i> <span>bumdes.html</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-babinsa', this)"><i class="fas fa-shield-alt"></i> <span>babinsa.html</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-bimnas', this)"><i class="fas fa-user-shield"></i> <span>bimnas.html</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-iman-desa', this)"><i class="fas fa-mosque"></i> <span>iman-desa.html</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-kdmp', this)"><i class="fas fa-warehouse"></i> <span>kdmp.html</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-kmp', this)"><i class="fas fa-leaf"></i> <span>kmp.html</span></a></li>
-            <li class="sidebar-heading">Wilayah 7 Dusun</li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-dusun-timbuseng1', this)"><i class="fas fa-map-pin"></i> <span>Timbuseng I</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-dusun-timbuseng2', this)"><i class="fas fa-map-pin"></i> <span>Timbuseng II</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-dusun-sauleya', this)"><i class="fas fa-map-pin"></i> <span>Sauleya</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-dusun-tanasambayang', this)"><i class="fas fa-map-pin"></i> <span>Tanasambayang</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-dusun-bontobaddo', this)"><i class="fas fa-map-pin"></i> <span>Bontobaddo</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-dusun-panaikang1', this)"><i class="fas fa-map-pin"></i> <span>Panaikang I</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-dusun-panaikang2', this)"><i class="fas fa-map-pin"></i> <span>Panaikang II</span></a></li>
+            <li class="sidebar-heading">Menu Utama & Profil</li>
+            <li class="nav-item"><a class="nav-link active" href="#" onclick="switchTab('tab-index', this)"><i class="fas fa-home"></i> <span>Index (Beranda)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-profil', this)"><i class="fas fa-landmark"></i> <span>Profil Desa</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-peta', this)"><i class="fas fa-map-marked-alt"></i> <span>Peta & Statistik</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-informasi', this)"><i class="fas fa-bullhorn"></i> <span>Informasi & Berita</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-pengaduan', this)"><i class="fas fa-paper-plane"></i> <span>Pengaduan Warga</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-kontak', this)"><i class="fas fa-phone-alt"></i> <span>Kontak & Telp/WA</span></a></li>
+            
+            <li class="sidebar-heading">Pemerintahan & Dusun</li>
+            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-pemdes', this)"><i class="fas fa-users-cog"></i> <span>Pemdes & Kades</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-dusun', this)"><i class="fas fa-map-pin"></i> <span>Kadus, Imdus & Dusun</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('tab-lainnya', this)"><i class="fas fa-cogs"></i> <span>Lainnya & Pengurus</span></a></li>
         </ul>
     </nav>
 
+    <!-- KONTEN UTAMA -->
     <div class="main-content">
         <div class="top-navbar">
             <div class="d-flex align-items-center gap-3">
                 <button class="btn btn-outline-success d-lg-none btn-sm" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
-                <h4 class="fw-bold mb-0 text-dark fs-5" id="current-title">Konfigurasi JSONBin.io</h4>
+                <h4 class="fw-bold mb-0 text-dark fs-5" id="current-title">Index (Beranda) - Desa Timbuseng</h4>
             </div>
             <div class="d-flex align-items-center gap-2">
-                <span class="badge bg-success px-2.5 py-1.5 rounded-pill d-none d-sm-inline-block" style="font-size: 0.75rem;"><i class="fas fa-circle me-1" style="font-size: 6px;"></i> Cloud Terhubung</span>
-                <a href="index.html" target="_blank" class="btn btn-outline-success btn-sm fw-bold px-3"><i class="fas fa-globe me-1"></i> <span class="d-none d-sm-inline">Lihat</span> Web</a>
+                <span class="badge bg-success px-2.5 py-1.5 rounded-pill" style="font-size: 0.75rem;"><i class="fas fa-cloud me-1"></i> JSONBin Terhubung</span>
+                <a href="index.html" target="_blank" class="btn btn-outline-success btn-sm fw-bold px-3"><i class="fas fa-globe me-1"></i> Web</a>
             </div>
         </div>
 
         <div id="alert-box" class="alert alert-success d-none shadow-sm rounded-3 mb-4" role="alert">
-            <i class="fas fa-check-circle me-2"></i><span id="alert-message">Data berhasil diperbarui di JSONBin!</span>
+            <i class="fas fa-check-circle me-2"></i><span id="alert-message">Data berhasil diperbarui ke server Cloud!</span>
         </div>
 
-        <!-- TAB: AUTH / API CONFIG -->
-        <div id="tab-auth" class="tab-pane active">
+        <!-- 1. TAB INDEX -->
+        <div id="tab-index" class="tab-pane active">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-key text-success me-2"></i>Pengaturan API JSONBin.io</h4>
-                <p class="text-muted small mb-4">Master Key dan Bin ID sudah terpasang otomatis. Kamu bisa mengubahnya jika membuat database cloud baru.</p>
-                <form onsubmit="saveAuthSettings(event)">
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-home text-success me-2"></i>Pengaturan Halaman Index (Beranda)</h4>
+                <p class="text-muted small mb-4">Kelola teks berjalan (running text), foto latar belakang hero, dan ringkasan statistik penduduk desa.</p>
+                <form onsubmit="saveDataToJSONBin(event, 'sistem')">
                     <div class="row g-3">
                         <div class="col-md-12">
-                            <label class="form-label">Master Key (X-Master-Key)</label>
-                            <input type="text" class="form-control" id="cfg-master-key" value="$2a$10$wbLvXvg7KqU.nSiV2NXihOzbcQnKyWuRhAggoR26QUpcDQE.WVBaW" required>
+                            <label class="form-label">Teks Bergerak (Running Text)</label>
+                            <textarea class="form-control" id="running_text" rows="2" placeholder="Selamat Datang di Website Resmi Desa Timbuseng..."></textarea>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Bin ID sistem.json</label>
-                            <input type="text" class="form-control" id="cfg-bin-sistem" value="6aa93e9affd51d1605309c685" required>
+                            <label class="form-label">URL / Nama File Foto Background Hero</label>
+                            <input type="text" class="form-control" id="hero_bg" placeholder="cth: background-desa.jpg">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Bin ID informasi.json</label>
-                            <input type="text" class="form-control" id="cfg-bin-informasi" value="6aa94007ac6210605ad03b27" required>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-save me-2"></i>Simpan Konfigurasi Kunci</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB: INDEX.HTML (sistem.json) -->
-        <div id="tab-index" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-home text-success me-2"></i>index.html - Beranda Desa</h4>
-                <p class="text-muted small mb-4">Kelola running text, statistik penduduk, luas wilayah, dan data kepala keluarga.</p>
-                <form onsubmit="handleSistemSubmit(event, ['running_text', 'total_pop', 'total_area', 'total_dusun', 'total_kk'])">
-                    <div class="row g-3">
-                        <div class="col-md-12">
-                            <label class="form-label">Running Text / Pengumuman</label>
-                            <textarea class="form-control" id="val-running_text" rows="2"></textarea>
+                            <label class="form-label">Total Penduduk (Statistik Utama)</label>
+                            <input type="text" class="form-control" id="total_pop" placeholder="Cth: 2.709 Jiwa">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Total Penduduk (Jiwa)</label>
-                            <input type="text" class="form-control" id="val-total_pop">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Luas Wilayah (Ha)</label>
-                            <input type="text" class="form-control" id="val-total_area">
+                            <label class="form-label">Total KK</label>
+                            <input type="text" class="form-control" id="total_kk" placeholder="Cth: 884 KK">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Total Dusun</label>
-                            <input type="text" class="form-control" id="val-total_dusun">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Kepala Keluarga (KK)</label>
-                            <input type="text" class="form-control" id="val-total_kk">
+                            <input type="text" class="form-control" id="total_dusun" placeholder="Cth: 7 Dusun">
                         </div>
                         <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan Index</button>
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-save me-2"></i>Simpan Perubahan Index</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
 
-        <!-- TAB: PROFIL.HTML -->
+        <!-- 2. TAB PROFIL DESA -->
         <div id="tab-profil" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-landmark text-success me-2"></i>profil.html - Visi, Misi & Perangkat</h4>
-                <form onsubmit="handleSistemSubmit(event, ['vision_text', 'mission_text', 'governance_text', 'kades_name', 'sekdes_name'])">
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-landmark text-success me-2"></i>Pengaturan Profil Desa</h4>
+                <p class="text-muted small mb-4">Perbarui Visi Desa, Misi Desa, serta struktur tata kelola pemerintahan desa.</p>
+                <form onsubmit="saveDataToJSONBin(event, 'sistem')">
                     <div class="row g-3">
-                        <div class="col-md-12"><label class="form-label">Visi Desa</label><textarea class="form-control" id="val-vision_text" rows="2"></textarea></div>
-                        <div class="col-md-12"><label class="form-label">Misi Desa</label><textarea class="form-control" id="val-mission_text" rows="4"></textarea></div>
-                        <div class="col-md-12"><label class="form-label">Tata Kelola Desa</label><textarea class="form-control" id="val-governance_text" rows="3"></textarea></div>
-                        <div class="col-md-6"><label class="form-label">Nama Kepala Desa</label><input type="text" class="form-control" id="val-kades_name"></div>
-                        <div class="col-md-6"><label class="form-label">Nama Sekretaris Desa</label><input type="text" class="form-control" id="val-sekdes_name"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan Profil</button></div>
+                        <div class="col-md-12">
+                            <label class="form-label">Visi Desa</label>
+                            <textarea class="form-control" id="visi_desa" rows="3"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Misi Desa</label>
+                            <textarea class="form-control" id="misi_desa" rows="4"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Pemerintah Desa / Tata Kelola</label>
+                            <textarea class="form-control" id="pemerintah_desa_teks" rows="3"></textarea>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-save me-2"></i>Simpan Perubahan Profil</button>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
 
-        <!-- TAB: INFORMASI.HTML (informasi.json) -->
-        <div id="tab-informasi" class="tab-pane">
+        <!-- 3. TAB PETA & STATISTIK -->
+        <div id="tab-peta" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-bullhorn text-success me-2"></i>informasi.html - Berita & Agenda</h4>
-                <form onsubmit="handleInformasiSubmit(event)">
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-map-marked-alt text-success me-2"></i>Pengaturan Peta & Besaran Data Statistik Lahan</h4>
+                <p class="text-muted small mb-4">Ubah judul wilayah, luas wilayah total, serta rincian data perkebunan dan sawah.</p>
+                <form onsubmit="saveDataToJSONBin(event, 'sistem')">
                     <div class="row g-3">
-                        <div class="col-md-12">
-                            <label class="form-label fw-bold text-success">Jenis Konten</label>
-                            <select class="form-select" id="info-type" onchange="toggleInfoFields()">
-                                <option value="news">Berita / Artikel</option>
-                                <option value="schedule">Agenda / Kegiatan</option>
-                            </select>
+                        <div class="col-md-6">
+                            <label class="form-label">Judul / Label Statistik 1</label>
+                            <input type="text" class="form-control" id="label_lahan_1" value="Perkebunan Tebu">
                         </div>
-                        <div class="col-md-6"><label class="form-label">Judul</label><input type="text" class="form-control" id="info-title" required></div>
-                        <div class="col-md-6" id="wrap-cat"><label class="form-label">Kategori</label><input type="text" class="form-control" id="info-category" value="Pemerintahan"></div>
-                        <div class="col-md-4"><label class="form-label">Tanggal</label><input type="text" class="form-control" id="info-date" placeholder="Cth: 18 Mar 2026"></div>
-                        <div class="col-md-4" id="wrap-time" style="display:none;"><label class="form-label">Jam</label><input type="text" class="form-control" id="info-time" placeholder="09:00 WITA"></div>
-                        <div class="col-md-4" id="wrap-loc" style="display:none;"><label class="form-label">Lokasi</label><input type="text" class="form-control" id="info-location" placeholder="Aula Kantor Desa"></div>
-                        <div class="col-md-12"><label class="form-label">Ringkasan / Deskripsi Singkat</label><textarea class="form-control" id="info-summary" rows="2"></textarea></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-plus-circle me-2"></i>Tambahkan Informasi ke Cloud</button></div>
+                        <div class="col-md-6">
+                            <label class="form-label">Besaran Data Statistik 1 (Ha)</label>
+                            <input type="text" class="form-control" id="luas_lahan_1" value="705,39 Ha">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Judul / Label Statistik 2</label>
+                            <input type="text" class="form-control" id="label_lahan_2" value="Sawah Irigasi Teknis">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Besaran Data Statistik 2 (Ha)</label>
+                            <input type="text" class="form-control" id="luas_lahan_2" value="216,53 Ha">
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-save me-2"></i>Simpan Perubahan Peta</button>
+                        </div>
                     </div>
                 </form>
-                <hr class="my-4">
-                <h5 class="fw-bold text-dark fs-6 mb-3">Daftar Informasi Aktif</h5>
+            </div>
+        </div>
+
+        <!-- 4. TAB INFORMASI (BERITA & PENGUMUMAN) -->
+        <div id="tab-informasi" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-bullhorn text-success me-2"></i>Manajemen Informasi, Berita & Pengumuman Desa</h4>
+                <p class="text-muted small mb-4">Tambah, edit, atau hapus agenda kegiatan dan berita Desa Timbuseng beserta gambar.</p>
+                
+                <form onsubmit="addInfoItem(event)">
+                    <div class="row g-3 bg-light p-3 rounded-3 border mb-4">
+                        <h6 class="fw-bold text-success mb-2">Tambah Berita / Pengumuman Baru</h6>
+                        <div class="col-md-4">
+                            <label class="form-label">Jenis Konten</label>
+                            <select class="form-select" id="new_info_type">
+                                <option value="news">Berita Desa</option>
+                                <option value="schedule">Pengumuman / Jadwal</option>
+                            </select>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="form-label">Judul</label>
+                            <input type="text" class="form-control" id="new_info_title" required placeholder="Judul kegiatan...">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Tanggal</label>
+                            <input type="text" class="form-control" id="new_info_date" placeholder="18 Sep 2026">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Nama File Gambar</label>
+                            <input type="text" class="form-control" id="new_info_image" placeholder="kegiatan.jpg">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Deskripsi / Isi Singkat</label>
+                            <textarea class="form-control" id="new_info_desc" rows="2" placeholder="Uraian singkat..."></textarea>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-desa btn-sm"><i class="fas fa-plus me-1"></i> Tambahkan ke Daftar</button>
+                        </div>
+                    </div>
+                </form>
+
+                <h6 class="fw-bold text-dark">Daftar Berita & Pengumuman Aktif</h6>
                 <div class="table-responsive">
                     <table class="table table-bordered table-sm align-middle small">
-                        <thead class="table-light"><tr><th>Tipe</th><th>Judul</th><th>Tanggal</th><th class="text-center" style="width: 80px;">Aksi</th></tr></thead>
-                        <tbody id="info-table-body"></tbody>
+                        <thead class="table-light">
+                            <tr>
+                                <th>Tipe</th>
+                                <th>Judul</th>
+                                <th>Tanggal</th>
+                                <th class="text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-info-list">
+                            <!-- Dimuat JS -->
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
-        <!-- TAB: KONTAK.HTML -->
-        <div id="tab-kontak" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-phone-alt text-success me-2"></i>kontak.html - Kontak & Operasional</h4>
-                <form onsubmit="handleSistemSubmit(event, ['office_address', 'official_phone', 'official_email', 'operational_hours', 'instagram_link'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Alamat Kantor</label><input type="text" class="form-control" id="val-office_address"></div>
-                        <div class="col-md-6"><label class="form-label">WhatsApp Resmi</label><input type="text" class="form-control" id="val-official_phone"></div>
-                        <div class="col-md-6"><label class="form-label">Email Desa</label><input type="text" class="form-control" id="val-official_email"></div>
-                        <div class="col-md-6"><label class="form-label">Jam Operasional</label><input type="text" class="form-control" id="val-operational_hours"></div>
-                        <div class="col-md-6"><label class="form-label">Link Instagram</label><input type="text" class="form-control" id="val-instagram_link"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Kontak</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB: PETA.HTML -->
-        <div id="tab-peta" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-map-marked-alt text-success me-2"></i>peta.html - Statistik & Peta Wilayah</h4>
-                <form onsubmit="handleSistemSubmit(event, ['map_total_area', 'sugar_title', 'sugar_area', 'rice_title', 'rice_area', 'embed_map_url'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Luas Total Wilayah (Ha)</label><input type="text" class="form-control" id="val-map_total_area"></div>
-                        <div class="col-md-6"><label class="form-label">Judul Perkebunan</label><input type="text" class="form-control" id="val-sugar_title"></div>
-                        <div class="col-md-6"><label class="form-label">Luas Perkebunan (Ha)</label><input type="text" class="form-control" id="val-sugar_area"></div>
-                        <div class="col-md-6"><label class="form-label">Judul Sawah</label><input type="text" class="form-control" id="val-rice_title"></div>
-                        <div class="col-md-6"><label class="form-label">Luas Sawah (Ha)</label><input type="text" class="form-control" id="val-rice_area"></div>
-                        <div class="col-md-6"><label class="form-label">Google Maps Embed URL</label><input type="text" class="form-control" id="val-embed_map_url"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Peta</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB: PENGADUAN.HTML -->
+        <!-- 5. TAB PENGADUAN -->
         <div id="tab-pengaduan" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-paper-plane text-success me-2"></i>pengaduan.html - Layanan Pengaduan</h4>
-                <form onsubmit="handleSistemSubmit(event, ['complaint_wa', 'complaint_email', 'complaint_guide'])">
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-paper-plane text-success me-2"></i>Manajemen Pengaduan Warga</h4>
+                <p class="text-muted small mb-4">Tampilkan, hapus, unduh (export), dan atur nomor WhatsApp pengaduan.</p>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <label class="form-label">Nomor WhatsApp Pengaduan Resmi</label>
+                        <input type="text" class="form-control" id="wa_pengaduan" value="62852XXXXXXXX">
+                    </div>
+                    <div class="col-md-6 d-flex align-items-end">
+                        <button type="button" class="btn btn-outline-success btn-sm w-100" onclick="downloadPengaduanCSV()"><i class="fas fa-download me-1"></i> Unduh Data Pengaduan (CSV)</button>
+                    </div>
+                </div>
+                <hr>
+                <h6 class="fw-bold text-dark mt-3">Daftar Pengaduan Masuk</h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm align-middle small">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Nama Pelapor</th>
+                                <th>Isi Pengaduan</th>
+                                <th>Tanggal</th>
+                                <th class="text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-pengaduan-list">
+                            <tr><td colspan="4" class="text-center text-muted">Belum ada data pengaduan terekam.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. TAB KONTAK -->
+        <div id="tab-kontak" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-phone-alt text-success me-2"></i>Pengaturan Kontak & Telepon/WA</h4>
+                <p class="text-muted small mb-4">Kelola nomor telepon kantor, WhatsApp layanan umum, serta jam operasional.</p>
+                <form onsubmit="saveDataToJSONBin(event, 'sistem')">
                     <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">WhatsApp Pengaduan</label><input type="text" class="form-control" id="val-complaint_wa"></div>
-                        <div class="col-md-6"><label class="form-label">Email Pengaduan</label><input type="text" class="form-control" id="val-complaint_email"></div>
-                        <div class="col-md-12"><label class="form-label">Petunjuk Alur</label><input type="text" class="form-control" id="val-complaint_guide"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Pengaduan</button></div>
+                        <div class="col-md-6">
+                            <label class="form-label">Nomor Telepon / WhatsApp Kantor Desa</label>
+                            <input type="text" class="form-control" id="telepon_desa" placeholder="0852xxxxxxxx">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Email Resmi Desa</label>
+                            <input type="text" class="form-control" id="email_desa" placeholder="desatimbuseng@gmail.com">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Alamat Kantor Desa</label>
+                            <input type="text" class="form-control" id="alamat_kantor" placeholder="Jl. Poros Timbuseng...">
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-save me-2"></i>Simpan Kontak</button>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
 
-        <!-- TAB: PEMDES.HTML -->
+        <!-- 7. TAB PEMDES -->
         <div id="tab-pemdes" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-users-cog text-success me-2"></i>pemdes.html - Perangkat Desa</h4>
-                <form onsubmit="handleSistemSubmit(event, ['pemdes_kades', 'pemdes_nip', 'pemdes_sekdes', 'pemdes_kasi', 'pemdes_kaur'])">
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-users-cog text-success me-2"></i>Pengaturan Pemdes (Kepala Desa & Sambutan)</h4>
+                <p class="text-muted small mb-4">Ubah foto Kades, Nama Kades, kata sambutan, dan susunan struktur pemerintahan.</p>
+                <form onsubmit="saveDataToJSONBin(event, 'sistem')">
                     <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Kepala Desa</label><input type="text" class="form-control" id="val-pemdes_kades"></div>
-                        <div class="col-md-6"><label class="form-label">NIP Kepala Desa</label><input type="text" class="form-control" id="val-pemdes_nip"></div>
-                        <div class="col-md-6"><label class="form-label">Sekretaris Desa</label><input type="text" class="form-control" id="val-pemdes_sekdes"></div>
-                        <div class="col-md-6"><label class="form-label">Kasi Pemerintahan</label><input type="text" class="form-control" id="val-pemdes_kasi"></div>
-                        <div class="col-md-6"><label class="form-label">Kaur Keuangan</label><input type="text" class="form-control" id="val-pemdes_kaur"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perangkat</button></div>
+                        <div class="col-md-6">
+                            <label class="form-label">Nama Kepala Desa</label>
+                            <input type="text" class="form-control" id="nama_kades" placeholder="Kaharuddin, S.P.">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Nama File Foto Kades</label>
+                            <input type="text" class="form-control" id="foto_kades" placeholder="kades.jpg">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Kata Sambutan Kepala Desa</label>
+                            <textarea class="form-control" id="sambutan_kades" rows="4"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Isi Struktur Perangkat Desa</label>
+                            <textarea class="form-control" id="struktur_pemdes_teks" rows="3"></textarea>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-save me-2"></i>Simpan Data Pemdes</button>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
 
-        <!-- TAB: BPD.HTML -->
-        <div id="tab-bpd" class="tab-pane">
+        <!-- 8. TAB KADUS, IMDUS & 7 DUSUN -->
+        <div id="tab-dusun" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-university text-success me-2"></i>bpd.html - Badan Permusyawaratan Desa</h4>
-                <form onsubmit="handleSistemSubmit(event, ['bpd_chair', 'bpd_members', 'bpd_vision'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Ketua BPD</label><input type="text" class="form-control" id="val-bpd_chair"></div>
-                        <div class="col-md-6"><label class="form-label">Anggota BPD</label><input type="text" class="form-control" id="val-bpd_members"></div>
-                        <div class="col-md-12"><label class="form-label">Visi BPD</label><textarea class="form-control" id="val-bpd_vision" rows="3"></textarea></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan BPD</button></div>
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-map-pin text-success me-2"></i>Wilayah 7 Dusun, Statistik, Foto & Fasilitas</h4>
+                <p class="text-muted small mb-4">Pilih dusun yang ingin diedit, lalu ubah data statistik, foto Kadus/Imdus, dan fasilitas umumnya.</p>
+                
+                <div class="mb-3">
+                    <label class="form-label fw-bold text-success">Pilih Dusun</label>
+                    <select class="form-select" id="select_dusun_target" onchange="switchDusunForm()">
+                        <option value="d1">Dusun Timbuseng I</option>
+                        <option value="d2">Dusun Timbuseng II</option>
+                        <option value="d3">Dusun Sauleya</option>
+                        <option value="d4">Dusun Tanasambayang</option>
+                        <option value="d5">Dusun Bontobaddo</option>
+                        <option value="d6">Dusun Panaikang I</option>
+                        <option value="d7">Dusun Panaikang II</option>
+                    </select>
+                </div>
+
+                <form onsubmit="saveDusunData(event)">
+                    <div class="row g-3 border p-3 rounded-3 bg-light">
+                        <div class="col-md-6">
+                            <label class="form-label">Nama Kepala Dusun (Kadus)</label>
+                            <input type="text" class="form-control" id="dusun_kadus_nama" placeholder="Nama Kadus...">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">File Foto Kadus</label>
+                            <input type="text" class="form-control" id="dusun_kadus_foto" placeholder="kadus1.jpg">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Nama Imam Dusun (Imdus)</label>
+                            <input type="text" class="form-control" id="dusun_imdus_nama" placeholder="Nama Imdus...">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">File Foto Imdus</label>
+                            <input type="text" class="form-control" id="dusun_imdus_foto" placeholder="imdus1.jpg">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Statistik Penduduk Dusun</label>
+                            <input type="text" class="form-control" id="dusun_statistik" placeholder="Cth: ± 500 Jiwa, 120 KK">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Fasilitas Umum Dusun</label>
+                            <input type="text" class="form-control" id="dusun_fasilitas" placeholder="Masjid, Posyandu, dll">
+                        </div>
+                        <div class="col-12 mt-3">
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-save me-2"></i>Simpan Perubahan Dusun Ini</button>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
 
-        <!-- TAB: LPM.HTML -->
-        <div id="tab-lpm" class="tab-pane">
+        <!-- 9. TAB LAINNYA -->
+        <div id="tab-lainnya" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-hands-helping text-success me-2"></i>lpm.html - Lembaga Pemberdayaan Masyarakat</h4>
-                <form onsubmit="handleSistemSubmit(event, ['lpm_chair', 'lpm_programs'])">
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-cogs text-success me-2"></i>Pengaturan Lainnya (Pengurus & Foto Tambahan)</h4>
+                <p class="text-muted small mb-4">Ubah data pengurus lembaga lainnya (BPD, LPM, PKK, Karang Taruna, BUMDes, dll) beserta foto mereka.</p>
+                <form onsubmit="saveDataToJSONBin(event, 'sistem')">
                     <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Ketua LPM</label><input type="text" class="form-control" id="val-lpm_chair"></div>
-                        <div class="col-md-12"><label class="form-label">Program LPM</label><textarea class="form-control" id="val-lpm_programs" rows="3"></textarea></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan LPM</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB: PKK.HTML -->
-        <div id="tab-pkk" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-female text-success me-2"></i>pkk.html - PKK Desa</h4>
-                <form onsubmit="handleSistemSubmit(event, ['pkk_chair', 'pkk_programs', 'pkk_schedule'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Ketua TP-PKK</label><input type="text" class="form-control" id="val-pkk_chair"></div>
-                        <div class="col-md-6"><label class="form-label">Jadwal Posyandu</label><input type="text" class="form-control" id="val-pkk_schedule"></div>
-                        <div class="col-md-12"><label class="form-label">10 Program Pokok</label><textarea class="form-control" id="val-pkk_programs" rows="3"></textarea></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan PKK</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB: KARANG-TARUNA.HTML -->
-        <div id="tab-karang-taruna" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-seedling text-success me-2"></i>karang-taruna.html - Karang Taruna</h4>
-                <form onsubmit="handleSistemSubmit(event, ['kt_chair', 'kt_programs', 'kt_agenda'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Ketua Karang Taruna</label><input type="text" class="form-control" id="val-kt_chair"></div>
-                        <div class="col-md-6"><label class="form-label">Agenda Olahraga</label><input type="text" class="form-control" id="val-kt_agenda"></div>
-                        <div class="col-md-12"><label class="form-label">Program Kerja</label><textarea class="form-control" id="val-kt_programs" rows="3"></textarea></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Karang Taruna</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB: BUMDES.HTML -->
-        <div id="tab-bumdes" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-store text-success me-2"></i>bumdes.html - BUMDes</h4>
-                <form onsubmit="handleSistemSubmit(event, ['bumdes_dir', 'bumdes_units', 'bumdes_contact'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Direktur BUMDes</label><input type="text" class="form-control" id="val-bumdes_dir"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak Layanan</label><input type="text" class="form-control" id="val-bumdes_contact"></div>
-                        <div class="col-md-12"><label class="form-label">Katalog Unit Usaha</label><input type="text" class="form-control" id="val-bumdes_units"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan BUMDes</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB: BABINSA.HTML -->
-        <div id="tab-babinsa" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-shield-alt text-success me-2"></i>babinsa.html - Babinsa</h4>
-                <form onsubmit="handleSistemSubmit(event, ['babinsa_name', 'babinsa_phone', 'babinsa_msg'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Nama Babinsa</label><input type="text" class="form-control" id="val-babinsa_name"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak Darurat</label><input type="text" class="form-control" id="val-babinsa_phone"></div>
-                        <div class="col-md-12"><label class="form-label">Himbauan</label><textarea class="form-control" id="val-babinsa_msg" rows="3"></textarea></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Babinsa</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB: BIMNAS.HTML -->
-        <div id="tab-bimnas" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-user-shield text-success me-2"></i>bimnas.html - Bhabinkamtibmas</h4>
-                <form onsubmit="handleSistemSubmit(event, ['bimnas_name', 'bimnas_phone', 'bimnas_msg'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Nama Bhabinkamtibmas</label><input type="text" class="form-control" id="val-bimnas_name"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak Polsek</label><input type="text" class="form-control" id="val-bimnas_phone"></div>
-                        <div class="col-md-12"><label class="form-label">Informasi Kamtibmas</label><textarea class="form-control" id="val-bimnas_msg" rows="3"></textarea></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Polisi</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB: IMAN-DESA.HTML -->
-        <div id="tab-iman-desa" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-mosque text-success me-2"></i>iman-desa.html - Imam Desa</h4>
-                <form onsubmit="handleSistemSubmit(event, ['imam_name', 'imam_schedule'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Nama Imam Desa</label><input type="text" class="form-control" id="val-imam_name"></div>
-                        <div class="col-md-6"><label class="form-label">Jadwal Pengajian</label><input type="text" class="form-control" id="val-imam_schedule"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Imam Desa</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB: KDMP.HTML -->
-        <div id="tab-kdmp" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-warehouse text-success me-2"></i>kdmp.html - KDMP</h4>
-                <form onsubmit="handleSistemSubmit(event, ['kdmp_chair', 'kdmp_contact'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Ketua KDMP</label><input type="text" class="form-control" id="val-kdmp_chair"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak KDMP</label><input type="text" class="form-control" id="val-kdmp_contact"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan KDMP</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB: KMP.HTML -->
-        <div id="tab-kmp" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-leaf text-success me-2"></i>kmp.html - KMP Kelompok</h4>
-                <form onsubmit="handleSistemSubmit(event, ['kmp_chair', 'kmp_programs'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Pengelola KMP</label><input type="text" class="form-control" id="val-kmp_chair"></div>
-                        <div class="col-md-12"><label class="form-label">Program Pekarangan</label><textarea class="form-control" id="val-kmp_programs" rows="3"></textarea></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan KMP</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- TABS 7 DUSUN -->
-        <!-- Dusun 1 -->
-        <div id="tab-dusun-timbuseng1" class="tab-pane">
-            <div class="cms-card"><h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-map-pin text-success me-2"></i>Timbuseng I</h4>
-                <form onsubmit="handleSistemSubmit(event, ['d1_kadus', 'd1_phone', 'd1_stats'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Kepala Dusun</label><input type="text" class="form-control" id="val-d1_kadus"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak</label><input type="text" class="form-control" id="val-d1_phone"></div>
-                        <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="val-d1_stats"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Timbuseng I</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- Dusun 2 -->
-        <div id="tab-dusun-timbuseng2" class="tab-pane">
-            <div class="cms-card"><h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-map-pin text-success me-2"></i>Timbuseng II</h4>
-                <form onsubmit="handleSistemSubmit(event, ['d2_kadus', 'd2_phone', 'd2_stats'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Kepala Dusun</label><input type="text" class="form-control" id="val-d2_kadus"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak</label><input type="text" class="form-control" id="val-d2_phone"></div>
-                        <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="val-d2_stats"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Timbuseng II</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- Dusun Sauleya -->
-        <div id="tab-dusun-sauleya" class="tab-pane">
-            <div class="cms-card"><h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-map-pin text-success me-2"></i>Sauleya</h4>
-                <form onsubmit="handleSistemSubmit(event, ['d3_kadus', 'd3_phone', 'd3_stats'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Kepala Dusun</label><input type="text" class="form-control" id="val-d3_kadus"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak</label><input type="text" class="form-control" id="val-d3_phone"></div>
-                        <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="val-d3_stats"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Sauleya</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- Dusun Tanasambayang -->
-        <div id="tab-dusun-tanasambayang" class="tab-pane">
-            <div class="cms-card"><h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-map-pin text-success me-2"></i>Tanasambayang</h4>
-                <form onsubmit="handleSistemSubmit(event, ['d4_kadus', 'd4_phone', 'd4_stats'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Kepala Dusun</label><input type="text" class="form-control" id="val-d4_kadus"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak</label><input type="text" class="form-control" id="val-d4_phone"></div>
-                        <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="val-d4_stats"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Tanasambayang</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- Dusun Bontobaddo -->
-        <div id="tab-dusun-bontobaddo" class="tab-pane">
-            <div class="cms-card"><h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-map-pin text-success me-2"></i>Bontobaddo</h4>
-                <form onsubmit="handleSistemSubmit(event, ['d5_kadus', 'd5_phone', 'd5_stats'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Kepala Dusun</label><input type="text" class="form-control" id="val-d5_kadus"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak</label><input type="text" class="form-control" id="val-d5_phone"></div>
-                        <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="val-d5_stats"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Bontobaddo</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- Dusun Panaikang I -->
-        <div id="tab-dusun-panaikang1" class="tab-pane">
-            <div class="cms-card"><h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-map-pin text-success me-2"></i>Panaikang I</h4>
-                <form onsubmit="handleSistemSubmit(event, ['d6_kadus', 'd6_phone', 'd6_stats'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Kepala Dusun</label><input type="text" class="form-control" id="val-d6_kadus"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak</label><input type="text" class="form-control" id="val-d6_phone"></div>
-                        <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="val-d6_stats"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Panaikang I</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- Dusun Panaikang II -->
-        <div id="tab-dusun-panaikang2" class="tab-pane">
-            <div class="cms-card"><h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-map-pin text-success me-2"></i>Panaikang II</h4>
-                <form onsubmit="handleSistemSubmit(event, ['d7_kadus', 'd7_phone', 'd7_stats'])">
-                    <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Kepala Dusun</label><input type="text" class="form-control" id="val-d7_kadus"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak</label><input type="text" class="form-control" id="val-d7_phone"></div>
-                        <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="val-d7_stats"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Panaikang II</button></div>
+                        <div class="col-md-6">
+                            <label class="form-label">Ketua BPD & Foto</label>
+                            <input type="text" class="form-control" id="ketua_bpd" placeholder="Nama & Keterangan...">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Ketua TP-PKK & Foto</label>
+                            <input type="text" class="form-control" id="ketua_pkk" placeholder="Nama & Keterangan...">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Ketua Karang Taruna</label>
+                            <input type="text" class="form-control" id="ketua_karang_taruna" placeholder="Nama & Keterangan...">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Direktur BUMDes</label>
+                            <input type="text" class="form-control" id="direktur_bumdes" placeholder="Nama & Keterangan...">
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-save me-2"></i>Simpan Data Lainnya</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -594,217 +475,209 @@
 
     </div>
 
-    <!-- Bootstrap 5 JS Bundle -->
+    <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script>
-        // Konfigurasi JSONBin Global
-        const JSONBIN_BASE = "https://api.jsonbin.io/v3/b/";
+        // Konfigurasi JSONBin dan Master Key milikmu
+        const API_KEY = "$2a$10$wbLvXvg7KqU.nSiV2NXihOzbcQnKyWuRhAggoR26QUpcDQE.WVBaW";
+        const BIN_SISTEM = "6aa93e9affd51605309c685";
+        const BIN_INFORMASI = "6aa94007ac6210605ad03b27";
+        const BASE_URL = "https://api.jsonbin.io/v3/b/";
 
-        function getAuth() {
-            return {
-                masterKey: document.getElementById('cfg-master-key').value.trim(),
-                binSistem: document.getElementById('cfg-bin-sistem').value.trim(),
-                binInformasi: document.getElementById('cfg-bin-informasi').value.trim()
-            };
-        }
+        let globalSistemData = {};
+        let globalInformasiData = {};
 
-        function saveAuthSettings(e) {
-            e.preventDefault();
-            const auth = getAuth();
-            localStorage.setItem('jb_key', auth.masterKey);
-            localStorage.setItem('jb_sistem', auth.binSistem);
-            localStorage.setItem('jb_informasi', auth.binInformasi);
-            showAlert("Konfigurasi API berhasil disimpan!");
+        // Load data saat halaman dibuka
+        window.addEventListener('DOMContentLoaded', () => {
             fetchAllData();
-        }
+        });
 
         async function fetchAllData() {
-            const auth = getAuth();
-            if(!auth.masterKey || !auth.binSistem) return;
-
             try {
                 // Fetch sistem.json
-                const resSistem = await fetch(JSONBIN_BASE + auth.binSistem + "/latest", {
-                    headers: { "X-Master-Key": auth.masterKey }
-                });
-                if(resSistem.ok) {
-                    const json = await resSistem.json();
-                    const data = json.record || {};
-                    for(let key in data) {
-                        const input = document.getElementById('val-' + key);
-                        if(input) input.value = data[key];
-                    }
-                }
+                const resSys = await fetch(BASE_URL + BIN_SISTEM, { headers: { "X-Master-Key": API_KEY } });
+                const jsonSys = await resSys.json();
+                globalSistemData = jsonSys.record || {};
+                populateFormFields(globalSistemData);
 
                 // Fetch informasi.json
-                loadAdminInfoTable();
-            } catch(err) {
-                console.error("Gagal mengambil data dari Cloud:", err);
+                const resInf = await fetch(BASE_URL + BIN_INFORMASI, { headers: { "X-Master-Key": API_KEY } });
+                const jsonInf = await resInf.json();
+                globalInformasiData = jsonInf.record || {};
+                renderInfoTable(globalInformasiData);
+
+            } catch (err) {
+                console.error("Gagal memuat data dari JSONBin:", err);
             }
         }
 
-        async function handleSistemSubmit(e, fields) {
+        // Memasukkan data ke form input HTML
+        function populateFormFields(data) {
+            for (const key in data) {
+                const el = document.getElementById(key);
+                if (el) el.value = data[key];
+            }
+            if(data.dusun_list && data.dusun_list.d1) {
+                switchDusunForm();
+            }
+        }
+
+        // Menyimpan data umum ke sistem.json
+        async function saveDataToJSONBin(e, targetBin) {
             e.preventDefault();
-            const auth = getAuth();
-            showAlert("Menyimpan data ke Cloud JSONBin...");
+            showAlert("Menyimpan perubahan ke Cloud...");
+
+            // Ambil semua input dalam form yang aktif
+            const inputs = e.target.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                if(input.id) {
+                    globalSistemData[input.id] = input.value;
+                }
+            });
 
             try {
-                // Ambil data lama dulu agar key lain tidak hilang
-                const getRes = await fetch(JSONBIN_BASE + auth.binSistem + "/latest", {
-                    headers: { "X-Master-Key": auth.masterKey }
-                });
-                const getJson = await getRes.json();
-                let currentData = getJson.record || {};
-
-                // Timpa dengan nilai form yang diisi
-                fields.forEach(field => {
-                    const input = document.getElementById('val-' + field);
-                    if(input) currentData[field] = input.value;
-                });
-
-                // Kirim PUT request ke JSONBin
-                const putRes = await fetch(JSONBIN_BASE + auth.binSistem, {
+                const res = await fetch(BASE_URL + BIN_SISTEM, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
-                        "X-Master-Key": auth.masterKey
+                        "X-Master-Key": API_KEY
                     },
-                    body: JSON.stringify(currentData)
+                    body: JSON.stringify(globalSistemData)
                 });
 
-                if(putRes.ok) {
-                    showAlert("Perubahan berhasil disimpan secara live ke server cloud!");
+                if(res.ok) {
+                    showAlert("Berhasil! Data telah diperbarui dan langsung tampil di website.");
                 } else {
-                    throw new Error("Gagal menyimpan ke server");
+                    alert("Gagal menyimpan ke server.");
                 }
-            } catch(err) {
-                alert("Terjadi kesalahan: " + err.message);
+            } catch (err) {
+                alert("Terjadi kesalahan koneksi.");
             }
         }
 
-        // INFORMASI & AGENDA MANAGEMENT
-        function toggleInfoFields() {
-            const type = document.getElementById('info-type').value;
-            document.getElementById('wrap-cat').style.display = type === 'news' ? 'block' : 'none';
-            document.getElementById('wrap-time').style.display = type === 'schedule' ? 'block' : 'none';
-            document.getElementById('wrap-loc').style.display = type === 'schedule' ? 'block' : 'none';
+        // Manajemen Form Dusun (7 Dusun)
+        function switchDusunForm() {
+            const dusunKey = document.getElementById('select_dusun_target').value;
+            if(!globalSistemData.dusun_list) globalSistemData.dusun_list = {};
+            if(!globalSistemData.dusun_list[dusunKey]) globalSistemData.dusun_list[dusunKey] = { kadus: '', kadus_foto: '', imdus: '', imdus_foto: '', statistik: '', fasilitas: '' };
+
+            const d = globalSistemData.dusun_list[dusunKey];
+            document.getElementById('dusun_kadus_nama').value = d.kadus || '';
+            document.getElementById('dusun_kadus_foto').value = d.kadus_foto || '';
+            document.getElementById('dusun_imdus_nama').value = d.imdus || '';
+            document.getElementById('dusun_imdus_foto').value = d.imdus_foto || '';
+            document.getElementById('dusun_statistik').value = d.statistik || '';
+            document.getElementById('dusun_fasilitas').value = d.fasilitas || '';
         }
 
-        async function loadAdminInfoTable() {
-            const auth = getAuth();
-            const tbody = document.getElementById('info-table-body');
+        async function saveDusunData(e) {
+            e.preventDefault();
+            const dusunKey = document.getElementById('select_dusun_target').value;
+            if(!globalSistemData.dusun_list) globalSistemData.dusun_list = {};
+
+            globalSistemData.dusun_list[dusunKey] = {
+                kadus: document.getElementById('dusun_kadus_nama').value,
+                kadus_foto: document.getElementById('dusun_kadus_foto').value,
+                imdus: document.getElementById('dusun_imdus_nama').value,
+                imdus_foto: document.getElementById('dusun_imdus_foto').value,
+                statistik: document.getElementById('dusun_statistik').value,
+                fasilitas: document.getElementById('dusun_fasilitas').value
+            };
+
+            showAlert("Menyimpan data dusun...");
+            const res = await fetch(BASE_URL + BIN_SISTEM, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json", "X-Master-Key": API_KEY },
+                body: JSON.stringify(globalSistemData)
+            });
+            if(res.ok) showAlert("Data Dusun berhasil diperbarui!");
+        }
+
+        // Manajemen Informasi & Berita
+        function renderInfoTable(data) {
+            const tbody = document.getElementById('table-info-list');
             if(!tbody) return;
+            tbody.innerHTML = '';
 
-            try {
-                const res = await fetch(JSONBIN_BASE + auth.binInformasi + "/latest", {
-                    headers: { "X-Master-Key": auth.masterKey }
-                });
-                if(!res.ok) throw new Error("Gagal memuat informasi");
-                const json = await res.json();
-                const data = json.record || { news: [], schedules: [] };
+            const news = data.news || [];
+            const schedules = data.schedules || [];
 
-                tbody.innerHTML = '';
-                
-                (data.schedules || []).forEach(item => {
-                    tbody.innerHTML += `<tr><td><span class="badge bg-warning text-dark">Agenda</span></td><td>${item.title}</td><td>${item.date}</td><td class="text-center"><button class="btn btn-outline-danger btn-sm py-0 px-2" onclick="deleteInfo('schedule', ${item.id})"><i class="fas fa-trash"></i></button></td></tr>`;
-                });
-
-                (data.news || []).forEach(item => {
-                    tbody.innerHTML += `<tr><td><span class="badge bg-success">Berita</span></td><td>${item.title}</td><td>${item.category || '-'}</td><td class="text-center"><button class="btn btn-outline-danger btn-sm py-0 px-2" onclick="deleteInfo('news', ${item.id})"><i class="fas fa-trash"></i></button></td></tr>`;
-                });
-
-                if((data.schedules || []).length === 0 && (data.news || []).length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="4" class="text-center text-muted py-3">Belum ada informasi.</td></tr>';
-                }
-            } catch(err) {
-                tbody.innerHTML = '<tr><td colspan="4" class="text-center text-danger py-3">Gagal memuat tabel informasi.</td></tr>';
+            if(news.length === 0 && schedules.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" class="text-center text-muted">Belum ada informasi.</td></tr>';
+                return;
             }
+
+            news.forEach(item => {
+                tbody.innerHTML += `<tr><td><span class="badge bg-success">Berita</span></td><td>${item.title}</td><td>${item.date}</td><td class="text-center"><button class="btn btn-outline-danger btn-sm py-0" onclick="deleteInfo(${item.id}, 'news')"><i class="fas fa-trash"></i></button></td></tr>`;
+            });
+            schedules.forEach(item => {
+                tbody.innerHTML += `<tr><td><span class="badge bg-warning text-dark">Agenda</span></td><td>${item.title}</td><td>${item.date}</td><td class="text-center"><button class="btn btn-outline-danger btn-sm py-0" onclick="deleteInfo(${item.id}, 'schedule')"><i class="fas fa-trash"></i></button></td></tr>`;
+            });
         }
 
-        async function handleInformasiSubmit(e) {
+        async function addInfoItem(e) {
             e.preventDefault();
-            const auth = getAuth();
-            const type = document.getElementById('info-type').value;
-            
-            showAlert("Menambahkan informasi baru ke cloud...");
+            const type = document.getElementById('new_info_type').value;
+            const newItem = {
+                id: Date.now(),
+                title: document.getElementById('new_info_title').value,
+                date: document.getElementById('new_info_date').value,
+                image: document.getElementById('new_info_image').value,
+                summary: document.getElementById('new_info_desc').value
+            };
 
-            try {
-                const res = await fetch(JSONBIN_BASE + auth.binInformasi + "/latest", {
-                    headers: { "X-Master-Key": auth.masterKey }
-                });
-                const json = await res.json();
-                let currentData = json.record || { news: [], schedules: [] };
+            if(!globalInformasiData.news) globalInformasiData.news = [];
+            if(!globalInformasiData.schedules) globalInformasiData.schedules = [];
 
-                const newItem = {
-                    id: Date.now(),
-                    title: document.getElementById('info-title').value.trim(),
-                    category: document.getElementById('info-category').value.trim(),
-                    date: document.getElementById('info-date').value.trim(),
-                    time: document.getElementById('info-time').value.trim(),
-                    location: document.getElementById('info-location').value.trim(),
-                    summary: document.getElementById('info-summary').value.trim()
-                };
+            if(type === 'news') globalInformasiData.news.unshift(newItem);
+            else globalInformasiData.schedules.unshift(newItem);
 
-                if(!currentData.news) currentData.news = [];
-                if(!currentData.schedules) currentData.schedules = [];
+            showAlert("Menambahkan informasi...");
+            const res = await fetch(BASE_URL + BIN_INFORMASI, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json", "X-Master-Key": API_KEY },
+                body: JSON.stringify(globalInformasiData)
+            });
 
-                if(type === 'schedule') currentData.schedules.unshift(newItem);
-                else currentData.news.unshift(newItem);
-
-                const putRes = await fetch(JSONBIN_BASE + auth.binInformasi, {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "X-Master-Key": auth.masterKey
-                    },
-                    body: JSON.stringify(currentData)
-                });
-
-                if(putRes.ok) {
-                    showAlert("Informasi berhasil ditambahkan!");
-                    e.target.reset();
-                    loadAdminInfoTable();
-                }
-            } catch(err) {
-                alert("Gagal menyimpan informasi: " + err.message);
+            if(res.ok) {
+                showAlert("Berhasil ditambahkan!");
+                renderInfoTable(globalInformasiData);
+                e.target.reset();
             }
         }
 
-        async function deleteInfo(type, id) {
-            if(!confirm("Yakin ingin menghapus item ini?")) return;
-            const auth = getAuth();
+        async function deleteInfo(id, type) {
+            if(!confirm("Hapus item ini?")) return;
+            if(type === 'news') globalInformasiData.news = globalInformasiData.news.filter(i => i.id !== id);
+            else globalInformasiData.schedules = globalInformasiData.schedules.filter(i => i.id !== id);
 
-            try {
-                const res = await fetch(JSONBIN_BASE + auth.binInformasi + "/latest", {
-                    headers: { "X-Master-Key": auth.masterKey }
-                });
-                const json = await res.json();
-                let currentData = json.record || { news: [], schedules: [] };
-
-                if(type === 'schedule') {
-                    currentData.schedules = currentData.schedules.filter(x => x.id !== id);
-                } else {
-                    currentData.news = currentData.news.filter(x => x.id !== id);
-                }
-
-                await fetch(JSONBIN_BASE + auth.binInformasi, {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "X-Master-Key": auth.masterKey
-                    },
-                    body: JSON.stringify(currentData)
-                });
-
-                showAlert("Item berhasil dihapus.");
-                loadAdminInfoTable();
-            } catch(err) {
-                alert("Gagal menghapus: " + err.message);
-            }
+            await fetch(BASE_URL + BIN_INFORMASI, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json", "X-Master-Key": API_KEY },
+                body: JSON.stringify(globalInformasiData)
+            });
+            renderInfoTable(globalInformasiData);
+            showAlert("Item berhasil dihapus.");
         }
 
-        // Navigasi UI
+        // Export Pengaduan ke CSV
+        function downloadPengaduanCSV() {
+            let csvContent = "data:text/csv;charset=utf-8,Nama,Isi Pengaduan,Tanggal\n";
+            // Ambil dari data lokal atau localStorage pengaduan jika ada
+            const complaints = JSON.parse(localStorage.getItem('desa_complaints') || '[]');
+            complaints.forEach(row => {
+                csvContent += `"${row.name}","${row.message}","${row.date || '-'}"\n`;
+            });
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "data_pengaduan_timbuseng.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Navigasi Tab
         function toggleSidebar() {
             document.getElementById('appSidebar').classList.toggle('show');
             document.getElementById('sidebarBackdrop').classList.toggle('show');
@@ -826,15 +699,6 @@
             box.classList.remove('d-none');
             setTimeout(() => box.classList.add('d-none'), 4000);
         }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            if(localStorage.getItem('jb_key')) {
-                document.getElementById('cfg-master-key').value = localStorage.getItem('jb_key');
-                document.getElementById('cfg-bin-sistem').value = localStorage.getItem('jb_sistem');
-                document.getElementById('cfg-bin-informasi').value = localStorage.getItem('jb_informasi');
-            }
-            fetchAllData();
-        });
     </script>
 </body>
 </html>
