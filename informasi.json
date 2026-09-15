@@ -2,6 +2,17 @@
   "news": [],
   "schedules": [
     {
+      "id": 1789469430352,
+      "title": "Hehe",
+      "category": "Berita Desa",
+      "date": "Jeh",
+      "time": "09:00 WITA",
+      "location": "Hehe",
+      "summary": "Heh",
+      "content": "Heh",
+      "image": "1001260663.jpg"
+    },
+    {
       "id": 1789469378642,
       "title": "Pemeriksaan",
       "category": "Berita Desa",
