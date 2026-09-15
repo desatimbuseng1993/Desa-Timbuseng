@@ -1,16 +1,4 @@
 {
-  "news": [
-    {
-      "id": 1789469316454,
-      "title": "Heje",
-      "category": "Eheh",
-      "date": "Ebebe",
-      "time": "09:00 WITA",
-      "location": "Kantor Desa Timbuseng",
-      "summary": "Eyhe",
-      "content": "Hehe",
-      "image": "1001259187.jpg"
-    }
-  ],
+  "news": [],
   "schedules": []
 }
