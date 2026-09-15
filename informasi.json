@@ -1,16 +1,4 @@
 {
-  "news": [
-    {
-      "id": 1789471323532,
-      "title": "Capek banga5",
-      "category": "Hari ini",
-      "date": "Tanggal ini",
-      "time": "09:00 WITA",
-      "location": "Kantor Desa Timbuseng",
-      "summary": "Qpapun",
-      "content": "Jsiejejeoowbshs",
-      "image": "1001260663.jpg"
-    }
-  ],
+  "news": [],
   "schedules": []
 }
