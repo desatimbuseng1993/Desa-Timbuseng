@@ -262,32 +262,6 @@
 
                 <div class="row g-4" id="dynamicScheduleContainer">
 
-                            <div class="col-md-4">
-                                <div class="schedule-card p-4 h-100 shadow-sm">
-                                    <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <span class="badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold">Tunggu</span>
-                                        <small class="text-muted"><i class="fas fa-clock me-1"></i> Tunggu</small>
-                                    </div>
-                                    <h5 class="fw-bold text-dark mb-2">Tunggu</h5>
-                                    <p class="text-muted small mb-3"></p>
-                                    <div class="d-flex align-items-center gap-2 text-success small fw-semibold">
-                                        <i class="fas fa-map-marker-alt"></i> Tunggu
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="schedule-card p-4 h-100 shadow-sm">
-                                    <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <span class="badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold">Tunggu</span>
-                                        <small class="text-muted"><i class="fas fa-clock me-1"></i> Tunggu</small>
-                                    </div>
-                                    <h5 class="fw-bold text-dark mb-2">Tunggu</h5>
-                                    <p class="text-muted small mb-3">Tunggu</p>
-                                    <div class="d-flex align-items-center gap-2 text-success small fw-semibold">
-                                        <i class="fas fa-map-marker-alt"></i> Tunggu
-                                    </div>
-                                </div>
-                            </div>
                 </div>
             </div>
             <!-- BAGIAN 2: BERITA KOMPLEKS & LIPUTAN DESA -->
@@ -302,6 +276,26 @@
                 <!-- GRID BERITA KOMPLEKS (Dinamis / Terhubung ke Admin) -->
                 <div class="row g-4" id="dynamicNewsContainer">
 
+                            <div class="col-md-6 col-lg-4">
+                                <div class="info-card shadow-sm">
+                                    <div>
+                                        <div class="info-img-wrapper">
+                                            <span class="info-badge">Apakah</span>
+                                            <img src="1001259186.jpg" alt="Apakah" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Desa+Timbuseng';">
+                                        </div>
+                                        <div class="p-4">
+                                            <small class="text-muted d-block mb-2"><i class="far fa-calendar-alt me-1 text-success"></i> 5</small>
+                                            <h5 class="fw-bold text-dark mb-2">Apakah</h5>
+                                            <p class="text-muted small mb-3">Ala...</p>
+                                        </div>
+                                    </div>
+                                    <div class="px-4 pb-4 pt-0">
+                                        <button type="button" class="btn btn-outline-success btn-sm w-100 fw-semibold rounded-pill" data-bs-toggle="modal" data-bs-target="#modalDynamicNews0">
+                                            Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                 </div>
             </div>
 
@@ -310,3 +304,25 @@
 
     <!-- MODAL POPUP BACA LENGKAP BERITA 1 -->
     
+            <div class="modal fade" id="modalDynamicNews0" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content border-0 shadow-lg">
+                        <div class="modal-header bg-desa text-white">
+                            <h5 class="modal-title fw-bold"><i class="fas fa-bullhorn me-2 text-warning"></i>Apakah</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-4">
+                            <span class="badge bg-success mb-2">Apakah</span>
+                            <h3 class="fw-bold text-dark mb-3">Apakah</h3>
+                            <small class="text-muted d-block mb-4"><i class="far fa-calendar-alt me-1 text-success"></i> 5</small>
+                            <div class="mb-4 text-center">
+                                <img src="1001259186.jpg" class="img-fluid rounded-4 shadow-sm" alt="Apakah" style="max-height: 300px; width: 100%; object-fit: cover;">
+                            </div>
+                            <p class="text-secondary leading-relaxed">Jaja</p>
+                        </div>
+                        <div class="modal-footer bg-light">
+                            <button type="button" class="btn btn-secondary btn-sm rounded-pill px-4" data-bs-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
