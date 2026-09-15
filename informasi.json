@@ -12,17 +12,5 @@
       "image": "1001260663.jpg"
     }
   ],
-  "schedules": [
-    {
-      "id": 1789469378642,
-      "title": "Pemeriksaan",
-      "category": "Berita Desa",
-      "date": "Tunggu",
-      "time": "Tunggu",
-      "location": "Gh",
-      "summary": "Bb",
-      "content": "Bb",
-      "image": "1001259194.jpg"
-    }
-  ]
+  "schedules": []
 }
