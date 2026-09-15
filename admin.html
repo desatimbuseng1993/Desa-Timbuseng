@@ -1091,28 +1091,7 @@
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Fungsi untuk mengatur tampilan field form berdasarkan jenis konten
-        function toggleInfoFields() {
-            const type = document.getElementById('info-content-type').value;
-            const timeWrapper = document.getElementById('wrapper-time');
-            const locationWrapper = document.getElementById('wrapper-location');
-            const contentWrapper = document.getElementById('wrapper-content');
-            const categoryWrapper = document.getElementById('wrapper-category');
-
-            if (type === 'schedule') {
-                if(timeWrapper) timeWrapper.style.display = 'block';
-                if(locationWrapper) locationWrapper.style.display = 'block';
-                if(contentWrapper) contentWrapper.style.display = 'none';
-                if(categoryWrapper) categoryWrapper.style.display = 'none';
-            } else {
-                if(timeWrapper) timeWrapper.style.display = 'none';
-                if(locationWrapper) locationWrapper.style.display = 'none';
-                if(contentWrapper) contentWrapper.style.display = 'block';
-                if(categoryWrapper) contentWrapper.style.display = 'block';
-            }
-        }
-
-        // Memuat tabel daftar informasi di dasbor admin
+// Memuat tabel daftar informasi di dasbor admin
         function loadAdminInfoTable() {
             const tableBody = document.getElementById('admin-info-list-table');
             if (!tableBody) return;
@@ -1147,7 +1126,8 @@
                 `;
             });
         }
-// Fungsi Hapus Item dan Langsung Sinkronkan ke GitHub secara Live
+
+        // Fungsi Hapus Item dan Langsung Sinkronkan ke GitHub secara Live
         async function deleteInfoItem(category, id) {
             if(!confirm("Yakin ingin menghapus item informasi ini? Perubahan akan langsung disinkronkan ke website publik.")) return;
 
@@ -1295,62 +1275,6 @@
                 alert(`Terjadi kesalahan sistem: ${error.message}`);
             }
         }
-
-        // Memuat tabel daftar informasi di dasbor admin
-        function loadAdminInfoTable() {
-            const tableBody = document.getElementById('admin-info-list-table');
-            if (!tableBody) return;
-            
-            tableBody.innerHTML = '';
-            const schedules = JSON.parse(localStorage.getItem('desa_schedules') || '[]');
-            const newsList = JSON.parse(localStorage.getItem('desa_news') || '[]');
-
-            schedules.forEach((item, idx) => {
-                tableBody.innerHTML += `
-                    <tr>
-                        <td><span class="badge bg-warning text-dark">Agenda</span></td>
-                        <td>${item.title}</td>
-                        <td>${item.date}</td>
-                        <td class="text-center">
-                            <button class="btn btn-outline-danger btn-sm py-0 px-2" onclick="deleteInfoItem('schedule', ${item.id})"><i class="fas fa-trash"></i></button>
-                        </td>
-                    </tr>
-                `;
-            });
-
-            newsList.forEach((item, idx) => {
-                tableBody.innerHTML += `
-                    <tr>
-                        <td><span class="badge bg-success">Berita</span></td>
-                        <td>${item.title}</td>
-                        <td>${item.category}</td>
-                        <td class="text-center">
-                            <button class="btn btn-outline-danger btn-sm py-0 px-2" onclick="deleteInfoItem('news', ${item.id})"><i class="fas fa-trash"></i></button>
-                        </td>
-                    </tr>
-                `;
-            });
-        }
-
-        function deleteInfoItem(category, id) {
-            if(!confirm("Yakin ingin menghapus item informasi ini?")) return;
-            if(category === 'schedule') {
-                let schedules = JSON.parse(localStorage.getItem('desa_schedules') || '[]');
-                schedules = schedules.filter(i => i.id !== id);
-                localStorage.setItem('desa_schedules', JSON.stringify(schedules));
-            } else {
-                let newsList = JSON.parse(localStorage.getItem('desa_news') || '[]');
-                newsList = newsList.filter(i => i.id !== id);
-                localStorage.setItem('desa_news', JSON.stringify(newsList));
-            }
-            loadAdminInfoTable();
-            showAlert("Item berhasil dihapus.");
-        }
-
-        // Panggil saat halaman dimuat
-        window.addEventListener('DOMContentLoaded', () => {
-            loadAdminInfoTable();
-        });
         function toggleSidebar() {
             document.getElementById('appSidebar').classList.toggle('show');
             document.getElementById('sidebarBackdrop').classList.toggle('show');
