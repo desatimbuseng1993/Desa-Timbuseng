@@ -254,7 +254,7 @@
         <div id="tab-github" class="tab-pane active">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>Konfigurasi GitHub REST API</h4>
-                <p class="text-muted small mb-4">Gunakan formulir visual di bawah ini untuk menghubungkan CMS admin langsung ke repositori GitHub Anda agar pembaruan file web tersimpan otomatis[cite: 16].</p>
+                <p class="text-muted small mb-4">Gunakan formulir visual di bawah ini untuk menghubungkan CMS admin langsung ke repositori GitHub Anda agar pembaruan file web tersimpan otomatis.</p>
                 <form onsubmit="handleFormSubmit(event, 'Konfigurasi GitHub REST API', 'tab-github')">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -293,7 +293,7 @@
         <div id="tab-index" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>index.html - Beranda Desa</h4>
-                <p class="text-muted small mb-4">Perbarui running text, foto latar belakang hero, total penduduk, luas wilayah, wilayah dusun, atau kepala keluarga secara fleksibel (bisa diubah salah satu saja)[cite: 16].</p>
+                <p class="text-muted small mb-4">Perbarui running text, foto latar belakang hero, total penduduk, luas wilayah, wilayah dusun, atau kepala keluarga secara fleksibel (bisa diubah salah satu saja).</p>
                 <form onsubmit="handleFormSubmit(event, 'index.html', 'tab-index')">
                     <div class="row g-3">
                         <div class="col-md-12">
@@ -319,7 +319,6 @@
                         <div class="col-md-6">
                             <label class="form-label">Upload Foto Poster Latar Belakang (Hero Background)</label>
                             <input type="file" class="form-control" id="tab-index-file" accept="image/*">
-                            <small class="text-muted" style="font-size: 0.75rem;">Nama file foto beserta formatnya akan otomatis menggantikan gambar latar belakang di web.</small>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Status Publikasi</label>
@@ -340,7 +339,7 @@
         <div id="tab-profil" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>profil.html - Visi, Misi, Tata Kelola & Perangkat Desa</h4>
-                <p class="text-muted small mb-4">Perbarui isi Visi Desa, Misi Strategis, Tata Kelola / Struktur Perangkat Desa, serta Nama Kepala Desa dan Sekretaris Desa secara fleksibel[cite: 16].</p>
+                <p class="text-muted small mb-4">Perbarui isi Visi Desa, Misi Strategis, Tata Kelola / Struktur Perangkat Desa, serta Nama Kepala Desa dan Sekretaris Desa secara fleksibel.</p>
                 <form onsubmit="handleFormSubmit(event, 'profil.html', 'tab-profil')">
                     <div class="row g-3">
                         <div class="col-md-12">
@@ -382,11 +381,11 @@
             </div>
         </div>
 
-        <!-- TAB 4: INFORMASI.HTML (MANAJEMEN PENGUMUMAN & BERITA KOMPLEKS) -->
+        <!-- TAB 4: INFORMASI.HTML -->
         <div id="tab-informasi" class="tab-pane">
             <div class="cms-card mb-4">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-bullhorn text-success me-2"></i>Manajemen Agenda & Pengumuman Desa</h4>
-                <p class="text-muted small mb-4">Tambah, edit, atau hapus jadwal pengumuman kegiatan yang akan tampil di halaman informasi publik[cite: 16].</p>
+                <p class="text-muted small mb-4">Tambah, edit, atau hapus jadwal pengumuman kegiatan yang akan tampil di halaman informasi publik.</p>
                 <form id="formAddSchedule" onsubmit="handleAddSchedule(event)">
                     <div class="row g-3">
                         <div class="col-md-4">
@@ -436,7 +435,7 @@
             <!-- MANAJEMEN BERITA KOMPLEKS & LIPUTAN -->
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-newspaper text-success me-2"></i>Manajemen Berita Kompleks & Liputan Desa</h4>
-                <p class="text-muted small mb-4">Tambah berita baru lengkap dengan gambar unggahan, kategori, dan isi artikel komprehensif[cite: 16].</p>
+                <p class="text-muted small mb-4">Tambah berita baru lengkap dengan gambar unggahan, kategori, dan isi artikel komprehensif.</p>
                 <form id="formAddNews" onsubmit="handleAddNews(event)">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -489,11 +488,12 @@
             </div>
         </div>
 
-        <!-- TAB 5: KONTAK.HTML -->
+        <!-- TAB 5: KONTAK.HTML (DITAMBAHKAN KOTAK MASUK PESAN) -->
         <div id="tab-kontak" class="tab-pane">
-            <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>kontak.html - Kontak & Operasional</h4>
-                <p class="text-muted small mb-4">Kelola alamat kantor desa, nomor layanan WhatsApp, email, serta jam operasional[cite: 16].</p>
+            <!-- Form Edit Halaman Kontak -->
+            <div class="cms-card mb-4">
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>kontak.html - Pengaturan Kontak & Operasional</h4>
+                <p class="text-muted small mb-4">Kelola alamat kantor desa, nomor layanan WhatsApp, email, serta jam operasional.</p>
                 <form onsubmit="handleFormSubmit(event, 'kontak.html', 'tab-kontak')">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -501,12 +501,12 @@
                             <input type="text" class="form-control" id="tab-kontak-office-address" value="Jl. Poros Timbuseng, Kec. Polongbangkeng Timur, Kab. Takalar">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Nomor WhatsApp Resmi</label>
+                            <label class="form-label">Nomor WhatsApp Resmi (Informasi Umum)</label>
                             <input type="text" class="form-control" id="tab-kontak-official-phone" value="0852xxxxxxxx">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Email Desa</label>
-                            <input type="text" class="form-control" id="tab-kontak-official-email" value="desatimbuseng@gmail.com">
+                            <input type="text" class="form-control" id="tab-kontak-official-email" value="desatimbuseng1993@gmail.com">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Jam Operasional</label>
@@ -514,7 +514,7 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Link Media Sosial / Instagram</label>
-                            <input type="text" class="form-control" id="tab-kontak-instagram-link" value="https://instagram.com/desatimbuseng">
+                            <input type="text" class="form-control" id="tab-kontak-instagram-link" value="https://instagram.com/desa_timbuseng">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Status Publikasi</label>
@@ -529,13 +529,44 @@
                     </div>
                 </form>
             </div>
+
+            <!-- TABEL KOTAK MASUK PESAN DARI HALAMAN KONTAK -->
+            <div class="cms-card">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+                    <div>
+                        <h4 class="fw-bold text-dark mb-1 fs-5"><i class="fas fa-envelope-open-text text-success me-2"></i>Kotak Masuk Pesan & Pertanyaan</h4>
+                        <p class="text-muted small mb-0">Menampung pesan dan pertanyaan umum dari formulir halaman kontak.</p>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-outline-success btn-sm fw-bold px-3" onclick="loadAdminMessages()"><i class="fas fa-sync-alt me-1"></i> Muat Ulang</button>
+                        <button type="button" class="btn btn-success btn-sm fw-bold px-3" onclick="downloadMessagesExcel()"><i class="fas fa-file-excel me-1"></i> Download Excel (.xls)</button>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover align-middle small">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>Pengirim (Nama/Kontak)</th>
+                                <th>Subjek Pesan</th>
+                                <th>Isi Pertanyaan</th>
+                                <th class="text-center" style="width: 100px;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="messagesTableBody">
+                            <!-- Diisi secara dinamis melalui JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
         <!-- TAB 6: PETA.HTML -->
         <div id="tab-peta" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>peta.html - Peta, Luas Wilayah & Statistik Lahan</h4>
-                <p class="text-muted small mb-4">Perbarui luas total wilayah, judul serta luas perkebunan tebu, judul serta luas sawah irigasi teknis, dan koordinat peta[cite: 16].</p>
+                <p class="text-muted small mb-4">Perbarui luas total wilayah, judul serta luas perkebunan tebu, judul serta luas sawah irigasi teknis, dan koordinat peta.</p>
                 <form onsubmit="handleFormSubmit(event, 'peta.html', 'tab-peta')">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -577,7 +608,7 @@
             </div>
         </div>
 
-        <!-- TAB 7: PENGADUAN.HTML (REVISI LENGKAP: EDIT WA, TAMPUNG, TAMPIL, HAPUS, & DOWNLOAD) -->
+        <!-- TAB 7: PENGADUAN.HTML -->
         <div id="tab-pengaduan" class="tab-pane">
             <div class="cms-card mb-4">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-phone-alt text-success me-2"></i>Pengaturan Kontak WhatsApp Pengaduan</h4>
@@ -630,7 +661,7 @@
         <div id="tab-pemdes" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>pemdes.html - Perangkat Desa</h4>
-                <p class="text-muted small mb-4">Perbarui data nama kepala desa, sekretaris, kasi, dan kaur di lingkungan pemerintahan desa[cite: 16].</p>
+                <p class="text-muted small mb-4">Perbarui data nama kepala desa, sekretaris, kasi, dan kaur di lingkungan pemerintahan desa.</p>
                 <form onsubmit="handleFormSubmit(event, 'pemdes.html', 'tab-pemdes')">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -676,7 +707,7 @@
         <div id="tab-bpd" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>bpd.html - Badan Permusyawaratan Desa</h4>
-                <p class="text-muted small mb-4">Kelola informasi ketua dan anggota Badan Permusyawaratan Desa[cite: 16].</p>
+                <p class="text-muted small mb-4">Kelola informasi ketua dan anggota Badan Permusyawaratan Desa.</p>
                 <form onsubmit="handleFormSubmit(event, 'bpd.html', 'tab-bpd')">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -710,7 +741,7 @@
         <div id="tab-lpm" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>lpm.html - Lembaga Pemberdayaan Masyarakat</h4>
-                <p class="text-muted small mb-4">Perbarui data kepengurusan dan program pembangunan LPM[cite: 16].</p>
+                <p class="text-muted small mb-4">Perbarui data kepengurusan dan program pembangunan LPM.</p>
                 <form onsubmit="handleFormSubmit(event, 'lpm.html', 'tab-lpm')">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -740,7 +771,7 @@
         <div id="tab-pkk" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>pkk.html - Pemberdayaan Kesejahteraan Keluarga</h4>
-                <p class="text-muted small mb-4">Kelola data ketua TP-PKK, 10 program pokok, serta jadwal kegiatan posyandu[cite: 16].</p>
+                <p class="text-muted small mb-4">Kelola data ketua TP-PKK, 10 program pokok, serta jadwal kegiatan posyandu.</p>
                 <form onsubmit="handleFormSubmit(event, 'pkk.html', 'tab-pkk')">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -774,7 +805,7 @@
         <div id="tab-karang-taruna" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>karang-taruna.html - Kepemudaan</h4>
-                <p class="text-muted small mb-4">Perbarui informasi pengurus Karang Taruna serta agenda kegiatan kepemudaan dan olahraga[cite: 16].</p>
+                <p class="text-muted small mb-4">Perbarui informasi pengurus Karang Taruna serta agenda kegiatan kepemudaan dan olahraga.</p>
                 <form onsubmit="handleFormSubmit(event, 'karang-taruna.html', 'tab-karang-taruna')">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -808,7 +839,7 @@
         <div id="tab-bumdes" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>bumdes.html - Badan Usaha Milik Desa</h4>
-                <p class="text-muted small mb-4">Kelola data direktur BUMDes, katalog unit usaha (PAMSIMAS, Grosir, dll), dan kontak pemesanan[cite: 16].</p>
+                <p class="text-muted small mb-4">Kelola data direktur BUMDes, katalog unit usaha (PAMSIMAS, Grosir, dll), dan kontak pemesanan.</p>
                 <form onsubmit="handleFormSubmit(event, 'bumdes.html', 'tab-bumdes')">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -842,7 +873,7 @@
         <div id="tab-babinsa" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>babinsa.html - Keamanan TNI (Babinsa)</h4>
-                <p class="text-muted small mb-4">Perbarui data personel Babinsa, kontak darurat, serta himbauan keamanan teritorial[cite: 16].</p>
+                <p class="text-muted small mb-4">Perbarui data personel Babinsa, kontak darurat, serta himbauan keamanan teritorial.</p>
                 <form onsubmit="handleFormSubmit(event, 'babinsa.html', 'tab-babinsa')">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -876,7 +907,7 @@
         <div id="tab-bimnas" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>bimnas.html - Keamanan Polri (Bhabinkamtibmas)</h4>
-                <p class="text-muted small mb-4">Kelola data Bhabinkamtibmas, nomor darurat Polsek, dan informasi kamtibmas[cite: 16].</p>
+                <p class="text-muted small mb-4">Kelola data Bhabinkamtibmas, nomor darurat Polsek, dan informasi kamtibmas.</p>
                 <form onsubmit="handleFormSubmit(event, 'bimnas.html', 'tab-bimnas')">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -910,7 +941,7 @@
         <div id="tab-iman-desa" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>iman-desa.html - Keagamaan & Imam Desa</h4>
-                <p class="text-muted small mb-4">Perbarui informasi Imam Desa, jajaran Imam Dusun, serta jadwal pengajian[cite: 16].</p>
+                <p class="text-muted small mb-4">Perbarui informasi Imam Desa, jajaran Imam Dusun, serta jadwal pengajian.</p>
                 <form onsubmit="handleFormSubmit(event, 'iman-desa.html', 'tab-iman-desa')">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -940,7 +971,7 @@
         <div id="tab-kdmp" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>kdmp.html - Kawasan Mandiri Pangan</h4>
-                <p class="text-muted small mb-4">Perbarui nama ketua, kontak WhatsApp, dan/atau foto profil KDMP secara fleksibel (bisa salah satu atau keduanya)[cite: 16].</p>
+                <p class="text-muted small mb-4">Perbarui nama ketua, kontak WhatsApp, dan/atau foto profil KDMP secara fleksibel.</p>
                 <form onsubmit="handleFormSubmit(event, 'kdmp.html', 'tab-kdmp')">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -975,7 +1006,7 @@
         <div id="tab-kmp" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>kmp.html - Kawasan Mandiri Pangan (Kelompok)</h4>
-                <p class="text-muted small mb-4">Perbarui informasi kelompok pemanfaatan pekarangan (KRPL) dan pertanian[cite: 16].</p>
+                <p class="text-muted small mb-4">Perbarui informasi kelompok pemanfaatan pekarangan (KRPL) dan pertanian.</p>
                 <form onsubmit="handleFormSubmit(event, 'kmp.html', 'tab-kmp')">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -1004,13 +1035,12 @@
         <!-- TABS 19-25: 7 DUSUN -->
         <div id="tab-dusun-timbuseng1" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-timbuseng1.html - Dusun Timbuseng I</h4>
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-timbuseng1.html</h4>
                 <form onsubmit="handleFormSubmit(event, 'dusun-timbuseng1.html', 'tab-dusun-timbuseng1')">
                     <div class="row g-3">
                         <div class="col-md-6"><label class="form-label">Nama Kepala Dusun I</label><input type="text" class="form-control" id="tab-dusun-timbuseng1-d1-kadus" value="Kepala Dusun Timbuseng I"></div>
                         <div class="col-md-6"><label class="form-label">Kontak Kadus I</label><input type="text" class="form-control" id="tab-dusun-timbuseng1-d1-phone" value="0852xxxxxxxx"></div>
                         <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="tab-dusun-timbuseng1-d1-stats" value="± 500 Jiwa"></div>
-                        <div class="col-md-6"><label class="form-label">Status Publikasi</label><select class="form-select" id="tab-dusun-timbuseng1-status"><option value="published" selected>Live</option></select></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan</button></div>
                     </div>
                 </form>
@@ -1018,13 +1048,12 @@
         </div>
         <div id="tab-dusun-timbuseng2" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-timbuseng2.html - Dusun Timbuseng II</h4>
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-timbuseng2.html</h4>
                 <form onsubmit="handleFormSubmit(event, 'dusun-timbuseng2.html', 'tab-dusun-timbuseng2')">
                     <div class="row g-3">
                         <div class="col-md-6"><label class="form-label">Nama Kepala Dusun II</label><input type="text" class="form-control" id="tab-dusun-timbuseng2-d2-kadus" value="Kepala Dusun Timbuseng II"></div>
                         <div class="col-md-6"><label class="form-label">Kontak Kadus II</label><input type="text" class="form-control" id="tab-dusun-timbuseng2-d2-phone" value="0852xxxxxxxx"></div>
                         <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="tab-dusun-timbuseng2-d2-stats" value="± 480 Jiwa"></div>
-                        <div class="col-md-6"><label class="form-label">Status Publikasi</label><select class="form-select" id="tab-dusun-timbuseng2-status"><option value="published" selected>Live</option></select></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan</button></div>
                     </div>
                 </form>
@@ -1032,13 +1061,12 @@
         </div>
         <div id="tab-dusun-sauleya" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-sauleya.html - Dusun Sauleya</h4>
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-sauleya.html</h4>
                 <form onsubmit="handleFormSubmit(event, 'dusun-sauleya.html', 'tab-dusun-sauleya')">
                     <div class="row g-3">
                         <div class="col-md-6"><label class="form-label">Nama Kepala Dusun Sauleya</label><input type="text" class="form-control" id="tab-dusun-sauleya-d3-kadus" value="Kepala Dusun Sauleya"></div>
                         <div class="col-md-6"><label class="form-label">Kontak Kadus Sauleya</label><input type="text" class="form-control" id="tab-dusun-sauleya-d3-phone" value="0852xxxxxxxx"></div>
                         <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="tab-dusun-sauleya-d3-stats" value="± 450 Jiwa"></div>
-                        <div class="col-md-6"><label class="form-label">Status Publikasi</label><select class="form-select" id="tab-dusun-sauleya-status"><option value="published" selected>Live</option></select></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan</button></div>
                     </div>
                 </form>
@@ -1046,13 +1074,12 @@
         </div>
         <div id="tab-dusun-tanasambayang" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-tanasambayang.html - Dusun Tanasambayang</h4>
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-tanasambayang.html</h4>
                 <form onsubmit="handleFormSubmit(event, 'dusun-tanasambayang.html', 'tab-dusun-tanasambayang')">
                     <div class="row g-3">
                         <div class="col-md-6"><label class="form-label">Nama Kepala Dusun Tanasambayang</label><input type="text" class="form-control" id="tab-dusun-tanasambayang-d4-kadus" value="Kepala Dusun Tanasambayang"></div>
                         <div class="col-md-6"><label class="form-label">Kontak Kadus</label><input type="text" class="form-control" id="tab-dusun-tanasambayang-d4-phone" value="0852xxxxxxxx"></div>
                         <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="tab-dusun-tanasambayang-d4-stats" value="± 460 Jiwa"></div>
-                        <div class="col-md-6"><label class="form-label">Status Publikasi</label><select class="form-select" id="tab-dusun-tanasambayang-status"><option value="published" selected>Live</option></select></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan</button></div>
                     </div>
                 </form>
@@ -1060,13 +1087,12 @@
         </div>
         <div id="tab-dusun-bontobaddo" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-bontobaddo.html - Dusun Bontobaddo</h4>
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-bontobaddo.html</h4>
                 <form onsubmit="handleFormSubmit(event, 'dusun-bontobaddo.html', 'tab-dusun-bontobaddo')">
                     <div class="row g-3">
                         <div class="col-md-6"><label class="form-label">Nama Kepala Dusun Bontobaddo</label><input type="text" class="form-control" id="tab-dusun-bontobaddo-d5-kadus" value="Kepala Dusun Bontobaddo"></div>
                         <div class="col-md-6"><label class="form-label">Kontak Kadus</label><input type="text" class="form-control" id="tab-dusun-bontobaddo-d5-phone" value="0852xxxxxxxx"></div>
                         <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="tab-dusun-bontobaddo-d5-stats" value="± 470 Jiwa"></div>
-                        <div class="col-md-6"><label class="form-label">Status Publikasi</label><select class="form-select" id="tab-dusun-bontobaddo-status"><option value="published" selected>Live</option></select></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan</button></div>
                     </div>
                 </form>
@@ -1074,13 +1100,12 @@
         </div>
         <div id="tab-dusun-panaikang1" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-panaikang1.html - Dusun Panaikang I</h4>
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-panaikang1.html</h4>
                 <form onsubmit="handleFormSubmit(event, 'dusun-panaikang1.html', 'tab-dusun-panaikang1')">
                     <div class="row g-3">
                         <div class="col-md-6"><label class="form-label">Nama Kepala Dusun Panaikang I</label><input type="text" class="form-control" id="tab-dusun-panaikang1-d6-kadus" value="Kepala Dusun Panaikang I"></div>
                         <div class="col-md-6"><label class="form-label">Kontak Kadus</label><input type="text" class="form-control" id="tab-dusun-panaikang1-d6-phone" value="0852xxxxxxxx"></div>
                         <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="tab-dusun-panaikang1-d6-stats" value="± 490 Jiwa"></div>
-                        <div class="col-md-6"><label class="form-label">Status Publikasi</label><select class="form-select" id="tab-dusun-panaikang1-status"><option value="published" selected>Live</option></select></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan</button></div>
                     </div>
                 </form>
@@ -1088,13 +1113,12 @@
         </div>
         <div id="tab-dusun-panaikang2" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-panaikang2.html - Dusun Panaikang II</h4>
+                <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-edit text-success me-2"></i>dusun-panaikang2.html</h4>
                 <form onsubmit="handleFormSubmit(event, 'dusun-panaikang2.html', 'tab-dusun-panaikang2')">
                     <div class="row g-3">
                         <div class="col-md-6"><label class="form-label">Nama Kepala Dusun II</label><input type="text" class="form-control" id="tab-dusun-panaikang2-d7-kadus" value="Kepala Dusun Panaikang II"></div>
                         <div class="col-md-6"><label class="form-label">Kontak Kadus</label><input type="text" class="form-control" id="tab-dusun-panaikang2-d7-phone" value="0852xxxxxxxx"></div>
                         <div class="col-md-6"><label class="form-label">Statistik Penduduk</label><input type="text" class="form-control" id="tab-dusun-panaikang2-d7-stats" value="± 500 Jiwa"></div>
-                        <div class="col-md-6"><label class="form-label">Status Publikasi</label><select class="form-select" id="tab-dusun-panaikang2-status"><option value="published" selected>Live</option></select></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa"><i class="fas fa-cloud-upload-alt me-2"></i>Simpan Perubahan</button></div>
                     </div>
                 </form>
@@ -1147,8 +1171,9 @@
             loadAdminSchedules();
             loadAdminNews();
             loadAdminComplaints();
+            loadAdminMessages(); // Memuat pesan dari kontak.html
 
-            // Muat nomor WhatsApp tersimpan jika ada
+            // Muat nomor WhatsApp tersimpan (Pengaduan) jika ada
             const savedWA = localStorage.getItem('desa_complaint_wa');
             if(savedWA) {
                 document.getElementById('setting-wa-number').value = savedWA;
@@ -1171,9 +1196,7 @@
                 try { return JSON.parse(data); } catch(e) {}
             }
             return [
-                { title: "Musyawarah Perencanaan Pembangunan (Musrenbang) Desa", date: "18 Mar 2026", time: "09:00 WITA", location: "Aula Kantor Desa Timbuseng", desc: "Pembahasan final RKPDes dan penetapan prioritas pembangunan infrastruktur jalan tani di 7 wilayah dusun." },
-                { title: "Pelayanan Posyandu & Pemeriksaan Kesehatan Warga", date: "25 Mar 2026", time: "08:00 WITA", location: "Puskesmas Pembantu Desa", desc: "Pemeriksaan kesehatan gratis bagi balita, ibu hamil, dan lansia bekerja sama dengan Kasi Pemberdayaan." },
-                { title: "Kerja Bakti Massal Kebersihan Lingkungan Dusun", date: "02 Apr 2026", time: "14:00 WITA", location: "Seluruh Wilayah Dusun", desc: "Pembersihan saluran irigasi teknis seluas 216,53 Ha dan pemeliharaan fasilitas umum menyambut musim tanam." }
+                { title: "Musyawarah Perencanaan Pembangunan (Musrenbang) Desa", date: "18 Mar 2026", time: "09:00 WITA", location: "Aula Kantor Desa Timbuseng", desc: "Pembahasan final RKPDes dan penetapan prioritas pembangunan infrastruktur." }
             ];
         }
 
@@ -1234,23 +1257,7 @@
                     date: "2026 | Kantor Desa Timbuseng",
                     image: "kantor.png",
                     summary: "Pemerintah Desa Timbuseng terus meningkatkan kualitas pelayanan administratif warga melalui pemanfaatan portal sistem informasi desa terpadu...",
-                    content: "Pemerintah Desa Timbuseng terus meningkatkan kualitas pelayanan administratif warga melalui pemanfaatan portal sistem informasi desa terpadu. Langkah ini diambil untuk memastikan seluruh warga mendapatkan akses informasi yang transparan, cepat, dan efisien tanpa hambatan birokrasi yang rumit. Dengan sistem digital ini, masyarakat dapat memantau berita desa, data kependudukan per dusun, serta menyampaikan aspirasi langsung secara daring."
-                },
-                {
-                    title: "Pelestarian Mata Air Sakral Je'ne Timbusu' di Desa Timbuseng",
-                    category: "Kearifan Lokal",
-                    date: "Tradisi & Budaya",
-                    image: "image.png",
-                    summary: "Masyarakat senantiasa merawat nilai sejarah asal-usul nama desa serta melestarikan ritual budaya lokal yang diwariskan secara turun-temurun...",
-                    content: "Masyarakat senantiasa merawat nilai sejarah asal-usul nama desa serta melestarikan ritual budaya lokal yang diwariskan secara turun-temurun. Nama Desa Timbuseng berakar dari mata air murni Je'ne Timbusu' yang menjadi simbol kehidupan dan sumber berkah warga. Setiap kegiatan adat dan pernikahan di desa senantiasa melibatkan tradisi pengambilan air sakral ini yang diiringi tabuhan gendang khas budaya setempat sebagai wujud penghormatan kepada leluhur."
-                },
-                {
-                    title: "Percepatan Pembangunan Jalan Tani & Irigasi 7 Dusun",
-                    category: "Pembangunan",
-                    date: "Infrastruktur Desa",
-                    image: "kantor.png",
-                    summary: "Fokus pembangunan infrastruktur diarahkan untuk mempermudah mobilitas perkebunan tebu serta kelancaran irigasi sawah warga...",
-                    content: "Fokus pembangunan infrastruktur diarahkan untuk mempermudah mobilitas perkebunan tebu seluas 705,39 Ha serta kelancaran irigasi sawah produktif seluas 216,53 Ha yang tersebar di 7 wilayah dusun. Pemerintah Desa berkomitmen untuk terus membuka akses logistik pertanian yang lebih baik demi meningkatkan perekonomian seluruh warga masyarakat Timbuseng."
+                    content: "Pemerintah Desa Timbuseng terus meningkatkan kualitas pelayanan administratif..."
                 }
             ];
         }
@@ -1349,7 +1356,7 @@
             showAlert("Berita berhasil dihapus.");
         }
 
-        // --- MANAJEMEN PENGADUAN WARGA (TAB KHUSUS) ---
+        // --- MANAJEMEN PENGADUAN WARGA (TAB KHUSUS PENGADUAN) ---
         function handleSaveWhatsApp(e) {
             e.preventDefault();
             const waNumber = document.getElementById('setting-wa-number').value.trim();
@@ -1463,7 +1470,106 @@
             showAlert("File rekapitulasi pengaduan berhasil diunduh dalam format Excel!");
         }
 
-        // Enkoder aman UTF-8 ke Base64 untuk payload GitHub REST API
+        // --- MANAJEMEN PESAN / PERTANYAAN MASUK (DARI HALAMAN KONTAK) ---
+        function loadAdminMessages() {
+            const tbody = document.getElementById('messagesTableBody');
+            if(!tbody) return;
+            
+            // Mengambil dari kunci 'desa_messages' yang tersimpan
+            let messages = JSON.parse(localStorage.getItem('desa_messages')) || [];
+            tbody.innerHTML = '';
+
+            if(messages.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="text-center text-muted py-4"><i class="fas fa-folder-open mb-2 fs-3 text-secondary"></i><br>Belum ada pesan / pertanyaan yang masuk dari halaman kontak.</td></tr>`;
+                return;
+            }
+
+            messages.forEach((item, index) => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td class="text-nowrap">${item.date || '-'}</td>
+                        <td>
+                            <strong>${item.nama || '-'}</strong><br>
+                            <small class="text-muted"><a href="https://wa.me/${(item.telepon || '').replace(/[^0-9]/g, '')}" target="_blank" class="text-success text-decoration-none"><i class="fab fa-whatsapp me-1"></i>${item.telepon || '-'}</a></small><br>
+                            <small class="text-muted"><a href="mailto:${item.email}" class="text-warning text-decoration-none"><i class="fas fa-envelope me-1"></i>${item.email || '-'}</a></small>
+                        </td>
+                        <td><strong>${item.subjek || '-'}</strong></td>
+                        <td><div style="max-height: 80px; overflow-y: auto; font-size: 0.82rem;">${item.pesan || '-'}</div></td>
+                        <td class="text-center">
+                            <button class="btn btn-outline-danger btn-sm px-2 py-1" onclick="deleteMessage(${index})" title="Hapus Pesan">
+                                <i class="fas fa-trash-alt"></i> Hapus
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function deleteMessage(index) {
+            if(confirm("Apakah Anda yakin ingin menghapus data pesan ini dari sistem?")) {
+                let messages = JSON.parse(localStorage.getItem('desa_messages')) || [];
+                messages.splice(index, 1);
+                localStorage.setItem('desa_messages', JSON.stringify(messages));
+                loadAdminMessages();
+                showAlert("Pesan masuk berhasil dihapus.");
+            }
+        }
+
+        function downloadMessagesExcel() {
+            let messages = JSON.parse(localStorage.getItem('desa_messages')) || [];
+            if(messages.length === 0) {
+                alert("Tidak ada data pesan masuk untuk diunduh.");
+                return;
+            }
+
+            let htmlContent = `
+                <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+                <head><meta charset="utf-8"></head>
+                <body>
+                <h3>Laporan Kotak Masuk Pesan - Halaman Kontak Desa Timbuseng</h3>
+                <table border="1">
+                    <thead>
+                        <tr style="background-color: #0d5c3a; color: white;">
+                            <th>No</th>
+                            <th>Tanggal Masuk</th>
+                            <th>Nama Pengirim</th>
+                            <th>Nomor Telepon / WA</th>
+                            <th>Email</th>
+                            <th>Subjek / Topik</th>
+                            <th>Isi Pertanyaan / Pesan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            messages.forEach((item, idx) => {
+                htmlContent += `
+                    <tr>
+                        <td>${idx + 1}</td>
+                        <td>${item.date}</td>
+                        <td>${item.nama}</td>
+                        <td>'${item.telepon}</td>
+                        <td>${item.email}</td>
+                        <td>${item.subjek}</td>
+                        <td>${item.pesan}</td>
+                    </tr>
+                `;
+            });
+
+            htmlContent += `</tbody></table></body></html>`;
+
+            const blob = new Blob([htmlContent], { type: 'application/vnd.ms-excel' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Rekap_Pesan_Kontak_Desa_Timbuseng_${new Date().toISOString().slice(0,10)}.xls`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showAlert("File rekapitulasi pesan masuk berhasil diunduh dalam format Excel!");
+        }
+
+        // --- SISTEM AUTENTIKASI DAN COMMIT GITHUB REST API ---
         function utf8_to_b64(str) {
             return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
                 return String.fromCharCode('0x' + p1);
