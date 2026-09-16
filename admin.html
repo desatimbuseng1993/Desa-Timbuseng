@@ -2,445 +2,994 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontak Kami - Desa Timbuseng</title>
-    <!-- Bootstrap 5 CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dasbor CMS Admin Profesional - Desa Timbuseng Kab. Takalar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- FontAwesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <style>
         :root {
             --primary-color: #0d5c3a;
             --primary-dark: #073b24;
-            --accent-color: #f39c12;
-            --light-bg: #f8faf9;
+            --border-color: #e2e8f0;
+            --sidebar-width: 280px;
         }
-
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            color: #2d3748;
-            background-color: #f8faf9;
-            overflow-x: hidden;
+            background-color: #f4f6f8;
+            color: #1e293b;
             font-size: 0.95rem;
         }
-
-        /* Top Bar & Navbar */
-        .top-bar { background-color: var(--primary-dark); color: rgba(255, 255, 255, 0.85); font-size: 0.82rem; }
-        .top-bar a { color: rgba(255, 255, 255, 0.85); text-decoration: none; transition: color 0.2s ease; }
-        .top-bar a:hover { color: var(--accent-color); }
-
-        .navbar { padding-top: 0.65rem; padding-bottom: 0.65rem; }
-        .navbar-brand img { height: 42px; width: auto; object-fit: contain; }
-        .bg-desa { background-color: var(--primary-color) !important; }
-        .nav-link { font-weight: 500; font-size: 0.9rem; padding: 0.5rem 0.85rem !important; transition: all 0.2s ease; }
-        .nav-link:hover, .nav-link.active { color: var(--accent-color) !important; }
-
-        /* Page Header */
-        .page-header {
+        .sidebar {
+            position: fixed;
+            top: 0; left: 0; bottom: 0;
+            width: var(--sidebar-width);
             background-color: var(--primary-dark);
-            background-image: linear-gradient(135deg, rgba(13, 92, 58, 0.95), rgba(7, 59, 36, 0.98)), url('kantor.png');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 70px 0;
-            text-align: center;
-            border-bottom: 4px solid var(--accent-color);
+            color: #ffffff;
+            z-index: 1040;
+            overflow-y: auto;
+            transition: transform 0.3s ease-in-out;
         }
-
-        /* Contact Cards */
-        .contact-card {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 1.75rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            border: 1px solid #edf2f7;
-            height: 100%;
-            transition: 0.3s;
+        @media (max-width: 991.98px) {
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.show { transform: translateX(0); }
         }
-
-        .contact-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary-color);
-            box-shadow: 0 10px 25px rgba(13, 92, 58, 0.08);
+        .sidebar-brand {
+            padding: 1.25rem 1rem;
+            background-color: rgba(0,0,0,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-
-        .icon-box {
-            width: 54px;
-            height: 54px;
-            border-radius: 12px;
-            background-color: rgba(13, 92, 58, 0.1);
-            color: var(--primary-color);
+        .sidebar-brand img {
+            width: 38px; height: 38px; object-fit: contain; border-radius: 8px; background: #ffffff; padding: 3px;
+        }
+        .sidebar-menu { padding: 1rem 0; list-style: none; margin: 0; }
+        .sidebar-menu .nav-item { margin: 0.2rem 0.5rem; }
+        .sidebar-menu .nav-link {
+            color: rgba(255,255,255,0.8);
+            padding: 0.65rem 0.85rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.88rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.35rem;
-            margin-bottom: 1.1rem;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.25s ease;
         }
-
-        .form-control {
-            padding: 0.7rem 1rem;
-            border-radius: 10px;
-            border-color: #cbd5e1;
-            font-size: 0.9rem;
+        .sidebar-menu .nav-link:hover, .sidebar-menu .nav-link.active {
+            color: #ffffff;
+            background-color: var(--primary-color);
         }
-
-        .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.25rem rgba(13, 92, 58, 0.15);
+        .sidebar-heading {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: rgba(255,255,255,0.4);
+            padding: 1rem 1rem 0.4rem 1rem;
+            font-weight: 700;
         }
-
-        .map-iframe-wrapper {
+        .main-content {
+            margin-left: 0;
+            min-height: 100vh;
+            padding: 1.25rem;
+            transition: margin-left 0.3s ease-in-out;
+        }
+        @media (min-width: 992px) {
+            .main-content { margin-left: var(--sidebar-width); padding: 2.25rem; }
+        }
+        .top-navbar {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 1rem 1.25rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            margin-bottom: 1.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--border-color);
+        }
+        .cms-card {
+            background: #ffffff;
             border-radius: 16px;
-            overflow: hidden;
-            height: 380px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            border: 1px solid #edf2f7;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
         }
-
-        .map-iframe-wrapper iframe { width: 100%; height: 100%; border: 0; }
-
-        /* Footer */
-        footer { background-color: #0b1510; color: #e2e8f0; font-size: 0.9rem; }
-        .footer-link { color: #a0aec0; text-decoration: none; transition: 0.2s; }
-        .footer-link:hover { color: #ffffff; padding-left: 4px; }
-        .social-link { color: var(--accent-color); transition: transform 0.2s ease; display: inline-block; }
-        .social-link:hover { color: #ffffff; transform: scale(1.1); }
-        .copyright-bar { background-color: #050a07; border-top: 1px solid #1a2e22; font-size: 0.83rem; }
+        @media (min-width: 768px) { .cms-card { padding: 2.2rem; } }
+        .form-label { font-weight: 600; font-size: 0.85rem; color: #334155; margin-bottom: 0.4rem; }
+        .form-control, .form-select { padding: 0.7rem 1rem; border-radius: 10px; border-color: #cbd5e1; font-size: 0.9rem; }
+        .btn-desa {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            border: none;
+            transition: all 0.25s ease;
+        }
+        .btn-desa:hover { background-color: var(--primary-dark); color: #ffffff; }
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; }
+        .sidebar-backdrop {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5); z-index: 1035; display: none;
+        }
+        .sidebar-backdrop.show { display: block; }
     </style>
 </head>
 <body>
+    <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
 
-    <!-- TOP HEADER -->
-    <div class="top-bar py-2 d-none d-md-block">
-        <div class="container d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center gap-3">
-                <span><i class="fas fa-map-marker-alt text-warning me-1"></i> Kec. Polongbangkeng Timur, Kab. Takalar</span>
-                <span id="topbar-email"><i class="fas fa-envelope text-warning me-1"></i> desatimbuseng1993@gmail.com</span>
-            </div>
-            <div class="d-flex align-items-center gap-3">
-                <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="fw-semibold text-warning" id="topbar-wa">
-                    <i class="fab fa-whatsapp me-1"></i> +62 852-9957-6913
-                </a>
+    <nav class="sidebar" id="appSidebar">
+        <div class="sidebar-brand d-flex align-items-center gap-3">
+            <img src="logo.png" alt="Logo" onerror="this.src='https://via.placeholder.com/38?text=DESA';">
+            <div>
+                <span class="d-block fw-bold fs-6">CMS TIMBUSENG</span>
+                <small class="text-white-50" style="font-size: 0.7rem;">Sistem Hibrida JSONBin</small>
             </div>
         </div>
-    </div>
-
-    <!-- NAVBAR UTAMA -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold d-flex align-items-center gap-2 text-decoration-none" href="index.html">
-                <img src="logo.png" alt="Logo Desa" onerror="this.onerror=null; this.src='https://via.placeholder.com/45?text=LOGO';">
-                <div class="lh-sm overflow-hidden">
-                    <span class="d-block fs-6 text-white fw-bold text-truncate">DESA TIMBUSENG</span>
-                    <small class="fw-normal text-white-50 text-uppercase d-block" style="font-size: 0.65rem;">Kabupaten Takalar</small>
-                </div>
-            </a>
-            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse bg-desa bg-lg-transparent mt-3 mt-lg-0 p-3 p-lg-0 rounded-3 rounded-lg-0 shadow-sm shadow-lg-none" id="navbarNav">
-                <ul class="navbar-nav ms-auto fw-semibold py-2 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="profil.html"><i class="fas fa-landmark me-1"></i> Profil Desa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="peta.html"><i class="fas fa-map-marked-alt me-1"></i> Peta Digital</a></li>
-                    <li class="nav-item"><a class="nav-link" href="informasi.html"><i class="fas fa-bullhorn me-1"></i> Informasi Publik</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pengaduan.html"><i class="fas fa-paper-plane me-1"></i> Pengaduan Warga</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="kontak.html"><i class="fas fa-envelope-open-text me-1"></i> Kontak</a></li>
-                </ul>
-            </div>
-        </div>
+        <ul class="sidebar-menu">
+            <li class="sidebar-heading">Konfigurasi Sistem</li>
+            <li class="nav-item"><a class="nav-link active" onclick="switchTab('tab-github', this)"><i class="fab fa-github"></i> <span>GitHub & Auth Gambar</span></a></li>
+            
+            <li class="sidebar-heading">Halaman Utama & Info</li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-index', this)"><i class="fas fa-home"></i> <span>index.html</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-profil', this)"><i class="fas fa-landmark"></i> <span>profil.html</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-informasi', this)"><i class="fas fa-bullhorn"></i> <span>informasi.html</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-kontak', this)"><i class="fas fa-phone-alt"></i> <span>kontak.html</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-peta', this)"><i class="fas fa-map-marked-alt"></i> <span>peta.html</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-pengaduan', this)"><i class="fas fa-paper-plane"></i> <span>pengaduan.html</span></a></li>
+            
+            <li class="sidebar-heading">Lembaga & Aparat Desa</li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-pemdes', this)"><i class="fas fa-users-cog"></i> <span>pemdes.html</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-bpd', this)"><i class="fas fa-university"></i> <span>bpd.html</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-lpm', this)"><i class="fas fa-hands-helping"></i> <span>lpm.html</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-pkk', this)"><i class="fas fa-female"></i> <span>pkk.html</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-karang-taruna', this)"><i class="fas fa-seedling"></i> <span>karang-taruna.html</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-bumdes', this)"><i class="fas fa-store"></i> <span>bumdes.html</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-babinsa', this)"><i class="fas fa-shield-alt"></i> <span>babinsa.html</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-bimnas', this)"><i class="fas fa-user-shield"></i> <span>bimnas.html</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-iman-desa', this)"><i class="fas fa-mosque"></i> <span>iman-desa.html</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-kdmp', this)"><i class="fas fa-warehouse"></i> <span>kdmp.html</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-kmp', this)"><i class="fas fa-leaf"></i> <span>kmp.html</span></a></li>
+            
+            <li class="sidebar-heading">Wilayah 7 Dusun</li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-dusun1', this)"><i class="fas fa-map-pin"></i> <span>Timbuseng I</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-dusun2', this)"><i class="fas fa-map-pin"></i> <span>Timbuseng II</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-dusun3', this)"><i class="fas fa-map-pin"></i> <span>Sauleya</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-dusun4', this)"><i class="fas fa-map-pin"></i> <span>Tanasambayang</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-dusun5', this)"><i class="fas fa-map-pin"></i> <span>Bontobaddo</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-dusun6', this)"><i class="fas fa-map-pin"></i> <span>Panaikang I</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-dusun7', this)"><i class="fas fa-map-pin"></i> <span>Panaikang II</span></a></li>
+        </ul>
     </nav>
 
-    <!-- PAGE HEADER -->
-    <header class="page-header">
-        <div class="container">
-            <h1 class="fw-bold mb-2" style="font-size: clamp(1.7rem, 3.2vw, 2.4rem);">Kontak & Lokasi Kantor Desa</h1>
-            <p class="text-white-50 mx-auto" style="font-size: clamp(0.85rem, 1.8vw, 0.98rem); max-width: 650px; line-height: 1.6;">
-                Silakan hubungi kami atau kunjungi Kantor Desa Timbuseng untuk mendapatkan pelayanan administrasi dan informasi publik.
-            </p>
+    <div class="main-content">
+        <div class="top-navbar">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-outline-success d-lg-none btn-sm" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+                <h4 class="fw-bold mb-0 text-dark fs-5" id="current-title">GitHub & Auth Gambar</h4>
+            </div>
+            <a href="index.html" target="_blank" class="btn btn-outline-success btn-sm fw-bold"><i class="fas fa-globe me-1"></i> Lihat Web</a>
         </div>
-    </header>
 
-    <!-- KARTU INFORMASI KONTAK -->
-    <section class="py-5">
-        <div class="container">
-            <div class="row g-4 mb-5">
+        <div id="alert-box" class="alert alert-success d-none shadow-sm mb-4">
+            <i class="fas fa-check-circle me-2"></i><span id="alert-message">Notifikasi sistem</span>
+        </div>
+
+        <!-- TAB 1: GITHUB CONFIG -->
+        <div id="tab-github" class="tab-pane active">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fab fa-github text-success me-2"></i>Konfigurasi Kunci API GitHub (Untuk Upload Gambar)</h4>
+                <form onsubmit="saveAuth(event)">
+                    <div class="row g-3">
+                        <div class="col-md-4"><label class="form-label">Username GitHub</label><input type="text" class="form-control" id="gh_user"></div>
+                        <div class="col-md-4"><label class="form-label">Repository Name</label><input type="text" class="form-control" id="gh_repo"></div>
+                        <div class="col-md-4"><label class="form-label">Personal Access Token (PAT)</label><input type="password" class="form-control" id="gh_token"></div>
+                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Konfigurasi Kunci API</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 2: INDEX.HTML -->
+        <div id="tab-index" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-home text-success me-2"></i>index.html - Beranda Desa</h4>
+                <form onsubmit="saveSectionData(event, 'index')">
+                    <div class="row g-3">
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Disini tempat form input untuk Beranda ]</div></div>
+                        <div class="col-md-12"><label class="form-label">Running Text</label><textarea class="form-control" name="running_text" rows="2"></textarea></div>
+                        <div class="col-md-3"><label class="form-label">Total Penduduk</label><input type="text" class="form-control" name="total_pop"></div>
+                        <div class="col-md-3"><label class="form-label">Luas Wilayah (Ha)</label><input type="text" class="form-control" name="total_area"></div>
+                        <div class="col-md-3"><label class="form-label">Wilayah Dusun</label><input type="text" class="form-control" name="total_dusun"></div>
+                        <div class="col-md-3"><label class="form-label">Kepala Keluarga</label><input type="text" class="form-control" name="total_kk"></div>
+                        <div class="col-md-12"><label class="form-label">Upload Foto Latar Belakang (Hero)</label><input type="file" class="form-control" name="hero_bg" accept="image/*"></div>
+                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Perubahan Index</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 3: PROFIL.HTML -->
+        <div id="tab-profil" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-landmark text-success me-2"></i>profil.html - Profil & Visi Misi Desa</h4>
+                <p class="text-muted small mb-4">Kelola Visi, Poin Misi, serta nama Pimpinan Utama (Kepala Desa & Sekretaris Desa) yang tampil di halaman profil publik.</p>
                 
-                <!-- Alamat -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="contact-card">
-                        <div class="icon-box"><i class="fas fa-map-marked-alt"></i></div>
-                        <h5 class="fw-bold text-dark mb-2 fs-6">Alamat Kantor</h5>
-                        <p class="text-muted small mb-0" id="info-alamat" style="font-size: 0.85rem;">Kantor Desa Timbuseng, Kecamatan Polongbangkeng Timur, Kabupaten Takalar, Sulawesi Selatan 92221</p>
+                <form onsubmit="saveSectionData(event, 'profil')">
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <label class="form-label">Visi Desa Timbuseng</label>
+                            <textarea class="form-control" name="visi" rows="2" placeholder="Tulis visi desa di sini..."></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Misi Desa (Pisahkan setiap poin misi dengan baris baru / Enter)</label>
+                            <textarea class="form-control" name="misi" rows="5" placeholder="Poin misi 1&#10;Poin misi 2&#10;Poin misi 3&#10;Poin misi 4"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Nama Kepala Desa</label>
+                            <input type="text" class="form-control" name="kades" placeholder="Cth: Kaharuddin, S.P.">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Nama Sekretaris Desa</label>
+                            <input type="text" class="form-control" name="sekdes" placeholder="Cth: Haeruddin, S.Pd.I">
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-save me-2"></i>Simpan Perubahan Profil</button>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Jam Operasional -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="contact-card">
-                        <div class="icon-box"><i class="fas fa-clock"></i></div>
-                        <h5 class="fw-bold text-dark mb-2 fs-6">Jam Layanan</h5>
-                        <p class="text-muted small mb-1" id="info-jam" style="font-size: 0.85rem;"><strong>Senin - Jumat:</strong> 08.00 - 16.00 WITA</p>
-                        <p class="text-muted small mb-0" style="font-size: 0.85rem;"><strong>Sabtu - Minggu:</strong> Libur</p>
-                    </div>
-                </div>
-
-                <!-- Telepon / WhatsApp -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="contact-card">
-                        <div class="icon-box"><i class="fas fa-phone-alt"></i></div>
-                        <h5 class="fw-bold text-dark mb-2 fs-6">Telepon / WhatsApp</h5>
-                        <p class="text-muted small mb-2" id="info-telepon" style="font-size: 0.85rem;">+62 852-9957-6913</p>
-                        <a href="https://wa.me/6285299576913" id="link-wa" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-success rounded-pill fw-semibold shadow-sm" style="font-size: 0.8rem;">
-                            <i class="fab fa-whatsapp me-1"></i> Kirim WhatsApp
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Email & Sosial Media -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="contact-card">
-                        <div class="icon-box"><i class="fas fa-envelope"></i></div>
-                        <h5 class="fw-bold text-dark mb-2 fs-6">Email & Sosmed</h5>
-                        <p class="text-muted small mb-2 text-break" id="info-email" style="font-size: 0.85rem;">desatimbuseng1993@gmail.com</p>
-                        <a href="https://www.instagram.com/desa_timbuseng" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-warning text-dark rounded-pill fw-semibold shadow-sm" style="font-size: 0.8rem;">
-                            <i class="fab fa-instagram me-1"></i> Instagram Resmi
-                        </a>
-                    </div>
-                </div>
-
+                </form>
             </div>
+        </div>
 
-            <!-- FORM KIRIM PESAN & PETA GOOGLE -->
-            <div class="row g-5">
+        <!-- TAB 4: INFORMASI.HTML -->
+        <div id="tab-informasi" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-bullhorn text-success me-2"></i>informasi.html - Berita & Agenda</h4>
+                <p class="text-muted small mb-4">Kelola pengumuman agenda kegiatan mendatang atau berita kompleks beserta gambar untuk halaman informasi publik.</p>
                 
-                <!-- Form Pesan -->
-                <div class="col-lg-6">
-                    <div class="bg-white p-4 p-md-5 rounded-4 border shadow-sm h-100">
-                        <h4 class="fw-bold text-dark mb-2 fs-5"><i class="fas fa-paper-plane text-success me-2"></i>Kirim Pesan / Pertanyaan</h4>
-                        <p class="text-muted small mb-4" style="font-size: 0.85rem;">Pesan Anda akan terkirim langsung ke pusat data Sekretariat Pemerintah Desa Timbuseng.</p>
-                        
-                        <form id="formKontak" onsubmit="handleSendMessage(event)">
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold small">Nama Lengkap <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="nama" id="kontak-nama" placeholder="Masukkan nama Anda" required>
-                            </div>
-                            <div class="row g-3 mb-3">
-                                <div class="col-md-6">
-                                    <label class="form-label fw-semibold small">Alamat Email</label>
-                                    <input type="email" class="form-control" name="email" id="kontak-email" placeholder="contoh@email.com">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label fw-semibold small">Nomor Telepon / WA <span class="text-danger">*</span></label>
-                                    <input type="tel" class="form-control" name="telepon" id="kontak-telepon" placeholder="0852xxxxxxxx" required>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold small">Subjek Pesan <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="subjek" id="kontak-subjek" placeholder="Topik atau judul pesan" required>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label fw-semibold small">Isi Pesan <span class="text-danger">*</span></label>
-                                <textarea class="form-control" name="pesan" id="kontak-pesan" rows="4" placeholder="Tuliskan pertanyaan atau pesan Anda di sini..." required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-success bg-desa px-5 py-3 rounded-pill fw-bold w-100 shadow-sm" style="font-size: 0.9rem;">
-                                <i class="fas fa-paper-plane me-2"></i>Kirim Pesan Sekarang
-                            </button>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Peta Lokasi Kantor Desa -->
-                <div class="col-lg-6">
-                    <div class="bg-white p-4 p-md-5 rounded-4 border shadow-sm h-100 d-flex flex-column justify-content-between">
-                        <div>
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="fw-bold text-dark mb-0 fs-5"><i class="fas fa-map-pin text-danger me-2"></i>Lokasi Kantor Desa</h4>
-                                <a href="https://maps.app.goo.gl/j5uLCa8Rv3S7iW9TA" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-success rounded-pill fw-semibold">
-                                    <i class="fas fa-directions me-1"></i> Petunjuk Arah
-                                </a>
-                            </div>
-                            <p class="text-muted small mb-4" style="font-size: 0.85rem;">Gunakan peta interaktif di bawah ini untuk memandu perjalanan Anda menuju Kantor Desa Timbuseng.</p>
+                <form onsubmit="handleInformasiSubmit(event)">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Pilih Jenis Konten</label>
+                            <select class="form-select" id="info_type" onchange="toggleInfoFields()">
+                                <option value="news">Berita Desa / Liputan</option>
+                                <option value="schedule">Agenda / Pengumuman</option>
+                            </select>
                         </div>
-
-                        <div class="map-iframe-wrapper flex-grow-1 mt-2">
-                            <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15891.7583624!2d119.52!3d-5.42!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbee32c7f4e8b35%3A0xf01e428e83311a0!2sTimbuseng%2C%20Polongbangkeng%20Timur%2C%20Takalar%20Regency%2C%20South%20Sulawesi!5e0!3m2!1sid!2sid!4v1650000000000!5m2!1sid!2sid" 
-                                allowfullscreen="" 
-                                loading="lazy" 
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
+                        <div class="col-md-6">
+                            <label class="form-label">Judul Berita / Agenda</label>
+                            <input type="text" class="form-control" id="info_title" placeholder="Cth: Penyuluhan Pertanian" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" id="label_meta">Kategori / Badge (Cth: Berita Desa)</label>
+                            <input type="text" class="form-control" id="info_meta" placeholder="Cth: Pemerintahan / 18 Mar 2026">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Upload Foto / Cover</label>
+                            <input type="file" class="form-control" id="info_image" accept="image/*">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Ringkasan Singkat</label>
+                            <textarea class="form-control" id="info_summary" rows="2" placeholder="Teks singkat yang tampil di kartu utama..."></textarea>
+                        </div>
+                        <div class="col-md-12" id="wrapper_content">
+                            <label class="form-label">Isi Lengkap Berita (Untuk Modal Baca Selengkapnya)</label>
+                            <textarea class="form-control" id="info_content" rows="4" placeholder="Tulis uraian lengkap berita di sini..."></textarea>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-plus-circle me-2"></i>Tambah & Simpan ke Informasi Publik</button>
                         </div>
                     </div>
-                </div>
+                </form>
 
-            </div>
-        </div>
-    </section>
+                <hr class="my-4">
 
-    <!-- FOOTER -->
-    <footer class="pt-5">
-        <div class="container pb-4">
-            <div class="row g-4">
-                <div class="col-12 col-lg-5 text-center text-lg-start">
-                    <div class="d-flex align-items-center justify-content-center justify-content-lg-start gap-3 mb-3">
-                        <img src="logo.png" alt="Logo Desa" style="height: 44px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/45?text=LOGO';">
-                        <div>
-                            <h5 class="fw-bold text-white mb-0 fs-6">Pemerintah Desa Timbuseng</h5>
-                            <small class="text-white-50" style="font-size: 0.75rem;">Kec. Polongbangkeng Timur, Kab. Takalar</small>
-                        </div>
-                    </div>
-                    <p class="text-white-50 pe-lg-4" style="font-size: 0.85rem;">
-                        Portal resmi Sistem Informasi Desa Timbuseng. Menyajikan data profil, transparansi tata kelola pemerintahan, layanan pengaduan masyarakat, serta pemetaan wilayah desa.
-                    </p>
-                    <div class="d-flex justify-content-center justify-content-lg-start gap-3 fs-5 mt-3">
-                        <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="social-link footer-wa-icon" title="WhatsApp Resmi"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.instagram.com/desa_timbuseng" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram Resmi"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <h6 class="fw-bold text-white mb-3 text-uppercase" style="font-size: 0.85rem;">Navigasi Utama</h6>
-                    <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 0.85rem;">
-                        <li><a href="index.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Beranda</a></li>
-                        <li><a href="profil.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Profil Desa & Perangkat</a></li>
-                        <li><a href="peta.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Peta Digital Wilayah</a></li>
-                        <li><a href="informasi.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Informasi & Berita Desa</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md-8 col-lg-4">
-                    <h6 class="fw-bold text-white mb-3 text-uppercase" style="font-size: 0.85rem;">Kontak Kantor Desa</h6>
-                    <ul class="list-unstyled d-flex flex-column gap-2 text-white-50" style="font-size: 0.85rem;">
-                        <li class="d-flex align-items-start gap-2">
-                            <i class="fas fa-map-marker-alt text-warning mt-1"></i>
-                            <span id="footer-alamat">Kantor Desa Timbuseng, Kec. Polongbangkeng Timur, Kab. Takalar, Sulsel 92221</span>
-                        </li>
-                        <li class="d-flex align-items-center gap-2">
-                            <i class="fab fa-whatsapp text-warning"></i>
-                            <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none" id="footer-wa-text">
-                                +62 852-9957-6913 (WhatsApp)
-                            </a>
-                        </li>
-                        <li class="d-flex align-items-center gap-2">
-                            <i class="fas fa-envelope text-warning"></i>
-                            <span id="footer-email">desatimbuseng1993@gmail.com</span>
-                        </li>
-                    </ul>
+                <h5 class="fw-bold text-dark fs-6 mb-3"><i class="fas fa-list me-2 text-success"></i>Daftar Informasi Aktif</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm align-middle small">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width: 100px;">Tipe</th>
+                                <th>Judul</th>
+                                <th class="text-center" style="width: 80px;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-informasi-body">
+                            <!-- Dimuat lewat JS -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-        <div class="copyright-bar py-3 text-center text-white-50">
-            <div class="container">
-                <p class="mb-0">©2026 P10 KKN UHM | Pemerintah Desa Timbuseng, Polongbangkeng Timur, Takalar. All Rights Reserved.</p>
+
+        <!-- TAB 5: KONTAK.HTML (DIPERBARUI & DILENGKAPI KELOLA PESAN MASUK) -->
+        <div id="tab-kontak" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-phone-alt text-success me-2"></i>kontak.html - Kelola Kontak & Pesan Masuk</h4>
+                <p class="text-muted small mb-4">Kelola informasi alamat kantor, nomor WhatsApp/Telepon resmi, dan email desa yang tampil di halaman kontak, serta tinjau pesan masuk dari warga.</p>
+                
+                <form onsubmit="saveSectionData(event, 'kontak')" class="mb-4">
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <label class="form-label">Alamat Kantor Desa</label>
+                            <input type="text" class="form-control" name="alamat" placeholder="Cth: Kantor Desa Timbuseng, Kec. Polongbangkeng Timur, Kab. Takalar">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">WhatsApp / Telepon Resmi</label>
+                            <input type="text" class="form-control" name="wa" placeholder="Cth: +62 852-9957-6913">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Email Desa</label>
+                            <input type="text" class="form-control" name="email" placeholder="Cth: desatimbuseng1993@gmail.com">
+                        </div>
+                        <div class="col-12 mt-3">
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-save me-2"></i>Simpan Konfigurasi Kontak</button>
+                        </div>
+                    </div>
+                </form>
+
+                <hr class="my-4">
+
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                    <h5 class="fw-bold text-dark fs-6 mb-0"><i class="fas fa-envelope-open-text me-2 text-success"></i>Daftar Pesan Masuk dari Warga</h5>
+                    <button class="btn btn-success btn-sm fw-semibold shadow-sm" onclick="downloadMessagesCSV()">
+                        <i class="fas fa-file-excel me-1"></i> Download Rekap Pesan (CSV)
+                    </button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm align-middle small">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width: 110px;">Tanggal</th>
+                                <th style="width: 150px;">Pengirim</th>
+                                <th style="width: 160px;">Kontak & Email</th>
+                                <th>Subjek & Isi Pesan</th>
+                                <th class="text-center" style="width: 70px;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-messages-body">
+                            <!-- Dimuat dinamis lewat JS -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </footer>
 
-    <!-- Bootstrap 5 JS -->
+        <!-- TAB 6: PETA.HTML -->
+        <div id="tab-peta" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-map-marked-alt text-success me-2"></i>peta.html - Peta & Statistik Lahan</h4>
+                <form onsubmit="saveSectionData(event, 'peta')">
+                    <div class="row g-3">
+                        <div class="col-md-4"><label class="form-label">Total Luas Wilayah (Ha)</label><input type="text" class="form-control" name="luas_total"></div>
+                        <div class="col-md-4"><label class="form-label">Perkebunan Tebu (Ha)</label><input type="text" class="form-control" name="luas_tebu"></div>
+                        <div class="col-md-4"><label class="form-label">Sawah Irigasi (Ha)</label><input type="text" class="form-control" name="luas_sawah"></div>
+                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Peta</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 7: PENGADUAN.HTML (PENGELOLAAN LENGKAP) -->
+        <div id="tab-pengaduan" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-paper-plane text-success me-2"></i>pengaduan.html - Kelola Layanan Pengaduan</h4>
+                <p class="text-muted small mb-4">Kelola nomor WhatsApp layanan pengaduan, tinjau aspirasi warga yang masuk secara real-time, hapus data, atau unduh rekapitulasi laporan.</p>
+                
+                <form onsubmit="saveSectionData(event, 'pengaduan')" class="mb-4">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">WhatsApp Pengaduan Resmi</label>
+                            <input type="text" class="form-control" name="wa_aduan" placeholder="+62 852-9957-6913">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Email Pengaduan</label>
+                            <input type="text" class="form-control" name="email_aduan" placeholder="desatimbuseng1993@gmail.com">
+                        </div>
+                        <div class="col-12 mt-3">
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-save me-2"></i>Simpan Kontak Pengaduan</button>
+                        </div>
+                    </div>
+                </form>
+
+                <hr class="my-4">
+
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                    <h5 class="fw-bold text-dark fs-6 mb-0"><i class="fas fa-list-alt me-2 text-success"></i>Daftar Laporan & Aspirasi Masuk</h5>
+                    <button class="btn btn-success btn-sm fw-semibold shadow-sm" onclick="downloadComplaintsCSV()">
+                        <i class="fas fa-file-excel me-1"></i> Download Rekap Laporan (CSV)
+                    </button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm align-middle small">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width: 100px;">Tanggal</th>
+                                <th style="width: 160px;">Pelapor</th>
+                                <th style="width: 160px;">Dusun & Kategori</th>
+                                <th>Perihal & Isi Pengaduan</th>
+                                <th class="text-center" style="width: 70px;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-complaints-body">
+                            <!-- Dimuat dinamis lewat JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 8: PEMDES.HTML -->
+        <div id="tab-pemdes" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-users-cog text-success me-2"></i>pemdes.html - Pemerintah Desa</h4>
+                <form onsubmit="saveSectionData(event, 'pemdes')">
+                    <div class="row g-3">
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area pemdes.html ]</div></div>
+                        <div class="col-md-6"><label class="form-label">Nama Kepala Desa</label><input type="text" class="form-control" name="kades"></div>
+                        <div class="col-md-6"><label class="form-label">Sekretaris Desa</label><input type="text" class="form-control" name="sekdes"></div>
+                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Pemdes</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 9: BPD.HTML -->
+        <div id="tab-bpd" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-university text-success me-2"></i>bpd.html - BPD</h4>
+                <form onsubmit="saveSectionData(event, 'bpd')">
+                    <div class="row g-3">
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area bpd.html ]</div></div>
+                        <div class="col-md-6"><label class="form-label">Ketua BPD</label><input type="text" class="form-control" name="ketua"></div>
+                        <div class="col-md-6"><label class="form-label">Statistik Rapat</label><input type="text" class="form-control" name="stat_rapat"></div>
+                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan BPD</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 10: LPM.HTML -->
+        <div id="tab-lpm" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-hands-helping text-success me-2"></i>lpm.html - LPM</h4>
+                <form onsubmit="saveSectionData(event, 'lpm')">
+                    <div class="row g-3">
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area lpm.html ]</div></div>
+                        <div class="col-md-6"><label class="form-label">Ketua LPM</label><input type="text" class="form-control" name="ketua"></div>
+                        <div class="col-md-6"><label class="form-label">Statistik Proyek</label><input type="text" class="form-control" name="stat_proyek"></div>
+                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan LPM</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 11: PKK.HTML -->
+        <div id="tab-pkk" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-female text-success me-2"></i>pkk.html - TP-PKK</h4>
+                <form onsubmit="saveSectionData(event, 'pkk')">
+                    <div class="row g-3">
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area pkk.html ]</div></div>
+                        <div class="col-md-6"><label class="form-label">Ketua TP-PKK</label><input type="text" class="form-control" name="ketua"></div>
+                        <div class="col-md-6"><label class="form-label">Statistik Kader Aktif</label><input type="text" class="form-control" name="stat_kader"></div>
+                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan PKK</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 12: KARANG-TARUNA.HTML -->
+        <div id="tab-karang-taruna" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-seedling text-success me-2"></i>karang-taruna.html - Karang Taruna</h4>
+                <form onsubmit="saveSectionData(event, 'karang_taruna')">
+                    <div class="row g-3">
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area karang-taruna.html ]</div></div>
+                        <div class="col-md-6"><label class="form-label">Ketua Karang Taruna</label><input type="text" class="form-control" name="ketua"></div>
+                        <div class="col-md-6"><label class="form-label">Statistik Anggota</label><input type="text" class="form-control" name="stat_anggota"></div>
+                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Karang Taruna</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 13: BUMDES.HTML -->
+        <div id="tab-bumdes" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-store text-success me-2"></i>bumdes.html - BUMDes</h4>
+                <form onsubmit="saveSectionData(event, 'bumdes')">
+                    <div class="row g-3">
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area bumdes.html ]</div></div>
+                        <div class="col-md-6"><label class="form-label">Direktur BUMDes</label><input type="text" class="form-control" name="direktur"></div>
+                        <div class="col-md-6"><label class="form-label">Statistik Aset</label><input type="text" class="form-control" name="stat_aset"></div>
+                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan BUMDes</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 14: BABINSA.HTML -->
+        <div id="tab-babinsa" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-shield-alt text-success me-2"></i>babinsa.html - Babinsa</h4>
+                <form onsubmit="saveSectionData(event, 'babinsa')">
+                    <div class="row g-3">
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area babinsa.html ]</div></div>
+                        <div class="col-md-6"><label class="form-label">Nama Personel</label><input type="text" class="form-control" name="nama"></div>
+                        <div class="col-md-6"><label class="form-label">Kontak</label><input type="text" class="form-control" name="kontak"></div>
+                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Babinsa</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 15: BIMNAS.HTML -->
+        <div id="tab-bimnas" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-user-shield text-success me-2"></i>bimnas.html - Bhabinkamtibmas</h4>
+                <form onsubmit="saveSectionData(event, 'bimnas')">
+                    <div class="row g-3">
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area bimnas.html ]</div></div>
+                        <div class="col-md-6"><label class="form-label">Nama Personel</label><input type="text" class="form-control" name="nama"></div>
+                        <div class="col-md-6"><label class="form-label">Kontak Polsek</label><input type="text" class="form-control" name="kontak"></div>
+                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Bhabinkamtibmas</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 16: IMAN-DESA.HTML -->
+        <div id="tab-iman-desa" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-mosque text-success me-2"></i>iman-desa.html - Imam Desa</h4>
+                <form onsubmit="saveSectionData(event, 'iman_desa')">
+                    <div class="row g-3">
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area iman-desa.html ]</div></div>
+                        <div class="col-md-6"><label class="form-label">Nama Imam Desa</label><input type="text" class="form-control" name="nama"></div>
+                        <div class="col-md-6"><label class="form-label">Jadwal Pengajian</label><input type="text" class="form-control" name="jadwal"></div>
+                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Imam Desa</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 17: KDMP.HTML -->
+        <div id="tab-kdmp" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-warehouse text-success me-2"></i>kdmp.html - KDMP</h4>
+                <form onsubmit="saveSectionData(event, 'kdmp')">
+                    <div class="row g-3">
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area kdmp.html ]</div></div>
+                        <div class="col-md-6"><label class="form-label">Ketua KDMP</label><input type="text" class="form-control" name="ketua"></div>
+                        <div class="col-md-6"><label class="form-label">Statistik Lahan</label><input type="text" class="form-control" name="stat_lahan"></div>
+                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan KDMP</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 18: KMP.HTML -->
+        <div id="tab-kmp" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-leaf text-success me-2"></i>kmp.html - KMP</h4>
+                <form onsubmit="saveSectionData(event, 'kmp')">
+                    <div class="row g-3">
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area kmp.html ]</div></div>
+                        <div class="col-md-6"><label class="form-label">Pengelola KMP</label><input type="text" class="form-control" name="pengelola"></div>
+                        <div class="col-md-3"><label class="form-label">Statistik Kader Aktif</label><input type="text" class="form-control" name="stat_kader"></div>
+                        <div class="col-md-3"><label class="form-label">Statistik Dasawisma</label><input type="text" class="form-control" name="stat_dasawisma"></div>
+                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan KMP</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 19-25: 7 DUSUN -->
+        <div id="tab-dusun1" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Timbuseng I</h4><form onsubmit="saveSectionData(event, 'dusun1')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Timbuseng I ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-md-6"><label>Statistik Populasi</label><input type="text" class="form-control" name="stat_populasi"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 1</button></div></div></form></div></div>
+        <div id="tab-dusun2" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Timbuseng II</h4><form onsubmit="saveSectionData(event, 'dusun2')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Timbuseng II ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 2</button></div></div></form></div></div>
+        <div id="tab-dusun3" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Sauleya</h4><form onsubmit="saveSectionData(event, 'dusun3')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Sauleya ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 3</button></div></div></form></div></div>
+        <div id="tab-dusun4" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Tanasambayang</h4><form onsubmit="saveSectionData(event, 'dusun4')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Tanasambayang ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 4</button></div></div></form></div></div>
+        <div id="tab-dusun5" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Bontobaddo</h4><form onsubmit="saveSectionData(event, 'dusun5')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Bontobaddo ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 5</button></div></div></form></div></div>
+        <div id="tab-dusun6" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Panaikang I</h4><form onsubmit="saveSectionData(event, 'dusun6')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Panaikang I ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 6</button></div></div></form></div></div>
+        <div id="tab-dusun7" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Panaikang II</h4><form onsubmit="saveSectionData(event, 'dusun7')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Panaikang II ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 7</button></div></div></form></div></div>
+
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- SCRIPT SINKRONISASI JSONBIN API & KIRIM PESAN -->
     <script>
         const API_KEY = "$2a$10$wbLvXvg7KqU.nSiV2NXihOzbcQnKyWuRhAggoR26QUpcDQE.WVBaW";
         const BIN_SISTEM = "6aa93e9affd5d1605309c685";
         const BIN_INFO = "6aa94007ac6210605ad03b27";
+        
+        let masterSistem = {};
+        let masterInfo = { news: [], schedules: [], complaints: [], messages: [] };
 
-        document.addEventListener("DOMContentLoaded", async function() {
+        function toggleSidebar() {
+            document.getElementById('appSidebar').classList.toggle('show');
+            document.getElementById('sidebarBackdrop').classList.toggle('show');
+        }
+
+        function switchTab(tabId, el) {
+            document.querySelectorAll('.tab-pane').forEach(e => e.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(e => e.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            if(el) el.classList.add('active');
+            if(window.innerWidth < 992) toggleSidebar();
+        }
+
+        function showAlert(msg, autoHide = true) {
+            const box = document.getElementById('alert-box');
+            document.getElementById('alert-message').innerText = msg;
+            box.classList.remove('d-none');
+            if(autoHide) setTimeout(() => box.classList.add('d-none'), 4000);
+        }
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            document.getElementById('gh_user').value = localStorage.getItem('gh_user') || '';
+            document.getElementById('gh_repo').value = localStorage.getItem('gh_repo') || '';
+            document.getElementById('gh_token').value = localStorage.getItem('gh_token') || '';
+
             try {
-                // Ambil data konfigurasi kontak dari server admin (JSONBin)
-                const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_SISTEM}/latest`, {
-                    headers: { 'X-Master-Key': API_KEY }
-                });
-                if (response.ok) {
-                    const result = await response.json();
-                    const data = result.record;
-                    if (data.kontak) {
-                        const k = data.kontak;
-                        if(k.alamat) {
-                            document.getElementById('info-alamat').innerText = k.alamat;
-                            document.getElementById('footer-alamat').innerText = k.alamat;
-                        }
-                        if(k.wa) {
-                            const cleanWa = k.wa.replace(/\D/g,'');
-                            document.getElementById('info-telepon').innerText = k.wa;
-                            document.getElementById('topbar-wa').innerHTML = `<i class="fab fa-whatsapp me-1"></i> ${k.wa}`;
-                            document.getElementById('topbar-wa').href = `https://wa.me/${cleanWa}`;
-                            document.getElementById('link-wa').href = `https://wa.me/${cleanWa}`;
-                            document.getElementById('footer-wa-text').innerText = `${k.wa} (WhatsApp)`;
-                            document.getElementById('footer-wa-text').href = `https://wa.me/${cleanWa}`;
-                            document.querySelectorAll('.footer-wa-icon').forEach(el => el.href = `https://wa.me/${cleanWa}`);
-                        }
-                        if(k.email) {
-                            document.getElementById('info-email').innerText = k.email;
-                            document.getElementById('topbar-email').innerHTML = `<i class="fas fa-envelope text-warning me-1"></i> ${k.email}`;
-                            document.getElementById('footer-email').innerText = k.email;
-                        }
-                    }
-                }
-            } catch (err) {
-                console.error("Gagal memuat data kontak dari server:", err);
+                const resSys = await fetch(`https://api.jsonbin.io/v3/b/${BIN_SISTEM}/latest`, { headers: { 'X-Master-Key': API_KEY } });
+                const dataSys = await resSys.json();
+                masterSistem = dataSys.record;
+                
+                const resInf = await fetch(`https://api.jsonbin.io/v3/b/${BIN_INFO}/latest`, { headers: { 'X-Master-Key': API_KEY } });
+                const dataInf = await resInf.json();
+                masterInfo = dataInf.record;
+
+                populateSemuaForm();
+                renderInfoTable();
+                renderComplaintsTable();
+                renderMessagesTable();
+            } catch (error) {
+                console.error("Gagal memuat data awal", error);
             }
         });
 
-        // Kirim Pesan Kontak ke Server JSONBin (Agar bisa dibaca/dikelola di Admin)
-        async function handleSendMessage(event) {
+        function populateSemuaForm() {
+            for (let sectionKey in masterSistem) {
+                const sectionData = masterSistem[sectionKey];
+                const form = document.querySelector(`#tab-${sectionKey.replace('_', '-')} form`);
+                if(form && typeof sectionData === 'object') {
+                    for(let inputName in sectionData) {
+                        const inputElement = form.querySelector(`[name="${inputName}"]`);
+                        if(inputElement && inputElement.type !== 'file') {
+                            inputElement.value = sectionData[inputName];
+                        }
+                    }
+                }
+            }
+        }
+
+        function saveAuth(e) {
+            e.preventDefault();
+            localStorage.setItem('gh_user', document.getElementById('gh_user').value);
+            localStorage.setItem('gh_repo', document.getElementById('gh_repo').value);
+            localStorage.setItem('gh_token', document.getElementById('gh_token').value);
+            showAlert("Konfigurasi Kunci API GitHub Berhasil Disimpan!");
+        }
+
+        async function uploadImageToGitHub(file) {
+            const user = localStorage.getItem('gh_user');
+            const repo = localStorage.getItem('gh_repo');
+            const token = localStorage.getItem('gh_token');
+            if(!user || !repo || !token) throw new Error("Kunci API GitHub belum diisi pada tab konfigurasi!");
+
+            const fileName = `img_${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
+            const base64 = await new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result.split(',')[1]);
+            });
+
+            const url = `https://api.github.com/repos/${user}/${repo}/contents/assets/${fileName}`;
+            const res = await fetch(url, {
+                method: 'PUT',
+                headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: "Upload gambar dari CMS Admin", content: base64 })
+            });
+            if(!res.ok) throw new Error("Gagal mengunggah foto ke GitHub");
+            return fileName;
+        }
+
+        async function saveSectionData(event, sectionKey) {
             event.preventDefault();
-            
-            const submitBtn = event.target.querySelector('button[type="submit"]');
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Mengirim Pesan...';
-
-            const nama = document.getElementById('kontak-nama').value.trim();
-            const email = document.getElementById('kontak-email').value.trim();
-            const telepon = document.getElementById('kontak-telepon').value.trim();
-            const subjek = document.getElementById('kontak-subjek').value.trim();
-            const pesan = document.getElementById('kontak-pesan').value.trim();
-            
-            const tanggal = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }) + ' ' + 
-                            new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
-
-            const newMessage = {
-                id: Date.now(),
-                date: tanggal,
-                nama: nama,
-                email: email,
-                telepon: telepon,
-                subjek: subjek,
-                pesan: pesan
-            };
-
+            showAlert(`Menyimpan data ${sectionKey}...`, false);
             try {
-                let currentData = { news: [], schedules: [], complaints: [], messages: [] };
-                const resGet = await fetch(`https://api.jsonbin.io/v3/b/${BIN_INFO}/latest`, {
-                    headers: { 'X-Master-Key': API_KEY }
-                });
-                if(resGet.ok) {
-                    const jsonRes = await resGet.json();
-                    currentData = jsonRes.record;
+                const form = event.target;
+                if(!masterSistem[sectionKey]) masterSistem[sectionKey] = {};
+                
+                const fileInput = form.querySelector('input[type="file"]');
+                if (fileInput && fileInput.files.length > 0) {
+                    const fileName = await uploadImageToGitHub(fileInput.files[0]);
+                    masterSistem[sectionKey][fileInput.name] = fileName;
                 }
 
-                if(!currentData.messages) currentData.messages = [];
-                currentData.messages.unshift(newMessage);
-
-                const resPut = await fetch(`https://api.jsonbin.io/v3/b/${BIN_INFO}`, {
-                    method: 'PUT',
-                    headers: { 'Content-Type': 'application/json', 'X-Master-Key': API_KEY },
-                    body: JSON.stringify(currentData)
+                const inputs = form.querySelectorAll('input[type="text"], input[type="number"], textarea');
+                inputs.forEach(input => {
+                    if(input.name) masterSistem[sectionKey][input.name] = input.value;
                 });
 
-                if(!resPut.ok) throw new Error("Gagal menyimpan ke server database.");
-
-                alert("Terima kasih! Pesan dan pertanyaan Anda telah berhasil dikirim ke pusat data Admin Desa Timbuseng.");
-                event.target.reset();
-            } catch (err) {
-                alert("Gagal mengirim pesan: " + err.message + ". Silakan coba beberapa saat lagi.");
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Kirim Pesan Sekarang';
+                const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_SISTEM}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json', 'X-Master-Key': API_KEY },
+                    body: JSON.stringify(masterSistem)
+                });
+                
+                if(!res.ok) throw new Error("Gagal merespon ke JSONBin");
+                showAlert(`Data ${sectionKey.toUpperCase()} berhasil diperbarui!`);
+            } catch (error) {
+                showAlert("Gagal: " + error.message);
             }
+        }
+
+        // --- MANAJEMEN INFORMASI & AGENDA (TAB 4) ---
+        function toggleInfoFields() {
+            const type = document.getElementById('info_type').value;
+            const labelMeta = document.getElementById('label_meta');
+            const wrapperContent = document.getElementById('wrapper_content');
+
+            if (type === 'schedule') {
+                labelMeta.innerText = "Tanggal & Waktu (Cth: 18 Mar 2026 - 09:00 WITA)";
+                wrapperContent.style.display = 'none';
+            } else {
+                labelMeta.innerText = "Kategori / Badge (Cth: Berita Desa)";
+                wrapperContent.style.display = 'block';
+            }
+        }
+
+        function renderInfoTable() {
+            const tbody = document.getElementById('table-informasi-body');
+            if(!tbody) return;
+            tbody.innerHTML = '';
+            const renderRow = (item, typeStr) => `
+                <tr>
+                    <td><span class="badge ${typeStr === 'news' ? 'bg-success' : 'bg-warning text-dark'}">${typeStr}</span></td>
+                    <td>${item.title}</td>
+                    <td class="text-center"><button class="btn btn-sm btn-danger py-0 px-2" onclick="deleteInfo('${typeStr}', ${item.id})"><i class="fas fa-trash"></i></button></td>
+                </tr>
+            `;
+            if(!masterInfo.news) masterInfo.news = [];
+            if(!masterInfo.schedules) masterInfo.schedules = [];
+            masterInfo.news.forEach(n => tbody.innerHTML += renderRow(n, 'news'));
+            masterInfo.schedules.forEach(s => tbody.innerHTML += renderRow(s, 'schedule'));
+        }
+
+        async function handleInformasiSubmit(e) {
+            e.preventDefault();
+            showAlert("Mengunggah gambar & menyimpan informasi...", false);
+            try {
+                const type = document.getElementById('info_type').value;
+                let fileName = "";
+                const fileInp = document.getElementById('info_image');
+                
+                if(fileInp.files.length > 0) {
+                    fileName = await uploadImageToGitHub(fileInp.files[0]);
+                }
+
+                const newItem = {
+                    id: Date.now(),
+                    title: document.getElementById('info_title').value,
+                    meta: document.getElementById('info_meta').value || (type === 'news' ? 'Berita Desa' : '18 Mar 2026'),
+                    summary: document.getElementById('info_summary').value,
+                    content: document.getElementById('info_content').value || document.getElementById('info_summary').value,
+                    image: fileName,
+                    date: "18 Mar 2026",
+                    time: "09:00 WITA",
+                    location: "Kantor Desa Timbuseng"
+                };
+
+                if(type === 'news') {
+                    if(!masterInfo.news) masterInfo.news = [];
+                    masterInfo.news.unshift(newItem);
+                } else {
+                    if(!masterInfo.schedules) masterInfo.schedules = [];
+                    masterInfo.schedules.unshift(newItem);
+                }
+
+                const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_INFO}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json', 'X-Master-Key': API_KEY },
+                    body: JSON.stringify(masterInfo)
+                });
+                
+                if(!res.ok) throw new Error("Gagal menyimpan ke database informasi.json");
+
+                e.target.reset();
+                renderInfoTable();
+                showAlert("Berhasil! Informasi baru telah ditambahkan.");
+            } catch (err) { 
+                showAlert("Gagal: " + err.message); 
+            }
+        }
+
+        async function deleteInfo(type, id) {
+            if(!confirm("Yakin ingin menghapus item informasi ini?")) return;
+            showAlert("Menghapus item...", false);
+            
+            if(type === 'news') {
+                masterInfo.news = masterInfo.news.filter(i => i.id !== id);
+            } else {
+                masterInfo.schedules = masterInfo.schedules.filter(i => i.id !== id);
+            }
+            
+            const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_INFO}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json', 'X-Master-Key': API_KEY },
+                body: JSON.stringify(masterInfo)
+            });
+
+            if(res.ok) {
+                renderInfoTable();
+                showAlert("Item berhasil dihapus!");
+            } else {
+                showAlert("Gagal menghapus item dari server.");
+            }
+        }
+
+        // --- MANAJEMEN PENGADUAN WARGA DI ADMIN ---
+        function renderComplaintsTable() {
+            const tbody = document.getElementById('table-complaints-body');
+            if(!tbody) return;
+            tbody.innerHTML = '';
+            const complaints = masterInfo.complaints || [];
+            if(complaints.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted py-3">Belum ada pengaduan atau aspirasi warga yang masuk.</td></tr>';
+                return;
+            }
+            complaints.forEach((c) => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td><small class="text-muted">${c.date}</small></td>
+                        <td><strong>${c.name}</strong><br><small class="text-muted"><i class="fab fa-whatsapp text-success me-1"></i>${c.phone}</small></td>
+                        <td><span class="badge bg-success mb-1">${c.dusun}</span><br><span class="text-secondary" style="font-size:0.75rem;">${c.category}</span></td>
+                        <td><strong>${c.title}</strong><br><span class="text-secondary" style="font-size:0.8rem;">${c.content}</span></td>
+                        <td class="text-center"><button class="btn btn-sm btn-danger py-0 px-2" onclick="deleteComplaint(${c.id})"><i class="fas fa-trash"></i></button></td>
+                    </tr>
+                `;
+            });
+        }
+
+        async function deleteComplaint(id) {
+            if(!confirm("Yakin ingin menghapus laporan pengaduan ini?")) return;
+            showAlert("Menghapus laporan...", false);
+            
+            masterInfo.complaints = masterInfo.complaints.filter(c => c.id !== id);
+            
+            const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_INFO}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json', 'X-Master-Key': API_KEY },
+                body: JSON.stringify(masterInfo)
+            });
+
+            if(res.ok) {
+                renderComplaintsTable();
+                showAlert("Laporan pengaduan berhasil dihapus!");
+            } else {
+                showAlert("Gagal menghapus laporan dari server.");
+            }
+        }
+
+        function downloadComplaintsCSV() {
+            const complaints = masterInfo.complaints || [];
+            if(complaints.length === 0) {
+                alert("Tidak ada data laporan pengaduan untuk diunduh.");
+                return;
+            }
+
+            let csvContent = "\ufeffTanggal;Nama Pelapor;Nomor HP;Dusun;Kategori;Judul Laporan;Isi Pengaduan\r\n";
+            
+            complaints.forEach(c => {
+                const cleanName = (c.name || "").replace(/[\r\n]+/g, " ").replace(/;/g, ",");
+                const cleanPhone = `\t${c.phone || ""}`.trim();
+                const cleanTitle = (c.title || "").replace(/[\r\n]+/g, " ").replace(/;/g, ",");
+                const cleanContent = (c.content || "").replace(/[\r\n]+/g, " ").replace(/;/g, ",");
+                
+                let row = [
+                    c.date || "",
+                    `"${cleanName}"`,
+                    `"${cleanPhone}"`,
+                    `"${c.dusun || ""}"`,
+                    `"${c.category || ""}"`,
+                    `"${cleanTitle}"`,
+                    `"${cleanContent}"`
+                ];
+                
+                csvContent += row.join(";") + "\r\n";
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", "Rekap_Laporan_Pengaduan_Desa_Timbuseng.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // --- MANAJEMEN PESAN MASUK KONTAK DI ADMIN ---
+        function renderMessagesTable() {
+            const tbody = document.getElementById('table-messages-body');
+            if(!tbody) return;
+            tbody.innerHTML = '';
+            const messages = masterInfo.messages || [];
+            if(messages.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted py-3">Belum ada pesan atau pertanyaan warga yang masuk.</td></tr>';
+                return;
+            }
+            messages.forEach((m) => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td><small class="text-muted">${m.date}</small></td>
+                        <td><strong>${m.nama}</strong></td>
+                        <td><small><i class="fab fa-whatsapp text-success me-1"></i>${m.telepon}</small><br><small class="text-muted">${m.email || '-'}</small></td>
+                        <td><strong>${m.subjek}</strong><br><span class="text-secondary" style="font-size:0.8rem;">${m.pesan}</span></td>
+                        <td class="text-center"><button class="btn btn-sm btn-danger py-0 px-2" onclick="deleteMessage(${m.id})"><i class="fas fa-trash"></i></button></td>
+                    </tr>
+                `;
+            });
+        }
+
+        async function deleteMessage(id) {
+            if(!confirm("Yakin ingin menghapus pesan ini?")) return;
+            showAlert("Menghapus pesan...", false);
+            
+            masterInfo.messages = masterInfo.messages.filter(m => m.id !== id);
+            
+            const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_INFO}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json', 'X-Master-Key': API_KEY },
+                body: JSON.stringify(masterInfo)
+            });
+
+            if(res.ok) {
+                renderMessagesTable();
+                showAlert("Pesan berhasil dihapus!");
+            } else {
+                showAlert("Gagal menghapus pesan dari server.");
+            }
+        }
+
+        function downloadMessagesCSV() {
+            const messages = masterInfo.messages || [];
+            if(messages.length === 0) {
+                alert("Tidak ada data pesan untuk diunduh.");
+                return;
+            }
+            let csvContent = "\ufeffTanggal;Nama Pengirim;Nomor Telepon;Email;Subjek Pesan;Isi Pesan\r\n";
+            messages.forEach(m => {
+                const cleanName = (m.nama || "").replace(/[\r\n]+/g, " ").replace(/;/g, ",");
+                const cleanPhone = `\t${m.telepon || ""}`.trim();
+                const cleanSubject = (m.subjek || "").replace(/[\r\n]+/g, " ").replace(/;/g, ",");
+                const cleanMessage = (m.pesan || "").replace(/[\r\n]+/g, " ").replace(/;/g, ",");
+                
+                let row = [
+                    m.date || "",
+                    `"${cleanName}"`,
+                    `"${cleanPhone}"`,
+                    `"${m.email || ""}"`,
+                    `"${cleanSubject}"`,
+                    `"${cleanMessage}"`
+                ];
+                csvContent += row.join(";") + "\r\n";
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", "Rekap_Pesan_Kontak_Desa_Timbuseng.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
     </script>
 </body>
