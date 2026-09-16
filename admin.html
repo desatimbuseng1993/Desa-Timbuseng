@@ -199,13 +199,13 @@
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-home text-success me-2"></i>index.html - Beranda Desa</h4>
                 <form onsubmit="saveSectionData(event, 'index')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Disini tempat form input untuk Beranda, silakan tempel elemen form Anda nantinya ]</div></div>
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Disini tempat form input untuk Beranda ]</div></div>
                         <div class="col-md-12"><label class="form-label">Running Text</label><textarea class="form-control" name="running_text" rows="2"></textarea></div>
                         <div class="col-md-3"><label class="form-label">Total Penduduk</label><input type="text" class="form-control" name="total_pop"></div>
                         <div class="col-md-3"><label class="form-label">Luas Wilayah (Ha)</label><input type="text" class="form-control" name="total_area"></div>
                         <div class="col-md-3"><label class="form-label">Wilayah Dusun</label><input type="text" class="form-control" name="total_dusun"></div>
                         <div class="col-md-3"><label class="form-label">Kepala Keluarga</label><input type="text" class="form-control" name="total_kk"></div>
-                        <div class="col-md-12"><label class="form-label">Upload Foto Latar Belakang (Hero)</label><input type="file" class="form-control" name="hero_bg"></div>
+                        <div class="col-md-12"><label class="form-label">Upload Foto Latar Belakang (Hero)</label><input type="file" class="form-control" name="hero_bg" accept="image/*"></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Perubahan Index</button></div>
                     </div>
                 </form>
@@ -218,7 +218,7 @@
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-landmark text-success me-2"></i>profil.html - Profil & Visi Misi</h4>
                 <form onsubmit="saveSectionData(event, 'profil')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-warning py-2 small mb-0">[ PETUNJUK: Area pengeditan profil.html, tempel elemen form lengkap Anda disini ]</div></div>
+                        <div class="col-12"><div class="alert alert-warning py-2 small mb-0">[ PETUNJUK: Area pengeditan profil.html ]</div></div>
                         <div class="col-md-12"><label class="form-label">Visi Desa</label><textarea class="form-control" name="visi" rows="2"></textarea></div>
                         <div class="col-md-12"><label class="form-label">Misi Desa</label><textarea class="form-control" name="misi" rows="4"></textarea></div>
                         <div class="col-md-6"><label class="form-label">Kepala Desa</label><input type="text" class="form-control" name="kades"></div>
@@ -233,16 +233,60 @@
         <div id="tab-informasi" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-bullhorn text-success me-2"></i>informasi.html - Berita & Agenda</h4>
-                <div class="alert alert-secondary py-2 small mb-3">[ PETUNJUK: Area manajemen berita dan agenda dinamis, tempel struktur form dan tabel Anda disini ]</div>
+                <p class="text-muted small mb-4">Kelola pengumuman agenda kegiatan mendatang atau berita kompleks beserta gambar untuk halaman informasi publik.</p>
+                
                 <form onsubmit="handleInformasiSubmit(event)">
                     <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Tipe Konten</label><select class="form-select" id="info_type"><option value="news">Berita</option><option value="schedule">Agenda</option></select></div>
-                        <div class="col-md-6"><label class="form-label">Judul</label><input type="text" class="form-control" id="info_title" required></div>
-                        <div class="col-12 mt-3"><button type="submit" class="btn btn-desa">Tambah Informasi</button></div>
+                        <div class="col-md-6">
+                            <label class="form-label">Pilih Jenis Konten</label>
+                            <select class="form-select" id="info_type" onchange="toggleInfoFields()">
+                                <option value="news">Berita Desa / Liputan</option>
+                                <option value="schedule">Agenda / Pengumuman</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Judul Berita / Agenda</label>
+                            <input type="text" class="form-control" id="info_title" placeholder="Cth: Penyuluhan Pertanian" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" id="label_meta">Kategori / Badge (Cth: Berita Desa)</label>
+                            <input type="text" class="form-control" id="info_meta" placeholder="Cth: Pemerintahan / 18 Mar 2026">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Upload Foto / Cover</label>
+                            <input type="file" class="form-control" id="info_image" accept="image/*">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Ringkasan Singkat</label>
+                            <textarea class="form-control" id="info_summary" rows="2" placeholder="Teks singkat yang tampil di kartu utama..."></textarea>
+                        </div>
+                        <div class="col-md-12" id="wrapper_content">
+                            <label class="form-label">Isi Lengkap Berita (Untuk Modal Baca Selengkapnya)</label>
+                            <textarea class="form-control" id="info_content" rows="4" placeholder="Tulis uraian lengkap berita di sini..."></textarea>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-plus-circle me-2"></i>Tambah & Simpan ke Informasi Publik</button>
+                        </div>
                     </div>
                 </form>
+
                 <hr class="my-4">
-                <table class="table table-bordered table-sm small"><tbody id="table-informasi-body"></tbody></table>
+
+                <h5 class="fw-bold text-dark fs-6 mb-3"><i class="fas fa-list me-2 text-success"></i>Daftar Informasi Aktif</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm align-middle small">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width: 100px;">Tipe</th>
+                                <th>Judul</th>
+                                <th class="text-center" style="width: 80px;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-informasi-body">
+                            <!-- Dimuat lewat JS -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -252,7 +296,7 @@
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-phone-alt text-success me-2"></i>kontak.html - Kontak & Operasional</h4>
                 <form onsubmit="saveSectionData(event, 'kontak')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area kontak.html, tempel form lengkap Anda disini ]</div></div>
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area kontak.html ]</div></div>
                         <div class="col-md-12"><label class="form-label">Alamat Kantor</label><input type="text" class="form-control" name="alamat"></div>
                         <div class="col-md-6"><label class="form-label">WhatsApp Resmi</label><input type="text" class="form-control" name="wa"></div>
                         <div class="col-md-6"><label class="form-label">Email Desa</label><input type="text" class="form-control" name="email"></div>
@@ -268,7 +312,7 @@
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-map-marked-alt text-success me-2"></i>peta.html - Peta & Statistik Lahan</h4>
                 <form onsubmit="saveSectionData(event, 'peta')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area peta.html, tempel form lengkap Anda disini ]</div></div>
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area peta.html ]</div></div>
                         <div class="col-md-4"><label class="form-label">Total Luas Wilayah (Ha)</label><input type="text" class="form-control" name="luas_total"></div>
                         <div class="col-md-4"><label class="form-label">Perkebunan Tebu (Ha)</label><input type="text" class="form-control" name="luas_tebu"></div>
                         <div class="col-md-4"><label class="form-label">Sawah Irigasi (Ha)</label><input type="text" class="form-control" name="luas_sawah"></div>
@@ -284,7 +328,7 @@
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-paper-plane text-success me-2"></i>pengaduan.html - Layanan Pengaduan</h4>
                 <form onsubmit="saveSectionData(event, 'pengaduan')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area pengaduan.html, tempel form lengkap Anda disini ]</div></div>
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area pengaduan.html ]</div></div>
                         <div class="col-md-6"><label class="form-label">WhatsApp Pengaduan</label><input type="text" class="form-control" name="wa_aduan"></div>
                         <div class="col-md-6"><label class="form-label">Email Pengaduan</label><input type="text" class="form-control" name="email_aduan"></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Pengaduan</button></div>
@@ -299,7 +343,7 @@
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-users-cog text-success me-2"></i>pemdes.html - Pemerintah Desa</h4>
                 <form onsubmit="saveSectionData(event, 'pemdes')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area pemdes.html, tempel form lengkap Anda disini ]</div></div>
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area pemdes.html ]</div></div>
                         <div class="col-md-6"><label class="form-label">Nama Kepala Desa</label><input type="text" class="form-control" name="kades"></div>
                         <div class="col-md-6"><label class="form-label">Sekretaris Desa</label><input type="text" class="form-control" name="sekdes"></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Pemdes</button></div>
@@ -314,7 +358,7 @@
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-university text-success me-2"></i>bpd.html - BPD</h4>
                 <form onsubmit="saveSectionData(event, 'bpd')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area bpd.html, tempel form lengkap Anda disini ]</div></div>
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area bpd.html ]</div></div>
                         <div class="col-md-6"><label class="form-label">Ketua BPD</label><input type="text" class="form-control" name="ketua"></div>
                         <div class="col-md-6"><label class="form-label">Statistik Rapat</label><input type="text" class="form-control" name="stat_rapat"></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan BPD</button></div>
@@ -329,7 +373,7 @@
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-hands-helping text-success me-2"></i>lpm.html - LPM</h4>
                 <form onsubmit="saveSectionData(event, 'lpm')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area lpm.html, tempel form lengkap Anda disini ]</div></div>
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area lpm.html ]</div></div>
                         <div class="col-md-6"><label class="form-label">Ketua LPM</label><input type="text" class="form-control" name="ketua"></div>
                         <div class="col-md-6"><label class="form-label">Statistik Proyek</label><input type="text" class="form-control" name="stat_proyek"></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan LPM</button></div>
@@ -344,7 +388,7 @@
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-female text-success me-2"></i>pkk.html - TP-PKK</h4>
                 <form onsubmit="saveSectionData(event, 'pkk')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area pkk.html, tempel form lengkap Anda disini ]</div></div>
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area pkk.html ]</div></div>
                         <div class="col-md-6"><label class="form-label">Ketua TP-PKK</label><input type="text" class="form-control" name="ketua"></div>
                         <div class="col-md-6"><label class="form-label">Statistik Kader Aktif</label><input type="text" class="form-control" name="stat_kader"></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan PKK</button></div>
@@ -359,7 +403,7 @@
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-seedling text-success me-2"></i>karang-taruna.html - Karang Taruna</h4>
                 <form onsubmit="saveSectionData(event, 'karang_taruna')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area karang-taruna.html, tempel form lengkap Anda disini ]</div></div>
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area karang-taruna.html ]</div></div>
                         <div class="col-md-6"><label class="form-label">Ketua Karang Taruna</label><input type="text" class="form-control" name="ketua"></div>
                         <div class="col-md-6"><label class="form-label">Statistik Anggota</label><input type="text" class="form-control" name="stat_anggota"></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Karang Taruna</button></div>
@@ -374,7 +418,7 @@
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-store text-success me-2"></i>bumdes.html - BUMDes</h4>
                 <form onsubmit="saveSectionData(event, 'bumdes')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area bumdes.html, tempel form lengkap Anda disini ]</div></div>
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area bumdes.html ]</div></div>
                         <div class="col-md-6"><label class="form-label">Direktur BUMDes</label><input type="text" class="form-control" name="direktur"></div>
                         <div class="col-md-6"><label class="form-label">Statistik Aset</label><input type="text" class="form-control" name="stat_aset"></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan BUMDes</button></div>
@@ -389,7 +433,7 @@
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-shield-alt text-success me-2"></i>babinsa.html - Babinsa</h4>
                 <form onsubmit="saveSectionData(event, 'babinsa')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area babinsa.html, tempel form lengkap Anda disini ]</div></div>
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area babinsa.html ]</div></div>
                         <div class="col-md-6"><label class="form-label">Nama Personel</label><input type="text" class="form-control" name="nama"></div>
                         <div class="col-md-6"><label class="form-label">Kontak</label><input type="text" class="form-control" name="kontak"></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Babinsa</button></div>
@@ -404,7 +448,7 @@
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-user-shield text-success me-2"></i>bimnas.html - Bhabinkamtibmas</h4>
                 <form onsubmit="saveSectionData(event, 'bimnas')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area bimnas.html, tempel form lengkap Anda disini ]</div></div>
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area bimnas.html ]</div></div>
                         <div class="col-md-6"><label class="form-label">Nama Personel</label><input type="text" class="form-control" name="nama"></div>
                         <div class="col-md-6"><label class="form-label">Kontak Polsek</label><input type="text" class="form-control" name="kontak"></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Bhabinkamtibmas</button></div>
@@ -419,7 +463,7 @@
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-mosque text-success me-2"></i>iman-desa.html - Imam Desa</h4>
                 <form onsubmit="saveSectionData(event, 'iman_desa')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area iman-desa.html, tempel form lengkap Anda disini ]</div></div>
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area iman-desa.html ]</div></div>
                         <div class="col-md-6"><label class="form-label">Nama Imam Desa</label><input type="text" class="form-control" name="nama"></div>
                         <div class="col-md-6"><label class="form-label">Jadwal Pengajian</label><input type="text" class="form-control" name="jadwal"></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Imam Desa</button></div>
@@ -434,7 +478,7 @@
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-warehouse text-success me-2"></i>kdmp.html - KDMP</h4>
                 <form onsubmit="saveSectionData(event, 'kdmp')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area kdmp.html, tempel form lengkap Anda disini ]</div></div>
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area kdmp.html ]</div></div>
                         <div class="col-md-6"><label class="form-label">Ketua KDMP</label><input type="text" class="form-control" name="ketua"></div>
                         <div class="col-md-6"><label class="form-label">Statistik Lahan</label><input type="text" class="form-control" name="stat_lahan"></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan KDMP</button></div>
@@ -449,7 +493,7 @@
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-leaf text-success me-2"></i>kmp.html - KMP</h4>
                 <form onsubmit="saveSectionData(event, 'kmp')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area kmp.html dengan statistik khusus, tempel form lengkap Anda disini ]</div></div>
+                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area kmp.html ]</div></div>
                         <div class="col-md-6"><label class="form-label">Pengelola KMP</label><input type="text" class="form-control" name="pengelola"></div>
                         <div class="col-md-3"><label class="form-label">Statistik Kader Aktif</label><input type="text" class="form-control" name="stat_kader"></div>
                         <div class="col-md-3"><label class="form-label">Statistik Dasawisma</label><input type="text" class="form-control" name="stat_dasawisma"></div>
@@ -460,13 +504,13 @@
         </div>
 
         <!-- TAB 19-25: 7 DUSUN -->
-        <div id="tab-dusun1" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Timbuseng I</h4><form onsubmit="saveSectionData(event, 'dusun1')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area Dusun Timbuseng I ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-md-6"><label>Statistik Populasi</label><input type="text" class="form-control" name="stat_populasi"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 1</button></div></div></form></div></div>
-        <div id="tab-dusun2" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Timbuseng II</h4><form onsubmit="saveSectionData(event, 'dusun2')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area Dusun Timbuseng II ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 2</button></div></div></form></div></div>
-        <div id="tab-dusun3" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Sauleya</h4><form onsubmit="saveSectionData(event, 'dusun3')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area Dusun Sauleya ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 3</button></div></div></form></div></div>
-        <div id="tab-dusun4" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Tanasambayang</h4><form onsubmit="saveSectionData(event, 'dusun4')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area Dusun Tanasambayang ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 4</button></div></div></form></div></div>
-        <div id="tab-dusun5" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Bontobaddo</h4><form onsubmit="saveSectionData(event, 'dusun5')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area Dusun Bontobaddo ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 5</button></div></div></form></div></div>
-        <div id="tab-dusun6" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Panaikang I</h4><form onsubmit="saveSectionData(event, 'dusun6')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area Dusun Panaikang I ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 6</button></div></div></form></div></div>
-        <div id="tab-dusun7" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Panaikang II</h4><form onsubmit="saveSectionData(event, 'dusun7')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area Dusun Panaikang II ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 7</button></div></div></form></div></div>
+        <div id="tab-dusun1" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Timbuseng I</h4><form onsubmit="saveSectionData(event, 'dusun1')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Timbuseng I ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-md-6"><label>Statistik Populasi</label><input type="text" class="form-control" name="stat_populasi"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 1</button></div></div></form></div></div>
+        <div id="tab-dusun2" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Timbuseng II</h4><form onsubmit="saveSectionData(event, 'dusun2')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Timbuseng II ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 2</button></div></div></form></div></div>
+        <div id="tab-dusun3" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Sauleya</h4><form onsubmit="saveSectionData(event, 'dusun3')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Sauleya ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 3</button></div></div></form></div></div>
+        <div id="tab-dusun4" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Tanasambayang</h4><form onsubmit="saveSectionData(event, 'dusun4')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Tanasambayang ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 4</button></div></div></form></div></div>
+        <div id="tab-dusun5" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Bontobaddo</h4><form onsubmit="saveSectionData(event, 'dusun5')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Bontobaddo ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 5</button></div></div></form></div></div>
+        <div id="tab-dusun6" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Panaikang I</h4><form onsubmit="saveSectionData(event, 'dusun6')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Panaikang I ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 6</button></div></div></form></div></div>
+        <div id="tab-dusun7" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Panaikang II</h4><form onsubmit="saveSectionData(event, 'dusun7')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Panaikang II ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 7</button></div></div></form></div></div>
 
     </div>
 
@@ -547,7 +591,7 @@
             const user = localStorage.getItem('gh_user');
             const repo = localStorage.getItem('gh_repo');
             const token = localStorage.getItem('gh_token');
-            if(!user || !repo || !token) throw new Error("Kunci API GitHub belum diisi!");
+            if(!user || !repo || !token) throw new Error("Kunci API GitHub belum diisi pada tab konfigurasi!");
 
             const fileName = `img_${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
             const base64 = await new Promise((resolve) => {
@@ -560,7 +604,7 @@
             const res = await fetch(url, {
                 method: 'PUT',
                 headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: "Upload gambar dari CMS", content: base64 })
+                body: JSON.stringify({ message: "Upload gambar dari CMS Admin", content: base64 })
             });
             if(!res.ok) throw new Error("Gagal mengunggah foto ke GitHub");
             return fileName;
@@ -597,6 +641,21 @@
             }
         }
 
+        // --- MANAJEMEN INFORMASI & AGENDA (TAB 4) ---
+        function toggleInfoFields() {
+            const type = document.getElementById('info_type').value;
+            const labelMeta = document.getElementById('label_meta');
+            const wrapperContent = document.getElementById('wrapper_content');
+
+            if (type === 'schedule') {
+                labelMeta.innerText = "Tanggal & Waktu (Cth: 18 Mar 2026 - 09:00 WITA)";
+                wrapperContent.style.display = 'none';
+            } else {
+                labelMeta.innerText = "Kategori / Badge (Cth: Berita Desa)";
+                wrapperContent.style.display = 'block';
+            }
+        }
+
         function renderInfoTable() {
             const tbody = document.getElementById('table-informasi-body');
             if(!tbody) return;
@@ -605,7 +664,7 @@
                 <tr>
                     <td><span class="badge ${typeStr === 'news' ? 'bg-success' : 'bg-warning text-dark'}">${typeStr}</span></td>
                     <td>${item.title}</td>
-                    <td><button class="btn btn-sm btn-danger py-0" onclick="deleteInfo('${typeStr}', ${item.id})"><i class="fas fa-trash"></i></button></td>
+                    <td class="text-center"><button class="btn btn-sm btn-danger py-0 px-2" onclick="deleteInfo('${typeStr}', ${item.id})"><i class="fas fa-trash"></i></button></td>
                 </tr>
             `;
             if(!masterInfo.news) masterInfo.news = [];
@@ -616,42 +675,74 @@
 
         async function handleInformasiSubmit(e) {
             e.preventDefault();
-            showAlert("Menambahkan informasi...", false);
+            showAlert("Mengunggah gambar & menyimpan informasi...", false);
             try {
                 const type = document.getElementById('info_type').value;
+                let fileName = "";
+                const fileInp = document.getElementById('info_image');
+                
+                if(fileInp.files.length > 0) {
+                    fileName = await uploadImageToGitHub(fileInp.files[0]);
+                }
+
                 const newItem = {
                     id: Date.now(),
                     title: document.getElementById('info_title').value,
-                    meta: "", summary: "", content: "", image: ""
+                    meta: document.getElementById('info_meta').value || (type === 'news' ? 'Berita Desa' : '18 Mar 2026'),
+                    summary: document.getElementById('info_summary').value,
+                    content: document.getElementById('info_content').value || document.getElementById('info_summary').value,
+                    image: fileName,
+                    date: "18 Mar 2026",
+                    time: "09:00 WITA",
+                    location: "Kantor Desa Timbuseng"
                 };
 
-                if(type === 'news') masterInfo.news.unshift(newItem);
-                else masterInfo.schedules.unshift(newItem);
+                if(type === 'news') {
+                    if(!masterInfo.news) masterInfo.news = [];
+                    masterInfo.news.unshift(newItem);
+                } else {
+                    if(!masterInfo.schedules) masterInfo.schedules = [];
+                    masterInfo.schedules.unshift(newItem);
+                }
 
-                await fetch(`https://api.jsonbin.io/v3/b/${BIN_INFO}`, {
+                const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_INFO}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json', 'X-Master-Key': API_KEY },
                     body: JSON.stringify(masterInfo)
                 });
                 
+                if(!res.ok) throw new Error("Gagal menyimpan ke database informasi.json");
+
                 e.target.reset();
                 renderInfoTable();
-                showAlert("Informasi berhasil ditambahkan!");
-            } catch (err) { showAlert(err.message); }
+                showAlert("Berhasil! Informasi baru telah ditambahkan.");
+            } catch (err) { 
+                showAlert("Gagal: " + err.message); 
+            }
         }
 
         async function deleteInfo(type, id) {
-            if(!confirm("Hapus item ini?")) return;
-            if(type === 'news') masterInfo.news = masterInfo.news.filter(i => i.id !== id);
-            else masterInfo.schedules = masterInfo.schedules.filter(i => i.id !== id);
+            if(!confirm("Yakin ingin menghapus item informasi ini?")) return;
+            showAlert("Menghapus item...", false);
             
-            await fetch(`https://api.jsonbin.io/v3/b/${BIN_INFO}`, {
+            if(type === 'news') {
+                masterInfo.news = masterInfo.news.filter(i => i.id !== id);
+            } else {
+                masterInfo.schedules = masterInfo.schedules.filter(i => i.id !== id);
+            }
+            
+            const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_INFO}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 'X-Master-Key': API_KEY },
                 body: JSON.stringify(masterInfo)
             });
-            renderInfoTable();
-            showAlert("Item berhasil dihapus!");
+
+            if(res.ok) {
+                renderInfoTable();
+                showAlert("Item berhasil dihapus!");
+            } else {
+                showAlert("Gagal menghapus item dari server.");
+            }
         }
     </script>
 </body>
