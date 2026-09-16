@@ -19,9 +19,7 @@
             --light-bg: #f8faf9;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -38,238 +36,92 @@
             color: rgba(255, 255, 255, 0.85);
             font-size: 0.85rem;
         }
-
-        .top-bar a {
-            color: rgba(255, 255, 255, 0.85);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .top-bar a:hover {
-            color: var(--accent-color);
-        }
+        .top-bar a { color: rgba(255, 255, 255, 0.85); text-decoration: none; transition: color 0.2s ease; }
+        .top-bar a:hover { color: var(--accent-color); }
 
         /* Navbar */
-        .navbar {
-            padding-top: 0.75rem;
-            padding-bottom: 0.75rem;
-        }
-
-        .navbar-brand img {
-            height: 38px;
-            width: auto;
-            object-fit: contain;
-            flex-shrink: 0;
-        }
-
-        .bg-pemdes-nav {
-            background-color: var(--primary-color) !important;
-        }
-
+        .navbar { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+        .navbar-brand img { height: 38px; width: auto; object-fit: contain; flex-shrink: 0; }
+        .bg-pemdes-nav { background-color: var(--primary-color) !important; }
         .pemdes-nav .nav-link {
-            font-weight: 500;
-            font-size: 0.9rem;
-            padding: 0.5rem 0.8rem !important;
-            color: rgba(255, 255, 255, 0.9) !important;
-            transition: all 0.2s ease;
-            white-space: nowrap;
+            font-weight: 500; font-size: 0.9rem; padding: 0.5rem 0.8rem !important;
+            color: rgba(255, 255, 255, 0.9) !important; transition: all 0.2s ease; white-space: nowrap;
+        }
+        .pemdes-nav .nav-link:hover, .pemdes-nav .nav-link.active {
+            color: var(--accent-color) !important; background-color: rgba(255, 255, 255, 0.08); border-radius: 6px;
         }
 
-        .pemdes-nav .nav-link:hover, 
-        .pemdes-nav .nav-link.active {
-            color: var(--accent-color) !important;
-            background-color: rgba(255, 255, 255, 0.08);
-            border-radius: 6px;
-        }
-
-        .dropdown-menu {
-            border: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .dropdown-item {
-            padding: 0.6rem 1.2rem;
-            font-weight: 500;
-            font-size: 0.85rem;
-            transition: all 0.2s ease;
-        }
-
-        .dropdown-item:hover {
-            background-color: rgba(13, 92, 58, 0.1);
-            color: var(--primary-color);
-            padding-left: 1.5rem;
-        }
+        .dropdown-menu { border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.12); border-radius: 12px; overflow: hidden; }
+        .dropdown-item { padding: 0.6rem 1.2rem; font-weight: 500; font-size: 0.85rem; transition: all 0.2s ease; }
+        .dropdown-item:hover { background-color: rgba(13, 92, 58, 0.1); color: var(--primary-color); padding-left: 1.5rem; }
 
         /* Sub-Header */
         .pemdes-header {
             background: linear-gradient(135deg, rgba(13, 92, 58, 0.92), rgba(7, 59, 36, 0.92)), 
                         url('kantor.png') center/cover no-repeat;
-            color: white;
-            padding: 3.5rem 1rem 3rem;
-            text-align: center;
+            color: white; padding: 3.5rem 1rem 3rem; text-align: center;
         }
 
         /* Card Photo Kades */
         .kades-img-wrapper {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-            border: 3px solid #ffffff;
+            position: relative; border-radius: 16px; overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12); border: 3px solid #ffffff;
         }
-
-        .kades-img {
-            width: 100%;
-            max-height: 380px;
-            object-fit: cover;
-            object-position: top center;
-        }
+        .kades-img { width: 100%; max-height: 380px; object-fit: cover; object-position: top center; }
 
         /* SVG Vector Diagram Container */
         .svg-container {
-            width: 100%;
-            background: linear-gradient(180deg, #ffffff 0%, #f8faf9 100%);
-            border: 2px solid #cbd5e1;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(13, 92, 58, 0.06);
-            padding: 20px 10px;
-            overflow-x: auto;
+            width: 100%; background: linear-gradient(180deg, #ffffff 0%, #f8faf9 100%);
+            border: 2px solid #cbd5e1; border-radius: 16px; box-shadow: 0 10px 25px rgba(13, 92, 58, 0.06);
+            padding: 20px 10px; overflow-x: auto;
         }
+        .org-svg { width: 100%; min-width: 1200px; height: auto; display: block; margin: 0 auto; }
 
-        .org-svg {
-            width: 100%;
-            min-width: 1200px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-
-        /* Interaktif Hover */
-        .clickable-box {
-            cursor: pointer;
-            transition: transform 0.2s ease, filter 0.2s ease;
-        }
-
-        .clickable-box:hover {
-            transform: translateY(-3px);
-            filter: drop-shadow(0 6px 12px rgba(13, 92, 58, 0.2));
-        }
+        .clickable-box { cursor: pointer; transition: transform 0.2s ease, filter 0.2s ease; }
+        .clickable-box:hover { transform: translateY(-3px); filter: drop-shadow(0 6px 12px rgba(13, 92, 58, 0.2)); }
 
         /* Institution Card Link Grid */
         .inst-card {
-            border: 1px solid #edf2f7;
-            border-radius: 14px;
-            background: #ffffff;
-            padding: 1.25rem;
-            transition: all 0.25s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            height: 100%;
+            border: 1px solid #edf2f7; border-radius: 14px; background: #ffffff; padding: 1.25rem;
+            transition: all 0.25s ease; text-decoration: none; color: inherit; display: block; height: 100%;
         }
-
         .inst-card:hover {
-            border-color: var(--primary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(13, 92, 58, 0.08);
-            color: inherit;
+            border-color: var(--primary-color); transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(13, 92, 58, 0.08); color: inherit;
         }
-
         .inst-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 10px;
-            background-color: rgba(13, 92, 58, 0.1);
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
+            width: 45px; height: 45px; border-radius: 10px; background-color: rgba(13, 92, 58, 0.1);
+            color: var(--primary-color); display: flex; align-items: center; justify-content: center;
+            font-size: 1.25rem; margin-bottom: 0.75rem;
         }
 
-        /* Footer Sama Persis dengan Index.html */
-        footer {
-            background-color: #0b1510;
-            color: #e2e8f0;
-        }
-
-        .footer-link {
-            color: #a0aec0;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .footer-link:hover {
-            color: #ffffff;
-            padding-left: 5px;
-        }
-
+        /* Footer */
+        footer { background-color: #0b1510; color: #e2e8f0; }
+        .footer-link { color: #a0aec0; text-decoration: none; transition: 0.2s; }
+        .footer-link:hover { color: #ffffff; padding-left: 5px; }
         .social-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--accent-color);
-            transition: all 0.3s ease;
-            text-decoration: none;
+            display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px;
+            border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); color: var(--accent-color);
+            transition: all 0.3s ease; text-decoration: none;
         }
+        .social-btn:hover { background-color: var(--accent-color); color: #000000; transform: translateY(-3px); }
+        .copyright-bar { background-color: #050a07; border-top: 1px solid #1a2e22; font-size: 0.875rem; }
 
-        .social-btn:hover {
-            background-color: var(--accent-color);
-            color: #000000;
-            transform: translateY(-3px);
-        }
-
-        .copyright-bar {
-            background-color: #050a07;
-            border-top: 1px solid #1a2e22;
-            font-size: 0.875rem;
-        }
-
-        /* FLOATING ADMIN BUTTON HANYA DI PEMDES.HTML */
+        /* FLOATING ADMIN BUTTON */
         .admin-fab {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 1050;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #1a202c;
-            color: #f39c12;
-            border: 2px solid #2d3748;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            position: fixed; bottom: 25px; right: 25px; z-index: 1050; width: 50px; height: 50px;
+            border-radius: 50%; background-color: #1a202c; color: #f39c12; border: 2px solid #2d3748;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; cursor: pointer; transition: all 0.3s ease; text-decoration: none;
         }
-        
-        .admin-fab:hover {
-            background-color: #f39c12;
-            color: #1a202c;
-            transform: scale(1.1) rotate(15deg);
-        }
+        .admin-fab:hover { background-color: #f39c12; color: #1a202c; transform: scale(1.1) rotate(15deg); }
 
-        .container, .container-fluid {
-            max-width: 100% !important;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
+        .container, .container-fluid { max-width: 100% !important; padding-left: 15px; padding-right: 15px; }
     </style>
 </head>
 <body>
 
-    <!-- TOP HEADER INFORMASI -->
+    <!-- TOP HEADER -->
     <div class="top-bar py-2 d-none d-md-block">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center gap-3">
@@ -353,9 +205,9 @@
             <div class="row align-items-center g-4">
                 <div class="col-lg-5 text-center">
                     <div class="kades-img-wrapper mx-auto" style="max-width: 340px;">
-                        <img src="kades.png" alt="Kaharuddin, S.P. - Kepala Desa Timbuseng" class="kades-img" onerror="this.onerror=null; this.src='image.png';">
+                        <img id="kades-photo" src="kades.png" alt="Kepala Desa Timbuseng" class="kades-img" onerror="this.onerror=null; this.src='image.png';">
                         <div class="bg-dark text-white p-2.5 text-center">
-                            <h5 class="fw-bold mb-0 fs-6">KAHARUDDIN, S.P</h5>
+                            <h5 class="fw-bold mb-0 fs-6" id="kades-name-display">KAHARUDDIN, S.P</h5>
                             <small class="text-warning" style="font-size: 0.75rem;">Kepala Desa Timbuseng</small>
                         </div>
                     </div>
@@ -364,27 +216,25 @@
                 <div class="col-lg-7">
                     <span class="text-success fw-bold text-uppercase tracking-wider small"><i class="fas fa-quote-left me-1"></i> Sambutan Resmi</span>
                     <h2 class="fw-bold text-dark mt-1 mb-2 fs-5">Assalamu’alaikum Warahmatullahi Wabarakatuh</h2>
-                    <p class="text-secondary small leading-relaxed mb-2">
+                    <p class="text-secondary small leading-relaxed mb-2" id="sambutan-p1">
                         Selamat datang di portal resmi Pemerintah Desa Timbuseng, Kecamatan Polongbangkeng Timur, Kabupaten Takalar. Puji dan syukur kita panjatkan ke hadirat Allah SWT, karena atas rahmat dan karunia-Nya, kami dapat menyajikan portal transparansi informasi dan tata kelola pemerintahan desa.
                     </p>
-                    <p class="text-secondary small leading-relaxed mb-2">
+                    <p class="text-secondary small leading-relaxed mb-2" id="sambutan-p2">
                         Sebagai Kepala Desa, komitmen kami adalah menghadirkan pelayanan publik yang cepat, terbuka, akuntabel, serta berorientasi pada kemajuan warga. Berlandaskan semangat kearifan lokal <em>Je'ne Timbusu'</em> yang senantiasa membawa kesejukan dan persatuan, kami berikhtiar terus memajukan sektor agraris, perkebunan, serta infrastruktur pendukung di 7 wilayah dusun kami.
                     </p>
-                    <p class="text-secondary small leading-relaxed mb-3">
+                    <p class="text-secondary small leading-relaxed mb-3" id="sambutan-p3">
                         Kami mengundang seluruh elemen masyarakat, BPD, LKD, serta pemuda untuk saling bersinergi dalam mewujudkan pembangunan desa yang berkelanjutan. Mari bersama-sama kita jaga semangat gotong royong dan kepahlawanan demi kemajuan Desa Timbuseng tercinta.
                     </p>
                     <div class="p-2.5 bg-light rounded-3 border-start border-4 border-success">
-                        <p class="fw-semibold text-dark mb-1 small">"Melayani dengan Integritas, Membangun Desa Timbuseng yang Mandiri & Sejahtera"</p>
-                        <small class="text-muted" style="font-size: 0.72rem;">— KAHARUDDIN, S.P (Kepala Desa Timbuseng)</small>
+                        <p class="fw-semibold text-dark mb-1 small" id="sambutan-quote">"Melayani dengan Integritas, Membangun Desa Timbuseng yang Mandiri & Sejahtera"</p>
+                        <small class="text-muted" style="font-size: 0.72rem;" id="sambutan-author">— KAHARUDDIN, S.P (Kepala Desa Timbuseng)</small>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========================================================
-       SEKSI BAGAN STRUKTUR ORGANISASI (SVG VECTOR TEMA HIJAU)
-       ======================================================== -->
+    <!-- BAGAN STRUKTUR ORGANISASI (SVG VECTOR) -->
     <section class="py-4 bg-light">
         <div class="container">
             <div class="text-center mb-3">
@@ -407,24 +257,21 @@
                         </linearGradient>
                     </defs>
 
-                    <!-- ================= GARIS PENGHUBUNG (VECTORS) ================= -->
+                    <!-- Garis Penghubung -->
                     <line x1="330" y1="105" x2="490" y2="105" stroke="#0d5c3a" stroke-width="2.5" stroke-dasharray="6,6" />
                     <line x1="570" y1="160" x2="570" y2="195" stroke="#0d5c3a" stroke-width="2.5" />
                     <line x1="190" y1="195" x2="950" y2="195" stroke="#0d5c3a" stroke-width="2.5" />
 
-                    <!-- Cabang ke Kelompok Kasi -->
                     <line x1="190" y1="195" x2="190" y2="230" stroke="#0d5c3a" stroke-width="2.5" />
                     <line x1="75" y1="285" x2="305" y2="285" stroke="#0d5c3a" stroke-width="2" />
                     <line x1="75" y1="285" x2="75" y2="310" stroke="#0d5c3a" stroke-width="2" />
                     <line x1="190" y1="285" x2="190" y2="310" stroke="#0d5c3a" stroke-width="2" />
                     <line x1="305" y1="285" x2="305" y2="310" stroke="#0d5c3a" stroke-width="2" />
 
-                    <!-- Cabang ke Sekretaris Desa -->
                     <line x1="950" y1="195" x2="950" y2="230" stroke="#0d5c3a" stroke-width="2.5" />
                     <line x1="950" y1="290" x2="950" y2="320" stroke="#0d5c3a" stroke-width="2.5" />
                     <line x1="775" y1="320" x2="1125" y2="320" stroke="#0d5c3a" stroke-width="2" />
 
-                    <!-- Kaur & Staf -->
                     <line x1="775" y1="320" x2="775" y2="345" stroke="#0d5c3a" stroke-width="2" />
                     <line x1="775" y1="405" x2="775" y2="425" stroke="#2d3748" stroke-width="1.5" stroke-dasharray="3,3" />
                     <line x1="775" y1="485" x2="775" y2="505" stroke="#2d3748" stroke-width="1.5" stroke-dasharray="3,3" />
@@ -436,7 +283,6 @@
                     <line x1="1125" y1="320" x2="1125" y2="345" stroke="#0d5c3a" stroke-width="2" />
                     <line x1="1125" y1="405" x2="1125" y2="425" stroke="#2d3748" stroke-width="1.5" stroke-dasharray="3,3" />
 
-                    <!-- Barisan Kepala Dusun -->
                     <line x1="570" y1="195" x2="570" y2="600" stroke="#0d5c3a" stroke-width="2.5" />
                     <line x1="115" y1="600" x2="1025" y2="600" stroke="#0d5c3a" stroke-width="2.5" />
 
@@ -448,9 +294,7 @@
                     <line x1="875" y1="600" x2="875" y2="630" stroke="#0d5c3a" stroke-width="2" />
                     <line x1="1025" y1="600" x2="1025" y2="630" stroke="#0d5c3a" stroke-width="2" />
 
-
-                    <!-- ================= KOTAK ELEMEN ORGANISASI (NODES) ================= -->
-
+                    <!-- NODES / KOTAK STRUKTUR -->
                     <!-- 1. BPD -->
                     <g class="clickable-box" onclick="window.location.href='bpd.html'">
                         <rect x="150" y="60" width="180" height="90" rx="8" fill="#f0fdf4" stroke="#0d5c3a" stroke-width="2.5" filter="url(#box-shadow)" />
@@ -468,7 +312,7 @@
                         <circle cx="570" cy="98" r="14" fill="#e6fffa" stroke="#0d5c3a" stroke-width="1.5"/>
                         <path d="M558 108 C558 101, 582 101, 582 108 Z" fill="#0d5c3a"/>
                         <circle cx="570" cy="94" r="5" fill="#0d5c3a"/>
-                        <text x="570" y="138" font-family="Plus Jakarta Sans" font-size="10.5" font-weight="800" fill="#1a202c" text-anchor="middle">KAHARUDDIN, S.P</text>
+                        <text id="svg-kades-name" x="570" y="138" font-family="Plus Jakarta Sans" font-size="10.5" font-weight="800" fill="#1a202c" text-anchor="middle">KAHARUDDIN, S.P</text>
                     </g>
 
                     <!-- 3. SEKRETARIS DESA -->
@@ -476,82 +320,80 @@
                         <rect x="870" y="230" width="160" height="60" rx="8" fill="#ffffff" stroke="#3182ce" stroke-width="2.5" filter="url(#box-shadow)" />
                         <rect x="870" y="230" width="160" height="22" rx="8" fill="#3182ce" />
                         <text x="950" y="246" font-family="Plus Jakarta Sans" font-size="10" font-weight="800" fill="#ffffff" text-anchor="middle">SEKRETARIS DESA</text>
-                        <text x="950" y="274" font-family="Plus Jakarta Sans" font-size="11" font-weight="800" fill="#1a202c" text-anchor="middle">HAERUDDIN, S.Pd.I</text>
+                        <text id="svg-sekdes-name" x="950" y="274" font-family="Plus Jakarta Sans" font-size="11" font-weight="800" fill="#1a202c" text-anchor="middle">HAERUDDIN, S.Pd.I</text>
                     </g>
 
-                    <!-- ================= KELOMPOK KASI ================= -->
+                    <!-- KASI -->
                     <g class="clickable-box" data-bs-toggle="modal" data-bs-target="#modalKasiPemerintahan">
                         <rect x="15" y="310" width="120" height="65" rx="6" fill="#ffffff" stroke="#0d5c3a" stroke-width="2" filter="url(#box-shadow)" />
                         <rect x="15" y="310" width="120" height="20" rx="6" fill="#0d5c3a" />
                         <text x="75" y="325" font-family="Plus Jakarta Sans" font-size="9" font-weight="800" fill="#ffffff" text-anchor="middle">KASI PEMERINTAHAN</text>
-                        <text x="75" y="354" font-family="Plus Jakarta Sans" font-size="10" font-weight="800" fill="#1a202c" text-anchor="middle">HASNIATI</text>
+                        <text id="svg-kasi1-name" x="75" y="354" font-family="Plus Jakarta Sans" font-size="10" font-weight="800" fill="#1a202c" text-anchor="middle">HASNIATI</text>
                     </g>
 
                     <g class="clickable-box" data-bs-toggle="modal" data-bs-target="#modalKasiPelayanan">
                         <rect x="130" y="310" width="120" height="65" rx="6" fill="#ffffff" stroke="#0d5c3a" stroke-width="2" filter="url(#box-shadow)" />
                         <rect x="130" y="310" width="120" height="20" rx="6" fill="#0d5c3a" />
                         <text x="190" y="325" font-family="Plus Jakarta Sans" font-size="9" font-weight="800" fill="#ffffff" text-anchor="middle">KASI PELAYANAN</text>
-                        <text x="190" y="352" font-family="Plus Jakarta Sans" font-size="9" font-weight="800" fill="#1a202c" text-anchor="middle">MUH SULTAN, S.IP</text>
+                        <text id="svg-kasi2-name" x="190" y="352" font-family="Plus Jakarta Sans" font-size="9" font-weight="800" fill="#1a202c" text-anchor="middle">MUH SULTAN, S.IP</text>
                     </g>
 
                     <g class="clickable-box" data-bs-toggle="modal" data-bs-target="#modalKasiPemberdayaan">
                         <rect x="245" y="310" width="120" height="65" rx="6" fill="#ffffff" stroke="#0d5c3a" stroke-width="2" filter="url(#box-shadow)" />
                         <rect x="245" y="310" width="120" height="20" rx="6" fill="#0d5c3a" />
                         <text x="305" y="325" font-family="Plus Jakarta Sans" font-size="8.5" font-weight="800" fill="#ffffff" text-anchor="middle">KASI PEMBERDAYAAN</text>
-                        <text x="305" y="352" font-family="Plus Jakarta Sans" font-size="8.5" font-weight="800" fill="#1a202c" text-anchor="middle">SYAMSINAR, Amd. Keb</text>
+                        <text id="svg-kasi3-name" x="305" y="352" font-family="Plus Jakarta Sans" font-size="8.5" font-weight="800" fill="#1a202c" text-anchor="middle">SYAMSINAR, Amd. Keb</text>
                     </g>
 
-
-                    <!-- ================= KELOMPOK KAUR & STAF ================= -->
+                    <!-- KAUR & STAF -->
                     <g class="clickable-box" data-bs-toggle="modal" data-bs-target="#modalKaurKeuangan">
                         <rect x="705" y="345" width="140" height="60" rx="6" fill="#ffffff" stroke="#3182ce" stroke-width="2" filter="url(#box-shadow)" />
                         <rect x="705" y="345" width="140" height="18" rx="6" fill="#3182ce" />
                         <text x="775" y="358" font-family="Plus Jakarta Sans" font-size="9" font-weight="800" fill="#ffffff" text-anchor="middle">KAUR KEUANGAN</text>
-                        <text x="775" y="385" font-family="Plus Jakarta Sans" font-size="10" font-weight="800" fill="#1a202c" text-anchor="middle">SYAMSUARDI</text>
+                        <text id="svg-kaur1-name" x="775" y="385" font-family="Plus Jakarta Sans" font-size="10" font-weight="800" fill="#1a202c" text-anchor="middle">SYAMSUARDI</text>
                     </g>
                     <g class="clickable-box" data-bs-toggle="modal" data-bs-target="#modalStafKeuangan1">
                         <rect x="705" y="425" width="140" height="60" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#box-shadow)" />
                         <text x="775" y="448" font-family="Plus Jakarta Sans" font-size="9" font-weight="800" fill="#4a5568" text-anchor="middle">STAF KAUR KEUANGAN</text>
-                        <text x="775" y="468" font-family="Plus Jakarta Sans" font-size="9" font-weight="700" fill="#1a202c" text-anchor="middle">ROSMAWATI, Amd.Keb</text>
+                        <text id="svg-stafk1-name" x="775" y="468" font-family="Plus Jakarta Sans" font-size="9" font-weight="700" fill="#1a202c" text-anchor="middle">ROSMAWATI, Amd.Keb</text>
                     </g>
                     <g class="clickable-box" data-bs-toggle="modal" data-bs-target="#modalStafKeuangan2">
                         <rect x="705" y="505" width="140" height="60" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#box-shadow)" />
                         <text x="775" y="528" font-family="Plus Jakarta Sans" font-size="9" font-weight="800" fill="#4a5568" text-anchor="middle">STAF KAUR KEUANGAN</text>
-                        <text x="775" y="548" font-family="Plus Jakarta Sans" font-size="9" font-weight="700" fill="#1a202c" text-anchor="middle">ROSMINI, S.Ag</text>
+                        <text id="svg-stafk2-name" x="775" y="548" font-family="Plus Jakarta Sans" font-size="9" font-weight="700" fill="#1a202c" text-anchor="middle">ROSMINI, S.Ag</text>
                     </g>
 
                     <g class="clickable-box" data-bs-toggle="modal" data-bs-target="#modalKaurUmum">
                         <rect x="880" y="345" width="140" height="60" rx="6" fill="#ffffff" stroke="#3182ce" stroke-width="2" filter="url(#box-shadow)" />
                         <rect x="880" y="345" width="140" height="18" rx="6" fill="#3182ce" />
                         <text x="950" y="358" font-family="Plus Jakarta Sans" font-size="8.5" font-weight="800" fill="#ffffff" text-anchor="middle">KAUR TATA USAHA & UMUM</text>
-                        <text x="950" y="385" font-family="Plus Jakarta Sans" font-size="10" font-weight="800" fill="#1a202c" text-anchor="middle">BUNGALIA</text>
+                        <text id="svg-kaur2-name" x="950" y="385" font-family="Plus Jakarta Sans" font-size="10" font-weight="800" fill="#1a202c" text-anchor="middle">BUNGALIA</text>
                     </g>
                     <g class="clickable-box" data-bs-toggle="modal" data-bs-target="#modalStafUmum1">
                         <rect x="880" y="425" width="140" height="60" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#box-shadow)" />
                         <text x="950" y="448" font-family="Plus Jakarta Sans" font-size="9" font-weight="800" fill="#4a5568" text-anchor="middle">STAF KAUR UMUM</text>
-                        <text x="950" y="468" font-family="Plus Jakarta Sans" font-size="9" font-weight="700" fill="#1a202c" text-anchor="middle">SANTI PURWANTI</text>
+                        <text id="svg-stafu1-name" x="950" y="468" font-family="Plus Jakarta Sans" font-size="9" font-weight="700" fill="#1a202c" text-anchor="middle">SANTI PURWANTI</text>
                     </g>
                     <g class="clickable-box" data-bs-toggle="modal" data-bs-target="#modalStafUmum2">
                         <rect x="880" y="505" width="140" height="60" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#box-shadow)" />
                         <text x="950" y="528" font-family="Plus Jakarta Sans" font-size="9" font-weight="800" fill="#4a5568" text-anchor="middle">STAF KAUR UMUM</text>
-                        <text x="950" y="548" font-family="Plus Jakarta Sans" font-size="9" font-weight="700" fill="#1a202c" text-anchor="middle">DEMI WAHDA, S.Ak</text>
+                        <text id="svg-stafu2-name" x="950" y="548" font-family="Plus Jakarta Sans" font-size="9" font-weight="700" fill="#1a202c" text-anchor="middle">DEMI WAHDA, S.Ak</text>
                     </g>
 
                     <g class="clickable-box" data-bs-toggle="modal" data-bs-target="#modalKaurPerencanaan">
                         <rect x="1055" y="345" width="140" height="60" rx="6" fill="#ffffff" stroke="#3182ce" stroke-width="2" filter="url(#box-shadow)" />
                         <rect x="1055" y="345" width="140" height="18" rx="6" fill="#3182ce" />
                         <text x="1125" y="358" font-family="Plus Jakarta Sans" font-size="9" font-weight="800" fill="#ffffff" text-anchor="middle">KAUR PERENCANAAN</text>
-                        <text x="1125" y="385" font-family="Plus Jakarta Sans" font-size="10" font-weight="800" fill="#1a202c" text-anchor="middle">FIRMANSYA</text>
+                        <text id="svg-kaur3-name" x="1125" y="385" font-family="Plus Jakarta Sans" font-size="10" font-weight="800" fill="#1a202c" text-anchor="middle">FIRMANSYA</text>
                     </g>
                     <g class="clickable-box" data-bs-toggle="modal" data-bs-target="#modalStafPerencanaan">
                         <rect x="1055" y="425" width="140" height="60" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#box-shadow)" />
                         <text x="1125" y="443" font-family="Plus Jakarta Sans" font-size="8.5" font-weight="800" fill="#4a5568" text-anchor="middle">STAF KAUR</text>
                         <text x="1125" y="457" font-family="Plus Jakarta Sans" font-size="8.5" font-weight="800" fill="#4a5568" text-anchor="middle">PEMERINTAHAN</text>
-                        <text x="1125" y="475" font-family="Plus Jakarta Sans" font-size="8" font-weight="700" fill="#1a202c" text-anchor="middle">ABDUL KADAR AMRULLAH</text>
+                        <text id="svg-stafp1-name" x="1125" y="475" font-family="Plus Jakarta Sans" font-size="8" font-weight="700" fill="#1a202c" text-anchor="middle">ABDUL KADAR AMRULLAH</text>
                     </g>
 
-
-                    <!-- ================= KELOMPOK 7 KEPALA DUSUN ================= -->
+                    <!-- KEPALA DUSUN -->
                     <g class="clickable-box" onclick="window.location.href='dusun-timbuseng1.html'">
                         <rect x="50" y="630" width="130" height="75" rx="6" fill="#ffffff" stroke="#0d5c3a" stroke-width="2" filter="url(#box-shadow)" />
                         <rect x="50" y="630" width="130" height="20" rx="6" fill="#0d5c3a" />
@@ -602,125 +444,66 @@
                         <text x="1025" y="644" font-family="Plus Jakarta Sans" font-size="8" font-weight="800" fill="#ffffff" text-anchor="middle">KADUS PANAIKANG II</text>
                         <text x="1025" y="678" font-family="Plus Jakarta Sans" font-size="9" font-weight="700" fill="#1a202c" text-anchor="middle">YUSTANG</text>
                     </g>
-
                 </svg>
-            </div>
-            <div class="text-center mt-2">
-                <small class="text-muted" style="font-size: 0.75rem;"><i class="fas fa-info-circle me-1 text-success"></i> Diagram vektor responsif. Tajam dan rapi untuk dicetak maupun dibuka di semua perangkat.</small>
             </div>
         </div>
     </section>
 
-    <!-- SEKSI DIREKTORI LEMBAGA-LEMBAGA DESA -->
+    <!-- DIREKTORI MITRA & LEMBAGA -->
     <section class="py-4">
         <div class="container">
             <div class="text-center mb-4">
                 <span class="text-success fw-bold text-uppercase tracking-wider small">Direktori Kemasyarakatan</span>
                 <h2 class="fw-bold text-dark mt-1 fs-4">Lembaga Kemasyarakatan & Mitra Desa</h2>
-                <p class="text-muted mx-auto small" style="max-width: 650px;">
-                    Akses halaman khusus tiap lembaga desa untuk melihat program kerja, keanggotaan, serta tugas dan fungsi mitra pembangunan desa.
-                </p>
             </div>
-
             <div class="row g-2">
-                <div class="col-6 col-md-4 col-lg-3">
-                    <a href="bpd.html" class="inst-card">
-                        <div class="inst-icon"><i class="fas fa-gavel"></i></div>
-                        <h6 class="fw-bold text-dark mb-1 fs-6">BPD</h6>
-                        <small class="text-muted d-block" style="font-size: 0.75rem;">Badan Permusyawaratan Desa</small>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <a href="lpm.html" class="inst-card">
-                        <div class="inst-icon"><i class="fas fa-users-line"></i></div>
-                        <h6 class="fw-bold text-dark mb-1 fs-6">LPM</h6>
-                        <small class="text-muted d-block" style="font-size: 0.75rem;">Lembaga Pemberdayaan Masyarakat</small>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <a href="babinsa.html" class="inst-card">
-                        <div class="inst-icon"><i class="fas fa-shield-cat"></i></div>
-                        <h6 class="fw-bold text-dark mb-1 fs-6">Babinsa</h6>
-                        <small class="text-muted d-block" style="font-size: 0.75rem;">TNI Babinsa Desa</small>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <a href="bimnas.html" class="inst-card">
-                        <div class="inst-icon"><i class="fas fa-user-shield"></i></div>
-                        <h6 class="fw-bold text-dark mb-1 fs-6">Bimnas / Bhabinkamtibmas</h6>
-                        <small class="text-muted d-block" style="font-size: 0.75rem;">Polri Mitra Keamanan</small>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <a href="iman-desa.html" class="inst-card">
-                        <div class="inst-icon"><i class="fas fa-mosque"></i></div>
-                        <h6 class="fw-bold text-dark mb-1 fs-6">Iman Desa</h6>
-                        <small class="text-muted d-block" style="font-size: 0.75rem;">Pembina Keagamaan Desa</small>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <a href="pkk.html" class="inst-card">
-                        <div class="inst-icon"><i class="fas fa-person-breastfeeding"></i></div>
-                        <h6 class="fw-bold text-dark mb-1 fs-6">TP-PKK</h6>
-                        <small class="text-muted d-block" style="font-size: 0.75rem;">Tim Penggerak PKK</small>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <a href="karang-taruna.html" class="inst-card">
-                        <div class="inst-icon"><i class="fas fa-child-reaching"></i></div>
-                        <h6 class="fw-bold text-dark mb-1 fs-6">Karang Taruna</h6>
-                        <small class="text-muted d-block" style="font-size: 0.75rem;">Wadah Kepemudaan Desa</small>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <a href="bumdes.html" class="inst-card">
-                        <div class="inst-icon"><i class="fas fa-store"></i></div>
-                        <h6 class="fw-bold text-dark mb-1 fs-6">BUMDes Sejati</h6>
-                        <small class="text-muted d-block" style="font-size: 0.75rem;">Badan Usaha Milik Desa</small>
-                    </a>
-                </div>
+                <div class="col-6 col-md-4 col-lg-3"><a href="bpd.html" class="inst-card"><div class="inst-icon"><i class="fas fa-gavel"></i></div><h6 class="fw-bold text-dark mb-1 fs-6">BPD</h6><small class="text-muted d-block" style="font-size: 0.75rem;">Badan Permusyawaratan Desa</small></a></div>
+                <div class="col-6 col-md-4 col-lg-3"><a href="lpm.html" class="inst-card"><div class="inst-icon"><i class="fas fa-users-line"></i></div><h6 class="fw-bold text-dark mb-1 fs-6">LPM</h6><small class="text-muted d-block" style="font-size: 0.75rem;">Lembaga Pemberdayaan Masyarakat</small></a></div>
+                <div class="col-6 col-md-4 col-lg-3"><a href="babinsa.html" class="inst-card"><div class="inst-icon"><i class="fas fa-shield-cat"></i></div><h6 class="fw-bold text-dark mb-1 fs-6">Babinsa</h6><small class="text-muted d-block" style="font-size: 0.75rem;">TNI Babinsa Desa</small></a></div>
+                <div class="col-6 col-md-4 col-lg-3"><a href="bimnas.html" class="inst-card"><div class="inst-icon"><i class="fas fa-user-shield"></i></div><h6 class="fw-bold text-dark mb-1 fs-6">Bimnas</h6><small class="text-muted d-block" style="font-size: 0.75rem;">Polri Mitra Keamanan</small></a></div>
+                <div class="col-6 col-md-4 col-lg-3"><a href="iman-desa.html" class="inst-card"><div class="inst-icon"><i class="fas fa-mosque"></i></div><h6 class="fw-bold text-dark mb-1 fs-6">Iman Desa</h6><small class="text-muted d-block" style="font-size: 0.75rem;">Pembina Keagamaan Desa</small></a></div>
+                <div class="col-6 col-md-4 col-lg-3"><a href="pkk.html" class="inst-card"><div class="inst-icon"><i class="fas fa-person-breastfeeding"></i></div><h6 class="fw-bold text-dark mb-1 fs-6">TP-PKK</h6><small class="text-muted d-block" style="font-size: 0.75rem;">Tim Penggerak PKK</small></a></div>
+                <div class="col-6 col-md-4 col-lg-3"><a href="karang-taruna.html" class="inst-card"><div class="inst-icon"><i class="fas fa-child-reaching"></i></div><h6 class="fw-bold text-dark mb-1 fs-6">Karang Taruna</h6><small class="text-muted d-block" style="font-size: 0.75rem;">Wadah Kepemudaan</small></a></div>
+                <div class="col-6 col-md-4 col-lg-3"><a href="bumdes.html" class="inst-card"><div class="inst-icon"><i class="fas fa-store"></i></div><h6 class="fw-bold text-dark mb-1 fs-6">BUMDes Sejati</h6><small class="text-muted d-block" style="font-size: 0.75rem;">Badan Usaha Milik Desa</small></a></div>
             </div>
         </div>
     </section>
 
-    <!-- ========================================================
-       MODAL POPUP DETAIL PROFIL APARATUR DESA (INTERAKTIF)
-       ======================================================== -->
-    <!-- Modal Kepala Desa -->
+    <!-- MODAL POPUP DETAIL PERANGKAT DESA -->
+    <!-- Modal Kades -->
     <div class="modal fade" id="modalKades" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg">
                 <div class="modal-header bg-success text-white py-2">
                     <h5 class="modal-title fw-bold fs-6"><i class="fas fa-user-tie me-2 text-warning"></i> Profil Kepala Desa</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-3 text-center">
-                    <img src="kades.png" class="rounded-circle shadow mb-2" style="width: 90px; height: 90px; object-fit: cover;" alt="Kaharuddin" onerror="this.onerror=null; this.src='image.png';">
-                    <h4 class="fw-bold text-dark mb-1 fs-6">KAHARUDDIN, S.P</h4>
+                    <img id="modal-kades-img" src="kades.png" class="rounded-circle shadow mb-2" style="width: 90px; height: 90px; object-fit: cover;" onerror="this.onerror=null; this.src='image.png';">
+                    <h4 class="fw-bold text-dark mb-1 fs-6" id="modal-kades-name">KAHARUDDIN, S.P</h4>
                     <span class="badge bg-success mb-2 px-3 py-1" style="font-size: 0.75rem;">Kepala Desa Timbuseng</span>
-                    <p class="text-muted small mb-2" style="font-size: 0.78rem;"><i class="fas fa-id-card me-1 text-success"></i> NIK: 7305041009820004</p>
+                    <p class="text-muted small mb-2" style="font-size: 0.78rem;"><i class="fas fa-id-card me-1 text-success"></i> NIK: <span id="modal-kades-nik">7305041009820004</span></p>
                     <hr class="my-2">
-                    <p class="text-secondary small text-start mb-0" style="font-size: 0.8rem;">Memimpin penyelenggaraan pemerintahan desa, pelaksanaan pembangunan, pembinaan kemasyarakatan, dan pemberdayaan masyarakat di Desa Timbuseng.</p>
+                    <p class="text-secondary small text-start mb-0" id="modal-kades-desc" style="font-size: 0.8rem;">Memimpin penyelenggaraan pemerintahan desa, pembangunan, dan kemasyarakatan.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Sekretaris Desa -->
+    <!-- Modal Sekdes -->
     <div class="modal fade" id="modalSekdes" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg">
                 <div class="modal-header bg-primary text-white py-2">
                     <h5 class="modal-title fw-bold fs-6"><i class="fas fa-user-gear me-2 text-warning"></i> Profil Sekretaris Desa</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-3 text-center">
-                    <div class="fs-2 text-primary mb-2"><i class="fas fa-user-gear"></i></div>
-                    <h4 class="fw-bold text-dark mb-1 fs-6">HAERUDDIN, S.Pd.I</h4>
+                    <h4 class="fw-bold text-dark mb-1 fs-6" id="modal-sekdes-name">HAERUDDIN, S.Pd.I</h4>
                     <span class="badge bg-primary mb-2 px-3 py-1" style="font-size: 0.75rem;">Sekretaris Desa</span>
-                    <p class="text-muted small mb-2" style="font-size: 0.78rem;"><i class="fas fa-id-card me-1 text-primary"></i> NIK: 7305041804860001</p>
+                    <p class="text-muted small mb-2" style="font-size: 0.78rem;"><i class="fas fa-id-card me-1"></i> NIK: <span id="modal-sekdes-nik">7305041804860001</span></p>
                     <hr class="my-2">
-                    <p class="text-secondary small text-start mb-0" style="font-size: 0.8rem;">Bertanggung jawab dalam pengelolaan administrasi perkantoran, pelayanan surat-menyurat, penyusunan APBDes, serta koordinasi kesekretariatan.</p>
+                    <p class="text-secondary small text-start mb-0" id="modal-sekdes-desc" style="font-size: 0.8rem;">Bertanggung jawab dalam pengelolaan administrasi perkantoran dan kesekretariatan.</p>
                 </div>
             </div>
         </div>
@@ -732,14 +515,14 @@
             <div class="modal-content border-0 shadow-lg">
                 <div class="modal-header bg-dark text-white py-2">
                     <h5 class="modal-title fw-bold fs-6"><i class="fas fa-building-flag me-2 text-warning"></i> Profil Kasi Pemerintahan</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-3 text-center">
-                    <h4 class="fw-bold text-dark mb-1 fs-6">HASNIATI</h4>
+                    <h4 class="fw-bold text-dark mb-1 fs-6" id="modal-kasi1-name">HASNIATI</h4>
                     <span class="badge bg-info text-dark mb-2 px-3 py-1" style="font-size: 0.75rem;">Kasi Pemerintahan</span>
-                    <p class="text-muted small mb-2" style="font-size: 0.78rem;"><i class="fas fa-id-card me-1 text-success"></i> NIK: 7305044808760001</p>
+                    <p class="text-muted small mb-2" style="font-size: 0.78rem;"><i class="fas fa-id-card me-1"></i> NIK: <span id="modal-kasi1-nik">7305044808760001</span></p>
                     <hr class="my-2">
-                    <p class="text-secondary small text-start mb-0" style="font-size: 0.8rem;">Melaksanakan manajemen pengelolaan administrasi kependudukan, penataan wilayah, pertanahan, serta ketenteraman dan ketertiban umum.</p>
+                    <p class="text-secondary small text-start mb-0" id="modal-kasi1-desc" style="font-size: 0.8rem;">Mengelola administrasi kependudukan, pertanahan, ketenteraman dan ketertiban umum.</p>
                 </div>
             </div>
         </div>
@@ -751,14 +534,14 @@
             <div class="modal-content border-0 shadow-lg">
                 <div class="modal-header bg-dark text-white py-2">
                     <h5 class="modal-title fw-bold fs-6"><i class="fas fa-hand-holding-heart me-2 text-warning"></i> Profil Kasi Pelayanan</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-3 text-center">
-                    <h4 class="fw-bold text-dark mb-1 fs-6">MUH SULTAN, S.IP</h4>
+                    <h4 class="fw-bold text-dark mb-1 fs-6" id="modal-kasi2-name">MUH SULTAN, S.IP</h4>
                     <span class="badge bg-info text-dark mb-2 px-3 py-1" style="font-size: 0.75rem;">Kasi Pelayanan</span>
-                    <p class="text-muted small mb-2" style="font-size: 0.78rem;"><i class="fas fa-id-card me-1 text-success"></i> NIK: 7306110705900002</p>
+                    <p class="text-muted small mb-2" style="font-size: 0.78rem;"><i class="fas fa-id-card me-1"></i> NIK: <span id="modal-kasi2-nik">7306110705900002</span></p>
                     <hr class="my-2">
-                    <p class="text-secondary small text-start mb-0" style="font-size: 0.8rem;">Bertugas memberikan pelayanan prima kepada warga masyarakat terkait pengurusan surat pengantar, layanan publik, dan fasilitas sosial.</p>
+                    <p class="text-secondary small text-start mb-0" id="modal-kasi2-desc" style="font-size: 0.8rem;">Memberikan pelayanan prima kepada warga masyarakat.</p>
                 </div>
             </div>
         </div>
@@ -770,14 +553,14 @@
             <div class="modal-content border-0 shadow-lg">
                 <div class="modal-header bg-dark text-white py-2">
                     <h5 class="modal-title fw-bold fs-6"><i class="fas fa-seedling me-2 text-warning"></i> Profil Kasi Pemberdayaan</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-3 text-center">
-                    <h4 class="fw-bold text-dark mb-1 fs-6">SYAMSINAR, Amd. Keb</h4>
+                    <h4 class="fw-bold text-dark mb-1 fs-6" id="modal-kasi3-name">SYAMSINAR, Amd. Keb</h4>
                     <span class="badge bg-info text-dark mb-2 px-3 py-1" style="font-size: 0.75rem;">Kasi Pemberdayaan</span>
-                    <p class="text-muted small mb-2" style="font-size: 0.78rem;"><i class="fas fa-id-card me-1 text-success"></i> NIK: 7305044507940002</p>
+                    <p class="text-muted small mb-2" style="font-size: 0.78rem;"><i class="fas fa-id-card me-1"></i> NIK: <span id="modal-kasi3-nik">7305044507940002</span></p>
                     <hr class="my-2">
-                    <p class="text-secondary small text-start mb-0" style="font-size: 0.8rem;">Mengelola program pemberdayaan masyarakat, peningkatan kesejahteraan keluarga, posyandu, serta pengembangan potensi ekonomi warga.</p>
+                    <p class="text-secondary small text-start mb-0" id="modal-kasi3-desc" style="font-size: 0.8rem;">Mengelola program pemberdayaan masyarakat dan posyandu.</p>
                 </div>
             </div>
         </div>
@@ -789,33 +572,33 @@
             <div class="modal-content border-0 shadow-lg">
                 <div class="modal-header bg-dark text-white py-2">
                     <h5 class="modal-title fw-bold fs-6"><i class="fas fa-calculator me-2 text-warning"></i> Profil Kaur Keuangan</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-3 text-center">
-                    <h4 class="fw-bold text-dark mb-1 fs-6">SYAMSUARDI</h4>
+                    <h4 class="fw-bold text-dark mb-1 fs-6" id="modal-kaur1-name">SYAMSUARDI</h4>
                     <span class="badge bg-secondary mb-2 px-3 py-1" style="font-size: 0.75rem;">Kaur Keuangan</span>
-                    <p class="text-muted small mb-2" style="font-size: 0.78rem;"><i class="fas fa-id-card me-1 text-success"></i> NIK: 7305041212940001</p>
+                    <p class="text-muted small mb-2" style="font-size: 0.78rem;"><i class="fas fa-id-card me-1"></i> NIK: <span id="modal-kaur1-nik">7305041212940001</span></p>
                     <hr class="my-2">
-                    <p class="text-secondary small text-start mb-0" style="font-size: 0.8rem;">Bertanggung jawab penuh atas pengelolaan administrasi keuangan desa, penyusunan laporan kas, serta pencatatan pendapatan dan belanja desa.</p>
+                    <p class="text-secondary small text-start mb-0" id="modal-kaur1-desc" style="font-size: 0.8rem;">Mengelola administrasi keuangan desa dan pencatatan APBDes.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Kaur Tata Usaha dan Umum -->
+    <!-- Modal Kaur Umum -->
     <div class="modal fade" id="modalKaurUmum" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg">
                 <div class="modal-header bg-dark text-white py-2">
-                    <h5 class="modal-title fw-bold fs-6"><i class="fas fa-file-signature me-2 text-warning"></i> Profil Kaur Tata Usaha dan Umum</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title fw-bold fs-6"><i class="fas fa-file-signature me-2 text-warning"></i> Profil Kaur Tata Usaha & Umum</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-3 text-center">
-                    <h4 class="fw-bold text-dark mb-1 fs-6">BUNGALIA</h4>
-                    <span class="badge bg-secondary mb-2 px-3 py-1" style="font-size: 0.75rem;">Kaur Tata Usaha dan Umum</span>
-                    <p class="text-muted small mb-2" style="font-size: 0.78rem;"><i class="fas fa-id-card me-1 text-success"></i> NIK: 7305046510890002</p>
+                    <h4 class="fw-bold text-dark mb-1 fs-6" id="modal-kaur2-name">BUNGALIA</h4>
+                    <span class="badge bg-secondary mb-2 px-3 py-1" style="font-size: 0.75rem;">Kaur Tata Usaha & Umum</span>
+                    <p class="text-muted small mb-2" style="font-size: 0.78rem;"><i class="fas fa-id-card me-1"></i> NIK: <span id="modal-kaur2-nik">7305046510890002</span></p>
                     <hr class="my-2">
-                    <p class="text-secondary small text-start mb-0" style="font-size: 0.8rem;">Menangani urusan surat-menyurat, tata naskah dinas, inventaris kekayaan desa, serta administrasi ketatausahaan kantor desa.</p>
+                    <p class="text-secondary small text-start mb-0" id="modal-kaur2-desc" style="font-size: 0.8rem;">Menangani persuratan, inventaris, dan ketatausahaan kantor.</p>
                 </div>
             </div>
         </div>
@@ -827,42 +610,30 @@
             <div class="modal-content border-0 shadow-lg">
                 <div class="modal-header bg-dark text-white py-2">
                     <h5 class="modal-title fw-bold fs-6"><i class="fas fa-chart-line me-2 text-warning"></i> Profil Kaur Perencanaan</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-3 text-center">
-                    <h4 class="fw-bold text-dark mb-1 fs-6">FIRMANSYA</h4>
+                    <h4 class="fw-bold text-dark mb-1 fs-6" id="modal-kaur3-name">FIRMANSYA</h4>
                     <span class="badge bg-secondary mb-2 px-3 py-1" style="font-size: 0.75rem;">Kaur Perencanaan</span>
-                    <p class="text-muted small mb-2" style="font-size: 0.78rem;"><i class="fas fa-id-card me-1 text-success"></i> NIK: 7305040610920001</p>
+                    <p class="text-muted small mb-2" style="font-size: 0.78rem;"><i class="fas fa-id-card me-1"></i> NIK: <span id="modal-kaur3-nik">7305040610920001</span></p>
                     <hr class="my-2">
-                    <p class="text-secondary small text-start mb-0" style="font-size: 0.8rem;">Menyusun dokumen perencanaan pembangunan desa seperti RPJMDes dan RKPDes secara partisipatif dan terarah.</p>
+                    <p class="text-secondary small text-start mb-0" id="modal-kaur3-desc" style="font-size: 0.8rem;">Menyusun dokumen perencanaan pembangunan desa.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Modals Staf -->
-    <div class="modal fade" id="modalStafKeuangan1" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 shadow-lg"><div class="modal-header bg-secondary text-white py-2"><h5 class="modal-title fw-bold fs-6">Profil Staf Kaur Keuangan</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body p-3 text-center"><h4 class="fw-bold text-dark mb-1 fs-6">ROSMAWATI, Amd.Keb</h4><span class="badge bg-secondary mb-2" style="font-size: 0.75rem;">Staf Kaur Keuangan</span><hr class="my-2"><p class="text-secondary small text-start mb-0" style="font-size: 0.8rem;">Membantu tugas-tugas administratif Kaur Keuangan.</p></div></div></div>
-    </div>
-    <div class="modal fade" id="modalStafKeuangan2" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 shadow-lg"><div class="modal-header bg-secondary text-white py-2"><h5 class="modal-title fw-bold fs-6">Profil Staf Kaur Keuangan</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body p-3 text-center"><h4 class="fw-bold text-dark mb-1 fs-6">ROSMINI, S.Ag</h4><span class="badge bg-secondary mb-2" style="font-size: 0.75rem;">Staf Kaur Keuangan</span><hr class="my-2"><p class="text-secondary small text-start mb-0" style="font-size: 0.8rem;">Mendukung pengelolaan pembukuan keuangan.</p></div></div></div>
-    </div>
-    <div class="modal fade" id="modalStafUmum1" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 shadow-lg"><div class="modal-header bg-secondary text-white py-2"><h5 class="modal-title fw-bold fs-6">Profil Staf Kaur Umum</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body p-3 text-center"><h4 class="fw-bold text-dark mb-1 fs-6">SANTI PURWANTI</h4><span class="badge bg-secondary mb-2" style="font-size: 0.75rem;">Staf Kaur Umum</span><hr class="my-2"><p class="text-secondary small text-start mb-0" style="font-size: 0.8rem;">Membantu administrasi persuratan dan layanan umum.</p></div></div></div>
-    </div>
-    <div class="modal fade" id="modalStafUmum2" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 shadow-lg"><div class="modal-header bg-secondary text-white py-2"><h5 class="modal-title fw-bold fs-6">Profil Staf Kaur Umum</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body p-3 text-center"><h4 class="fw-bold text-dark mb-1 fs-6">DEMI WAHDA, S.Ak</h4><span class="badge bg-secondary mb-2" style="font-size: 0.75rem;">Staf Kaur Umum</span><hr class="my-2"><p class="text-secondary small text-start mb-0" style="font-size: 0.8rem;">Membantu pengelolaan arsip dan inventaris.</p></div></div></div>
-    </div>
-    <div class="modal fade" id="modalStafPerencanaan" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 shadow-lg"><div class="modal-header bg-secondary text-white py-2"><h5 class="modal-title fw-bold fs-6">Profil Staf Kaur Pemerintahan</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body p-3 text-center"><h4 class="fw-bold text-dark mb-1 fs-6">ABDUL KADAR AMRULLAH</h4><span class="badge bg-secondary mb-2" style="font-size: 0.75rem;">Staf Kaur Pemerintahan</span><hr class="my-2"><p class="text-secondary small text-start mb-0" style="font-size: 0.8rem;">Mendukung kelancaran tugas-tugas administratif pemerintahan.</p></div></div></div>
-    </div>
+    <div class="modal fade" id="modalStafKeuangan1" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 shadow-lg"><div class="modal-header bg-secondary text-white py-2"><h5 class="modal-title fw-bold fs-6">Staf Kaur Keuangan</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body p-3 text-center"><h4 class="fw-bold text-dark mb-1 fs-6" id="modal-stafk1-name">ROSMAWATI, Amd.Keb</h4><span class="badge bg-secondary mb-2">Staf Kaur Keuangan</span><hr class="my-2"><p class="text-secondary small text-start mb-0" id="modal-stafk1-desc">Membantu administrasi Kaur Keuangan.</p></div></div></div></div>
+    <div class="modal fade" id="modalStafKeuangan2" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 shadow-lg"><div class="modal-header bg-secondary text-white py-2"><h5 class="modal-title fw-bold fs-6">Staf Kaur Keuangan</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body p-3 text-center"><h4 class="fw-bold text-dark mb-1 fs-6" id="modal-stafk2-name">ROSMINI, S.Ag</h4><span class="badge bg-secondary mb-2">Staf Kaur Keuangan</span><hr class="my-2"><p class="text-secondary small text-start mb-0" id="modal-stafk2-desc">Mendukung pengelolaan keuangan.</p></div></div></div></div>
+    <div class="modal fade" id="modalStafUmum1" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 shadow-lg"><div class="modal-header bg-secondary text-white py-2"><h5 class="modal-title fw-bold fs-6">Staf Kaur Umum</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body p-3 text-center"><h4 class="fw-bold text-dark mb-1 fs-6" id="modal-stafu1-name">SANTI PURWANTI</h4><span class="badge bg-secondary mb-2">Staf Kaur Umum</span><hr class="my-2"><p class="text-secondary small text-start mb-0" id="modal-stafu1-desc">Membantu tata usaha dan surat menyurat.</p></div></div></div></div>
+    <div class="modal fade" id="modalStafUmum2" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 shadow-lg"><div class="modal-header bg-secondary text-white py-2"><h5 class="modal-title fw-bold fs-6">Staf Kaur Umum</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body p-3 text-center"><h4 class="fw-bold text-dark mb-1 fs-6" id="modal-stafu2-name">DEMI WAHDA, S.Ak</h4><span class="badge bg-secondary mb-2">Staf Kaur Umum</span><hr class="my-2"><p class="text-secondary small text-start mb-0" id="modal-stafu2-desc">Membantu administrasi umum.</p></div></div></div></div>
+    <div class="modal fade" id="modalStafPerencanaan" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 shadow-lg"><div class="modal-header bg-secondary text-white py-2"><h5 class="modal-title fw-bold fs-6">Staf Kaur Pemerintahan</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body p-3 text-center"><h4 class="fw-bold text-dark mb-1 fs-6" id="modal-stafp1-name">ABDUL KADAR AMRULLAH</h4><span class="badge bg-secondary mb-2">Staf Kaur Pemerintahan</span><hr class="my-2"><p class="text-secondary small text-start mb-0" id="modal-stafp1-desc">Mendukung tugas perencanaan dan pemerintahan.</p></div></div></div></div>
 
-    <!-- FLOATING ADMIN BUTTON (HANYA DI PEMDES.HTML) -->
-    <a href="admin.html" class="admin-fab" title="Login Admin Desa">
-        <i class="fas fa-user-shield"></i>
-    </a>
+    <!-- FLOATING ADMIN BUTTON -->
+    <a href="admin.html" class="admin-fab" title="Login Admin Desa"><i class="fas fa-user-shield"></i></a>
 
-    <!-- FOOTER LENGKAP -->
+    <!-- FOOTER -->
     <footer class="pt-4 pb-3 border-top border-success border-3">
         <div class="container pb-3">
             <div class="row g-3">
@@ -878,18 +649,10 @@
                         Portal resmi Sistem Informasi Desa Timbuseng. Menyajikan data profil, transparansi tata kelola pemerintahan, layanan pengaduan masyarakat, serta pemetaan wilayah desa.
                     </p>
                     <div class="d-flex gap-2 mt-2">
-                        <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="social-btn" title="WhatsApp Resmi" style="width: 35px; height: 35px;">
-                            <i class="fab fa-whatsapp fs-6"></i>
-                        </a>
-                        <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram Resmi Desa" style="width: 35px; height: 35px;">
-                            <i class="fab fa-instagram fs-6"></i>
-                        </a>
-                        <a href="#" class="social-btn" title="Facebook Desa" style="width: 35px; height: 35px;">
-                            <i class="fab fa-facebook-f fs-6"></i>
-                        </a>
-                        <a href="#" class="social-btn" title="YouTube Desa" style="width: 35px; height: 35px;">
-                            <i class="fab fa-youtube fs-6"></i>
-                        </a>
+                        <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="social-btn" title="WhatsApp" style="width: 35px; height: 35px;"><i class="fab fa-whatsapp fs-6"></i></a>
+                        <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram" style="width: 35px; height: 35px;"><i class="fab fa-instagram fs-6"></i></a>
+                        <a href="#" class="social-btn" title="Facebook" style="width: 35px; height: 35px;"><i class="fab fa-facebook-f fs-6"></i></a>
+                        <a href="#" class="social-btn" title="YouTube" style="width: 35px; height: 35px;"><i class="fab fa-youtube fs-6"></i></a>
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-3">
@@ -899,50 +662,105 @@
                         <li><a href="profil.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Profil Desa</a></li>
                         <li><a href="pemdes.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Struktur Pemdes</a></li>
                         <li><a href="peta.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Peta Digital Wilayah</a></li>
-                        <li><a href="informasi.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Informasi & Berita Desa</a></li>
-                        <li><a href="kontak.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Kontak & Lokasi Kantor</a></li>
                     </ul>
                 </div>
                 <div class="col-md-8 col-lg-4">
                     <h6 class="fw-bold text-white mb-2 text-uppercase fs-6">Kontak Kantor Desa</h6>
                     <ul class="list-unstyled d-flex flex-column gap-1.5 small text-white-50" style="font-size: 0.8rem;">
-                        <li class="d-flex align-items-start gap-2">
-                            <i class="fas fa-map-marker-alt text-warning mt-1"></i>
-                            <span>Kantor Desa Timbuseng, Kec. Polongbangkeng Timur, Kab. Takalar, Sulawesi Selatan 92221</span>
-                        </li>
-                        <li class="d-flex align-items-center gap-2">
-                            <i class="fab fa-whatsapp text-warning"></i>
-                            <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none">
-                                +62 852-9957-6913 (WhatsApp)
-                            </a>
-                        </li>
-                        <li class="d-flex align-items-center gap-2">
-                            <i class="fas fa-envelope text-warning"></i>
-                            <span>desatimbuseng1993@gmail.com</span>
-                        </li>
-                        <li class="d-flex align-items-center gap-2">
-                            <i class="fab fa-instagram text-warning"></i>
-                            <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none">
-                                @desa_timbuseng
-                            </a>
-                        </li>
-                        <li class="d-flex align-items-center gap-2">
-                            <i class="fas fa-clock text-warning"></i>
-                            <span>Senin - Jumat: 08:00 - 16:00 WITA</span>
-                        </li>
+                        <li class="d-flex align-items-start gap-2"><i class="fas fa-map-marker-alt text-warning mt-1"></i><span>Kantor Desa Timbuseng, Kec. Polongbangkeng Timur, Kab. Takalar, Sulawesi Selatan 92221</span></li>
+                        <li class="d-flex align-items-center gap-2"><i class="fab fa-whatsapp text-warning"></i><a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none">+62 852-9957-6913 (WhatsApp)</a></li>
+                        <li class="d-flex align-items-center gap-2"><i class="fas fa-envelope text-warning"></i><span>desatimbuseng1993@gmail.com</span></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <!-- COPYRIGHT BAR -->
         <div class="copyright-bar py-2 text-center text-white-50">
-            <div class="container">
-                <p class="mb-0" style="font-size: 0.72rem;">©2026 P10 KKN UHM | Pemerintah Desa Timbuseng, Polongbangkeng Timur, Takalar. All Rights Reserved.</p>
-            </div>
+            <div class="container"><p class="mb-0" style="font-size: 0.72rem;">©2026 P10 KKN UHM | Pemerintah Desa Timbuseng, Polongbangkeng Timur, Takalar. All Rights Reserved.</p></div>
         </div>
     </footer>
 
-    <!-- Bootstrap 5 JS Bundle -->
+    <!-- Bootstrap 5 JS Bundle & SCRIPT SINKRONISASI JSONBIN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const API_KEY = "$2a$10$wbLvXvg7KqU.nSiV2NXihOzbcQnKyWuRhAggoR26QUpcDQE.WVBaW";
+        const BIN_SISTEM = "6aa93e9affd5d1605309c685";
+
+        document.addEventListener("DOMContentLoaded", async function() {
+            try {
+                const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_SISTEM}/latest`, {
+                    headers: { 'X-Master-Key': API_KEY }
+                });
+                if(res.ok) {
+                    const result = await res.json();
+                    const data = result.record;
+                    if(data.pemdes) {
+                        const p = data.pemdes;
+                        
+                        // Kades & Sambutan
+                        if(p.kades_name) {
+                            document.getElementById('kades-name-display').innerText = p.kades_name;
+                            document.getElementById('svg-kades-name').textContent = p.kades_name;
+                            document.getElementById('modal-kades-name').innerText = p.kades_name;
+                            document.getElementById('sambutan-author').innerText = `— ${p.kades_name} (Kepala Desa Timbuseng)`;
+                        }
+                        if(p.kades_nik) document.getElementById('modal-kades-nik').innerText = p.kades_nik;
+                        if(p.kades_desc) document.getElementById('modal-kades-desc').innerText = p.kades_desc;
+                        if(p.kades_photo) {
+                            const photoUrl = `https://raw.githubusercontent.com/${localStorage.getItem('gh_user') || 'username'}/${localStorage.getItem('gh_repo') || 'repo'}/main/assets/${p.kades_photo}`;
+                            document.getElementById('kades-photo').src = p.kades_photo.startsWith('http') ? p.kades_photo : photoUrl;
+                            document.getElementById('modal-kades-img').src = p.kades_photo.startsWith('http') ? p.kades_photo : photoUrl;
+                        }
+                        if(p.sambutan_p1) document.getElementById('sambutan-p1').innerText = p.sambutan_p1;
+                        if(p.sambutan_p2) document.getElementById('sambutan-p2').innerText = p.sambutan_p2;
+                        if(p.sambutan_p3) document.getElementById('sambutan-p3').innerText = p.sambutan_p3;
+                        if(p.sambutan_quote) document.getElementById('sambutan-quote').innerText = `"${p.sambutan_quote}"`;
+
+                        // Sekdes
+                        if(p.sekdes_name) {
+                            document.getElementById('svg-sekdes-name').textContent = p.sekdes_name;
+                            document.getElementById('modal-sekdes-name').innerText = p.sekdes_name;
+                        }
+                        if(p.sekdes_nik) document.getElementById('modal-sekdes-nik').innerText = p.sekdes_nik;
+                        if(p.sekdes_desc) document.getElementById('modal-sekdes-desc').innerText = p.sekdes_desc;
+
+                        // Kasi Pemerintahan, Pelayanan, Pemberdayaan
+                        if(p.kasi1_name) { document.getElementById('svg-kasi1-name').textContent = p.kasi1_name; document.getElementById('modal-kasi1-name').innerText = p.kasi1_name; }
+                        if(p.kasi1_nik) document.getElementById('modal-kasi1-nik').innerText = p.kasi1_nik;
+                        if(p.kasi1_desc) document.getElementById('modal-kasi1-desc').innerText = p.kasi1_desc;
+
+                        if(p.kasi2_name) { document.getElementById('svg-kasi2-name').textContent = p.kasi2_name; document.getElementById('modal-kasi2-name').innerText = p.kasi2_name; }
+                        if(p.kasi2_nik) document.getElementById('modal-kasi2-nik').innerText = p.kasi2_nik;
+                        if(p.kasi2_desc) document.getElementById('modal-kasi2-desc').innerText = p.kasi2_desc;
+
+                        if(p.kasi3_name) { document.getElementById('svg-kasi3-name').textContent = p.kasi3_name; document.getElementById('modal-kasi3-name').innerText = p.kasi3_name; }
+                        if(p.kasi3_nik) document.getElementById('modal-kasi3-nik').innerText = p.kasi3_nik;
+                        if(p.kasi3_desc) document.getElementById('modal-kasi3-desc').innerText = p.kasi3_desc;
+
+                        // Kaur Keuangan, Tata Usaha, Perencanaan & Staf
+                        if(p.kaur1_name) { document.getElementById('svg-kaur1-name').textContent = p.kaur1_name; document.getElementById('modal-kaur1-name').innerText = p.kaur1_name; }
+                        if(p.kaur1_nik) document.getElementById('modal-kaur1-nik').innerText = p.kaur1_nik;
+                        if(p.kaur1_desc) document.getElementById('modal-kaur1-desc').innerText = p.kaur1_desc;
+
+                        if(p.kaur2_name) { document.getElementById('svg-kaur2-name').textContent = p.kaur2_name; document.getElementById('modal-kaur2-name').innerText = p.kaur2_name; }
+                        if(p.kaur2_nik) document.getElementById('modal-kaur2-nik').innerText = p.kaur2_nik;
+                        if(p.kaur2_desc) document.getElementById('modal-kaur2-desc').innerText = p.kaur2_desc;
+
+                        if(p.kaur3_name) { document.getElementById('svg-kaur3-name').textContent = p.kaur3_name; document.getElementById('modal-kaur3-name').innerText = p.kaur3_name; }
+                        if(p.kaur3_nik) document.getElementById('modal-kaur3-nik').innerText = p.kaur3_nik;
+                        if(p.kaur3_desc) document.getElementById('modal-kaur3-desc').innerText = p.kaur3_desc;
+
+                        // Staf
+                        if(p.stafk1_name) { document.getElementById('svg-stafk1-name').textContent = p.stafk1_name; document.getElementById('modal-stafk1-name').innerText = p.stafk1_name; }
+                        if(p.stafk2_name) { document.getElementById('svg-stafk2-name').textContent = p.stafk2_name; document.getElementById('modal-stafk2-name').innerText = p.stafk2_name; }
+                        if(p.stafu1_name) { document.getElementById('svg-stafu1-name').textContent = p.stafu1_name; document.getElementById('modal-stafu1-name').innerText = p.stafu1_name; }
+                        if(p.stafu2_name) { document.getElementById('svg-stafu2-name').textContent = p.stafu2_name; document.getElementById('modal-stafu2-name').innerText = p.stafu2_name; }
+                        if(p.stafp1_name) { document.getElementById('svg-stafp1-name').textContent = p.stafp1_name; document.getElementById('modal-stafp1-name').innerText = p.stafp1_name; }
+                    }
+                }
+            } catch(e) {
+                console.error("Gagal memuat data Pemdes dari JSONBin:", e);
+            }
+        });
+    </script>
 </body>
 </html>
