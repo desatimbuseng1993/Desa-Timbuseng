@@ -24,71 +24,41 @@
             color: #2d3748;
             background-color: #ffffff;
             overflow-x: hidden;
+            font-size: 0.95rem;
         }
 
         /* Top Bar */
         .top-bar {
             background-color: var(--primary-dark);
             color: rgba(255, 255, 255, 0.85);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
         }
-
-        .top-bar a {
-            color: rgba(255, 255, 255, 0.85);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .top-bar a:hover {
-            color: var(--accent-color);
-        }
+        .top-bar a { color: rgba(255, 255, 255, 0.85); text-decoration: none; transition: color 0.2s ease; }
+        .top-bar a:hover { color: var(--accent-color); }
 
         /* Navbar */
-        .navbar {
-            padding-top: 0.75rem;
-            padding-bottom: 0.75rem;
-        }
-
-        .navbar-brand {
-            max-width: 75%;
-        }
-
-        .navbar-brand img {
-            height: 45px;
-            width: auto;
-            object-fit: contain;
-            flex-shrink: 0;
-        }
-
-        .bg-desa {
-            background-color: var(--primary-color) !important;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            padding: 0.6rem 1rem !important;
-            transition: all 0.2s ease;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--accent-color) !important;
-        }
+        .navbar { padding-top: 0.65rem; padding-bottom: 0.65rem; }
+        .navbar-brand img { height: 42px; width: auto; object-fit: contain; }
+        .bg-desa { background-color: var(--primary-color) !important; }
+        .nav-link { font-weight: 500; font-size: 0.9rem; padding: 0.5rem 0.85rem !important; transition: all 0.2s ease; }
+        .nav-link:hover, .nav-link.active { color: var(--accent-color) !important; }
 
         /* Header Peta */
         .map-header {
             background: linear-gradient(135deg, rgba(13, 92, 58, 0.92), rgba(7, 59, 36, 0.92)), 
                         url('kantor.png') center/cover no-repeat;
             color: white;
-            padding: 80px 0 60px 0;
+            padding: 70px 0 50px 0;
         }
 
         /* Map Container Card */
         .map-container-card {
             border: 1px solid #e2e8f0;
-            border-radius: 16px;
+            border-radius: 20px;
             background: #ffffff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
             overflow: hidden;
+            transition: all 0.3s ease;
         }
 
         .map-frame-wrapper {
@@ -97,11 +67,37 @@
             height: 480px;
             background-color: #edf2f7;
         }
+        @media (max-width: 768px) {
+            .map-frame-wrapper { height: 360px; }
+        }
 
         .map-frame-wrapper iframe {
             width: 100%;
             height: 100%;
             border: 0;
+        }
+
+        /* Stat Lahan Card */
+        .stat-lahan-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-lahan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(13, 92, 58, 0.08);
+            border-color: var(--primary-color);
+        }
+        .stat-lahan-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background-color: var(--primary-color);
         }
 
         /* Dusun Quick Card */
@@ -116,64 +112,31 @@
             display: block;
             height: 100%;
         }
-
         .dusun-map-card:hover {
             border-color: var(--primary-color);
             transform: translateY(-4px);
             box-shadow: 0 10px 20px rgba(13, 92, 58, 0.1);
             color: inherit;
         }
-
         .dusun-badge {
             background-color: rgba(13, 92, 58, 0.1);
             color: var(--primary-color);
             font-weight: 700;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             padding: 4px 10px;
             border-radius: 20px;
         }
 
         /* Footer */
-        footer {
-            background-color: #0b1510;
-            color: #e2e8f0;
-        }
-
-        .footer-link {
-            color: #a0aec0;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .footer-link:hover {
-            color: #ffffff;
-            padding-left: 5px;
-        }
-
+        footer { background-color: #0b1510; color: #e2e8f0; font-size: 0.9rem; }
+        .footer-link { color: #a0aec0; text-decoration: none; transition: 0.2s; }
+        .footer-link:hover { color: #ffffff; padding-left: 4px; }
         .social-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--accent-color);
-            transition: all 0.3s ease;
-            text-decoration: none;
+            display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px;
+            border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); color: var(--accent-color); transition: all 0.3s ease; text-decoration: none;
         }
-
-        .social-btn:hover {
-            background-color: var(--accent-color);
-            color: #000000;
-            transform: translateY(-3px);
-        }
-
-        .copyright-bar {
-            background-color: #050a07;
-            border-top: 1px solid #1a2e22;
-            font-size: 0.875rem;
-        }
+        .social-btn:hover { background-color: var(--accent-color); color: #000000; transform: translateY(-2px); }
+        .copyright-bar { background-color: #050a07; border-top: 1px solid #1a2e22; font-size: 0.83rem; }
     </style>
 </head>
 <body>
@@ -187,7 +150,7 @@
             </div>
             <div class="d-flex align-items-center gap-3">
                 <span><i class="fas fa-phone-alt text-warning me-1"></i> +62 852-9957-6913</span>
-                <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="fw-semibold text-warning">
+                <a href="https://www.instagram.com/desa_timbuseng" target="_blank" rel="noopener noreferrer" class="fw-semibold text-warning">
                     <i class="fab fa-instagram me-1"></i> @desa_timbuseng
                 </a>
             </div>
@@ -195,13 +158,13 @@
     </div>
 
     <!-- NAVBAR UTAMA -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand fw-bold d-flex align-items-center gap-2 text-decoration-none" href="index.html">
-                <img src="logo.png" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                <img src="logo.png" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/45?text=LOGO';">
                 <div class="lh-sm overflow-hidden">
-                    <span class="d-block fs-6 fs-md-5 text-white fw-bold text-truncate">DESA TIMBUSENG</span>
-                    <small class="fw-normal text-white-50 text-uppercase d-block" style="font-size: 0.7rem;">Kabupaten Takalar</small>
+                    <span class="d-block fs-6 text-white fw-bold text-truncate">DESA TIMBUSENG</span>
+                    <small class="fw-normal text-white-50 text-uppercase d-block" style="font-size: 0.65rem;">Kabupaten Takalar</small>
                 </div>
             </a>
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -223,9 +186,9 @@
     <!-- HEADER PETA DIGITAL -->
     <header class="map-header text-center">
         <div class="container">
-            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill text-uppercase fw-bold mb-3">Sistem Informasi Spasial</span>
-            <h1 class="display-6 display-md-5 fw-extrabold mb-2">Peta Digital & Wilayah Desa Timbuseng</h1>
-            <p class="lead text-white-50 mx-auto fs-6 fs-md-5" style="max-width: 750px;">
+            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill text-uppercase fw-bold mb-3" style="font-size: 0.75rem;">Sistem Informasi Spasial</span>
+            <h1 class="fw-extrabold mb-2" style="font-size: clamp(1.7rem, 3.2vw, 2.5rem);">Peta Digital & Wilayah Desa Timbuseng</h1>
+            <p class="text-white-50 mx-auto" style="font-size: clamp(0.85rem, 1.8vw, 0.98rem); max-width: 700px; line-height: 1.6;">
                 Eksplorasi batas wilayah spasial, titik lokasi kantor desa, fasilitas umum, serta pembagian 7 wilayah dusun di Kecamatan Polongbangkeng Timur, Kabupaten Takalar.
             </p>
         </div>
@@ -235,127 +198,135 @@
     <section class="py-5">
         <div class="container">
             
-            <!-- INFORMASI SPASIAL & STATISTIK LAHAN -->
+            <!-- INFORMASI SPASIAL & STATISTIK LAHAN (TERHUBUNG KE JSONBIN) -->
             <div class="row g-4 mb-5">
                 <div class="col-md-4">
-                    <div class="bg-light p-4 rounded-4 border h-100">
-                        <div class="text-success fs-3 mb-2"><i class="fas fa-vector-square"></i></div>
-                        <h5 class="fw-bold text-dark">Luas Total Wilayah</h5>
-                        <h3 class="fw-extrabold text-success mb-2">1.083,47 Ha</h3>
-                        <p class="text-muted small mb-0">Total wilayah administratif Desa Timbuseng, mencakup pemukiman, persawahan, dan perkebunan.</p>
+                    <div class="stat-lahan-card shadow-sm">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <span class="text-success fs-4"><i class="fas fa-vector-square"></i></span>
+                            <span class="badge bg-success bg-opacity-10 text-success fw-bold" style="font-size: 0.7rem;">Spasial Desa</span>
+                        </div>
+                        <h6 class="fw-bold text-dark mb-1" style="font-size: 0.9rem;">Total Luas Wilayah</h6>
+                        <h3 class="fw-extrabold text-success mb-2 fs-3" id="val-luas-total">1.083,47 Ha</h3>
+                        <p class="text-muted small mb-0" style="font-size: 0.82rem;">Total wilayah administratif Desa Timbuseng, mencakup pemukiman, persawahan, dan perkebunan.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="bg-light p-4 rounded-4 border h-100">
-                        <div class="text-success fs-3 mb-2"><i class="fas fa-seedling"></i></div>
-                        <h5 class="fw-bold text-dark">Perkebunan pertebuan</h5>
-                        <h3 class="fw-extrabold text-success mb-2">705,39. Ha</h3>
-                        <p class="text-muted small mb-0">Komoditas agraris dan perkebunan utama yang menjadi tulang punggung ekonomi lokal.</p>
+                    <div class="stat-lahan-card shadow-sm">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <span class="text-success fs-4"><i class="fas fa-seedling"></i></span>
+                            <span class="badge bg-success bg-opacity-10 text-success fw-bold" style="font-size: 0.7rem;">Perkebunan</span>
+                        </div>
+                        <h6 class="fw-bold text-dark mb-1" style="font-size: 0.9rem;">Perkebunan Tebu</h6>
+                        <h3 class="fw-extrabold text-success mb-2 fs-3" id="val-luas-tebu">705,39 Ha</h3>
+                        <p class="text-muted small mb-0" style="font-size: 0.82rem;">Komoditas agraris dan perkebunan utama yang menjadi tulang punggung ekonomi lokal.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="bg-light p-4 rounded-4 border h-100">
-                        <div class="text-success fs-3 mb-2"><i class="fas fa-water"></i></div>
-                        <h5 class="fw-bold text-dark">Sawah Irigasi Teknis</h5>
-                        <h3 class="fw-extrabold text-success mb-2">216,53! Ha</h3>
-                        <p class="text-muted small mb-0">Lahan pertanian padi produktif yang mendukung ketahanan pangan warga desa.</p>
+                    <div class="stat-lahan-card shadow-sm">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <span class="text-success fs-4"><i class="fas fa-water"></i></span>
+                            <span class="badge bg-success bg-opacity-10 text-success fw-bold" style="font-size: 0.7rem;">Pertanian</span>
+                        </div>
+                        <h6 class="fw-bold text-dark mb-1" style="font-size: 0.9rem;">Sawah Irigasi Teknis</h6>
+                        <h3 class="fw-extrabold text-success mb-2 fs-3" id="val-luas-sawah">216,53 Ha</h3>
+                        <p class="text-muted small mb-0" style="font-size: 0.82rem;">Lahan pertanian padi produktif yang mendukung ketahanan pangan warga desa.</p>
                     </div>
                 </div>
             </div>
 
             <!-- PETA INTERAKTIF GOOGLE MAPS -->
-            <div class="map-container-card mb-5">
+            <div class="map-container-card mb-5 shadow-sm">
                 <div class="p-4 bg-white border-bottom d-flex flex-wrap justify-content-between align-items-center gap-3">
                     <div>
-                        <h4 class="fw-bold text-dark mb-1"><i class="fas fa-map-marked-alt text-success me-2"></i>Peta Interaktif Kantor & Wilayah Desa</h4>
-                        <p class="text-muted small mb-0">Lokasi geografis Kantor Desa Timbuseng di Kecamatan Polongbangkeng Timur, Kabupaten Takalar.</p>
+                        <h4 class="fw-bold text-dark mb-1 fs-5"><i class="fas fa-map-marked-alt text-success me-2"></i>Peta Interaktif Kantor & Wilayah Desa</h4>
+                        <p class="text-muted small mb-0" style="font-size: 0.85rem;">Lokasi geografis Kantor Desa Timbuseng di Kecamatan Polongbangkeng Timur, Kabupaten Takalar.</p>
                     </div>
-                    <a href="https://maps.google.com/?q=Desa+Timbuseng+Polongbangkeng+Timur+Takalar" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success btn-sm fw-semibold">
+                    <a href="https://maps.google.com/?q=Desa+Timbuseng+Polongbangkeng+Timur+Takalar" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success btn-sm fw-semibold rounded-pill px-3" style="font-size: 0.82rem;">
                         <i class="fas fa-external-link-alt me-1"></i> Buka Google Maps Fullscreen
                     </a>
                 </div>
                 <div class="map-frame-wrapper">
-                    <!-- Embed Google Maps yang langsung muncul secara instan dan responsif -->
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15891.7583624!2d119.52!3d-5.42!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbee32c7f4e8b35%3A0xf01e428e83311a0!2sTimbuseng%2C%20Polongbangkeng%20Timur%2C%20Takalar%20Regency%2C%20South%20Sulawesi!5e0!3m2!1sid!2sid!4v1650000000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
 
             <!-- JELAJAHI 7 DUSUN DI PETA -->
             <div class="text-center mb-4">
-                <span class="text-success fw-bold text-uppercase tracking-wider">Cakupan Wilayah</span>
-                <h3 class="fw-bold text-dark mt-1">Titik Lokasi 7 Dusun Administratif</h3>
-                <p class="text-muted mx-auto" style="max-width: 600px;">Klik pada kartu dusun di bawah untuk melihat rincian lengkap wilayah dan data kependudukan masing-masing.</p>
+                <span class="text-success fw-bold text-uppercase tracking-wider small">Cakupan Wilayah</span>
+                <h3 class="fw-bold text-dark mt-1 fs-3">Titik Lokasi 7 Dusun Administratif</h3>
+                <p class="text-muted mx-auto small" style="max-width: 600px;">Klik pada kartu dusun di bawah untuk melihat rincian lengkap wilayah dan data kependudukan masing-masing.</p>
             </div>
 
             <div class="row g-4">
                 <div class="col-md-6 col-lg-4">
-                    <a href="dusun-timbuseng1.html" class="dusun-map-card">
+                    <a href="dusun-timbuseng1.html" class="dusun-map-card shadow-sm">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="dusun-badge">Dusun I</span>
                             <i class="fas fa-arrow-right text-success small"></i>
                         </div>
-                        <h5 class="fw-bold text-dark mb-1">Dusun Timbuseng I</h5>
-                        <p class="text-muted small mb-0"><i class="fas fa-map-marker-alt text-danger me-1"></i> Wilayah Sentral & Sumur Timbusu'</p>
+                        <h5 class="fw-bold text-dark mb-1 fs-6">Dusun Timbuseng I</h5>
+                        <p class="text-muted small mb-0" style="font-size: 0.8rem;"><i class="fas fa-map-marker-alt text-danger me-1"></i> Wilayah Sentral & Sumur Timbusu'</p>
                     </a>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <a href="dusun-timbuseng2.html" class="dusun-map-card">
+                    <a href="dusun-timbuseng2.html" class="dusun-map-card shadow-sm">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="dusun-badge">Dusun II</span>
                             <i class="fas fa-arrow-right text-success small"></i>
                         </div>
-                        <h5 class="fw-bold text-dark mb-1">Dusun Timbuseng II</h5>
-                        <p class="text-muted small mb-0"><i class="fas fa-map-marker-alt text-danger me-1"></i> Wilayah Pemukiman & Pertanian</p>
+                        <h5 class="fw-bold text-dark mb-1 fs-6">Dusun Timbuseng II</h5>
+                        <p class="text-muted small mb-0" style="font-size: 0.8rem;"><i class="fas fa-map-marker-alt text-danger me-1"></i> Wilayah Pemukiman & Pertanian</p>
                     </a>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <a href="dusun-sauleya.html" class="dusun-map-card">
+                    <a href="dusun-sauleya.html" class="dusun-map-card shadow-sm">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="dusun-badge">Dusun III</span>
                             <i class="fas fa-arrow-right text-success small"></i>
                         </div>
-                        <h5 class="fw-bold text-dark mb-1">Dusun Sauleya</h5>
-                        <p class="text-muted small mb-0"><i class="fas fa-map-marker-alt text-danger me-1"></i> Wilayah Akses Pertanian & Perkebunan</p>
+                        <h5 class="fw-bold text-dark mb-1 fs-6">Dusun Sauleya</h5>
+                        <p class="text-muted small mb-0" style="font-size: 0.8rem;"><i class="fas fa-map-marker-alt text-danger me-1"></i> Wilayah Akses Pertanian & Perkebunan</p>
                     </a>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <a href="dusun-tanasambayang.html" class="dusun-map-card">
+                    <a href="dusun-tanasambayang.html" class="dusun-map-card shadow-sm">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="dusun-badge">Dusun IV</span>
                             <i class="fas fa-arrow-right text-success small"></i>
                         </div>
-                        <h5 class="fw-bold text-dark mb-1">Dusun Tanasambayang</h5>
-                        <p class="text-muted small mb-0"><i class="fas fa-map-marker-alt text-danger me-1"></i> Wilayah Perkebunan Tebu</p>
+                        <h5 class="fw-bold text-dark mb-1 fs-6">Dusun Tanasambayang</h5>
+                        <p class="text-muted small mb-0" style="font-size: 0.8rem;"><i class="fas fa-map-marker-alt text-danger me-1"></i> Wilayah Perkebunan Tebu</p>
                     </a>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <a href="dusun-bontobaddo.html" class="dusun-map-card">
+                    <a href="dusun-bontobaddo.html" class="dusun-map-card shadow-sm">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="dusun-badge">Dusun V</span>
                             <i class="fas fa-arrow-right text-success small"></i>
                         </div>
-                        <h5 class="fw-bold text-dark mb-1">Dusun Bontobaddo</h5>
-                        <p class="text-muted small mb-0"><i class="fas fa-map-marker-alt text-danger me-1"></i> Wilayah Pemukiman Warga</p>
+                        <h5 class="fw-bold text-dark mb-1 fs-6">Dusun Bontobaddo</h5>
+                        <p class="text-muted small mb-0" style="font-size: 0.8rem;"><i class="fas fa-map-marker-alt text-danger me-1"></i> Wilayah Pemukiman Warga</p>
                     </a>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <a href="dusun-panaikang1.html" class="dusun-map-card">
+                    <a href="dusun-panaikang1.html" class="dusun-map-card shadow-sm">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="dusun-badge">Dusun VI</span>
                             <i class="fas fa-arrow-right text-success small"></i>
                         </div>
-                        <h5 class="fw-bold text-dark mb-1">Dusun Panaikang I</h5>
-                        <p class="text-muted small mb-0"><i class="fas fa-map-marker-alt text-danger me-1"></i> Wilayah Sawah Irigasi Produktif</p>
+                        <h5 class="fw-bold text-dark mb-1 fs-6">Dusun Panaikang I</h5>
+                        <p class="text-muted small mb-0" style="font-size: 0.8rem;"><i class="fas fa-map-marker-alt text-danger me-1"></i> Wilayah Sawah Irigasi Produktif</p>
                     </a>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <a href="dusun-panaikang2.html" class="dusun-map-card">
+                    <a href="dusun-panaikang2.html" class="dusun-map-card shadow-sm">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="dusun-badge">Dusun VII</span>
                             <i class="fas fa-arrow-right text-success small"></i>
                         </div>
-                        <h5 class="fw-bold text-dark mb-1">Dusun Panaikang II</h5>
-                        <p class="text-muted small mb-0"><i class="fas fa-map-marker-alt text-danger me-1"></i> Wilayah Ujung Perbatasan Dusun</p>
+                        <h5 class="fw-bold text-dark mb-1 fs-6">Dusun Panaikang II</h5>
+                        <p class="text-muted small mb-0" style="font-size: 0.8rem;"><i class="fas fa-map-marker-alt text-danger me-1"></i> Wilayah Ujung Perbatasan Dusun</p>
                     </a>
                 </div>
             </div>
@@ -367,46 +338,41 @@
     <footer class="pt-5">
         <div class="container pb-4">
             <div class="row g-4">
-                <div class="col-lg-5">
-                    <div class="d-flex align-items-center gap-3 mb-3">
-                        <img src="logo.png" alt="Logo Desa Timbuseng" style="height: 48px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                <div class="col-12 col-lg-5 text-center text-lg-start">
+                    <div class="d-flex align-items-center justify-content-center justify-content-lg-start gap-3 mb-3">
+                        <img src="logo.png" alt="Logo Desa Timbuseng" style="height: 44px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/45?text=LOGO';">
                         <div>
-                            <h5 class="fw-bold text-white mb-0">Pemerintah Desa Timbuseng</h5>
-                            <small class="text-white-50">Kec. Polongbangkeng Timur, Kab. Takalar</small>
+                            <h5 class="fw-bold text-white mb-0 fs-6">Pemerintah Desa Timbuseng</h5>
+                            <small class="text-white-50" style="font-size: 0.75rem;">Kec. Polongbangkeng Timur, Kab. Takalar</small>
                         </div>
                     </div>
-                    <p class="text-white-50 small pe-lg-4">
+                    <p class="text-white-50 pe-lg-4" style="font-size: 0.85rem;">
                         Portal resmi Sistem Informasi Desa Timbuseng. Menyajikan data profil, transparansi tata kelola pemerintahan, layanan pengaduan masyarakat, serta pemetaan wilayah desa.
                     </p>
-                    <div class="d-flex gap-2 mt-3">
-                        <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram Resmi Desa">
-                            <i class="fab fa-instagram fs-5"></i>
+                    <div class="d-flex justify-content-center justify-content-lg-start gap-2 mt-3">
+                        <a href="https://www.instagram.com/desa_timbuseng" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram Resmi Desa">
+                            <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="social-btn" title="Facebook Desa">
-                            <i class="fab fa-facebook-f fs-5"></i>
-                        </a>
-                        <a href="#" class="social-btn" title="YouTube Desa">
-                            <i class="fab fa-youtube fs-5"></i>
-                        </a>
+                        <a href="#" class="social-btn" title="Facebook Desa"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn" title="YouTube Desa"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-3">
-                    <h6 class="fw-bold text-white mb-3 text-uppercase">Navigasi Utama</h6>
-                    <ul class="list-unstyled d-flex flex-column gap-2 small">
+                <div class="col-6 col-md-4 col-lg-3">
+                    <h6 class="fw-bold text-white mb-3 text-uppercase" style="font-size: 0.85rem;">Navigasi Utama</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 0.85rem;">
                         <li><a href="index.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Beranda</a></li>
-                        <li><a href="profil.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Profil Desa</a></li>
-                        <li><a href="pemdes.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Struktur Pemdes</a></li>
+                        <li><a href="profil.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Profil Desa & Perangkat</a></li>
                         <li><a href="peta.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Peta Digital Wilayah</a></li>
                         <li><a href="informasi.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Informasi & Berita Desa</a></li>
-                        <li><a href="kontak.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Kontak & Lokasi Kantor</a></li>
+                        <li><a href="pengaduan.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Layanan Pengaduan Warga</a></li>
                     </ul>
                 </div>
-                <div class="col-md-8 col-lg-4">
-                    <h6 class="fw-bold text-white mb-3 text-uppercase">Kontak Kantor Desa</h6>
-                    <ul class="list-unstyled d-flex flex-column gap-2 small text-white-50">
+                <div class="col-6 col-md-8 col-lg-4">
+                    <h6 class="fw-bold text-white mb-3 text-uppercase" style="font-size: 0.85rem;">Kontak Kami</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 text-white-50" style="font-size: 0.85rem;">
                         <li class="d-flex align-items-start gap-2">
                             <i class="fas fa-map-marker-alt text-warning mt-1"></i>
-                            <span>Kantor Desa Timbuseng, Kec. Polongbangkeng Timur, Kab. Takalar, Sulawesi Selatan 92221</span>
+                            <span>Kantor Desa Timbuseng, Sulawesi Selatan 92221</span>
                         </li>
                         <li class="d-flex align-items-center gap-2">
                             <i class="fas fa-phone-alt text-warning"></i>
@@ -414,13 +380,7 @@
                         </li>
                         <li class="d-flex align-items-center gap-2">
                             <i class="fas fa-envelope text-warning"></i>
-                            <span>desatimbuseng1993@gmail.com</span>
-                        </li>
-                        <li class="d-flex align-items-center gap-2">
-                            <i class="fab fa-instagram text-warning"></i>
-                            <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none">
-                                @desa_timbuseng
-                            </a>
+                            <span class="text-truncate">desatimbuseng1993@gmail.com</span>
                         </li>
                         <li class="d-flex align-items-center gap-2">
                             <i class="fas fa-clock text-warning"></i>
@@ -433,12 +393,39 @@
         <!-- COPYRIGHT BAR -->
         <div class="copyright-bar py-3 text-center text-white-50">
             <div class="container">
-                <p class="mb-0">©2026 P10 KKN UHM | Pemerintah Desa Timbuseng, Polongbangkeng Timur, Takalar. All Rights Reserved.</p>
+                <p class="mb-0">©2026 P10 KKN UHM | Pemerintah Desa Timbuseng, Takalar. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- SCRIPT JS SINKRONISASI JSONBIN API -->
+    <script>
+        const API_KEY = "$2a$10$wbLvXvg7KqU.nSiV2NXihOzbcQnKyWuRhAggoR26QUpcDQE.WVBaW";
+        const BIN_SISTEM = "6aa93e9affd5d1605309c685";
+
+        document.addEventListener("DOMContentLoaded", async function() {
+            try {
+                const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_SISTEM}/latest`, {
+                    headers: { 'X-Master-Key': API_KEY }
+                });
+                if (!response.ok) throw new Error("Gagal memuat data dari server.");
+                
+                const result = await response.json();
+                const data = result.record;
+
+                // Sinkronisasi Statistik Lahan Peta dari tab 'peta' di admin
+                if (data.peta) {
+                    if (data.peta.luas_total) document.getElementById('val-luas-total').innerText = data.peta.luas_total;
+                    if (data.peta.luas_tebu) document.getElementById('val-luas-tebu').innerText = data.peta.luas_tebu;
+                    if (data.peta.luas_sawah) document.getElementById('val-luas-sawah').innerText = data.peta.luas_sawah;
+                }
+            } catch (err) {
+                console.error("Gagal sinkronisasi data peta:", err);
+            }
+        });
+    </script>
 </body>
 </html>
