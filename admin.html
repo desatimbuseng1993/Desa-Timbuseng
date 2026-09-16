@@ -424,16 +424,67 @@
             </div>
         </div>
 
-        <!-- TAB 8: PEMDES.HTML -->
+        <!-- TAB 8: PEMDES.HTML (DIPERBARUI LENGKAP) -->
         <div id="tab-pemdes" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-users-cog text-success me-2"></i>pemdes.html - Pemerintah Desa</h4>
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-users-cog text-success me-2"></i>pemdes.html - Pemerintah Desa & Perangkat</h4>
+                <p class="text-muted small mb-4">Kelola foto, nama, NIK, deskripsi profil, serta teks sambutan Kepala Desa dan seluruh jajaran perangkat (Sekdes, Kasi, Kaur, & Staf).</p>
+                
                 <form onsubmit="saveSectionData(event, 'pemdes')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area pemdes.html ]</div></div>
-                        <div class="col-md-6"><label class="form-label">Nama Kepala Desa</label><input type="text" class="form-control" name="kades"></div>
-                        <div class="col-md-6"><label class="form-label">Sekretaris Desa</label><input type="text" class="form-control" name="sekdes"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Pemdes</button></div>
+                        <div class="col-12"><h6 class="text-success fw-bold border-bottom pb-2">A. Kepala Desa & Sambutan Resmi</h6></div>
+                        <div class="col-md-6"><label class="form-label">Nama Kepala Desa</label><input type="text" class="form-control" name="kades_name" placeholder="KAHARUDDIN, S.P"></div>
+                        <div class="col-md-6"><label class="form-label">NIK Kepala Desa</label><input type="text" class="form-control" name="kades_nik" placeholder="7305041009820004"></div>
+                        <div class="col-md-12"><label class="form-label">Upload Foto Kepala Desa</label><input type="file" class="form-control" name="kades_photo" accept="image/*"></div>
+                        <div class="col-md-12"><label class="form-label">Deskripsi / Tugas Utama Kades</label><textarea class="form-control" name="kades_desc" rows="2"></textarea></div>
+                        
+                        <div class="col-md-12"><label class="form-label">Sambutan Paragraf 1</label><textarea class="form-control" name="sambutan_p1" rows="2"></textarea></div>
+                        <div class="col-md-12"><label class="form-label">Sambutan Paragraf 2</label><textarea class="form-control" name="sambutan_p2" rows="2"></textarea></div>
+                        <div class="col-md-12"><label class="form-label">Sambutan Paragraf 3</label><textarea class="form-control" name="sambutan_p3" rows="2"></textarea></div>
+                        <div class="col-md-6"><label class="form-label">Kutipan Semboyan (Quote)</label><input type="text" class="form-control" name="sambutan_quote"></div>
+
+                        <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">B. Sekretaris Desa</h6></div>
+                        <div class="col-md-6"><label class="form-label">Nama Sekdes</label><input type="text" class="form-control" name="sekdes_name"></div>
+                        <div class="col-md-6"><label class="form-label">NIK Sekdes</label><input type="text" class="form-control" name="sekdes_nik"></div>
+                        <div class="col-md-12"><label class="form-label">Deskripsi Sekdes</label><textarea class="form-control" name="sekdes_desc" rows="2"></textarea></div>
+
+                        <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">C. Kepala Seksi (Kasi)</h6></div>
+                        <div class="col-md-4"><label class="form-label">Nama Kasi Pemerintahan</label><input type="text" class="form-control" name="kasi1_name"></div>
+                        <div class="col-md-4"><label class="form-label">NIK Kasi Pemerintahan</label><input type="text" class="form-control" name="kasi1_nik"></div>
+                        <div class="col-md-4"><label class="form-label">Deskripsi Kasi Pemerintahan</label><input type="text" class="form-control" name="kasi1_desc"></div>
+
+                        <div class="col-md-4"><label class="form-label">Nama Kasi Pelayanan</label><input type="text" class="form-control" name="kasi2_name"></div>
+                        <div class="col-md-4"><label class="form-label">NIK Kasi Pelayanan</label><input type="text" class="form-control" name="kasi2_nik"></div>
+                        <div class="col-md-4"><label class="form-label">Deskripsi Kasi Pelayanan</label><input type="text" class="form-control" name="kasi2_desc"></div>
+
+                        <div class="col-md-4"><label class="form-label">Nama Kasi Pemberdayaan</label><input type="text" class="form-control" name="kasi3_name"></div>
+                        <div class="col-md-4"><label class="form-label">NIK Kasi Pemberdayaan</label><input type="text" class="form-control" name="kasi3_nik"></div>
+                        <div class="col-md-4"><label class="form-label">Deskripsi Kasi Pemberdayaan</label><input type="text" class="form-control" name="kasi3_desc"></div>
+
+                        <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">D. Kepala Urusan (Kaur) & Staf</h6></div>
+                        <div class="col-md-4"><label class="form-label">Nama Kaur Keuangan</label><input type="text" class="form-control" name="kaur1_name"></div>
+                        <div class="col-md-4"><label class="form-label">NIK Kaur Keuangan</label><input type="text" class="form-control" name="kaur1_nik"></div>
+                        <div class="col-md-4"><label class="form-label">Deskripsi Kaur Keuangan</label><input type="text" class="form-control" name="kaur1_desc"></div>
+
+                        <div class="col-md-6"><label class="form-label">Nama Staf Kaur Keuangan 1</label><input type="text" class="form-control" name="stafk1_name"></div>
+                        <div class="col-md-6"><label class="form-label">Nama Staf Kaur Keuangan 2</label><input type="text" class="form-control" name="stafk2_name"></div>
+
+                        <div class="col-md-4"><label class="form-label">Nama Kaur Tata Usaha & Umum</label><input type="text" class="form-control" name="kaur2_name"></div>
+                        <div class="col-md-4"><label class="form-label">NIK Kaur Umum</label><input type="text" class="form-control" name="kaur2_nik"></div>
+                        <div class="col-md-4"><label class="form-label">Deskripsi Kaur Umum</label><input type="text" class="form-control" name="kaur2_desc"></div>
+
+                        <div class="col-md-6"><label class="form-label">Nama Staf Kaur Umum 1</label><input type="text" class="form-control" name="stafu1_name"></div>
+                        <div class="col-md-6"><label class="form-label">Nama Staf Kaur Umum 2</label><input type="text" class="form-control" name="stafu2_name"></div>
+
+                        <div class="col-md-4"><label class="form-label">Nama Kaur Perencanaan</label><input type="text" class="form-control" name="kaur3_name"></div>
+                        <div class="col-md-4"><label class="form-label">NIK Kaur Perencanaan</label><input type="text" class="form-control" name="kaur3_nik"></div>
+                        <div class="col-md-4"><label class="form-label">Deskripsi Kaur Perencanaan</label><input type="text" class="form-control" name="kaur3_desc"></div>
+
+                        <div class="col-md-12"><label class="form-label">Nama Staf Kaur Pemerintahan / Perencanaan</label><input type="text" class="form-control" name="stafp1_name"></div>
+
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-desa px-5 py-3"><i class="fas fa-save me-2"></i>Simpan Perubahan Data Pemerintahan Desa</button>
+                        </div>
                     </div>
                 </form>
             </div>
