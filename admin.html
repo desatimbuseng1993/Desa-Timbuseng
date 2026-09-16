@@ -844,14 +844,33 @@
                 alert("Tidak ada data laporan pengaduan untuk diunduh.");
                 return;
             }
-            let csvContent = "data:text/csv;charset=utf-8,Tanggal,Nama Pelapor,Nomor HP,Dusun,Kategori,Judul Laporan,Isi Pengaduan\r\n";
+
+            // Menggunakan pemisah titik koma (;) agar kolom otomatis rapi di Excel wilayah Indonesia
+            let csvContent = "\ufeffTanggal;Nama Pelapor;Nomor HP;Dusun;Kategori;Judul Laporan;Isi Pengaduan\r\n";
+            
             complaints.forEach(c => {
-                let row = [c.date, `"${c.name}"`, `"${c.phone}"`, `"${c.dusun}"`, `"${c.category}"`, `"${c.title}"`, `"${c.content}"`];
-                csvContent += row.join(",") + "\r\n";
+                const cleanName = (c.name || "").replace(/[\r\n]+/g, " ").replace(/;/g, ",");
+                const cleanPhone = `\t${c.phone || ""}`.trim();
+                const cleanTitle = (c.title || "").replace(/[\r\n]+/g, " ").replace(/;/g, ",");
+                const cleanContent = (c.content || "").replace(/[\r\n]+/g, " ").replace(/;/g, ",");
+                
+                let row = [
+                    c.date || "",
+                    `"${cleanName}"`,
+                    `"${cleanPhone}"`,
+                    `"${c.dusun || ""}"`,
+                    `"${c.category || ""}"`,
+                    `"${cleanTitle}"`,
+                    `"${cleanContent}"`
+                ];
+                
+                csvContent += row.join(";") + "\r\n";
             });
-            const encodedUri = encodeURI(csvContent);
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
+            link.setAttribute("href", url);
             link.setAttribute("download", "Rekap_Laporan_Pengaduan_Desa_Timbuseng.csv");
             document.body.appendChild(link);
             link.click();
