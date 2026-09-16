@@ -212,7 +212,7 @@
             </div>
         </div>
 
-        <!-- TAB 3: PROFIL.HTML (DIPERBARUI SESUAI PROFIL.HTML) -->
+        <!-- TAB 3: PROFIL.HTML -->
         <div id="tab-profil" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-landmark text-success me-2"></i>profil.html - Profil & Visi Misi Desa</h4>
@@ -321,17 +321,29 @@
             </div>
         </div>
 
-        <!-- TAB 6: PETA.HTML -->
+        <!-- TAB 6: PETA.HTML (DIPERBARUI SESUAI PETA.HTML) -->
         <div id="tab-peta" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-map-marked-alt text-success me-2"></i>peta.html - Peta & Statistik Lahan</h4>
+                <p class="text-muted small mb-4">Kelola data statistik spasial dan luasan lahan wilayah desa yang tampil di halaman peta digital.</p>
+                
                 <form onsubmit="saveSectionData(event, 'peta')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area peta.html ]</div></div>
-                        <div class="col-md-4"><label class="form-label">Total Luas Wilayah (Ha)</label><input type="text" class="form-control" name="luas_total"></div>
-                        <div class="col-md-4"><label class="form-label">Perkebunan Tebu (Ha)</label><input type="text" class="form-control" name="luas_tebu"></div>
-                        <div class="col-md-4"><label class="form-label">Sawah Irigasi (Ha)</label><input type="text" class="form-control" name="luas_sawah"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Peta</button></div>
+                        <div class="col-md-4">
+                            <label class="form-label">Total Luas Wilayah (Ha)</label>
+                            <input type="text" class="form-control" name="luas_total" placeholder="Cth: 1.083,47 Ha">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Perkebunan Tebu (Ha)</label>
+                            <input type="text" class="form-control" name="luas_tebu" placeholder="Cth: 705,39 Ha">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Sawah Irigasi (Ha)</label>
+                            <input type="text" class="form-control" name="luas_sawah" placeholder="Cth: 216,53 Ha">
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-save me-2"></i>Simpan Statistik Peta</button>
+                        </div>
                     </div>
                 </form>
             </div>
