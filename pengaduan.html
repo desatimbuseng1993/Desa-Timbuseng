@@ -24,62 +24,31 @@
             color: #2d3748;
             background-color: #ffffff;
             overflow-x: hidden;
+            font-size: 0.95rem;
         }
 
         /* Top Bar */
         .top-bar {
             background-color: var(--primary-dark);
             color: rgba(255, 255, 255, 0.85);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
         }
-
-        .top-bar a {
-            color: rgba(255, 255, 255, 0.85);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .top-bar a:hover {
-            color: var(--accent-color);
-        }
+        .top-bar a { color: rgba(255, 255, 255, 0.85); text-decoration: none; transition: color 0.2s ease; }
+        .top-bar a:hover { color: var(--accent-color); }
 
         /* Navbar */
-        .navbar {
-            padding-top: 0.75rem;
-            padding-bottom: 0.75rem;
-        }
-
-        .navbar-brand {
-            max-width: 75%;
-        }
-
-        .navbar-brand img {
-            height: 45px;
-            width: auto;
-            object-fit: contain;
-            flex-shrink: 0;
-        }
-
-        .bg-desa {
-            background-color: var(--primary-color) !important;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            padding: 0.6rem 1rem !important;
-            transition: all 0.2s ease;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--accent-color) !important;
-        }
+        .navbar { padding-top: 0.65rem; padding-bottom: 0.65rem; }
+        .navbar-brand img { height: 42px; width: auto; object-fit: contain; }
+        .bg-desa { background-color: var(--primary-color) !important; }
+        .nav-link { font-weight: 500; font-size: 0.9rem; padding: 0.5rem 0.85rem !important; transition: all 0.2s ease; }
+        .nav-link:hover, .nav-link.active { color: var(--accent-color) !important; }
 
         /* Header Pengaduan */
         .complaint-header {
             background: linear-gradient(135deg, rgba(13, 92, 58, 0.92), rgba(7, 59, 36, 0.92)), 
                         url('kantor.png') center/cover no-repeat;
             color: white;
-            padding: 80px 0 60px 0;
+            padding: 70px 0 50px 0;
         }
 
         /* Form Container Card */
@@ -92,9 +61,10 @@
         }
 
         .form-control, .form-select {
-            padding: 0.75rem 1rem;
+            padding: 0.7rem 1rem;
             border-radius: 10px;
             border-color: #cbd5e1;
+            font-size: 0.9rem;
         }
 
         .form-control:focus, .form-select:focus {
@@ -112,46 +82,15 @@
         }
 
         /* Footer */
-        footer {
-            background-color: #0b1510;
-            color: #e2e8f0;
-        }
-
-        .footer-link {
-            color: #a0aec0;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .footer-link:hover {
-            color: #ffffff;
-            padding-left: 5px;
-        }
-
+        footer { background-color: #0b1510; color: #e2e8f0; font-size: 0.9rem; }
+        .footer-link { color: #a0aec0; text-decoration: none; transition: 0.2s; }
+        .footer-link:hover { color: #ffffff; padding-left: 4px; }
         .social-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--accent-color);
-            transition: all 0.3s ease;
-            text-decoration: none;
+            display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px;
+            border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); color: var(--accent-color); transition: all 0.3s ease; text-decoration: none;
         }
-
-        .social-btn:hover {
-            background-color: var(--accent-color);
-            color: #000000;
-            transform: translateY(-3px);
-        }
-
-        .copyright-bar {
-            background-color: #050a07;
-            border-top: 1px solid #1a2e22;
-            font-size: 0.875rem;
-        }
+        .social-btn:hover { background-color: var(--accent-color); color: #000000; transform: translateY(-2px); }
+        .copyright-bar { background-color: #050a07; border-top: 1px solid #1a2e22; font-size: 0.83rem; }
     </style>
 </head>
 <body>
@@ -164,10 +103,10 @@
                 <span><i class="fas fa-envelope text-warning me-1"></i> desatimbuseng1993@gmail.com</span>
             </div>
             <div class="d-flex align-items-center gap-3">
-                <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="fw-semibold text-warning">
+                <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="fw-semibold text-warning" id="topbar-wa">
                     <i class="fab fa-whatsapp me-1"></i> +62 852-9957-6913
                 </a>
-                <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="fw-semibold text-warning">
+                <a href="https://www.instagram.com/desa_timbuseng" target="_blank" rel="noopener noreferrer" class="fw-semibold text-warning">
                     <i class="fab fa-instagram me-1"></i> @desa_timbuseng
                 </a>
             </div>
@@ -175,13 +114,13 @@
     </div>
 
     <!-- NAVBAR UTAMA -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand fw-bold d-flex align-items-center gap-2 text-decoration-none" href="index.html">
-                <img src="logo.png" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                <img src="logo.png" alt="Logo Desa Timbuseng" onerror="this.onerror=null; this.src='https://via.placeholder.com/45?text=LOGO';">
                 <div class="lh-sm overflow-hidden">
-                    <span class="d-block fs-6 fs-md-5 text-white fw-bold text-truncate">DESA TIMBUSENG</span>
-                    <small class="fw-normal text-white-50 text-uppercase d-block" style="font-size: 0.7rem;">Kabupaten Takalar</small>
+                    <span class="d-block fs-6 text-white fw-bold text-truncate">DESA TIMBUSENG</span>
+                    <small class="fw-normal text-white-50 text-uppercase d-block" style="font-size: 0.65rem;">Kabupaten Takalar</small>
                 </div>
             </a>
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -203,9 +142,9 @@
     <!-- HEADER PENGADUAN WARGA -->
     <header class="complaint-header text-center">
         <div class="container">
-            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill text-uppercase fw-bold mb-3">Layanan Aspirasi Masyarakat</span>
-            <h1 class="display-6 display-md-5 fw-extrabold mb-2">Pengaduan & Aspirasi Warga</h1>
-            <p class="lead text-white-50 mx-auto fs-6 fs-md-5" style="max-width: 750px;">
+            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill text-uppercase fw-bold mb-3" style="font-size: 0.75rem;">Layanan Aspirasi Masyarakat</span>
+            <h1 class="fw-extrabold mb-2" style="font-size: clamp(1.7rem, 3.2vw, 2.5rem);">Pengaduan & Aspirasi Warga</h1>
+            <p class="text-white-50 mx-auto" style="font-size: clamp(0.85rem, 1.8vw, 0.98rem); max-width: 700px; line-height: 1.6;">
                 Sampaikan laporan, keluhan infrastruktur, saran pembangunan, atau aspirasi Anda secara transparan langsung kepada Pemerintah Desa Timbuseng.
             </p>
         </div>
@@ -218,37 +157,37 @@
             <!-- ALUR PENGADUAN -->
             <div class="row g-4 mb-5">
                 <div class="col-md-4">
-                    <div class="step-box">
-                        <div class="text-success fw-bold fs-4 mb-2"><i class="fas fa-edit"></i> 1. Tulis Laporan</div>
-                        <p class="text-secondary small mb-0">Isi formulir pengaduan dengan melampirkan identitas yang valid serta kronologi permasalahan atau usulan yang jelas[cite: 21].</p>
+                    <div class="step-box shadow-sm">
+                        <div class="text-success fw-bold fs-5 mb-2"><i class="fas fa-edit me-1"></i> 1. Tulis Laporan</div>
+                        <p class="text-secondary small mb-0" style="font-size: 0.85rem;">Isi formulir pengaduan dengan melampirkan identitas yang valid serta kronologi permasalahan atau usulan yang jelas.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="step-box">
-                        <div class="text-success fw-bold fs-4 mb-2"><i class="fas fa-sync-alt"></i> 2. Verifikasi Desa</div>
-                        <p class="text-secondary small mb-0">Aparatur pemerintah desa akan memverifikasi dan meneruskan aduan Anda kepada bidang terkait atau dusun bersangkutan[cite: 21].</p>
+                    <div class="step-box shadow-sm">
+                        <div class="text-success fw-bold fs-5 mb-2"><i class="fas fa-sync-alt me-1"></i> 2. Verifikasi Desa</div>
+                        <p class="text-secondary small mb-0" style="font-size: 0.85rem;">Aparatur pemerintah desa akan memverifikasi dan meneruskan aduan Anda kepada bidang terkait atau dusun bersangkutan.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="step-box">
-                        <div class="text-success fw-bold fs-4 mb-2"><i class="fas fa-check-circle"></i> 3. Tindak Lanjut</div>
-                        <p class="text-secondary small mb-0">Pengaduan akan terkumpul di dasbor admin untuk dikelola, diedit, dihapus, atau diunduh dalam format Excel oleh pihak desa[cite: 21].</p>
+                    <div class="step-box shadow-sm">
+                        <div class="text-success fw-bold fs-5 mb-2"><i class="fas fa-check-circle me-1"></i> 3. Tindak Lanjut</div>
+                        <p class="text-secondary small mb-0" style="font-size: 0.85rem;">Pengaduan akan terkumpul di dasbor admin untuk dikelola, diedit, dihapus, atau diunduh oleh pihak desa.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- ALTERNATIF WHATSAPP RAPAT KELUHAN -->
+            <!-- ALTERNATIF WHATSAPP (TERHUBUNG KE SISTEM ADMIN) -->
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-9">
                     <div class="alert alert-success border-0 shadow-sm rounded-4 p-4 d-flex flex-wrap align-items-center justify-content-between gap-3">
                         <div class="d-flex align-items-center gap-3">
                             <div class="fs-1 text-success flex-shrink-0"><i class="fab fa-whatsapp"></i></div>
                             <div>
-                                <h5 class="fw-bold text-dark mb-1">Butuh Respon Cepat via WhatsApp?</h5>
-                                <p class="text-secondary small mb-0">Anda juga dapat berkonsultasi atau mengirimkan pengaduan langsung melalui nomor WhatsApp resmi pelayanan Desa Timbuseng.</p>
+                                <h5 class="fw-bold text-dark mb-1 fs-6">Butuh Respon Cepat via WhatsApp?</h5>
+                                <p class="text-secondary small mb-0" style="font-size: 0.85rem;">Anda juga dapat berkonsultasi atau mengirimkan pengaduan langsung melalui nomor WhatsApp resmi pelayanan Desa Timbuseng.</p>
                             </div>
                         </div>
-                        <a href="https://wa.me/6285299576913?text=Halo%20Pemerintah%20Desa%20Timbuseng,%20saya%20ingin%20menyampaikan%20pengaduan/aspirasi..." target="_blank" rel="noopener noreferrer" class="btn btn-success fw-bold px-4 py-2 rounded-pill text-nowrap">
+                        <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="btn btn-success fw-bold px-4 py-2 rounded-pill text-nowrap shadow-sm" id="wa-chat-btn" style="font-size: 0.88rem;">
                             <i class="fab fa-whatsapp me-2"></i> Chat WhatsApp Desa
                         </a>
                     </div>
@@ -260,8 +199,8 @@
                 <div class="col-lg-9">
                     <div class="complaint-card p-4 p-md-5">
                         <div class="text-center mb-4">
-                            <h3 class="fw-bold text-dark mb-1">Formulir Pengaduan / Aspirasi Daring</h3>
-                            <p class="text-muted small">Semua kolom bertanda bintang (<span class="text-danger">*</span>) wajib diisi dengan benar[cite: 21]. Data yang masuk akan otomatis tersimpan ke pusat admin.</p>
+                            <h3 class="fw-bold text-dark mb-1 fs-4">Formulir Pengaduan / Aspirasi Daring</h3>
+                            <p class="text-muted small mb-0" style="font-size: 0.85rem;">Semua kolom bertanda bintang (<span class="text-danger">*</span>) wajib diisi dengan benar. Data yang masuk akan otomatis tersimpan ke pusat admin.</p>
                         </div>
 
                         <form id="formPengaduanWarga">
@@ -311,8 +250,8 @@
                                 <div class="col-12">
                                     <div class="form-check mb-3">
                                         <input class="form-check-input" type="checkbox" value="" id="validasiCheck" required>
-                                        <label class="form-check-label small text-muted" for="validasiCheck">
-                                            Saya menyatakan bahwa data dan laporan yang saya sampaikan adalah benar serta dapat dipertanggungjawabkan[cite: 21].
+                                        <label class="form-check-label small text-muted" for="validasiCheck" style="font-size: 0.82rem;">
+                                            Saya menyatakan bahwa data dan laporan yang saya sampaikan adalah benar serta dapat dipertanggungjawabkan.
                                         </label>
                                     </div>
                                 </div>
@@ -330,108 +269,56 @@
         </div>
     </section>
 
-    <!-- SCRIPT PENYIMPANAN DATA PENGADUAN KE LOCALSTORAGE ADMIN -->
-    <script>
-        document.getElementById("formPengaduanWarga").addEventListener("submit", function(e) {
-            e.preventDefault();
-
-            // Ambil nilai dari form
-            const nama = document.getElementById("pengaduNama").value;
-            const phone = document.getElementById("pengaduPhone").value;
-            const dusun = document.getElementById("pengaduDusun").value;
-            const kategori = document.getElementById("pengaduKategori").value;
-            const judul = document.getElementById("pengaduJudul").value;
-            const isi = document.getElementById("pengaduIsi").value;
-            const tanggal = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' });
-
-            // Buat objek laporan baru
-            const newComplaint = {
-                id: Date.now(),
-                date: tanggal,
-                name: nama,
-                phone: phone,
-                dusun: dusun,
-                category: kategori,
-                title: judul,
-                content: isi,
-                status: 'Menunggu'
-            };
-
-            // Ambil data pengaduan yang sudah ada di localStorage atau buat array baru
-            let complaints = JSON.parse(localStorage.getItem('desa_complaints')) || [];
-            complaints.unshift(newComplaint); // Tambahkan di awal array
-
-            // Simpan kembali ke localStorage agar bisa diakses di halaman admin
-            localStorage.setItem('desa_complaints', JSON.stringify(complaints));
-
-            alert("Terima kasih! Pengaduan / aspirasi Anda telah berhasil dikirim ke sistem Pemerintah Desa Timbuseng dan masuk ke pusat data admin untuk ditindaklanjuti.");
-            this.reset();
-        });
-    </script>
-
     <!-- FOOTER UTAMA -->
     <footer class="pt-5">
         <div class="container pb-4">
             <div class="row g-4">
-                <div class="col-lg-5">
-                    <div class="d-flex align-items-center gap-3 mb-3">
-                        <img src="logo.png" alt="Logo Desa Timbuseng" style="height: 48px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/50?text=LOGO';">
+                <div class="col-12 col-lg-5 text-center text-lg-start">
+                    <div class="d-flex align-items-center justify-content-center justify-content-lg-start gap-3 mb-3">
+                        <img src="logo.png" alt="Logo Desa Timbuseng" style="height: 44px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/45?text=LOGO';">
                         <div>
-                            <h5 class="fw-bold text-white mb-0">Pemerintah Desa Timbuseng</h5>
-                            <small class="text-white-50">Kec. Polongbangkeng Timur, Kab. Takalar</small>
+                            <h5 class="fw-bold text-white mb-0 fs-6">Pemerintah Desa Timbuseng</h5>
+                            <small class="text-white-50" style="font-size: 0.75rem;">Kec. Polongbangkeng Timur, Kab. Takalar</small>
                         </div>
                     </div>
-                    <p class="text-white-50 small pe-lg-4">
+                    <p class="text-white-50 pe-lg-4" style="font-size: 0.85rem;">
                         Portal resmi Sistem Informasi Desa Timbuseng. Menyajikan data profil, transparansi tata kelola pemerintahan, layanan pengaduan masyarakat, serta pemetaan wilayah desa.
                     </p>
-                    <div class="d-flex gap-2 mt-3">
-                        <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="social-btn" title="WhatsApp Resmi Desa">
-                            <i class="fab fa-whatsapp fs-5"></i>
+                    <div class="d-flex justify-content-center justify-content-lg-start gap-2 mt-3">
+                        <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="social-btn footer-wa-link" title="WhatsApp Resmi Desa">
+                            <i class="fab fa-whatsapp"></i>
                         </a>
-                        <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram Resmi Desa">
-                            <i class="fab fa-instagram fs-5"></i>
+                        <a href="https://www.instagram.com/desa_timbuseng" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram Resmi Desa">
+                            <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="social-btn" title="Facebook Desa">
-                            <i class="fab fa-facebook-f fs-5"></i>
-                        </a>
-                        <a href="#" class="social-btn" title="YouTube Desa">
-                            <i class="fab fa-youtube fs-5"></i>
-                        </a>
+                        <a href="#" class="social-btn" title="Facebook Desa"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn" title="YouTube Desa"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-3">
-                    <h6 class="fw-bold text-white mb-3 text-uppercase">Navigasi Utama</h6>
-                    <ul class="list-unstyled d-flex flex-column gap-2 small">
+                <div class="col-6 col-md-4 col-lg-3">
+                    <h6 class="fw-bold text-white mb-3 text-uppercase" style="font-size: 0.85rem;">Navigasi Utama</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 0.85rem;">
                         <li><a href="index.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Beranda</a></li>
-                        <li><a href="profil.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Profil Desa</a></li>
-                        <li><a href="pemdes.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Struktur Pemdes</a></li>
+                        <li><a href="profil.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Profil Desa & Perangkat</a></li>
                         <li><a href="peta.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Peta Digital Wilayah</a></li>
                         <li><a href="informasi.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Informasi & Berita Desa</a></li>
-                        <li><a href="kontak.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Kontak & Lokasi Kantor</a></li>
+                        <li><a href="pengaduan.html" class="footer-link"><i class="fas fa-chevron-right me-1 text-success small"></i> Layanan Pengaduan Warga</a></li>
                     </ul>
                 </div>
-                <div class="col-md-8 col-lg-4">
-                    <h6 class="fw-bold text-white mb-3 text-uppercase">Kontak Kantor Desa</h6>
-                    <ul class="list-unstyled d-flex flex-column gap-2 small text-white-50">
+                <div class="col-6 col-md-8 col-lg-4">
+                    <h6 class="fw-bold text-white mb-3 text-uppercase" style="font-size: 0.85rem;">Kontak Kami</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 text-white-50" style="font-size: 0.85rem;">
                         <li class="d-flex align-items-start gap-2">
                             <i class="fas fa-map-marker-alt text-warning mt-1"></i>
-                            <span>Kantor Desa Timbuseng, Kec. Polongbangkeng Timur, Kab. Takalar, Sulawesi Selatan 92221</span>
+                            <span>Kantor Desa Timbuseng, Sulawesi Selatan 92221</span>
                         </li>
                         <li class="d-flex align-items-center gap-2">
                             <i class="fab fa-whatsapp text-warning"></i>
-                            <a href="https://wa.me/6285299576913" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none">
-                                +62 852-9957-6913 (WhatsApp)
-                            </a>
+                            <span id="footer-wa-text">+62 852-9957-6913</span>
                         </li>
                         <li class="d-flex align-items-center gap-2">
                             <i class="fas fa-envelope text-warning"></i>
-                            <span>desatimbuseng1993@gmail.com</span>
-                        </li>
-                        <li class="d-flex align-items-center gap-2">
-                            <i class="fab fa-instagram text-warning"></i>
-                            <a href="https://www.instagram.com/desa_timbuseng?utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none">
-                                @desa_timbuseng
-                            </a>
+                            <span class="text-truncate">desatimbuseng1993@gmail.com</span>
                         </li>
                         <li class="d-flex align-items-center gap-2">
                             <i class="fas fa-clock text-warning"></i>
@@ -444,12 +331,103 @@
         <!-- COPYRIGHT BAR -->
         <div class="copyright-bar py-3 text-center text-white-50">
             <div class="container">
-                <p class="mb-0">©2026 P10 KKN UHM | Pemerintah Desa Timbuseng, Polongbangkeng Timur, Takalar. All Rights Reserved.</p>
+                <p class="mb-0">©2026 P10 KKN UHM | Pemerintah Desa Timbuseng, Takalar. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- SCRIPT SINKRONISASI JSONBIN API & KIRIM PENGADUAN -->
+    <script>
+        const API_KEY = "$2a$10$wbLvXvg7KqU.nSiV2NXihOzbcQnKyWuRhAggoR26QUpcDQE.WVBaW";
+        const BIN_SISTEM = "6aa93e9affd5d1605309c685";
+        const BIN_INFO = "6aa94007ac6210605ad03b27"; // Tempat penyimpanan data pengaduan di JSONBin (atau kamu bisa pakai bin terpisah jika ada)
+
+        document.addEventListener("DOMContentLoaded", async function() {
+            try {
+                // Ambil data konfigurasi nomor WA dari server admin
+                const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_SISTEM}/latest`, {
+                    headers: { 'X-Master-Key': API_KEY }
+                });
+                if (response.ok) {
+                    const result = await response.json();
+                    const data = result.record;
+                    if (data.pengaduan && data.pengaduan.wa_aduan) {
+                        const waNumber = data.pengaduan.wa_aduan;
+                        const cleanWa = waNumber.replace(/\D/g,'');
+                        document.getElementById('topbar-wa').innerHTML = `<i class="fab fa-whatsapp me-1"></i> ${waNumber}`;
+                        document.getElementById('topbar-wa').href = `https://wa.me/${cleanWa}`;
+                        document.getElementById('wa-chat-btn').href = `https://wa.me/${cleanWa}?text=Halo%20Pemerintah%20Desa%20Timbuseng,%20saya%20ingin%20menyampaikan%20pengaduan/aspirasi...`;
+                        document.getElementById('footer-wa-text').innerText = `${waNumber} (WhatsApp)`;
+                    }
+                }
+            } catch (err) {
+                console.error("Gagal memuat kontak pengaduan:", err);
+            }
+        });
+
+        // Kirim Pengaduan Warga ke Server JSONBin (Bisa dikelola di Admin)
+        document.getElementById("formPengaduanWarga").addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Mengirim Pengaduan...';
+
+            const nama = document.getElementById("pengaduNama").value;
+            const phone = document.getElementById("pengaduPhone").value;
+            const dusun = document.getElementById("pengaduDusun").value;
+            const kategori = document.getElementById("pengaduKategori").value;
+            const judul = document.getElementById("pengaduJudul").value;
+            const isi = document.getElementById("pengaduIsi").value;
+            const tanggal = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' });
+
+            const newComplaint = {
+                id: Date.now(),
+                date: tanggal,
+                name: nama,
+                phone: phone,
+                dusun: dusun,
+                category: kategori,
+                title: judul,
+                content: isi,
+                status: 'Menunggu'
+            };
+
+            try {
+                // Ambil data saat ini dari BIN_INFO (atau buat array complaints baru)
+                let currentData = { news: [], schedules: [], complaints: [] };
+                const resGet = await fetch(`https://api.jsonbin.io/v3/b/${BIN_INFO}/latest`, {
+                    headers: { 'X-Master-Key': API_KEY }
+                });
+                if(resGet.ok) {
+                    const jsonRes = await resGet.json();
+                    currentData = jsonRes.record;
+                }
+
+                if(!currentData.complaints) currentData.complaints = [];
+                currentData.complaints.unshift(newComplaint);
+
+                // Simpan kembali ke JSONBin API
+                const resPut = await fetch(`https://api.jsonbin.io/v3/b/${BIN_INFO}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json', 'X-Master-Key': API_KEY },
+                    body: JSON.stringify(currentData)
+                });
+
+                if(!resPut.ok) throw new Error("Gagal mengirim ke server database.");
+
+                alert("Terima kasih! Pengaduan / aspirasi Anda telah berhasil dikirim dan masuk ke pusat data admin untuk ditindaklanjuti.");
+                this.reset();
+            } catch (err) {
+                alert("Gagal mengirim pengaduan: " + err.message + ". Silakan coba beberapa saat lagi.");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Kirim Pengaduan / Aspirasi Sekarang';
+            }
+        });
+    </script>
 </body>
 </html>
