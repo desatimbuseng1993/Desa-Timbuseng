@@ -321,46 +321,68 @@
             </div>
         </div>
 
-        <!-- TAB 6: PETA.HTML (DIPERBARUI SESUAI PETA.HTML) -->
+        <!-- TAB 6: PETA.HTML -->
         <div id="tab-peta" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-map-marked-alt text-success me-2"></i>peta.html - Peta & Statistik Lahan</h4>
-                <p class="text-muted small mb-4">Kelola data statistik spasial dan luasan lahan wilayah desa yang tampil di halaman peta digital.</p>
-                
                 <form onsubmit="saveSectionData(event, 'peta')">
                     <div class="row g-3">
-                        <div class="col-md-4">
-                            <label class="form-label">Total Luas Wilayah (Ha)</label>
-                            <input type="text" class="form-control" name="luas_total" placeholder="Cth: 1.083,47 Ha">
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Perkebunan Tebu (Ha)</label>
-                            <input type="text" class="form-control" name="luas_tebu" placeholder="Cth: 705,39 Ha">
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Sawah Irigasi (Ha)</label>
-                            <input type="text" class="form-control" name="luas_sawah" placeholder="Cth: 216,53 Ha">
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-desa"><i class="fas fa-save me-2"></i>Simpan Statistik Peta</button>
-                        </div>
+                        <div class="col-md-4"><label class="form-label">Total Luas Wilayah (Ha)</label><input type="text" class="form-control" name="luas_total"></div>
+                        <div class="col-md-4"><label class="form-label">Perkebunan Tebu (Ha)</label><input type="text" class="form-control" name="luas_tebu"></div>
+                        <div class="col-md-4"><label class="form-label">Sawah Irigasi (Ha)</label><input type="text" class="form-control" name="luas_sawah"></div>
+                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Peta</button></div>
                     </div>
                 </form>
             </div>
         </div>
 
-        <!-- TAB 7: PENGADUAN.HTML -->
+        <!-- TAB 7: PENGADUAN.HTML (PENGELOLAAN LENGKAP) -->
         <div id="tab-pengaduan" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-paper-plane text-success me-2"></i>pengaduan.html - Layanan Pengaduan</h4>
-                <form onsubmit="saveSectionData(event, 'pengaduan')">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-paper-plane text-success me-2"></i>pengaduan.html - Kelola Layanan Pengaduan</h4>
+                <p class="text-muted small mb-4">Kelola nomor WhatsApp layanan pengaduan, tinjau aspirasi warga yang masuk secara real-time, hapus data, atau unduh rekapitulasi laporan.</p>
+                
+                <form onsubmit="saveSectionData(event, 'pengaduan')" class="mb-4">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area pengaduan.html ]</div></div>
-                        <div class="col-md-6"><label class="form-label">WhatsApp Pengaduan</label><input type="text" class="form-control" name="wa_aduan"></div>
-                        <div class="col-md-6"><label class="form-label">Email Pengaduan</label><input type="text" class="form-control" name="email_aduan"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Pengaduan</button></div>
+                        <div class="col-md-6">
+                            <label class="form-label">WhatsApp Pengaduan Resmi</label>
+                            <input type="text" class="form-control" name="wa_aduan" placeholder="+62 852-9957-6913">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Email Pengaduan</label>
+                            <input type="text" class="form-control" name="email_aduan" placeholder="desatimbuseng1993@gmail.com">
+                        </div>
+                        <div class="col-12 mt-3">
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-save me-2"></i>Simpan Kontak Pengaduan</button>
+                        </div>
                     </div>
                 </form>
+
+                <hr class="my-4">
+
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                    <h5 class="fw-bold text-dark fs-6 mb-0"><i class="fas fa-list-alt me-2 text-success"></i>Daftar Laporan & Aspirasi Masuk</h5>
+                    <button class="btn btn-success btn-sm fw-semibold shadow-sm" onclick="downloadComplaintsCSV()">
+                        <i class="fas fa-file-excel me-1"></i> Download Rekap Laporan (CSV)
+                    </button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm align-middle small">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width: 100px;">Tanggal</th>
+                                <th style="width: 160px;">Pelapor</th>
+                                <th style="width: 160px;">Dusun & Kategori</th>
+                                <th>Perihal & Isi Pengaduan</th>
+                                <th class="text-center" style="width: 70px;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-complaints-body">
+                            <!-- Dimuat dinamis lewat JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -548,7 +570,7 @@
         const BIN_INFO = "6aa94007ac6210605ad03b27";
         
         let masterSistem = {};
-        let masterInfo = { news: [], schedules: [] };
+        let masterInfo = { news: [], schedules: [], complaints: [] };
 
         function toggleSidebar() {
             document.getElementById('appSidebar').classList.toggle('show');
@@ -586,6 +608,7 @@
 
                 populateSemuaForm();
                 renderInfoTable();
+                renderComplaintsTable();
             } catch (error) {
                 console.error("Gagal memuat data awal", error);
             }
@@ -770,6 +793,69 @@
             } else {
                 showAlert("Gagal menghapus item dari server.");
             }
+        }
+
+        // --- MANAJEMEN PENGADUAN WARGA DI ADMIN ---
+        function renderComplaintsTable() {
+            const tbody = document.getElementById('table-complaints-body');
+            if(!tbody) return;
+            tbody.innerHTML = '';
+            const complaints = masterInfo.complaints || [];
+            if(complaints.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted py-3">Belum ada pengaduan atau aspirasi warga yang masuk.</td></tr>';
+                return;
+            }
+            complaints.forEach((c) => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td><small class="text-muted">${c.date}</small></td>
+                        <td><strong>${c.name}</strong><br><small class="text-muted"><i class="fab fa-whatsapp text-success me-1"></i>${c.phone}</small></td>
+                        <td><span class="badge bg-success mb-1">${c.dusun}</span><br><span class="text-secondary" style="font-size:0.75rem;">${c.category}</span></td>
+                        <td><strong>${c.title}</strong><br><span class="text-secondary" style="font-size:0.8rem;">${c.content}</span></td>
+                        <td class="text-center"><button class="btn btn-sm btn-danger py-0 px-2" onclick="deleteComplaint(${c.id})"><i class="fas fa-trash"></i></button></td>
+                    </tr>
+                `;
+            });
+        }
+
+        async function deleteComplaint(id) {
+            if(!confirm("Yakin ingin menghapus laporan pengaduan ini?")) return;
+            showAlert("Menghapus laporan...", false);
+            
+            masterInfo.complaints = masterInfo.complaints.filter(c => c.id !== id);
+            
+            const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_INFO}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json', 'X-Master-Key': API_KEY },
+                body: JSON.stringify(masterInfo)
+            });
+
+            if(res.ok) {
+                renderComplaintsTable();
+                showAlert("Laporan pengaduan berhasil dihapus!");
+            } else {
+                showAlert("Gagal menghapus laporan dari server.");
+            }
+        }
+
+        function downloadComplaintsCSV() {
+            const complaints = masterInfo.complaints || [];
+            if(complaints.length === 0) {
+                alert("Tidak ada data laporan pengaduan untuk diunduh.");
+                return;
+            }
+            let csvContent = "data:text/csv;charset=utf-8,Tanggal,Nama Pelapor,Nomor HP,Dusun,Kategori,Judul Laporan,Isi Pengaduan\r\n";
+            complaints.forEach(c => {
+                let row = [c.date, `"${c.name}"`, `"${c.phone}"`, `"${c.dusun}"`, `"${c.category}"`, `"${c.title}"`, `"${c.content}"`];
+                csvContent += row.join(",") + "\r\n";
+            });
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "Rekap_Laporan_Pengaduan_Desa_Timbuseng.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
     </script>
 </body>
