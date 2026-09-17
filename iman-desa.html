@@ -31,23 +31,28 @@
         .bg-desa { background-color: var(--primary-color) !important; }
         .text-desa { color: var(--primary-color) !important; }
 
+        /* Navigation styling */
         .navbar { padding: 0.8rem 1rem; }
         .dropdown-menu .dropdown-item.active, 
         .dropdown-menu .dropdown-item:active { background-color: var(--primary-color); }
 
+        /* Hero Header */
         .page-hero {
-            background: linear-gradient(rgba(7, 59, 36, 0.88), rgba(13, 92, 58, 0.92)), url('image.png') center/cover no-repeat;
+            background: linear-gradient(rgba(7, 59, 36, 0.88), rgba(13, 92, 58, 0.92)), url('image.PNG') center/cover no-repeat;
             color: white; padding: 4.5rem 0 3.5rem; border-bottom: 5px solid var(--accent-color);
         }
 
+        /* Stat & Feature Cards */
         .stat-card {
             background: #ffffff; border-radius: 16px; padding: 1.4rem; border: 1px solid #e2e8f0;
             border-left: 5px solid var(--primary-color); box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: transform 0.25s ease;
         }
         .stat-card:hover { transform: translateY(-3px); }
 
+        /* Main Profile Card */
         .profile-card-main {
-            background: #ffffff; border-radius: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; overflow: hidden;
+            background: #ffffff; border-radius: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0; overflow: hidden;
         }
         .profile-header-bg { height: 100px; background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); }
         .profile-img-main {
@@ -55,10 +60,20 @@
             box-shadow: 0 6px 18px rgba(0,0,0,0.15); margin-top: -60px; background-color: #ffffff;
         }
 
-        .imam-card { background: #ffffff; border-radius: 16px; border: 1px solid #e2e8f0; transition: all 0.3s ease; }
-        .imam-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.06); border-color: var(--primary-color); }
+        /* Small Imam Dusun Cards */
+        .imam-card {
+            background: #ffffff; border-radius: 16px; border: 1px solid #e2e8f0; transition: all 0.3s ease;
+        }
+        .imam-card:hover {
+            transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.06); border-color: var(--primary-color);
+        }
 
-        .content-card { background: #ffffff; border-radius: 20px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); padding: 1.75rem; }
+        /* Content Section */
+        .content-card {
+            background: #ffffff; border-radius: 20px; border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); padding: 1.75rem;
+        }
+
         .section-title { position: relative; padding-bottom: 12px; margin-bottom: 24px; font-weight: 700; }
         .section-title::after {
             content: ''; position: absolute; bottom: 0; left: 0; width: 50px; height: 4px; border-radius: 2px; background-color: var(--accent-color);
@@ -66,8 +81,8 @@
 
         .badge-custom { font-weight: 600; padding: 0.45em 0.85em; border-radius: 30px; }
         .service-icon-box {
-            width: 50px; height: 50px; border-radius: 14px; background-color: var(--primary-light); color: var(--primary-color);
-            display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;
+            width: 50px; height: 50px; border-radius: 14px; background-color: var(--primary-light);
+            color: var(--primary-color); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;
         }
     </style>
 </head>
@@ -77,7 +92,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-                <img src="logo.png" alt="Logo Desa" height="40" onerror="this.style.display='none'">
+                <img src="logo.PNG" alt="Logo Desa" height="40" onerror="this.style.display='none'">
                 <span class="fw-bold text-white fs-5">Desa Timbuseng</span>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -89,7 +104,9 @@
                     <li class="nav-item"><a class="nav-link px-3" href="pemdes.html">Pemdes & Kades</a></li>
                     <li class="nav-item"><a class="nav-link active fw-bold px-3" href="iman-desa.html">Imam Desa</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle px-3" href="#" id="navbarDusunDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Wilayah Dusun</a>
+                        <a class="nav-link dropdown-toggle px-3" href="#" id="navbarDusunDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Wilayah Dusun
+                        </a>
                         <ul class="dropdown-menu shadow border-0 rounded-3 mt-2" aria-labelledby="navbarDusunDropdown">
                             <li><a class="dropdown-item py-2" href="dusun-timbuseng1.html">Dusun Timbuseng I</a></li>
                             <li><a class="dropdown-item py-2" href="dusun-timbuseng2.html">Dusun Timbuseng II</a></li>
@@ -125,8 +142,8 @@
                     <div class="stat-card d-flex align-items-center gap-3">
                         <div class="service-icon-box"><i class="fas fa-user-shield"></i></div>
                         <div>
-                            <small class="text-muted fw-semibold d-block">Statistik Imam</small>
-                            <h4 class="fw-bold text-dark mb-0 fs-6" id="stat-imam-val">1 Orang Utama</h4>
+                            <small class="text-muted fw-semibold d-block">Statistik Imam Desa</small>
+                            <h4 class="fw-bold text-dark mb-0 fs-6" id="stat-imam-desa">1 Orang Utama</h4>
                         </div>
                     </div>
                 </div>
@@ -135,7 +152,7 @@
                         <div class="service-icon-box"><i class="fas fa-users-cog"></i></div>
                         <div>
                             <small class="text-muted fw-semibold d-block">Imam Dusun</small>
-                            <h4 class="fw-bold text-dark mb-0 fs-6" id="stat-dusun-val">7 Wilayah Dusun</h4>
+                            <h4 class="fw-bold text-dark mb-0 fs-6" id="stat-imam-dusun">7 Wilayah Dusun</h4>
                         </div>
                     </div>
                 </div>
@@ -144,7 +161,7 @@
                         <div class="service-icon-box"><i class="fas fa-quran"></i></div>
                         <div>
                             <small class="text-muted fw-semibold d-block">Masa Pengabdian</small>
-                            <h4 class="fw-bold text-dark mb-0 fs-6" id="stat-pengabdian-val">Sejak Tahun 2008</h4>
+                            <h4 class="fw-bold text-dark mb-0 fs-6" id="stat-pengabdian">Sejak Tahun 2008</h4>
                         </div>
                     </div>
                 </div>
@@ -152,8 +169,8 @@
                     <div class="stat-card d-flex align-items-center gap-3">
                         <div class="service-icon-box"><i class="fas fa-hands-helping"></i></div>
                         <div>
-                            <small class="text-muted fw-semibold d-block">Layanan Warga</small>
-                            <h4 class="fw-bold text-success mb-0 fs-6" id="stat-layanan-val">Nikah, Doa, TPA & Hajat</h4>
+                            <small class="text-muted fw-semibold d-block">Layanan Masyarakat</small>
+                            <h4 class="fw-bold text-success mb-0 fs-6" id="stat-layanan">Nikah, Doa, TPA & Hajat</h4>
                         </div>
                     </div>
                 </div>
@@ -164,7 +181,7 @@
                 <div class="col-lg-5">
                     <div class="profile-card-main text-center pb-4 h-100">
                         <div class="profile-header-bg"></div>
-                        <img id="imam-foto" src="foto.png" alt="Imam Desa" class="profile-img-main mb-3" onerror="this.src='https://via.placeholder.com/140?text=Imam+Desa'">
+                        <img id="imam-foto" src="foto.PNG" alt="Imam Desa" class="profile-img-main mb-3" onerror="this.src='foto.PNG'">
                         <div class="px-4">
                             <span class="badge bg-success badge-custom mb-2">Imam Desa Timbuseng</span>
                             <h4 class="fw-bold text-dark mb-1" id="imam-nama">Muh. Fajar, S.Ag.</h4>
@@ -229,7 +246,7 @@
                                         <i class="fas fa-sitemap text-danger fs-5 mt-1"></i>
                                         <div>
                                             <h6 class="fw-bold mb-1 small text-dark">Koordinasi Imam Dusun</h6>
-                                            <p class="text-muted mb-0" style="font-size:0.78rem;">Menjaga keselarasan program keagamaan di 7 dusun se-Desa Timbuseng.</p>
+                                            <p class="text-muted mb-0" style="font-size:0.78rem;">Menjaga keselarasan program keagamaan di seluruh dusun se-Desa Timbuseng.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -243,7 +260,7 @@
                 </div>
             </div>
 
-            <!-- JAJARAN IMAM DUSUN (TERHUBUNG KE DATA IMAM / DUSUN) -->
+            <!-- JAJARAN IMAM DUSUN SE-DESA TIMBUSENG (Sinkron dengan data Kadus/Imdus) -->
             <div class="mb-5">
                 <div class="d-flex align-items-center justify-content-between mb-4">
                     <div>
@@ -253,28 +270,12 @@
                     <span class="badge bg-primary rounded-pill px-3 py-2 fw-semibold"><i class="fas fa-layer-group me-1"></i> 7 Wilayah Dusun</span>
                 </div>
 
-                <div class="row g-3" id="imam-dusun-container">
-                    <!-- Data dimuat dinamis dari sistem.json agar sinkron -->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="imam-card p-3 h-100 d-flex flex-column justify-content-between">
-                            <div>
-                                <div class="d-flex justify-content-between align-items-start mb-2">
-                                    <span class="badge bg-outline-success text-success bg-success bg-opacity-10 px-2 py-1 rounded" style="font-size:0.75rem;">Dusun Timbuseng II</span>
-                                    <i class="fas fa-mosque text-muted"></i>
-                                </div>
-                                <h6 class="fw-bold text-dark mb-1">Amiruddin, S.P.</h6>
-                                <p class="text-muted small mb-2"><i class="fas fa-map-pin me-1 text-secondary"></i>Saluleya</p>
-                            </div>
-                            <div class="pt-2 border-top d-flex justify-content-between align-items-center">
-                                <span class="text-success small fw-semibold"><i class="fab fa-whatsapp me-1"></i>085240349252</span>
-                                <a href="https://wa.me/6285240349252" target="_blank" class="btn btn-sm btn-outline-success rounded-pill px-3 py-0">Kontak</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row g-3" id="jajaran-imam-container">
+                    <!-- Data dimuat dinamis dari json -->
                 </div>
             </div>
 
-            <!-- PANDUAN NIKAH -->
+            <!-- PROSEDUR PELAYANAN NIKAH -->
             <div class="content-card">
                 <h5 class="fw-bold text-dark mb-3"><i class="fas fa-clipboard-list text-success me-2"></i>Panduan Administrasi Pelayanan Nikah / Rekomendasi</h5>
                 <div class="row g-3 text-center">
@@ -289,14 +290,14 @@
                         <div class="p-3 bg-light rounded-3 h-100">
                             <span class="badge bg-success rounded-circle px-2.5 py-1 mb-2">2</span>
                             <h6 class="fw-bold text-dark small mb-1">Verifikasi Berkas Imam Desa</h6>
-                            <p class="text-muted mb-0" style="font-size:0.75rem;">Bawa berkas ke Imam Desa untuk penandatanganan dan verifikasi.</p>
+                            <p class="text-muted mb-0" style="font-size:0.75rem;">Bawa berkas (KTP, KK, Pengantar) ke Imam Desa untuk penandatanganan.</p>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="p-3 bg-light rounded-3 h-100">
                             <span class="badge bg-success rounded-circle px-2.5 py-1 mb-2">3</span>
                             <h6 class="fw-bold text-dark small mb-1">Pengesahan Kantor Desa</h6>
-                            <p class="text-muted mb-0" style="font-size:0.75rem;">Surat yang diverifikasi Imam Desa disahkan di Kantor Desa Timbuseng.</p>
+                            <p class="text-muted mb-0" style="font-size:0.75rem;">Surat yang telah diverifikasi Imam Desa disahkan di Kantor Desa Timbuseng.</p>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -319,7 +320,7 @@
         </div>
     </footer>
 
-    <!-- JS & SINKRONISASI JSONBIN -->
+    <!-- JS & JSONBIN INTEGRATION -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const API_KEY = "$2a$10$wbLvXvg7KqU.nSiV2NXihOzbcQnKyWuRhAggoR26QUpcDQE.WVBaW";
@@ -339,10 +340,10 @@
                         const i = data.iman_desa;
                         
                         // Statistik
-                        if(i.stat_imam) document.getElementById('stat-imam-val').innerText = i.stat_imam;
-                        if(i.stat_dusun) document.getElementById('stat-dusun-val').innerText = i.stat_dusun;
-                        if(i.stat_pengabdian) document.getElementById('stat-pengabdian-val').innerText = i.stat_pengabdian;
-                        if(i.stat_layanan) document.getElementById('stat-layanan-val').innerText = i.stat_layanan;
+                        if(i.stat_imam_desa) document.getElementById('stat-imam-desa').innerText = i.stat_imam_desa;
+                        if(i.stat_imam_dusun) document.getElementById('stat-imam-dusun').innerText = i.stat_imam_dusun;
+                        if(i.stat_pengabdian) document.getElementById('stat-pengabdian').innerText = i.stat_pengabdian;
+                        if(i.stat_layanan) document.getElementById('stat-layanan').innerText = i.stat_layanan;
 
                         // Profil Utama
                         if(i.nama) document.getElementById('imam-nama').innerText = i.nama;
@@ -355,13 +356,47 @@
                         }
                         if(i.tugas_desc) document.getElementById('imam-tugas-desc').innerText = i.tugas_desc;
 
-                        // Foto
+                        // Foto Profil
                         if(i.foto) {
                             const photoUrl = i.foto.startsWith('http') 
                                 ? i.foto 
                                 : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${i.foto}`;
                             document.getElementById('imam-foto').src = photoUrl;
                         }
+                    }
+
+                    // Render Jajaran Imam Dusun (Sinkron dengan data Dusun / Kadus)
+                    const container = document.getElementById('jajaran-imam-container');
+                    if(container) {
+                        container.innerHTML = '';
+                        const dusunKeys = ['dusun1', 'dusun2', 'dusun3', 'dusun4', 'dusun5', 'dusun6', 'dusun7'];
+                        dusunKeys.forEach(dk => {
+                            if(data[dk]) {
+                                const d = data[dk];
+                                const imamNama = d.imam_dusun || d.kadus || 'Belum diatur';
+                                const imamKontak = d.imam_kontak || '-';
+                                const dusunNama = d.nama_dusun || dk.toUpperCase();
+                                
+                                container.innerHTML += `
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="imam-card p-3 h-100 d-flex flex-column justify-content-between">
+                                            <div>
+                                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                                    <span class="badge bg-success bg-opacity-10 text-success px-2 py-1 rounded" style="font-size:0.75rem;">${dusunNama}</span>
+                                                    <i class="fas fa-mosque text-muted"></i>
+                                                </div>
+                                                <h6 class="fw-bold text-dark mb-1">${imamNama}</h6>
+                                                <p class="text-muted small mb-2"><i class="fas fa-user-shield me-1 text-secondary"></i>Imam / Tokoh Dusun</p>
+                                            </div>
+                                            <div class="pt-2 border-top d-flex justify-content-between align-items-center">
+                                                <span class="text-success small fw-semibold"><i class="fab fa-whatsapp me-1"></i>${imamKontak}</span>
+                                                ${imamKontak !== '-' ? `<a href="https://wa.me/${imamKontak.replace(/[^0-9]/g, '')}" target="_blank" class="btn btn-sm btn-outline-success rounded-pill px-3 py-0">Kontak</a>` : ''}
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                            }
+                        });
                     }
                 }
             } catch(e) {
