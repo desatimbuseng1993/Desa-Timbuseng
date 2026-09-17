@@ -21,9 +21,7 @@
             --dark-text: #1e293b;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -39,155 +37,69 @@
         .text-desa { color: var(--primary-color) !important; }
 
         /* Navigation styling */
-        .navbar {
-            padding: 0.75rem 1rem;
-        }
-        .navbar-brand img {
-            height: 38px;
-            width: auto;
-            object-fit: contain;
-        }
-        .nav-link {
-            font-weight: 500;
-            font-size: 0.9rem;
-            padding: 0.5rem 0.8rem !important;
-            transition: all 0.2s ease;
-        }
+        .navbar { padding: 0.75rem 1rem; }
+        .navbar-brand img { height: 38px; width: auto; object-fit: contain; }
+        .nav-link { font-weight: 500; font-size: 0.9rem; padding: 0.5rem 0.8rem !important; transition: all 0.2s ease; }
         .dropdown-menu .dropdown-item.active, 
-        .dropdown-menu .dropdown-item:active {
-            background-color: var(--primary-color);
-        }
+        .dropdown-menu .dropdown-item:active { background-color: var(--primary-color); }
 
-        /* Hero Header Dusun dengan image.png (huruf kecil) */
+        /* Hero Header Dusun */
         .page-hero {
             background: linear-gradient(rgba(7, 59, 36, 0.88), rgba(13, 92, 58, 0.92)), url('image.png') center/cover no-repeat;
-            color: white;
-            padding: 3.5rem 1rem 3rem;
-            border-bottom: 4px solid var(--accent-color);
-            text-align: center;
+            color: white; padding: 3.5rem 1rem 3rem; border-bottom: 4px solid var(--accent-color); text-align: center;
         }
-        .page-hero h1 {
-            font-size: clamp(1.6rem, 4vw, 2.3rem);
-            font-weight: 800;
-        }
-        .page-hero p {
-            font-size: clamp(0.88rem, 2vw, 1rem);
-        }
+        .page-hero h1 { font-size: clamp(1.6rem, 4vw, 2.3rem); font-weight: 800; }
+        .page-hero p { font-size: clamp(0.88rem, 2vw, 1rem); }
 
         /* Stat Cards */
         .stat-card {
-            background: #ffffff;
-            border-radius: 14px;
-            padding: 1rem;
-            border: 1px solid #e2e8f0;
-            border-left: 4px solid var(--primary-color);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            height: 100%;
+            background: #ffffff; border-radius: 14px; padding: 1rem; border: 1px solid #e2e8f0;
+            border-left: 4px solid var(--primary-color); box-shadow: 0 4px 12px rgba(0,0,0,0.03); height: 100%;
         }
-        .stat-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0;
-        }
-        .stat-card small {
-            font-size: 0.75rem;
-        }
+        .stat-card h3 { font-size: 1.1rem; margin-bottom: 0; }
+        .stat-card small { font-size: 0.75rem; }
         .stat-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background-color: var(--primary-light);
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            flex-shrink: 0;
+            width: 40px; height: 40px; border-radius: 10px; background-color: var(--primary-light); color: var(--primary-color);
+            display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;
         }
 
         /* Profile Cards */
         .profile-card {
-            background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-            border: 1px solid #e2e8f0;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            background: #ffffff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0; overflow: hidden; transition: all 0.3s ease;
         }
-        .profile-header-bg {
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-        }
-        .profile-img-wrapper {
-            margin-top: -40px;
-        }
+        .profile-header-bg { height: 60px; background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); }
+        .profile-img-wrapper { margin-top: -40px; }
         .profile-img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #ffffff;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-            background-color: #ffffff;
+            width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 4px solid #ffffff;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15); background-color: #ffffff;
         }
 
         /* Content Cards */
         .content-card {
-            background: #ffffff;
-            border-radius: 16px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            padding: 1.25rem;
-            margin-bottom: 1.25rem;
+            background: #ffffff; border-radius: 16px; border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); padding: 1.25rem; margin-bottom: 1.25rem;
         }
 
-        .section-title {
-            position: relative;
-            padding-bottom: 10px;
-            margin-bottom: 18px;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
+        .section-title { position: relative; padding-bottom: 10px; margin-bottom: 18px; font-weight: 700; font-size: 1.2rem; }
         .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            border-radius: 2px;
-            background-color: var(--accent-color);
+            content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 3px; border-radius: 2px; background-color: var(--accent-color);
         }
 
-        .badge-custom {
-            font-weight: 600;
-            padding: 0.35em 0.75em;
-            border-radius: 30px;
-            font-size: 0.75rem;
+        .badge-custom { font-weight: 600; padding: 0.35em 0.75em; border-radius: 30px; font-size: 0.75rem; }
+        .gallery-img { height: 160px; object-fit: cover; border-radius: 10px; width: 100%; }
+
+        .icon-box {
+            width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;
         }
 
-        .gallery-img {
-            height: 160px;
-            object-fit: cover;
-            border-radius: 10px;
-            width: 100%;
-        }
-
-        /* Footer Sama Persis dengan Timbuseng 1 */
-        footer {
-            background-color: #212529;
-            color: #ffffff;
-        }
-
-        .container, .container-fluid {
-            max-width: 100% !important;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
+        footer { background-color: #212529; color: #ffffff; }
+        .container, .container-fluid { max-width: 100% !important; padding-left: 15px; padding-right: 15px; }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR DENGAN DROPDOWN ALL DUSUN -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
@@ -199,17 +111,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto gap-1 align-items-lg-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="profil.html"><i class="fas fa-landmark me-1"></i> Profil Desa</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pemdes.html"><i class="fas fa-users me-1"></i> Pemdes & Kades</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profil.html"><i class="fas fa-landmark me-1"></i> Profil Desa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pemdes.html"><i class="fas fa-users me-1"></i> Pemdes & Kades</a></li>
                     
-                    <!-- DROPDOWN WILAYAH DUSUN -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle active fw-bold" href="#" id="navbarDropdownDusun" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-map-marked-alt me-1"></i> Wilayah Dusun
@@ -225,15 +130,9 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="informasi.html"><i class="fas fa-bullhorn me-1"></i> Informasi</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pengaduan.html"><i class="fas fa-paper-plane me-1"></i> Pengaduan</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="kontak.html"><i class="fas fa-envelope me-1"></i> Kontak</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="informasi.html"><i class="fas fa-bullhorn me-1"></i> Informasi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pengaduan.html"><i class="fas fa-paper-plane me-1"></i> Pengaduan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kontak.html"><i class="fas fa-envelope me-1"></i> Kontak</a></li>
                 </ul>
             </div>
         </div>
@@ -259,7 +158,7 @@
                         <div class="stat-icon"><i class="fas fa-users"></i></div>
                         <div>
                             <small class="text-muted fw-semibold d-block">Penduduk</small>
-                            <h3 class="fw-bold text-dark">443 <small class="fs-6 text-muted fw-normal">Jiwa</small></h3>
+                            <h3 class="fw-bold text-dark"><span id="stat-penduduk">443</span> <small class="fs-6 text-muted fw-normal">Jiwa</small></h3>
                         </div>
                     </div>
                 </div>
@@ -268,7 +167,7 @@
                         <div class="stat-icon"><i class="fas fa-house-user"></i></div>
                         <div>
                             <small class="text-muted fw-semibold d-block">Kepala Keluarga</small>
-                            <h3 class="fw-bold text-dark">113 <small class="fs-6 text-muted fw-normal">KK</small></h3>
+                            <h3 class="fw-bold text-dark"><span id="stat-kk">113</span> <small class="fs-6 text-muted fw-normal">KK</small></h3>
                         </div>
                     </div>
                 </div>
@@ -276,8 +175,8 @@
                     <div class="stat-card d-flex align-items-center gap-2">
                         <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
                         <div>
-                            <small class="text-muted fw-semibold d-block">Kategori</small>
-                            <h3 class="fw-bold text-dark fs-6">Pemukiman & Sawah</h3>
+                            <small class="text-muted fw-semibold d-block">Kategori / Luas</small>
+                            <h3 class="fw-bold text-dark fs-6" id="stat-luas">Pemukiman & Sawah</h3>
                         </div>
                     </div>
                 </div>
@@ -286,7 +185,7 @@
                         <div class="stat-icon"><i class="fas fa-seedling"></i></div>
                         <div>
                             <small class="text-muted fw-semibold d-block">Komoditas</small>
-                            <h3 class="fw-bold text-success fs-6">Padi & Jagung</h3>
+                            <h3 class="fw-bold text-success fs-6" id="stat-komoditas">Padi & Jagung</h3>
                         </div>
                     </div>
                 </div>
@@ -304,36 +203,37 @@
                             <div class="profile-card h-100 text-center">
                                 <div class="profile-header-bg"></div>
                                 <div class="profile-img-wrapper mb-2">
-                                    <img src="foto.png" alt="Usman" class="profile-img" onerror="this.src='foto.png'">
+                                    <img id="kadus-foto" src="foto.png" alt="Kepala Dusun" class="profile-img" onerror="this.src='foto.png'">
                                 </div>
                                 <div class="p-3 pt-0">
-                                    <span class="badge bg-success badge-custom mb-2">Kepala Dusun</span>
-                                    <h5 class="fw-bold text-dark mb-1 fs-6">Usman</h5>
-                                    <p class="text-muted small mb-1" style="font-size:0.8rem;"><i class="fas fa-id-card me-1 text-secondary"></i>NIK: 7305041011790001</p>
-                                    <p class="text-muted small mb-2" style="font-size:0.8rem;"><i class="fas fa-birthday-cake me-1 text-secondary"></i>Timbuseng, 10 Nov 1979</p>
+                                    <span class="badge bg-success badge-custom mb-2">Kepala Dusun Timbuseng II</span>
+                                    <h5 class="fw-bold text-dark mb-1 fs-6" id="kadus-nama">Usman</h5>
+                                    <p class="text-muted small mb-1" style="font-size:0.8rem;"><i class="fas fa-id-card me-1 text-secondary"></i>NIK: <span id="kadus-nik">7305041011790001</span></p>
+                                    <p class="text-muted small mb-2" style="font-size:0.8rem;"><i class="fas fa-birthday-cake me-1 text-secondary"></i>TTL: <span id="kadus-ttl">Timbuseng, 10 Nov 1979</span></p>
                                     <hr class="my-2">
                                     <div class="d-grid mt-2">
-                                        <a href="https://wa.me/" class="btn btn-outline-success btn-sm rounded-pill fw-semibold" style="font-size:0.8rem;"><i class="fab fa-whatsapp me-1"></i> Kontak Kadus</a>
+                                        <a id="kadus-wa-btn" href="#" target="_blank" class="btn btn-outline-success btn-sm rounded-pill fw-semibold" style="font-size:0.8rem;"><i class="fab fa-whatsapp me-1"></i> Kontak Kadus</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- IMAM DUSUN -->
+                        <!-- IMAM DUSUN (IMDUS) -->
                         <div class="col-md-6">
                             <div class="profile-card h-100 text-center">
                                 <div class="profile-header-bg"></div>
                                 <div class="profile-img-wrapper mb-2">
-                                    <img src="foto.png" alt="Amiruddin, S.P." class="profile-img" onerror="this.src='foto.png'">
+                                    <img id="imdus-foto" src="foto.png" alt="Imam Dusun" class="profile-img" onerror="this.src='foto.png'">
                                 </div>
                                 <div class="p-3 pt-0">
                                     <span class="badge bg-warning text-dark badge-custom mb-2">Imam Dusun Timbuseng II</span>
-                                    <h5 class="fw-bold text-dark mb-1 fs-6">Amiruddin, S.P.</h5>
-                                    <p class="text-muted small mb-1" style="font-size:0.8rem;"><i class="fas fa-calendar-day me-1 text-secondary"></i>TTL: Saluleya, 08 Jun 1973</p>
-                                    <p class="text-muted small mb-2" style="font-size:0.8rem;"><i class="fab fa-whatsapp me-1 text-success"></i>085240349252</p>
+                                    <h5 class="fw-bold text-dark mb-1 fs-6" id="imdus-nama">Amiruddin, S.P.</h5>
+                                    <p class="text-muted small mb-1" style="font-size:0.8rem;"><i class="fas fa-id-card me-1 text-secondary"></i>NIK: <span id="imdus-nik">-</span></p>
+                                    <p class="text-muted small mb-1" style="font-size:0.8rem;"><i class="fas fa-calendar-day me-1 text-secondary"></i>TTL: <span id="imdus-ttl">Saluleya, 08 Jun 1973</span></p>
+                                    <p class="text-muted small mb-2" style="font-size:0.8rem;"><i class="fab fa-whatsapp me-1 text-success"></i><span id="imdus-kontak-val">085240349252</span></p>
                                     <hr class="my-2">
                                     <div class="d-grid mt-2">
-                                        <a href="https://wa.me/6285240349252" target="_blank" class="btn btn-outline-success btn-sm rounded-pill fw-semibold" style="font-size:0.8rem;"><i class="fab fa-whatsapp me-1"></i> Hubungi Imam</a>
+                                        <a id="imdus-wa-btn" href="https://wa.me/6285240349252" target="_blank" class="btn btn-outline-success btn-sm rounded-pill fw-semibold" style="font-size:0.8rem;"><i class="fab fa-whatsapp me-1"></i> Hubungi Imam Dusun</a>
                                     </div>
                                 </div>
                             </div>
@@ -344,26 +244,27 @@
                     <div class="content-card mb-3">
                         <h5 class="fw-bold text-dark mb-2" style="font-size:1.05rem;"><i class="fas fa-info-circle text-success me-1"></i> Gambaran Umum & Demografi</h5>
                         <p class="text-secondary small leading-relaxed mb-2" style="font-size:0.83rem;">
-                            Dusun Timbuseng II merupakan salah satu wilayah pemukiman padat dan produktif di Desa Timbuseng. Dengan jumlah penduduk sebanyak <strong>443 jiwa</strong> yang terbagi dalam <strong>113 Kepala Keluarga (KK)</strong>, wilayah ini memegang peranan penting dalam aktivitas kemasyarakatan dan pertanian desa.
+                            Dusun Timbuseng II merupakan salah satu wilayah pemukiman padat dan produktif di Desa Timbuseng. Dengan jumlah penduduk yang dinamis serta terbagi dalam kepala keluarga, wilayah ini memegang peranan penting dalam aktivitas kemasyarakatan dan pertanian desa.
                         </p>
                         <p class="text-secondary small leading-relaxed mb-0" style="font-size:0.83rem;">
                             Masyarakat Dusun Timbuseng II didominasi oleh petani sawah, pekebun, dan pengusaha mikro. Lingkungan dusun dikenal sangat menjunjung tinggi nilai kegotongroyongan dan keagamaan.
                         </p>
                     </div>
 
-                    <!-- DOKUMENTASI WILAYAH -->
+                    <!-- DOKUMENTASI WILAYAH (DINAMIS) -->
                     <div class="content-card">
                         <h5 class="fw-bold text-dark mb-2" style="font-size:1.05rem;"><i class="fas fa-images text-success me-1"></i> Dokumentasi & Galeri Dusun</h5>
-                        <div class="row g-2">
+                        <div id="galeri-container" class="row g-2">
+                            <!-- Dimuat dinamis lewat JavaScript -->
                             <div class="col-md-6">
                                 <div class="overflow-hidden rounded-3 border">
-                                    <img src="image.png" alt="Wilayah Dusun Timbuseng II" class="img-fluid w-100 gallery-img" onerror="this.src='image.png'">
+                                    <img src="image.png" alt="Wilayah Dusun" class="img-fluid w-100 gallery-img" onerror="this.src='image.png'">
                                 </div>
                                 <small class="text-muted d-block text-center mt-1" style="font-size:0.75rem;">Kawasan Pemukiman Dusun Timbuseng II</small>
                             </div>
                             <div class="col-md-6">
                                 <div class="overflow-hidden rounded-3 border">
-                                    <img src="image.png" alt="Aktivitas Warga Dusun Timbuseng II" class="img-fluid w-100 gallery-img" onerror="this.src='image.png'">
+                                    <img src="image.png" alt="Aktivitas Warga" class="img-fluid w-100 gallery-img" onerror="this.src='image.png'">
                                 </div>
                                 <small class="text-muted d-block text-center mt-1" style="font-size:0.75rem;">Lahan Pertanian & Sawah Dusun Timbuseng II</small>
                             </div>
@@ -398,31 +299,17 @@
                         </ul>
                     </div>
 
-                    <!-- FASILITAS UMUM DI DUSUN -->
+                    <!-- FASILITAS UMUM DI DUSUN (DINAMIS BERDASARKAN JENIS & NAMA) -->
                     <div class="content-card mb-3">
                         <h5 class="fw-bold text-dark mb-2" style="font-size:1.05rem;"><i class="fas fa-city text-success me-1"></i> Fasilitas & Sarana Publik</h5>
-                        
-                        <div class="d-flex align-items-center gap-2 mb-2 p-2 bg-light rounded-3">
-                            <i class="fas fa-mosque text-warning fs-5"></i>
-                            <div>
-                                <h6 class="fw-bold mb-0 text-dark" style="font-size:0.85rem;">Masjid Dusun Timbuseng II</h6>
-                                <small class="text-muted" style="font-size:0.72rem;">Pusat Kegiatan Keagamaan Warga</small>
-                            </div>
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2 mb-2 p-2 bg-light rounded-3">
-                            <i class="fas fa-clinic-medical text-danger fs-5"></i>
-                            <div>
-                                <h6 class="fw-bold mb-0 text-dark" style="font-size:0.85rem;">Posyandu Timbuseng II</h6>
-                                <small class="text-muted" style="font-size:0.72rem;">Pelayanan Kesehatan Ibu & Anak</small>
-                            </div>
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2 p-2 bg-light rounded-3">
-                            <i class="fas fa-road text-success fs-5"></i>
-                            <div>
-                                <h6 class="fw-bold mb-0 text-dark" style="font-size:0.85rem;">Akses Jalan Tani</h6>
-                                <small class="text-muted" style="font-size:0.72rem;">Jalur Pengangkut Hasil Panen</small>
+                        <div id="fasilitas-container" class="d-flex flex-column gap-2">
+                            <!-- Dimuat dinamis lewat JavaScript -->
+                            <div class="d-flex align-items-center gap-2 p-2 bg-light rounded-3">
+                                <i class="fas fa-mosque text-warning fs-5"></i>
+                                <div>
+                                    <h6 class="fw-bold mb-0 text-dark" style="font-size:0.85rem;">Masjid Dusun Timbuseng II</h6>
+                                    <small class="text-muted" style="font-size:0.72rem;">Pusat Kegiatan Keagamaan Warga</small>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -440,7 +327,7 @@
         </div>
     </section>
 
-    <!-- FOOTER (Disamakan persis dengan Timbuseng 1) -->
+    <!-- FOOTER -->
     <footer class="bg-dark text-white pt-4 pb-3 border-top border-success border-3">
         <div class="container text-center">
             <div class="mb-2">
@@ -453,6 +340,111 @@
         </div>
     </footer>
 
+    <!-- Bootstrap 5 JS Bundle & SINKRONISASI JSONBIN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const API_KEY = "$2a$10$wbLvXvg7KqU.nSiV2NXihOzbcQnKyWuRhAggoR26QUpcDQE.WVBaW";
+        const BIN_SISTEM = "6aa93e9affd5d1605309c685";
+        const GH_USER = "desatimbuseng1993"; 
+        const GH_REPO = "Desa-Timbuseng";
+
+        document.addEventListener("DOMContentLoaded", async function() {
+            try {
+                const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_SISTEM}/latest`, {
+                    headers: { 'X-Master-Key': API_KEY }
+                });
+                if(res.ok) {
+                    const result = await res.json();
+                    const data = result.record;
+                    if(data.dusun2) {
+                        const d = data.dusun2;
+
+                        // Statistik
+                        if(d.stat_penduduk) document.getElementById('stat-penduduk').innerText = d.stat_penduduk;
+                        if(d.stat_kk) document.getElementById('stat-kk').innerText = d.stat_kk;
+                        if(d.stat_luas) document.getElementById('stat-luas').innerText = d.stat_luas;
+                        if(d.stat_komoditas) document.getElementById('stat-komoditas').innerText = d.stat_komoditas;
+
+                        // Kadus (Foto Profil, Nama, NIK, TTL, Kontak)
+                        if(d.kadus_nama) document.getElementById('kadus-nama').innerText = d.kadus_nama;
+                        if(d.kadus_nik) document.getElementById('kadus-nik').innerText = d.kadus_nik;
+                        if(d.kadus_ttl) document.getElementById('kadus-ttl').innerText = d.kadus_ttl;
+                        if(d.kadus_kontak) {
+                            const cleanWa = d.kadus_kontak.replace(/[^0-9]/g, '');
+                            document.getElementById('kadus-wa-btn').href = `https://wa.me/${cleanWa}`;
+                        }
+                        if(d.kadus_foto) {
+                            const fUrl = d.kadus_foto.startsWith('http') ? d.kadus_foto : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${d.kadus_foto}`;
+                            document.getElementById('kadus-foto').src = fUrl;
+                        }
+
+                        // Imam Dusun / Imdus (Foto Profil, Nama, NIK, TTL, Kontak Imdus)
+                        if(d.imdus_nama) document.getElementById('imdus-nama').innerText = d.imdus_nama;
+                        if(d.imdus_nik) document.getElementById('imdus-nik').innerText = d.imdus_nik;
+                        if(d.imdus_ttl) document.getElementById('imdus-ttl').innerText = d.imdus_ttl;
+                        if(d.imdus_kontak) {
+                            document.getElementById('imdus-kontak-val').innerText = d.imdus_kontak;
+                            const cleanImdusWa = d.imdus_kontak.replace(/[^0-9]/g, '');
+                            document.getElementById('imdus-wa-btn').href = `https://wa.me/${cleanImdusWa}`;
+                        }
+                        if(d.imdus_foto) {
+                            const fImdusUrl = d.imdus_foto.startsWith('http') ? d.imdus_foto : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${d.imdus_foto}`;
+                            document.getElementById('imdus-foto').src = fImdusUrl;
+                        }
+
+                        // Penambahan Fasilitas Umum (Jenis & Nama)
+                        if(d.fasilitas) {
+                            const container = document.getElementById('fasilitas-container');
+                            container.innerHTML = '';
+                            const lines = d.fasilitas.split('\n');
+                            lines.forEach(line => {
+                                if(line.trim()) {
+                                    const parts = line.split('|');
+                                    const jenis = parts[0] ? parts[0].trim() : 'Fasilitas Umum';
+                                    const nama = parts[1] ? parts[1].trim() : '';
+                                    container.innerHTML += `
+                                        <div class="d-flex align-items-center gap-2 p-2 bg-light rounded-3 border">
+                                            <div class="icon-box bg-success text-white"><i class="fas fa-building"></i></div>
+                                            <div>
+                                                <h6 class="fw-bold mb-0 text-dark" style="font-size: 0.85rem;">${nama}</h6>
+                                                <small class="text-muted" style="font-size: 0.72rem;">${jenis}</small>
+                                            </div>
+                                        </div>
+                                    `;
+                                }
+                            });
+                        }
+
+                        // Dokumentasi Dusun & Nama Kegiatan
+                        if(d.galeri) {
+                            const galeriContainer = document.getElementById('galeri-container');
+                            galeriContainer.innerHTML = '';
+                            const lines = d.galeri.split('\n');
+                            lines.forEach(line => {
+                                if(line.trim()) {
+                                    const parts = line.split('|');
+                                    let imgPath = parts[0] ? parts[0].trim() : 'image.png';
+                                    const ketKegiatan = parts[1] ? parts[1].trim() : 'Dokumentasi Dusun Timbuseng II';
+                                    
+                                    const finalImgUrl = imgPath.startsWith('http') ? imgPath : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${imgPath}`;
+                                    
+                                    galeriContainer.innerHTML += `
+                                        <div class="col-md-6 mb-2">
+                                            <div class="overflow-hidden rounded-3 border">
+                                                <img src="${finalImgUrl}" alt="${ketKegiatan}" class="img-fluid w-100 gallery-img" onerror="this.src='image.png'">
+                                            </div>
+                                            <small class="text-muted d-block text-center mt-1" style="font-size:0.75rem;">${ketKegiatan}</small>
+                                        </div>
+                                    `;
+                                }
+                            });
+                        }
+                    }
+                }
+            } catch(e) {
+                console.error("Gagal memuat data Dusun Timbuseng II:", e);
+            }
+        });
+    </script>
 </body>
 </html>
