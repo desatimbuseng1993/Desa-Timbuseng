@@ -71,14 +71,26 @@
             border: 4px solid #ffffff; box-shadow: 0 6px 16px rgba(0,0,0,0.12);
         }
 
-        .section-title { position: relative; padding-bottom: 10px; margin-bottom: 18px; font-weight: 700; font-size: 1.2rem; color: #0f172a; }
+        .section-title {
+            position: relative; padding-bottom: 10px; margin-bottom: 18px; font-weight: 700; font-size: 1.2rem; color: #0f172a;
+        }
         .section-title::after {
             content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 3px; background-color: var(--accent-color); border-radius: 2px;
         }
 
         .badge-soft-success { background-color: #d1fae5; color: #065f46; }
         .badge-soft-warning { background-color: #fef3c7; color: #92400e; }
-        .icon-box { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+
+        .icon-box {
+            width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;
+        }
+
+        .gallery-img {
+            height: 160px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+        .gallery-img:hover { transform: scale(1.02); }
+
         .container, .container-fluid { max-width: 100% !important; padding-left: 15px; padding-right: 15px; }
     </style>
 </head>
@@ -148,25 +160,25 @@
                 <div class="col-6 col-md-3">
                     <div class="stat-card">
                         <small class="text-muted fw-semibold d-block"><i class="fas fa-users text-success me-1"></i> Total Penduduk</small>
-                        <h3 class="fw-bold text-dark mt-1"><span id="val-penduduk">280</span> <small class="fs-6 text-muted fw-normal">Jiwa</small></h3>
+                        <h3 class="fw-bold text-dark mt-1"><span id="stat-pop">280</span> <small class="fs-6 text-muted fw-normal">Jiwa</small></h3>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-card">
                         <small class="text-muted fw-semibold d-block"><i class="fas fa-home text-primary me-1"></i> Kepala Keluarga</small>
-                        <h3 class="fw-bold text-dark mt-1"><span id="val-kk">79</span> <small class="fs-6 text-muted fw-normal">KK</small></h3>
+                        <h3 class="fw-bold text-dark mt-1"><span id="stat-kk">79</span> <small class="fs-6 text-muted fw-normal">KK</small></h3>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-card">
                         <small class="text-muted fw-semibold d-block"><i class="fas fa-vector-square text-warning me-1"></i> Luas Wilayah</small>
-                        <h3 class="fw-bold text-dark mt-1"><span id="val-luas">188,85</span> <small class="fs-6 text-muted fw-normal">Ha</small></h3>
+                        <h3 class="fw-bold text-dark mt-1"><span id="stat-luas">188,85</span> <small class="fs-6 text-muted fw-normal">Ha</small></h3>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-card">
                         <small class="text-muted fw-semibold d-block"><i class="fas fa-seedling text-success me-1"></i> Komoditas</small>
-                        <h3 class="fw-bold text-success mt-1 fs-6" id="val-komoditas">Tebu & Padi</h3>
+                        <h3 class="fw-bold text-success mt-1 fs-6" id="stat-komoditas">Tebu & Padi</h3>
                     </div>
                 </div>
             </div>
@@ -182,68 +194,68 @@
                         <div class="col-md-6">
                             <div class="card-custom p-3 text-center h-100">
                                 <div class="mb-2">
-                                    <img id="img-kadus" src="foto.png" alt="Kepala Dusun" class="profile-img-frame" onerror="this.src='foto.png';">
+                                    <img id="kadus-foto" src="foto.png" alt="Kepala Dusun" class="profile-img-frame" onerror="this.onerror=null; this.src='foto.png';">
                                 </div>
                                 <span class="badge badge-soft-success rounded-pill px-2.5 py-1 fw-bold mb-2" style="font-size: 0.75rem;">Kepala Dusun Timbuseng I</span>
-                                <h5 class="fw-bold text-dark mb-1 fs-6" id="val-kadus-nama">Abdul Kadir</h5>
+                                <h5 class="fw-bold text-dark mb-1 fs-6" id="kadus-nama">Abdul Kadir</h5>
                                 
                                 <div class="bg-light rounded-3 p-2.5 text-start small mt-2 border" style="font-size: 0.8rem;">
                                     <div class="d-flex justify-content-between mb-1.5">
                                         <span class="text-muted"><i class="fas fa-id-card me-1"></i> NIK:</span>
-                                        <span class="fw-semibold text-dark" id="val-kadus-nik">7305040905850004</span>
+                                        <span class="fw-semibold text-dark" id="kadus-nik">7305040905850004</span>
                                     </div>
                                     <div class="d-flex justify-content-between mb-1.5">
                                         <span class="text-muted"><i class="fas fa-calendar-alt me-1"></i> TTL:</span>
-                                        <span class="fw-semibold text-dark" id="val-kadus-ttl">09 Mei 1985</span>
+                                        <span class="fw-semibold text-dark" id="kadus-ttl">09 Mei 1985</span>
                                     </div>
                                     <div class="d-flex justify-content-between mb-1.5">
                                         <span class="text-muted"><i class="fas fa-clock me-1"></i> Jabatan:</span>
-                                        <span class="fw-semibold text-dark" id="val-kadus-jabatan">2025 – Sekarang</span>
+                                        <span class="fw-semibold text-dark" id="kadus-jabatan">2025 – Sekarang</span>
                                     </div>
                                     <div class="d-flex justify-content-between">
-                                        <span class="text-muted"><i class="fas fa-home me-1"></i> Keterangan:</span>
-                                        <span class="fw-semibold text-dark text-end" id="val-kadus-rumah">Rumah batu putih</span>
+                                        <span class="text-muted"><i class="fas fa-phone me-1"></i> Kontak:</span>
+                                        <span class="fw-semibold text-success" id="kadus-kontak">085756614977</span>
                                     </div>
                                 </div>
 
                                 <div class="mt-2.5">
-                                    <a id="link-kadus-wa" href="https://wa.me/6285756614977" target="_blank" class="btn btn-outline-success btn-sm w-100 rounded-pill fw-semibold" style="font-size: 0.8rem;">
+                                    <a id="kadus-wa" href="https://wa.me/6285756614977" target="_blank" class="btn btn-outline-success btn-sm w-100 rounded-pill fw-semibold" style="font-size: 0.8rem;">
                                         <i class="fab fa-whatsapp me-1"></i> Hubungi Kadus
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- IMAM DUSUN / IMAM DESA -->
+                        <!-- IMAM DUSUN -->
                         <div class="col-md-6">
                             <div class="card-custom p-3 text-center h-100">
                                 <div class="mb-2">
-                                    <img id="img-imdus" src="foto.png" alt="Imam Dusun" class="profile-img-frame" onerror="this.src='foto.png';">
+                                    <img id="imdus-foto" src="foto.png" alt="Imam Dusun" class="profile-img-frame" onerror="this.onerror=null; this.src='foto.png';">
                                 </div>
                                 <span class="badge badge-soft-warning rounded-pill px-2.5 py-1 fw-bold mb-2" style="font-size: 0.75rem;">Imam Dusun Timbuseng I</span>
-                                <h5 class="fw-bold text-dark mb-1 fs-6" id="val-imdus-nama">Muh. Fajar, S.Ag.</h5>
+                                <h5 class="fw-bold text-dark mb-1 fs-6" id="imdus-nama">Amiruddin, S.P.</h5>
                                 
                                 <div class="bg-light rounded-3 p-2.5 text-start small mt-2 border" style="font-size: 0.8rem;">
                                     <div class="d-flex justify-content-between mb-1.5">
                                         <span class="text-muted"><i class="fas fa-id-card me-1"></i> NIK:</span>
-                                        <span class="fw-semibold text-dark" id="val-imdus-nik">7305041507750001</span>
+                                        <span class="fw-semibold text-dark" id="imdus-nik">-</span>
                                     </div>
                                     <div class="d-flex justify-content-between mb-1.5">
                                         <span class="text-muted"><i class="fas fa-calendar-alt me-1"></i> TTL:</span>
-                                        <span class="fw-semibold text-dark" id="val-imdus-ttl">Parangbaddo, 15 Jul 1975</span>
+                                        <span class="fw-semibold text-dark" id="imdus-ttl">Saluleya</span>
                                     </div>
                                     <div class="d-flex justify-content-between mb-1.5">
                                         <span class="text-muted"><i class="fas fa-clock me-1"></i> Jabatan:</span>
-                                        <span class="fw-semibold text-dark" id="val-imdus-jabatan">2008 – Sekarang</span>
+                                        <span class="fw-semibold text-dark" id="imdus-jabatan">Aktif</span>
                                     </div>
                                     <div class="d-flex justify-content-between">
-                                        <span class="text-muted"><i class="fas fa-mosque me-1"></i> Peran:</span>
-                                        <span class="fw-semibold text-dark" id="val-imdus-peran">Pembina Keagamaan</span>
+                                        <span class="text-muted"><i class="fas fa-phone me-1"></i> Kontak:</span>
+                                        <span class="fw-semibold text-success" id="imdus-kontak">085240349252</span>
                                     </div>
                                 </div>
 
                                 <div class="mt-2.5">
-                                    <a id="link-imdus-wa" href="https://wa.me/6285299636971" target="_blank" class="btn btn-outline-warning text-dark btn-sm w-100 rounded-pill fw-semibold" style="font-size: 0.8rem;">
+                                    <a id="imdus-wa" href="https://wa.me/6285240349252" target="_blank" class="btn btn-outline-warning text-dark btn-sm w-100 rounded-pill fw-semibold" style="font-size: 0.8rem;">
                                         <i class="fab fa-whatsapp me-1"></i> Hubungi Imam Dusun
                                     </a>
                                 </div>
@@ -252,36 +264,67 @@
                     </div>
 
                     <!-- DESKRIPSI & POTENSI WILAYAH -->
-                    <div class="card-custom p-3">
+                    <div class="card-custom p-3 mb-3">
                         <h5 class="fw-bold text-dark mb-2" style="font-size: 1.05rem;"><i class="fas fa-layer-group text-success me-1"></i> Gambaran Umum & Potensi</h5>
                         <p class="text-secondary small leading-relaxed mb-2" style="font-size: 0.83rem;">
-                            <strong>Dusun Timbuseng I</strong> berkedudukan sebagai pusat kegiatan administrasi dan pemerintahan Desa Timbuseng. Wilayah ini memiliki cakupan luas yang strategis dan didukung infrastruktur publik yang memadai.
+                            <strong>Dusun Timbuseng I</strong> berkedudukan sebagai pusat kegiatan administrasi dan pemerintahan Desa Timbuseng. Wilayah ini memiliki cakupan luas yang strategis serta didukung oleh infrastruktur jalan publik dan fasilitas layanan publik utama.
                         </p>
                     </div>
+
+                    <!-- DOKUMENTASI & KEGIATAN DUSUN -->
+                    <div class="card-custom p-3">
+                        <h5 class="fw-bold text-dark mb-3" style="font-size: 1.05rem;"><i class="fas fa-images text-success me-1"></i> Dokumentasi & Kegiatan Dusun</h5>
+                        <div class="row g-2" id="gallery-container">
+                            <div class="col-6 col-md-4 text-center">
+                                <img src="image.png" alt="Kegiatan Dusun" class="gallery-img w-100 mb-1" onerror="this.src='image.png'">
+                                <small class="text-muted d-block" style="font-size: 0.75rem;">Musyawarah Warga</small>
+                            </div>
+                            <div class="col-6 col-md-4 text-center">
+                                <img src="image.png" alt="Kegiatan Dusun" class="gallery-img w-100 mb-1" onerror="this.src='image.png'">
+                                <small class="text-muted d-block" style="font-size: 0.75rem;">Kerjabakti Pembersihan</small>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <!-- SIDEBAR FASILITAS & DOKUMENTASI -->
+                <!-- SIDEBAR SPASIAL & FASILITAS DUSUN -->
                 <div class="col-lg-4">
                     
-                    <!-- FASILITAS UMUM DI DUSUN -->
+                    <!-- BATAS WILAYAH DUSUN -->
                     <div class="card-custom p-3 mb-3">
-                        <h5 class="fw-bold text-dark mb-2" style="font-size: 1.05rem;"><i class="fas fa-building text-success me-1"></i> Fasilitas Umum</h5>
-                        <div id="fasilitas-container" class="d-flex flex-column gap-2">
-                            <div class="d-flex align-items-center gap-2 p-2 bg-light rounded-3 border">
+                        <h5 class="fw-bold text-dark mb-2" style="font-size: 1.05rem;"><i class="fas fa-compass text-success me-1"></i> Batas Wilayah Dusun</h5>
+                        <div class="list-group list-group-flush border-0" style="font-size: 0.85rem;">
+                            <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-1.5 border-bottom bg-transparent">
+                                <span class="text-muted"><i class="fas fa-arrow-up text-primary me-1"></i> Utara</span>
+                                <span class="fw-semibold text-dark">Dusun Timbuseng II</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-1.5 border-bottom bg-transparent">
+                                <span class="text-muted"><i class="fas fa-arrow-down text-danger me-1"></i> Selatan</span>
+                                <span class="fw-semibold text-dark">Dusun Sauleya</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-1.5 border-bottom bg-transparent">
+                                <span class="text-muted"><i class="fas fa-arrow-right text-warning me-1"></i> Timur</span>
+                                <span class="fw-semibold text-dark">Perkebunan PTPN</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-1.5 border-0 bg-transparent">
+                                <span class="text-muted"><i class="fas fa-arrow-left text-success me-1"></i> Barat</span>
+                                <span class="fw-semibold text-dark">Dusun Panaikang I</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FASILITAS UMUM DI DUSUN (DINAMIS) -->
+                    <div class="card-custom p-3">
+                        <h5 class="fw-bold text-dark mb-3" style="font-size: 1.05rem;"><i class="fas fa-building text-success me-1"></i> Fasilitas Umum</h5>
+                        <div id="fasilitas-container">
+                            <div class="d-flex align-items-center gap-2 mb-2 p-2 bg-light rounded-3 border">
                                 <div class="icon-box bg-success text-white"><i class="fas fa-landmark"></i></div>
                                 <div>
                                     <h6 class="fw-bold mb-0 text-dark" style="font-size: 0.85rem;">Kantor Desa Timbuseng</h6>
                                     <small class="text-muted" style="font-size: 0.72rem;">Pusat Pelayanan Publik</small>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- DOKUMENTASI KEGIATAN -->
-                    <div class="card-custom p-3">
-                        <h5 class="fw-bold text-dark mb-2" style="font-size: 1.05rem;"><i class="fas fa-images text-success me-1"></i> Dokumentasi Kegiatan</h5>
-                        <div id="dokumentasi-container" class="row g-2">
-                            <div class="col-12 text-center text-muted small py-2">Belum ada dokumentasi ditambahkan.</div>
                         </div>
                     </div>
 
@@ -304,7 +347,7 @@
         </div>
     </footer>
 
-    <!-- JS & SINKRONISASI JSONBIN -->
+    <!-- SCRIPT SINKRONISASI JSONBIN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const API_KEY = "$2a$10$wbLvXvg7KqU.nSiV2NXihOzbcQnKyWuRhAggoR26QUpcDQE.WVBaW";
@@ -323,79 +366,86 @@
                     if(data.dusun1) {
                         const d = data.dusun1;
                         
-                        // Statistik & Demografi
-                        if(d.total_penduduk) document.getElementById('val-penduduk').innerText = d.total_penduduk;
-                        if(d.total_kk) document.getElementById('val-kk').innerText = d.total_kk;
-                        if(d.luas_wilayah) document.getElementById('val-luas').innerText = d.luas_wilayah;
-                        if(d.komoditas) document.getElementById('val-komoditas').innerText = d.komoditas;
+                        // Statistik
+                        if(d.stat_populasi) document.getElementById('stat-pop').innerText = d.stat_populasi;
+                        if(d.stat_kk) document.getElementById('stat-kk').innerText = d.stat_kk;
+                        if(d.stat_luas) document.getElementById('stat-luas').innerText = d.stat_luas;
+                        if(d.komoditas) document.getElementById('stat-komoditas').innerText = d.komoditas;
 
                         // Kadus
-                        if(d.kadus_nama) document.getElementById('val-kadus-nama').innerText = d.kadus_nama;
-                        if(d.kadus_nik) document.getElementById('val-kadus-nik').innerText = d.kadus_nik;
-                        if(d.kadus_ttl) document.getElementById('val-kadus-ttl').innerText = d.kadus_ttl;
-                        if(d.kadus_jabatan) document.getElementById('val-kadus-jabatan').innerText = d.kadus_jabatan;
-                        if(d.kadus_rumah) document.getElementById('val-kadus-rumah').innerText = d.kadus_rumah;
+                        if(d.kadus) document.getElementById('kadus-nama').innerText = d.kadus;
+                        if(d.kadus_nik) document.getElementById('kadus-nik').innerText = d.kadus_nik;
+                        if(d.kadus_ttl) document.getElementById('kadus-ttl').innerText = d.kadus_ttl;
+                        if(d.kadus_jabatan) document.getElementById('kadus-jabatan').innerText = d.kadus_jabatan;
                         if(d.kadus_kontak) {
-                            const cleanWa = d.kadus_kontak.replace(/[^0-9]/g, '');
-                            document.getElementById('link-kadus-wa').href = `https://wa.me/${cleanWa}`;
+                            document.getElementById('kadus-kontak').innerText = d.kadus_kontak;
+                            document.getElementById('kadus-wa').href = `https://wa.me/${d.kadus_kontak.replace(/[^0-9]/g, '')}`;
                         }
                         if(d.kadus_foto) {
-                            const url = d.kadus_foto.startsWith('http') ? d.kadus_foto : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${d.kadus_foto}`;
-                            document.getElementById('img-kadus').src = url;
+                            const fotoKadusUrl = d.kadus_foto.startsWith('http') ? d.kadus_foto : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${d.kadus_foto}`;
+                            document.getElementById('kadus-foto').src = fotoKadusUrl;
                         }
 
-                        // Imdus
-                        if(d.imdus_nama) document.getElementById('val-imdus-nama').innerText = d.imdus_nama;
-                        if(d.imdus_nik) document.getElementById('val-imdus-nik').innerText = d.imdus_nik;
-                        if(d.imdus_ttl) document.getElementById('val-imdus-ttl').innerText = d.imdus_ttl;
-                        if(d.imdus_jabatan) document.getElementById('val-imdus-jabatan').innerText = d.imdus_jabatan;
-                        if(d.imdus_peran) document.getElementById('val-imdus-peran').innerText = d.imdus_peran;
+                        // Imam Dusun
+                        if(d.imdus_nama) document.getElementById('imdus-nama').innerText = d.imdus_nama;
+                        if(d.imdus_nik) document.getElementById('imdus-nik').innerText = d.imdus_nik;
+                        if(d.imdus_ttl) document.getElementById('imdus-ttl').innerText = d.imdus_ttl;
+                        if(d.imdus_jabatan) document.getElementById('imdus-jabatan').innerText = d.imdus_jabatan;
                         if(d.imdus_kontak) {
-                            const cleanWa = d.imdus_kontak.replace(/[^0-9]/g, '');
-                            document.getElementById('link-imdus-wa').href = `https://wa.me/${cleanWa}`;
+                            document.getElementById('imdus-kontak').innerText = d.imdus_kontak;
+                            document.getElementById('imdus-wa').href = `https://wa.me/${d.imdus_kontak.replace(/[^0-9]/g, '')}`;
                         }
                         if(d.imdus_foto) {
-                            const url = d.imdus_foto.startsWith('http') ? d.imdus_foto : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${d.imdus_foto}`;
-                            document.getElementById('img-imdus').src = url;
+                            const fotoImdusUrl = d.imdus_foto.startsWith('http') ? d.imdus_foto : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${d.imdus_foto}`;
+                            document.getElementById('imdus-foto').src = fotoImdusUrl;
                         }
 
-                        // Fasilitas Umum
-                        if(Array.isArray(d.fasilitas) && d.fasilitas.length > 0) {
-                            const container = document.getElementById('fasilitas-container');
-                            container.innerHTML = '';
-                            d.fasilitas.forEach(f => {
-                                container.innerHTML += `
-                                    <div class="d-flex align-items-center gap-2 p-2 bg-light rounded-3 border">
-                                        <div class="icon-box bg-success text-white"><i class="fas fa-building"></i></div>
-                                        <div>
-                                            <h6 class="fw-bold mb-0 text-dark" style="font-size: 0.85rem;">${f.nama}</h6>
-                                            <small class="text-muted" style="font-size: 0.72rem;">${f.jenis}</small>
+                        // Fasilitas Umum (Array atau Teks Berbaris)
+                        if(d.fasilitas) {
+                            const containerFas = document.getElementById('fasilitas-container');
+                            containerFas.innerHTML = '';
+                            const items = d.fasilitas.split('\n');
+                            items.forEach(item => {
+                                if(item.trim() !== '') {
+                                    containerFas.innerHTML += `
+                                        <div class="d-flex align-items-center gap-2 mb-2 p-2 bg-light rounded-3 border">
+                                            <div class="icon-box bg-success text-white"><i class="fas fa-check-circle"></i></div>
+                                            <div>
+                                                <h6 class="fw-bold mb-0 text-dark" style="font-size: 0.85rem;">${item}</h6>
+                                            </div>
                                         </div>
-                                    </div>
-                                `;
+                                    `;
+                                }
                             });
                         }
 
                         // Dokumentasi Kegiatan
-                        if(Array.isArray(d.dokumentasi) && d.dokumentasi.length > 0) {
-                            const container = document.getElementById('dokumentasi-container');
-                            container.innerHTML = '';
-                            d.dokumentasi.forEach(doc => {
-                                const imgUrl = doc.foto.startsWith('http') ? doc.foto : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${doc.foto}`;
-                                container.innerHTML += `
-                                    <div class="col-6">
-                                        <div class="border rounded-3 overflow-hidden bg-white">
-                                            <img src="${imgUrl}" alt="${doc.nama}" class="w-100" style="height: 100px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/150?text=Dokumentasi';">
-                                            <div class="p-1 text-center"><small class="fw-bold text-dark" style="font-size: 0.72rem;">${doc.nama}</small></div>
-                                        </div>
+                        if(d.dok1_img || d.dok2_img) {
+                            const containerGal = document.getElementById('gallery-container');
+                            containerGal.innerHTML = '';
+                            if(d.dok1_img) {
+                                const img1 = d.dok1_img.startsWith('http') ? d.dok1_img : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${d.dok1_img}`;
+                                containerGal.innerHTML += `
+                                    <div class="col-6 col-md-4 text-center">
+                                        <img src="${img1}" alt="Dokumentasi 1" class="gallery-img w-100 mb-1" onerror="this.src='image.png'">
+                                        <small class="text-muted d-block" style="font-size: 0.75rem;">${d.dok1_desc || 'Kegiatan Dusun'}</small>
                                     </div>
                                 `;
-                            });
+                            }
+                            if(d.dok2_img) {
+                                const img2 = d.dok2_img.startsWith('http') ? d.dok2_img : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${d.dok2_img}`;
+                                containerGal.innerHTML += `
+                                    <div class="col-6 col-md-4 text-center">
+                                        <img src="${img2}" alt="Dokumentasi 2" class="gallery-img w-100 mb-1" onerror="this.src='image.png'">
+                                        <small class="text-muted d-block" style="font-size: 0.75rem;">${d.dok2_desc || 'Kegiatan Warga'}</small>
+                                    </div>
+                                `;
+                            }
                         }
                     }
                 }
             } catch(e) {
-                console.error("Gagal memuat data Dusun I:", e);
+                console.error("Gagal memuat data Dusun Timbuseng I:", e);
             }
         });
     </script>
