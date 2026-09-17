@@ -688,9 +688,52 @@
                 </form>
             </div>
         </div>
+<!-- TAB 19: 7 DUSUN (TIMBUSENG I DIPERBARUI LENGKAP) -->
+        <div id="tab-dusun1" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-map-pin text-success me-2"></i>Kelola Profil Dusun Timbuseng I</h4>
+                <p class="text-muted small mb-4">Kelola statistik kewilayahan, data kepala dusun, data imam dusun (imdus) yang terhubung ke halaman iman-desa.html, serta fasilitas umum dusun.</p>
+                
+                <form onsubmit="saveSectionData(event, 'dusun1')">
+                    <div class="row g-3">
+                        <div class="col-12"><h6 class="text-success fw-bold border-bottom pb-2">1. Statistik & Kewilayahan Dusun</h6></div>
+                        <div class="col-md-3"><label class="form-label">Total Penduduk (Jiwa)</label><input type="text" class="form-control" name="penduduk" placeholder="280"></div>
+                        <div class="col-md-3"><label class="form-label">Kepala Keluarga (KK)</label><input type="text" class="form-control" name="kk" placeholder="79"></div>
+                        <div class="col-md-3"><label class="form-label">Luas Wilayah (Ha)</label><input type="text" class="form-control" name="luas" placeholder="188,85"></div>
+                        <div class="col-md-3"><label class="form-label">Komoditas Utama</label><input type="text" class="form-control" name="komoditas" placeholder="Tebu & Padi"></div>
 
-        <!-- TAB 19-25: 7 DUSUN -->
-        <div id="tab-dusun1" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Timbuseng I</h4><form onsubmit="saveSectionData(event, 'dusun1')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Timbuseng I ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-md-6"><label>Statistik Populasi</label><input type="text" class="form-control" name="stat_populasi"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 1</button></div></div></form></div></div>
+                        <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">2. Data Kepala Dusun (Kadus) Timbuseng I</h6></div>
+                        <div class="col-md-6"><label class="form-label">Nama Kepala Dusun</label><input type="text" class="form-control" name="kadus_nama" placeholder="Abdul Kadir"></div>
+                        <div class="col-md-6"><label class="form-label">NIK Kadus</label><input type="text" class="form-control" name="kadus_nik" placeholder="7305040905850004"></div>
+                        <div class="col-md-4"><label class="form-label">TTL Kadus</label><input type="text" class="form-control" name="kadus_ttl" placeholder="09 Mei 1985"></div>
+                        <div class="col-md-4"><label class="form-label">Masa Jabatan</label><input type="text" class="form-control" name="kadus_jabatan" placeholder="2025 – Sekarang"></div>
+                        <div class="col-md-4"><label class="form-label">Kontak / WhatsApp Kadus</label><input type="text" class="form-control" name="kadus_kontak" placeholder="085756614977"></div>
+                        <div class="col-md-6"><label class="form-label">Keterangan / Alamat Rumah</label><input type="text" class="form-control" name="kadus_info" placeholder="Rumah batu putih"></div>
+                        <div class="col-md-6"><label class="form-label">Upload Foto Profil Kadus</label><input type="file" class="form-control" name="kadus_foto" accept="image/*"></div>
+
+                        <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">3. Data Imam Dusun (Imdus) — Terhubung ke halaman iman-desa.html</h6></div>
+                        <div class="col-md-6"><label class="form-label">Nama Imam Dusun (Imdus)</label><input type="text" class="form-control" name="imdus_nama" placeholder="Ustadz ..."></div>
+                        <div class="col-md-6"><label class="form-label">NIK Imam Dusun</label><input type="text" class="form-control" name="imdus_nik" placeholder="-"></div>
+                        <div class="col-md-4"><label class="form-label">TTL Imam Dusun</label><input type="text" class="form-control" name="imdus_ttl" placeholder="-"></div>
+                        <div class="col-md-4"><label class="form-label">Jabatan / Periode Imdus</label><input type="text" class="form-control" name="imdus_jabatan" placeholder="Aktif"></div>
+                        <div class="col-md-4"><label class="form-label">Kontak / WhatsApp Imdus</label><input type="text" class="form-control" name="imdus_kontak" placeholder="0852xxxxxxxx"></div>
+                        <div class="col-md-12"><label class="form-label">Upload Foto Profil Imam Dusun</label><input type="file" class="form-control" name="imdus_foto" accept="image/*"></div>
+
+                        <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">4. Fasilitas Umum Dusun</h6></div>
+                        <div class="col-md-12">
+                            <label class="form-label">Daftar Fasilitas (Format: Jenis | Nama | Keterangan — pisahkan dengan baris baru / Enter)</label>
+                            <textarea class="form-control" name="fasilitas" rows="3" placeholder="Pemerintahan | Kantor Desa Timbuseng | Pusat Pelayanan Publik&#10;Peribadatan | Masjid Desa Timbuseng | Pusat Peribadatan&#10;Kesehatan | Posyandu Timbuseng I | Layanan Kesehatan Warga"></textarea>
+                        </div>
+
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-desa px-5 py-3"><i class="fas fa-save me-2"></i>Simpan Perubahan Dusun Timbuseng I</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 20-25: 6 DUSUN LAINNYA TETAP UTUH -->
         <div id="tab-dusun2" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Timbuseng II</h4><form onsubmit="saveSectionData(event, 'dusun2')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Timbuseng II ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 2</button></div></div></form></div></div>
         <div id="tab-dusun3" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Sauleya</h4><form onsubmit="saveSectionData(event, 'dusun3')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Sauleya ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 3</button></div></div></form></div></div>
         <div id="tab-dusun4" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Tanasambayang</h4><form onsubmit="saveSectionData(event, 'dusun4')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Tanasambayang ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 4</button></div></div></form></div></div>
