@@ -595,16 +595,36 @@
             </div>
         </div>
 
-        <!-- TAB 14: BABINSA.HTML -->
+        <!-- TAB BABINSA -->
         <div id="tab-babinsa" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-shield-alt text-success me-2"></i>babinsa.html - Babinsa</h4>
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-shield-alt text-success me-2"></i>Kelola Data Halaman Babinsa</h4>
                 <form onsubmit="saveSectionData(event, 'babinsa')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area babinsa.html ]</div></div>
-                        <div class="col-md-6"><label class="form-label">Nama Personel</label><input type="text" class="form-control" name="nama"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak</label><input type="text" class="form-control" name="kontak"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Babinsa</button></div>
+                        <div class="col-12"><h6 class="text-success fw-bold border-bottom pb-2">1. Bagian Hero Header & Statistik</h6></div>
+                        <div class="col-md-6"><label class="form-label">Judul Hero</label><input type="text" class="form-control" name="hero_title"></div>
+                        <div class="col-md-6"><label class="form-label">Deskripsi Hero</label><textarea class="form-control" name="hero_desc" rows="2"></textarea></div>
+                        <div class="col-md-3"><label class="form-label">Wilayah Bina (Dusun)</label><input type="text" class="form-control" name="stat_wilayah"></div>
+                        <div class="col-md-3"><label class="form-label">Sinergitas</label><input type="text" class="form-control" name="stat_sinergi"></div>
+                        <div class="col-md-3"><label class="form-label">Kondisi Desa</label><input type="text" class="form-control" name="stat_kondisi"></div>
+                        <div class="col-md-3"><label class="form-label">Respons Cepat</label><input type="text" class="form-control" name="stat_respons"></div>
+
+                        <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">2. Profil Babinsa</h6></div>
+                        <div class="col-md-4"><label class="form-label">Nama Lengkap & Gelar</label><input type="text" class="form-control" name="nama"></div>
+                        <div class="col-md-4"><label class="form-label">Pangkat / NRP</label><input type="text" class="form-control" name="pangkat"></div>
+                        <div class="col-md-4"><label class="form-label">Koramil</label><input type="text" class="form-control" name="koramil"></div>
+                        <div class="col-md-6"><label class="form-label">Nomor Kontak / WhatsApp</label><input type="text" class="form-control" name="kontak"></div>
+                        <div class="col-md-6"><label class="form-label">Upload Foto Babinsa</label><input type="file" class="form-control" name="foto" accept="image/*"></div>
+                        <div class="col-md-12"><label class="form-label">Kutipan / Semboyan</label><textarea class="form-control" name="quote" rows="2"></textarea></div>
+
+                        <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">3. Tugas Pokok & Fungsi</h6></div>
+                        <div class="col-md-12"><label class="form-label">Deskripsi Utama Binter</label><textarea class="form-control" name="tugas_deskripsi" rows="2"></textarea></div>
+                        <div class="col-md-6"><label class="form-label">Poin Deteksi & Cegah Dini</label><textarea class="form-control" name="tugas_poin1" rows="2"></textarea></div>
+                        <div class="col-md-6"><label class="form-label">Poin Bakti TNI</label><textarea class="form-control" name="tugas_poin2" rows="2"></textarea></div>
+
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-desa px-5 py-3"><i class="fas fa-save me-2"></i>Simpan Perubahan Babinsa</button>
+                        </div>
                     </div>
                 </form>
             </div>
