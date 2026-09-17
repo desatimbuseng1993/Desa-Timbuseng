@@ -260,7 +260,7 @@
                 </div>
             </div>
 
-            <!-- JAJARAN IMAM DUSUN SE-DESA TIMBUSENG (Sinkron dengan data Kadus/Imdus) -->
+            <!-- JAJARAN IMAM DUSUN SE-DESA TIMBUSENG -->
             <div class="mb-5">
                 <div class="d-flex align-items-center justify-content-between mb-4">
                     <div>
@@ -271,7 +271,7 @@
                 </div>
 
                 <div class="row g-3" id="jajaran-imam-container">
-                    <!-- Data dimuat dinamis dari json -->
+                    <!-- Data dimuat dinamis dari json dusun1 s.d dusun7 -->
                 </div>
             </div>
 
@@ -336,16 +336,15 @@
                 if(res.ok) {
                     const result = await res.json();
                     const data = result.record;
+                    
+                    // 1. Load Data Imam Desa Utama
                     if(data.iman_desa) {
                         const i = data.iman_desa;
-                        
-                        // Statistik
                         if(i.stat_imam_desa) document.getElementById('stat-imam-desa').innerText = i.stat_imam_desa;
                         if(i.stat_imam_dusun) document.getElementById('stat-imam-dusun').innerText = i.stat_imam_dusun;
                         if(i.stat_pengabdian) document.getElementById('stat-pengabdian').innerText = i.stat_pengabdian;
                         if(i.stat_layanan) document.getElementById('stat-layanan').innerText = i.stat_layanan;
 
-                        // Profil Utama
                         if(i.nama) document.getElementById('imam-nama').innerText = i.nama;
                         if(i.nik) document.getElementById('imam-nik').innerText = i.nik;
                         if(i.ttl) document.getElementById('imam-ttl').innerText = `: ${i.ttl}`;
@@ -356,7 +355,6 @@
                         }
                         if(i.tugas_desc) document.getElementById('imam-tugas-desc').innerText = i.tugas_desc;
 
-                        // Foto Profil
                         if(i.foto) {
                             const photoUrl = i.foto.startsWith('http') 
                                 ? i.foto 
@@ -365,32 +363,41 @@
                         }
                     }
 
-                    // Render Jajaran Imam Dusun (Sinkron dengan data Dusun / Kadus)
+                    // 2. Load Jajaran Imam Dusun (dusun1 s.d dusun7)
                     const container = document.getElementById('jajaran-imam-container');
                     if(container) {
                         container.innerHTML = '';
-                        const dusunKeys = ['dusun1', 'dusun2', 'dusun3', 'dusun4', 'dusun5', 'dusun6', 'dusun7'];
-                        dusunKeys.forEach(dk => {
-                            if(data[dk]) {
-                                const d = data[dk];
-                                const imamNama = d.imam_dusun || d.kadus || 'Belum diatur';
-                                const imamKontak = d.imam_kontak || '-';
-                                const dusunNama = d.nama_dusun || dk.toUpperCase();
-                                
+                        const dusunDataList = [
+                            { key: 'dusun1', label: 'Dusun Timbuseng I' },
+                            { key: 'dusun2', label: 'Dusun Timbuseng II' },
+                            { key: 'dusun3', label: 'Dusun Sauleya' },
+                            { key: 'dusun4', label: 'Dusun Tanasambayang' },
+                            { key: 'dusun5', label: 'Dusun Bontobaddo' },
+                            { key: 'dusun6', label: 'Dusun Panaikang I' },
+                            { key: 'dusun7', label: 'Dusun Panaikang II' }
+                        ];
+
+                        dusunDataList.forEach(item => {
+                            if(data[item.key]) {
+                                const d = data[item.key];
+                                const imdusNama = d.imdus_nama || 'Belum diatur';
+                                const imdusKontak = d.imdus_kontak || '-';
+                                const cleanPhone = imdusKontak.replace(/[^0-9]/g, '');
+
                                 container.innerHTML += `
                                     <div class="col-md-6 col-lg-4">
                                         <div class="imam-card p-3 h-100 d-flex flex-column justify-content-between">
                                             <div>
                                                 <div class="d-flex justify-content-between align-items-start mb-2">
-                                                    <span class="badge bg-success bg-opacity-10 text-success px-2 py-1 rounded" style="font-size:0.75rem;">${dusunNama}</span>
+                                                    <span class="badge bg-success bg-opacity-10 text-success px-2 py-1 rounded" style="font-size:0.75rem;">${item.label}</span>
                                                     <i class="fas fa-mosque text-muted"></i>
                                                 </div>
-                                                <h6 class="fw-bold text-dark mb-1">${imamNama}</h6>
+                                                <h6 class="fw-bold text-dark mb-1">${imdusNama}</h6>
                                                 <p class="text-muted small mb-2"><i class="fas fa-user-shield me-1 text-secondary"></i>Imam / Tokoh Dusun</p>
                                             </div>
                                             <div class="pt-2 border-top d-flex justify-content-between align-items-center">
-                                                <span class="text-success small fw-semibold"><i class="fab fa-whatsapp me-1"></i>${imamKontak}</span>
-                                                ${imamKontak !== '-' ? `<a href="https://wa.me/${imamKontak.replace(/[^0-9]/g, '')}" target="_blank" class="btn btn-sm btn-outline-success rounded-pill px-3 py-0">Kontak</a>` : ''}
+                                                <span class="text-success small fw-semibold"><i class="fab fa-whatsapp me-1"></i>${imdusKontak}</span>
+                                                ${cleanPhone ? `<a href="https://wa.me/${cleanPhone}" target="_blank" class="btn btn-sm btn-outline-success rounded-pill px-3 py-0">Kontak</a>` : ''}
                                             </div>
                                         </div>
                                     </div>
