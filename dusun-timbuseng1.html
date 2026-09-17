@@ -34,6 +34,7 @@
         .bg-desa { background-color: var(--primary-color) !important; }
         .text-desa { color: var(--primary-color) !important; }
 
+        /* Custom Navbar */
         .navbar { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); padding: 0.75rem 1rem; }
         .navbar-brand img { height: 38px; width: auto; object-fit: contain; }
         .nav-link { font-weight: 500; font-size: 0.9rem; padding: 0.5rem 0.8rem !important; transition: all 0.2s ease; }
@@ -42,6 +43,7 @@
         .dropdown-item { border-radius: 8px; padding: 0.5rem 1rem; font-weight: 500; font-size: 0.88rem; }
         .dropdown-item.active, .dropdown-item:active { background-color: var(--primary-color); }
 
+        /* Hero Header */
         .page-hero {
             position: relative;
             background: linear-gradient(rgba(7, 59, 36, 0.85), rgba(13, 92, 58, 0.92)), url('image.png') center/cover no-repeat;
@@ -50,6 +52,7 @@
         .page-hero h1 { font-size: clamp(1.6rem, 4vw, 2.3rem); font-weight: 800; }
         .page-hero p { font-size: clamp(0.88rem, 2vw, 1rem); }
 
+        /* Card Styles */
         .card-custom {
             background: #ffffff; border-radius: 16px; border: 1px solid var(--border-color);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03); transition: all 0.25s ease-in-out;
@@ -63,7 +66,9 @@
         .stat-card h3 { font-size: 1.1rem; margin-bottom: 0; }
         .stat-card small { font-size: 0.75rem; }
 
-        .profile-img-frame { width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 4px solid #ffffff; box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
+        .profile-img-frame {
+            width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 4px solid #ffffff; box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
 
         .section-title { position: relative; padding-bottom: 10px; margin-bottom: 18px; font-weight: 700; font-size: 1.2rem; color: #0f172a; }
         .section-title::after {
@@ -73,7 +78,10 @@
         .badge-soft-success { background-color: #d1fae5; color: #065f46; }
         .badge-soft-warning { background-color: #fef3c7; color: #92400e; }
 
-        .icon-box { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+        .icon-box {
+            width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;
+        }
+
         .container, .container-fluid { max-width: 100% !important; padding-left: 15px; padding-right: 15px; }
     </style>
 </head>
@@ -196,8 +204,8 @@
                                         <span class="fw-semibold text-dark" id="kadus-jabatan">2025 – Sekarang</span>
                                     </div>
                                     <div class="d-flex justify-content-between">
-                                        <span class="text-muted"><i class="fas fa-home me-1"></i> Keterangan:</span>
-                                        <span class="fw-semibold text-dark text-end" id="kadus-ket">Rumah batu putih</span>
+                                        <span class="text-muted"><i class="fas fa-home me-1"></i> Rumah:</span>
+                                        <span class="fw-semibold text-dark text-end" id="kadus-rumah">Rumah batu putih</span>
                                     </div>
                                 </div>
 
@@ -209,7 +217,7 @@
                             </div>
                         </div>
 
-                        <!-- IMAM DUSUN -->
+                        <!-- IMAM DUSUN (IMDUS) -->
                         <div class="col-md-6">
                             <div class="card-custom p-3 text-center h-100">
                                 <div class="mb-2">
@@ -250,7 +258,10 @@
                     <div class="card-custom p-3">
                         <h5 class="fw-bold text-dark mb-2" style="font-size: 1.05rem;"><i class="fas fa-layer-group text-success me-1"></i> Gambaran Umum & Potensi</h5>
                         <p class="text-secondary small leading-relaxed mb-2" style="font-size: 0.83rem;">
-                            <strong>Dusun Timbuseng I</strong> berkedudukan sebagai pusat kegiatan administrasi dan pemerintahan Desa Timbuseng. Wilayah ini didukung oleh infrastruktur jalan publik, fasilitas layanan publik, sarana ibadah, serta fasilitas kesehatan masyarakat.
+                            <strong>Dusun Timbuseng I</strong> berkedudukan sebagai pusat kegiatan administrasi dan pemerintahan Desa Timbuseng. Wilayah ini memiliki cakupan luas sebesar <strong>188,85 Ha</strong> atau sekitar 17,43% dari total luas Desa Timbuseng (1.083,47 Ha).
+                        </p>
+                        <p class="text-secondary small leading-relaxed mb-0" style="font-size: 0.83rem;">
+                            Sebagai wilayah pusat desa, Dusun Timbuseng I didukung oleh infrastruktur jalan publik, fasilitas layanan publik utama kantor desa, sarana ibadah, serta fasilitas posyandu masyarakat.
                         </p>
                     </div>
                 </div>
@@ -284,26 +295,13 @@
                     <!-- FASILITAS UMUM DI DUSUN (DINAMIS) -->
                     <div class="card-custom p-3">
                         <h5 class="fw-bold text-dark mb-2" style="font-size: 1.05rem;"><i class="fas fa-building text-success me-1"></i> Fasilitas Umum</h5>
-                        <div id="fasilitas-container">
-                            <div class="d-flex align-items-center gap-2 mb-2 p-2 bg-light rounded-3 border">
+                        <div id="fasilitas-container" class="d-flex flex-column gap-2">
+                            <!-- Dimuat dinamis lewat JavaScript -->
+                            <div class="d-flex align-items-center gap-2 p-2 bg-light rounded-3 border">
                                 <div class="icon-box bg-success text-white"><i class="fas fa-landmark"></i></div>
                                 <div>
-                                    <h6 class="fw-bold mb-0 text-dark" style="font-size: 0.85rem;" id="fas-1-nama">Kantor Desa Timbuseng</h6>
-                                    <small class="text-muted" style="font-size: 0.72rem;" id="fas-1-jenis">Pusat Pelayanan Publik</small>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center gap-2 mb-2 p-2 bg-light rounded-3 border">
-                                <div class="icon-box bg-warning text-dark"><i class="fas fa-mosque"></i></div>
-                                <div>
-                                    <h6 class="fw-bold mb-0 text-dark" style="font-size: 0.85rem;" id="fas-2-nama">Masjid Desa Timbuseng</h6>
-                                    <small class="text-muted" style="font-size: 0.72rem;" id="fas-2-jenis">Pusat Peribadatan</small>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center gap-2 p-2 bg-light rounded-3 border">
-                                <div class="icon-box bg-danger text-white"><i class="fas fa-clinic-medical"></i></div>
-                                <div>
-                                    <h6 class="fw-bold mb-0 text-dark" style="font-size: 0.85rem;" id="fas-3-nama">Posyandu Timbuseng I</h6>
-                                    <small class="text-muted" style="font-size: 0.72rem;" id="fas-3-jenis">Layanan Kesehatan Warga</small>
+                                    <h6 class="fw-bold mb-0 text-dark" style="font-size: 0.85rem;">Kantor Desa Timbuseng</h6>
+                                    <small class="text-muted" style="font-size: 0.72rem;">Pusat Pelayanan Publik</small>
                                 </div>
                             </div>
                         </div>
@@ -328,7 +326,7 @@
         </div>
     </footer>
 
-    <!-- JS & SINKRONISASI JSONBIN -->
+    <!-- Bootstrap 5 JS Bundle & SINKRONISASI JSONBIN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const API_KEY = "$2a$10$wbLvXvg7KqU.nSiV2NXihOzbcQnKyWuRhAggoR26QUpcDQE.WVBaW";
@@ -358,13 +356,14 @@
                         if(d.kadus_nik) document.getElementById('kadus-nik').innerText = d.kadus_nik;
                         if(d.kadus_ttl) document.getElementById('kadus-ttl').innerText = d.kadus_ttl;
                         if(d.kadus_jabatan) document.getElementById('kadus-jabatan').innerText = d.kadus_jabatan;
-                        if(d.kadus_ket) document.getElementById('kadus-ket').innerText = d.kadus_ket;
+                        if(d.kadus_rumah) document.getElementById('kadus-rumah').innerText = d.kadus_rumah;
                         if(d.kadus_kontak) {
-                            document.getElementById('kadus-wa-btn').href = `https://wa.me/${d.kadus_kontak.replace(/[^0-9]/g, '')}`;
+                            const cleanWa = d.kadus_kontak.replace(/[^0-9]/g, '');
+                            document.getElementById('kadus-wa-btn').href = `https://wa.me/${cleanWa}`;
                         }
                         if(d.kadus_foto) {
-                            const kadusUrl = d.kadus_foto.startsWith('http') ? d.kadus_foto : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${d.kadus_foto}`;
-                            document.getElementById('kadus-foto').src = kadusUrl;
+                            const fUrl = d.kadus_foto.startsWith('http') ? d.kadus_foto : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${d.kadus_foto}`;
+                            document.getElementById('kadus-foto').src = fUrl;
                         }
 
                         // Imam Dusun (Imdus)
@@ -373,20 +372,36 @@
                         if(d.imdus_ttl) document.getElementById('imdus-ttl').innerText = d.imdus_ttl;
                         if(d.imdus_jabatan) document.getElementById('imdus-jabatan').innerText = d.imdus_jabatan;
                         if(d.imdus_kontak) {
-                            document.getElementById('imdus-wa-btn').href = `https://wa.me/${d.imdus_kontak.replace(/[^0-9]/g, '')}`;
+                            const cleanImdusWa = d.imdus_kontak.replace(/[^0-9]/g, '');
+                            document.getElementById('imdus-wa-btn').href = `https://wa.me/${cleanImdusWa}`;
                         }
                         if(d.imdus_foto) {
-                            const imdusUrl = d.imdus_foto.startsWith('http') ? d.imdus_foto : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${d.imdus_foto}`;
-                            document.getElementById('imdus-foto').src = imdusUrl;
+                            const fImdusUrl = d.imdus_foto.startsWith('http') ? d.imdus_foto : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${d.imdus_foto}`;
+                            document.getElementById('imdus-foto').src = fImdusUrl;
                         }
 
-                        // Fasilitas
-                        if(d.fas_1_nama) document.getElementById('fas-1-nama').innerText = d.fas_1_nama;
-                        if(d.fas_1_jenis) document.getElementById('fas-1-jenis').innerText = d.fas_1_jenis;
-                        if(d.fas_2_nama) document.getElementById('fas-2-nama').innerText = d.fas_2_nama;
-                        if(d.fas_2_jenis) document.getElementById('fas-2-jenis').innerText = d.fas_2_jenis;
-                        if(d.fas_3_nama) document.getElementById('fas-3-nama').innerText = d.fas_3_nama;
-                        if(d.fas_3_jenis) document.getElementById('fas-3-jenis').innerText = d.fas_3_jenis;
+                        // Fasilitas Umum (Format: Jenis | Nama per baris)
+                        if(d.fasilitas) {
+                            const container = document.getElementById('fasilitas-container');
+                            container.innerHTML = '';
+                            const lines = d.fasilitas.split('\n');
+                            lines.forEach(line => {
+                                if(line.trim()) {
+                                    const parts = line.split('|');
+                                    const jenis = parts[0] ? parts[0].trim() : 'Fasilitas Umum';
+                                    const nama = parts[1] ? parts[1].trim() : '';
+                                    container.innerHTML += `
+                                        <div class="d-flex align-items-center gap-2 p-2 bg-light rounded-3 border">
+                                            <div class="icon-box bg-success text-white"><i class="fas fa-building"></i></div>
+                                            <div>
+                                                <h6 class="fw-bold mb-0 text-dark" style="font-size: 0.85rem;">${nama}</h6>
+                                                <small class="text-muted" style="font-size: 0.72rem;">${jenis}</small>
+                                            </div>
+                                        </div>
+                                    `;
+                                }
+                            });
+                        }
                     }
                 }
             } catch(e) {
