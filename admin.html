@@ -920,8 +920,53 @@
             </div>
         </div>
 
+
+                <!-- TAB DUSUN 6: PANAIKANG I -->
+        <div id="tab-dusun6" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-map-pin text-success me-2"></i>Dusun Panaikang I - Kelola Data Wilayah</h4>
+                <form onsubmit="saveSectionData(event, 'dusun6')">
+                    <div class="row g-3">
+                        <div class="col-12"><h6 class="text-success fw-bold border-bottom pb-2">1. Statistik & Demografi Dusun</h6></div>
+                        <div class="col-md-3"><label class="form-label">Total Penduduk (Jiwa)</label><input type="text" class="form-control" name="stat_penduduk"></div>
+                        <div class="col-md-3"><label class="form-label">Kepala Keluarga (KK)</label><input type="text" class="form-control" name="stat_kk"></div>
+                        <div class="col-md-3"><label class="form-label">Kategori Wilayah</label><input type="text" class="form-control" name="stat_luas"></div>
+                        <div class="col-md-3"><label class="form-label">Komoditas Utama</label><input type="text" class="form-control" name="stat_komoditas"></div>
+
+                        <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">2. Data Kepala Dusun (Kadus)</h6></div>
+                        <div class="col-md-4"><label class="form-label">Nama Kepala Dusun</label><input type="text" class="form-control" name="kadus_nama"></div>
+                        <div class="col-md-4"><label class="form-label">NIK Kadus</label><input type="text" class="form-control" name="kadus_nik"></div>
+                        <div class="col-md-4"><label class="form-label">TTL Kadus</label><input type="text" class="form-control" name="kadus_ttl"></div>
+                        <div class="col-md-6"><label class="form-label">Nomor Kontak / WA Kadus</label><input type="text" class="form-control" name="kadus_kontak"></div>
+                        <div class="col-md-6"><label class="form-label">Upload Foto Kadus</label><input type="file" class="form-control" name="kadus_foto" accept="image/*"></div>
+
+                        <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">3. Data Imam Dusun (Imdus)</h6></div>
+                        <div class="col-md-4"><label class="form-label">Nama Imam Dusun</label><input type="text" class="form-control" name="imdus_nama"></div>
+                        <div class="col-md-4"><label class="form-label">NIK Imam Dusun</label><input type="text" class="form-control" name="imdus_nik"></div>
+                        <div class="col-md-4"><label class="form-label">TTL Imam Dusun</label><input type="text" class="form-control" name="imdus_ttl"></div>
+                        <div class="col-md-6"><label class="form-label">Kontak / WA Imam Dusun</label><input type="text" class="form-control" name="imdus_kontak"></div>
+                        <div class="col-md-6"><label class="form-label">Upload Foto Imam Dusun</label><input type="file" class="form-control" name="imdus_foto" accept="image/*"></div>
+
+                        <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">4. Fasilitas Umum & Dokumentasi</h6></div>
+                        <div class="col-md-12"><label class="form-label">Daftar Fasilitas Umum (Pisahkan dengan baris baru / Enter)</label><textarea class="form-control" name="fasilitas" rows="3" placeholder="Masjid Panaikang I&#10;Posyandu Panaikang I"></textarea></div>
+                        
+                        <div class="col-md-6">
+                            <label class="form-label">Keterangan Foto Kegiatan 1</label><input type="text" class="form-control mb-2" name="dok1_desc" placeholder="Suasana Permukiman Dusun Panaikang I">
+                            <label class="form-label">Upload Foto Kegiatan 1</label><input type="file" class="form-control" name="dok1_img" accept="image/*">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Keterangan Foto Kegiatan 2</label><input type="text" class="form-control mb-2" name="dok2_desc" placeholder="Lahan Pertanian & Irigasi Desa">
+                            <label class="form-label">Upload Foto Kegiatan 2</label><input type="file" class="form-control" name="dok2_img" accept="image/*">
+                        </div>
+
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-desa px-5 py-3"><i class="fas fa-save me-2"></i>Simpan Perubahan Data Dusun Panaikang I</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         <!-- TAB 21-25: 5 DUSUN LAINNYA TETAP UTUH -->
-        <div id="tab-dusun6" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Panaikang I</h4><form onsubmit="saveSectionData(event, 'dusun6')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Panaikang I ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 6</button></div></div></form></div></div>
         <div id="tab-dusun7" class="tab-pane"><div class="cms-card"><h4 class="fw-bold fs-5 mb-3">Dusun Panaikang II</h4><form onsubmit="saveSectionData(event, 'dusun7')"><div class="row g-3"><div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Dusun Panaikang II ]</div></div><div class="col-md-6"><label>Kepala Dusun</label><input type="text" class="form-control" name="kadus"></div><div class="col-12 mt-3"><button class="btn btn-desa">Simpan Dusun 7</button></div></div></form></div></div>
 
     </div>
