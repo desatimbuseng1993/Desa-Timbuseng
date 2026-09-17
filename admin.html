@@ -132,6 +132,7 @@
         <ul class="sidebar-menu">
             <li class="sidebar-heading">Konfigurasi Sistem</li>
             <li class="nav-item"><a class="nav-link active" onclick="switchTab('tab-github', this)"><i class="fab fa-github"></i> <span>GitHub & Auth Gambar</span></a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-sandi', this)"><i class="fas fa-key"></i> <span>Keamanan & Sandi Admin</span></a></li>
             
             <li class="sidebar-heading">Halaman Utama & Info</li>
             <li class="nav-item"><a class="nav-link" onclick="switchTab('tab-index', this)"><i class="fas fa-home"></i> <span>index.html</span></a></li>
@@ -188,6 +189,43 @@
                         <div class="col-md-4"><label class="form-label">Repository Name</label><input type="text" class="form-control" id="gh_repo"></div>
                         <div class="col-md-4"><label class="form-label">Personal Access Token (PAT)</label><input type="password" class="form-control" id="gh_token"></div>
                         <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Konfigurasi Kunci API</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB SANDI ADMIN -->
+        <div id="tab-sandi" class="tab-pane">
+            <div class="cms-card">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-key text-success me-2"></i>Keamanan - Ubah Sandi Admin</h4>
+                <p class="text-muted small mb-4">Kelola kata sandi akses masuk ke halaman panel admin CMS Desa Timbuseng.</p>
+                
+                <form onsubmit="saveAdminPassword(event)">
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <label class="form-label">Kata Sandi Lama</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="old_admin_password" placeholder="Masukkan sandi lama..." required>
+                                <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility('old_admin_password', this)"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Kata Sandi Baru</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="new_admin_password" placeholder="Masukkan sandi baru..." required>
+                                <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility('new_admin_password', this)"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Konfirmasi Kata Sandi Baru</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="confirm_admin_password" placeholder="Ulangi sandi baru..." required>
+                                <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility('confirm_admin_password', this)"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-desa"><i class="fas fa-save me-2"></i>Perbarui Sandi Admin</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -630,11 +668,10 @@
             </div>
         </div>
 
-        <!-- UBAH DARI id="tab-bhabin" MENJADI id="tab-bimnas" -->
+        <!-- TAB BIMNAS -->
         <div id="tab-bimnas" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-user-shield text-success me-2"></i>Kelola Data Halaman Bhabinkamtibmas</h4>
-                <!-- Ubah juga parameter saveSectionData menjadi 'bimnas' -->
                 <form onsubmit="saveSectionData(event, 'bimnas')">
                     <div class="row g-3">
                         <div class="col-12"><h6 class="text-success fw-bold border-bottom pb-2">1. Bagian Hero Header & Statistik</h6></div>
@@ -689,7 +726,7 @@
                         <div class="col-md-12"><label class="form-label">Upload Foto Profil Imam Desa</label><input type="file" class="form-control" name="foto" accept="image/*"></div>
 
                         <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">3. Tugas & Tanggung Jawab</h6></div>
-                        <div class="col-md-12"><label class="form-label">Deskripsi / Uraian Tugas Utama</label><textarea class="form-control" name="tugas_desc" rows="3" placeholder="Sebagai pemuka agama tingkat desa..."></textarea></div>
+                        <div class="col-md-12"><label class="form-label">Deskripsi / Uraian Tugas Utama</label><textarea class="form-control" name="tugas_desc" rows="3" placeholder="As pemuka agama tingkat desa..."></textarea></div>
 
                         <div class="col-12 mt-4">
                             <button type="submit" class="btn btn-desa px-5 py-3"><i class="fas fa-save me-2"></i>Simpan Perubahan Data Imam Desa</button>
@@ -823,6 +860,7 @@
                 </form>
             </div>
         </div>
+
         <!-- TAB DUSUN 3: SAULEYA -->
         <div id="tab-dusun3" class="tab-pane">
             <div class="cms-card">
@@ -869,7 +907,7 @@
             </div>
         </div>
 
-                <!-- TAB DUSUN 4: TANASAMBAYANG -->
+        <!-- TAB DUSUN 4: TANASAMBAYANG -->
         <div id="tab-dusun4" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-map-pin text-success me-2"></i>Dusun Tanasambayang - Kelola Data Wilayah</h4>
@@ -961,8 +999,7 @@
             </div>
         </div>
 
-
-                <!-- TAB DUSUN 6: PANAIKANG I -->
+        <!-- TAB DUSUN 6: PANAIKANG I -->
         <div id="tab-dusun6" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-map-pin text-success me-2"></i>Dusun Panaikang I - Kelola Data Wilayah</h4>
@@ -1007,6 +1044,7 @@
                 </form>
             </div>
         </div>
+
         <!-- TAB DUSUN 7: PANAIKANG II -->
         <div id="tab-dusun7" class="tab-pane">
             <div class="cms-card">
@@ -1083,6 +1121,20 @@
             if(autoHide) setTimeout(() => box.classList.add('d-none'), 4000);
         }
 
+        function togglePasswordVisibility(inputId, btnEl) {
+            const input = document.getElementById(inputId);
+            const icon = btnEl.querySelector('i');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
         window.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('gh_user').value = localStorage.getItem('gh_user') || '';
             document.getElementById('gh_repo').value = localStorage.getItem('gh_repo') || '';
@@ -1093,6 +1145,9 @@
                 const dataSys = await resSys.json();
                 masterSistem = dataSys.record;
                 
+                // Cek otentikasi sandi sebelum masuk halaman admin
+                await checkAdminAuth();
+
                 const resInf = await fetch(`https://api.jsonbin.io/v3/b/${BIN_INFO}/latest`, { headers: { 'X-Master-Key': API_KEY } });
                 const dataInf = await resInf.json();
                 masterInfo = dataInf.record;
@@ -1105,6 +1160,61 @@
                 console.error("Gagal memuat data awal", error);
             }
         });
+
+        async function checkAdminAuth() {
+            if(sessionStorage.getItem('cms_logged_in') === 'true') return;
+
+            const defaultPass = "timbuseng123";
+            const currentPass = (masterSistem.setting && masterSistem.setting.admin_password) ? masterSistem.setting.admin_password : defaultPass;
+
+            let entered = prompt("🔒 Masukkan Kata Sandi Admin CMS Desa Timbuseng:");
+            if(entered === currentPass) {
+                sessionStorage.setItem('cms_logged_in', 'true');
+                showAlert("Login Berhasil! Selamat datang di Panel Admin.");
+            } else {
+                alert("Kata sandi salah! Akses ditolak.");
+                window.location.reload();
+            }
+        }
+
+        async function saveAdminPassword(e) {
+            e.preventDefault();
+            const oldPassInput = document.getElementById('old_admin_password').value;
+            const p1 = document.getElementById('new_admin_password').value;
+            const p2 = document.getElementById('confirm_admin_password').value;
+
+            const defaultPass = "timbuseng123";
+            const currentPass = (masterSistem.setting && masterSistem.setting.admin_password) ? masterSistem.setting.admin_password : defaultPass;
+
+            if(oldPassInput !== currentPass) {
+                alert("Kata sandi lama yang Anda masukkan salah!");
+                return;
+            }
+
+            if(p1 !== p2) {
+                alert("Konfirmasi kata sandi baru tidak cocok! Silakan periksa kembali.");
+                return;
+            }
+
+            showAlert("Menyimpan sandi baru...", false);
+            try {
+                if(!masterSistem.setting) masterSistem.setting = {};
+                masterSistem.setting.admin_password = p1;
+
+                const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_SISTEM}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json', 'X-Master-Key': API_KEY },
+                    body: JSON.stringify(masterSistem)
+                });
+                
+                if(!res.ok) throw new Error("Gagal memperbarui sandi ke server");
+                
+                showAlert("Kata sandi admin berhasil diperbarui!");
+                e.target.reset();
+            } catch (error) {
+                showAlert("Gagal: " + error.message);
+            }
+        }
 
         function populateSemuaForm() {
             for (let sectionKey in masterSistem) {
