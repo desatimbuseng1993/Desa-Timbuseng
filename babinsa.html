@@ -34,227 +34,70 @@
             font-size: 0.95rem;
         }
 
-        /* Utility Classes */
         .bg-desa { background-color: var(--primary-color) !important; }
         .text-desa { color: var(--primary-color) !important; }
         .bg-desa-dark { background-color: var(--primary-dark) !important; }
 
-        /* Navigation Bar */
-        .navbar {
-            padding: 0.75rem 1rem;
-            transition: all 0.3s ease;
-        }
-        .navbar-brand img {
-            transition: transform 0.3s ease;
-        }
-        .navbar-brand:hover img {
-            transform: scale(1.05);
-        }
-        .nav-link {
-            font-weight: 500;
-            padding: 0.5rem 0.9rem !important;
-            border-radius: 8px;
-            transition: all 0.25s ease;
-        }
-        .nav-link:hover, .nav-link.active {
-            background-color: rgba(255, 255, 255, 0.15);
-            color: #ffffff !important;
-        }
-        .dropdown-menu {
-            border: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .dropdown-item {
-            padding: 0.6rem 1.2rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-        .dropdown-item:hover {
-            background-color: var(--primary-light);
-            color: var(--primary-color);
-            padding-left: 1.5rem;
-        }
+        .navbar { padding: 0.75rem 1rem; transition: all 0.3s ease; }
+        .navbar-brand img { transition: transform 0.3s ease; }
+        .navbar-brand:hover img { transform: scale(1.05); }
+        .nav-link { font-weight: 500; padding: 0.5rem 0.9rem !important; border-radius: 8px; transition: all 0.25s ease; }
+        .nav-link:hover, .nav-link.active { background-color: rgba(255, 255, 255, 0.15); color: #ffffff !important; }
+        
+        .dropdown-menu { border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.12); border-radius: 12px; overflow: hidden; }
+        .dropdown-item { padding: 0.6rem 1.2rem; font-weight: 500; transition: all 0.2s ease; }
+        .dropdown-item:hover { background-color: var(--primary-light); color: var(--primary-color); padding-left: 1.5rem; }
 
-        /* Hero Header */
         .page-hero {
             background: linear-gradient(rgba(7, 59, 36, 0.9), rgba(13, 92, 58, 0.85)), url('image.png') center/cover no-repeat fixed;
-            color: white;
-            padding: 4.5rem 1rem 3.5rem;
-            border-bottom: 5px solid var(--accent-color);
-            position: relative;
+            color: white; padding: 4.5rem 1rem 3.5rem; border-bottom: 5px solid var(--accent-color); position: relative;
         }
-        .page-hero h1 {
-            font-size: clamp(1.75rem, 4vw, 2.75rem);
-        }
-        .page-hero p {
-            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-        }
+        .page-hero h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); }
+        .page-hero p { font-size: clamp(0.9rem, 1.5vw, 1.1rem); }
         .hero-badge {
-            background: rgba(243, 156, 18, 0.2);
-            color: #ffd166;
-            border: 1px solid rgba(243, 156, 18, 0.5);
-            padding: 0.4em 1em;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            background: rgba(243, 156, 18, 0.2); color: #ffd166; border: 1px solid rgba(243, 156, 18, 0.5);
+            padding: 0.4em 1em; border-radius: 50px; font-size: 0.8rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;
         }
 
-        /* Key Performance Cards */
         .stat-card {
-            background: #ffffff;
-            border-radius: 14px;
-            padding: 1rem 1.25rem;
-            border: 1px solid var(--border-color);
-            border-left: 4px solid var(--primary-color);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-            height: 100%;
+            background: #ffffff; border-radius: 14px; padding: 1rem 1.25rem; border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary-color); box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: all 0.3s ease; height: 100%;
         }
-        .stat-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(13, 92, 58, 0.08);
-        }
-        .stat-card h3 {
-            font-size: clamp(1.1rem, 2vw, 1.35rem);
-        }
+        .stat-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(13, 92, 58, 0.08); }
+        .stat-card h3 { font-size: clamp(1.1rem, 2vw, 1.35rem); }
         .stat-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background-color: var(--primary-light);
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            flex-shrink: 0;
+            width: 44px; height: 44px; border-radius: 12px; background-color: var(--primary-light); color: var(--primary-color);
+            display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
         }
 
-        /* Section Titles */
-        .section-title {
-            position: relative;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-weight: 700;
-            color: var(--dark-text);
-            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 45px;
-            height: 3px;
-            border-radius: 2px;
-            background-color: var(--accent-color);
-        }
+        .section-title { position: relative; padding-bottom: 10px; margin-bottom: 20px; font-weight: 700; color: var(--dark-text); font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 45px; height: 3px; border-radius: 2px; background-color: var(--accent-color); }
 
-        .content-card {
-            background: #ffffff;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-            padding: 1.25rem 1.5rem;
-            margin-bottom: 1.5rem;
-        }
+        .content-card { background: #ffffff; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 4px 16px rgba(0,0,0,0.03); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
+        @media (min-width: 768px) { .content-card { padding: 1.8rem; margin-bottom: 1.8rem; } }
 
-        @media (min-width: 768px) {
-            .content-card {
-                padding: 1.8rem;
-                margin-bottom: 1.8rem;
-            }
-        }
+        .profile-card { background: #ffffff; border-radius: 18px; box-shadow: 0 6px 24px rgba(0,0,0,0.05); border: 1px solid var(--border-color); overflow: hidden; transition: all 0.3s ease; }
+        .profile-card-header { height: 90px; background: linear-gradient(135deg, #1b3b22 0%, #0d5c3a 100%); position: relative; }
+        .profile-img-wrapper { margin-top: -55px; position: relative; z-index: 2; }
+        .ketua-img { width: 130px; height: 130px; object-fit: cover; border-radius: 50%; border: 4px solid #ffffff; box-shadow: 0 6px 20px rgba(0,0,0,0.15); background-color: #ffffff; }
 
-        /* Profile Chairman Card (Adapted for Babinsa with Military Theme Accents) */
-        .profile-card {
-            background: #ffffff;
-            border-radius: 18px;
-            box-shadow: 0 6px 24px rgba(0,0,0,0.05);
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .profile-card-header {
-            height: 90px;
-            background: linear-gradient(135deg, #1b3b22 0%, #0d5c3a 100%);
-            position: relative;
-        }
-        .profile-img-wrapper {
-            margin-top: -55px;
-            position: relative;
-            z-index: 2;
-        }
-        .ketua-img {
-            width: 130px;
-            height: 130px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #ffffff;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            background-color: #ffffff;
-        }
+        .quote-box { background-color: var(--primary-light); border-left: 4px solid var(--primary-color); padding: 1rem 1.25rem; border-radius: 0 12px 12px 0; font-style: italic; font-size: 0.9rem; }
+        .org-card { border-radius: 12px; border: 1px dashed var(--border-color); padding: 0.9rem 1rem; background-color: var(--light-bg); transition: all 0.25s ease; }
+        .org-card:hover { border-color: var(--primary-color); background-color: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
 
-        .quote-box {
-            background-color: var(--primary-light);
-            border-left: 4px solid var(--primary-color);
-            padding: 1rem 1.25rem;
-            border-radius: 0 12px 12px 0;
-            font-style: italic;
-            font-size: 0.9rem;
-        }
-
-        /* Organizational Structure Cards */
-        .org-card {
-            border-radius: 12px;
-            border: 1px dashed var(--border-color);
-            padding: 0.9rem 1rem;
-            background-color: var(--light-bg);
-            transition: all 0.25s ease;
-        }
-        .org-card:hover {
-            border-color: var(--primary-color);
-            background-color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-        }
-
-        /* Floating Contact Button */
-        .floating-cta {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 999;
-            box-shadow: 0 8px 25px rgba(13, 92, 58, 0.35);
-        }
-
-        /* Custom Badges */
-        .badge-soft-primary {
-            background-color: var(--primary-light);
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-        .badge-soft-warning {
-            background-color: #fef5e7;
-            color: #d35400;
-            font-weight: 600;
-        }
+        .floating-cta { position: fixed; bottom: 25px; right: 25px; z-index: 999; box-shadow: 0 8px 25px rgba(13, 92, 58, 0.35); }
+        .badge-soft-primary { background-color: var(--primary-light); color: var(--primary-color); font-weight: 600; }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR / NAVIGATION -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-                <img src="logo.png" alt="Logo Desa Timbuseng" height="38" onerror="this.onerror=null; this.src='https://via.placeholder.com/38?text=DESA';">
+                <img src="logo.png" alt="Logo Desa Timbuseng" height="38" onerror="this.onerror=null; this.src='image.png';">
                 <div class="lh-sm">
-                    <span class="d-block fs-6 text-white fw-bold tracking-wide">DESA TIMBUSENG</span>
+                    <span class="d-block fs-6 text-white fw-bold">DESA TIMBUSENG</span>
                     <small class="fw-normal text-white-50 text-uppercase d-block" style="font-size: 0.65rem;">Kec. Polongbangkeng Timur, Takalar</small>
                 </div>
             </a>
@@ -263,26 +106,23 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto gap-1 align-items-lg-center fw-semibold py-2 py-lg-0">
-                    <li class="nav-item"><a class="nav-link text-white" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="pemdes.html"><i class="fas fa-users-cog me-1"></i> Pemdes & Kades</a></li>
-                   
-                    <!-- DROPDOWN WILAYAH DUSUN -->
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pemdes.html"><i class="fas fa-users-cog me-1"></i> Pemdes & Kades</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDusunDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDusunDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-map-marked-alt me-1"></i> Wilayah Dusun
                         </a>
                         <ul class="dropdown-menu shadow border-0 rounded-3 mt-2" aria-labelledby="navbarDusunDropdown">
-                            <li><a class="dropdown-item" href="dusun-timbuseng1.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Timbuseng I</a></li>
-                            <li><a class="dropdown-item" href="dusun-timbuseng2.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Timbuseng II</a></li>
-                            <li><a class="dropdown-item" href="dusun-sauleya.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Sauleya</a></li>
-                            <li><a class="dropdown-item" href="dusun-tanasambayang.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Tanasambayang</a></li>
-                            <li><a class="dropdown-item" href="dusun-bontobaddo.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Bontobaddo</a></li>
-                            <li><a class="dropdown-item" href="dusun-panaikang1.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Panaikang I</a></li>
-                            <li><a class="dropdown-item" href="dusun-panaikang2.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Panaikang II</a></li>
+                            <li><a class="dropdown-item" href="dusun-timbuseng1.html">Dusun Timbuseng I</a></li>
+                            <li><a class="dropdown-item" href="dusun-timbuseng2.html">Dusun Timbuseng II</a></li>
+                            <li><a class="dropdown-item" href="dusun-sauleya.html">Dusun Sauleya</a></li>
+                            <li><a class="dropdown-item" href="dusun-tanasambayang.html">Dusun Tanasambayang</a></li>
+                            <li><a class="dropdown-item" href="dusun-bontobaddo.html">Dusun Bontobaddo</a></li>
+                            <li><a class="dropdown-item" href="dusun-panaikang1.html">Dusun Panaikang I</a></li>
+                            <li><a class="dropdown-item" href="dusun-panaikang2.html">Dusun Panaikang II</a></li>
                         </ul>
                     </li>
-
-                    <li class="nav-item"><a class="nav-link text-white" href="pengaduan.html"><i class="fas fa-paper-plane me-1"></i> Pengaduan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pengaduan.html"><i class="fas fa-paper-plane me-1"></i> Pengaduan</a></li>
                 </ul>
             </div>
         </div>
@@ -294,8 +134,8 @@
             <div class="hero-badge mb-3 shadow-sm">
                 <i class="fas fa-shield-alt"></i> Komando Rayon Militer / TNI AD
             </div>
-            <h1 class="fw-extrabold text-white mb-2">Bintara Pembina Desa (Babinsa)</h1>
-            <p class="lead text-white-50 mx-auto mb-4" style="max-width: 685px;">
+            <h1 class="fw-extrabold text-white mb-2" id="hero-title">Bintara Pembina Desa (Babinsa)</h1>
+            <p class="lead text-white-50 mx-auto mb-4" id="hero-desc" style="max-width: 685px;">
                 Hadir di tengah masyarakat untuk melakukan pembinaan teritorial, menjaga keamanan, dan membantu Pemerintah Desa Timbuseng dalam mewujudkan kesejahteraan warga.
             </p>
             <div class="d-flex justify-content-center gap-2 flex-wrap">
@@ -305,18 +145,18 @@
         </div>
     </header>
 
-    <!-- MAIN CONTENT SECTION -->
+    <!-- MAIN CONTENT -->
     <section class="py-4 py-md-5">
         <div class="container">
 
-            <!-- STATISTIK / HIGHLIGHT METRICS -->
+            <!-- STATISTIK -->
             <div class="row g-3 mb-4 mb-md-5" data-aos="fade-up">
                 <div class="col-6 col-md-3">
                     <div class="stat-card d-flex align-items-center gap-3">
                         <div class="stat-icon"><i class="fas fa-map-marked-alt"></i></div>
                         <div>
-                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Wilayah Bina</span>
-                            <h3 class="fw-bold text-dark mb-0">7 <small class="fs-6 text-muted fw-normal">Dusun</small></h3>
+                            <span class="text-muted small fw-semibold d-block">Wilayah Bina</span>
+                            <h3 class="fw-bold text-dark mb-0"><span id="stat-wilayah">7</span> <small class="fs-6 text-muted fw-normal">Dusun</small></h3>
                         </div>
                     </div>
                 </div>
@@ -324,8 +164,8 @@
                     <div class="stat-card d-flex align-items-center gap-3">
                         <div class="stat-icon"><i class="fas fa-hands-helping"></i></div>
                         <div>
-                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Sinergitas</span>
-                            <h3 class="fw-bold text-dark mb-0">Tiga <small class="fs-6 text-muted fw-normal">Pilar</small></h3>
+                            <span class="text-muted small fw-semibold d-block">Sinergitas</span>
+                            <h3 class="fw-bold text-dark mb-0" id="stat-sinergi">Tiga Pilar</h3>
                         </div>
                     </div>
                 </div>
@@ -333,8 +173,8 @@
                     <div class="stat-card d-flex align-items-center gap-3">
                         <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
                         <div>
-                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Kondisi Desa</span>
-                            <h3 class="fw-bold text-dark mb-0" style="font-size: 1.15rem;">Aman <small class="fs-6 text-muted fw-normal">Terkendali</small></h3>
+                            <span class="text-muted small fw-semibold d-block">Kondisi Desa</span>
+                            <h3 class="fw-bold text-dark mb-0 fs-6" id="stat-kondisi">Aman Terkendali</h3>
                         </div>
                     </div>
                 </div>
@@ -342,8 +182,8 @@
                     <div class="stat-card d-flex align-items-center gap-3">
                         <div class="stat-icon"><i class="fas fa-bolt"></i></div>
                         <div>
-                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Respons Cepat</span>
-                            <h3 class="fw-bold text-success mb-0" style="font-size: 1.15rem;">Siaga <small class="fs-6 text-muted fw-normal">24 Jam</small></h3>
+                            <span class="text-muted small fw-semibold d-block">Respons Cepat</span>
+                            <h3 class="fw-bold text-success mb-0 fs-6" id="stat-respons">Siaga 24 Jam</h3>
                         </div>
                     </div>
                 </div>
@@ -351,48 +191,48 @@
 
             <div class="row g-4">
                 
-                <!-- KOLOM KIRI: PROFIL BABINSA & TUGAS POKOK -->
+                <!-- KOLOM KIRI -->
                 <div class="col-lg-8">
                     
-                    <!-- PROFIL BABINSA (Dengan nuansa militer/TNI yang tegas) -->
+                    <!-- PROFIL BABINSA -->
                     <div class="profile-card mb-4" id="profil-babinsa" data-aos="fade-up">
                         <div class="profile-card-header d-flex align-items-center px-4">
                             <span class="badge bg-warning text-dark fw-bold px-3 py-1 rounded-pill" style="font-size: 0.75rem;"><i class="fas fa-shield-alt me-1"></i> APARATUR TNI - AD</span>
                         </div>
                         <div class="px-4 pb-4">
                             <div class="d-flex flex-column flex-md-row align-items-center align-items-md-end gap-3 profile-img-wrapper mb-3">
-                                <img src="profil_babinsa.png" alt="Babinsa Desa Timbuseng" class="ketua-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/130?text=BABINSA';">
+                                <img id="babinsa-foto" src="profil_babinsa.png" alt="Babinsa" class="ketua-img" onerror="this.onerror=null; this.src='image.png';">
                                 <div class="text-center text-md-start">
                                     <span class="badge badge-soft-primary px-3 py-1 rounded-pill mb-2" style="font-size: 0.75rem;"><i class="fas fa-medal me-1 text-success"></i> Bintara Pembina Desa</span>
-                                    <h3 class="fw-bold text-dark mb-1" style="font-size: 1.25rem;">Nama Babinsa</h3>
+                                    <h3 class="fw-bold text-dark mb-1 fs-5" id="babinsa-nama">Nama Babinsa</h3>
                                     <p class="text-muted small mb-0" style="font-size: 0.82rem;">
-                                        <i class="fas fa-id-badge me-1 text-success"></i> Pangkat / NRP: - <br>
-                                        <i class="fas fa-building me-1 text-success"></i> Koramil Polongbangkeng Timur
+                                        <i class="fas fa-id-badge me-1 text-success"></i> Pangkat / NRP: <span id="babinsa-pangkat">-</span><br>
+                                        <i class="fas fa-building me-1 text-success"></i> Koramil: <span id="babinsa-koramil">Polongbangkeng Timur</span>
                                     </p>
                                 </div>
                             </div>
 
                             <div class="quote-box my-3">
-                                <p class="mb-1 text-dark">
-                                    "Bersama rakyat TNI kuat. Keamanan dan ketertiban desa adalah prioritas utama. Kami berkomitmen untuk selalu hadir di tengah-tengah masyarakat Desa Timbuseng, memberikan rasa aman, mendeteksi dini setiap kerawanan, dan mendorong gotong royong."
+                                <p class="mb-1 text-dark" id="babinsa-quote">
+                                    "Bersama rakyat TNI kuat. Keamanan dan ketertiban desa adalah prioritas utama."
                                 </p>
                                 <small class="fw-bold text-success d-block mt-1">— Semboyan Babinsa TNI AD</small>
                             </div>
 
                             <div class="d-flex flex-wrap gap-2 pt-1">
-                                <a href="https://wa.me/" target="_blank" class="btn btn-outline-success btn-sm rounded-pill px-3 fw-semibold" style="font-size: 0.8rem;"><i class="fab fa-whatsapp me-1"></i> Hubungi Babinsa</a>
+                                <a id="babinsa-wa-btn" href="#" target="_blank" class="btn btn-outline-success btn-sm rounded-pill px-3 fw-semibold" style="font-size: 0.8rem;"><i class="fab fa-whatsapp me-1"></i> Hubungi Babinsa</a>
                                 <button type="button" class="btn btn-danger btn-sm rounded-pill px-3 fw-semibold" data-bs-toggle="modal" data-bs-target="#laporBabinsaModal" style="font-size: 0.8rem;"><i class="fas fa-exclamation-triangle me-1"></i> Lapor Situasi Darurat</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- TUGAS & FUNGSI BABINSA -->
+                    <!-- TUGAS & FUNGSI -->
                     <div class="content-card" id="tugas-fungsi" data-aos="fade-up">
                         <h4 class="section-title">Tugas Pokok & Fungsi Teritorial</h4>
                         <div class="p-3 bg-light rounded-3 mb-4 border-start border-4 border-success">
                             <h6 class="fw-bold text-success mb-1" style="font-size: 0.95rem;"><i class="fas fa-bullseye me-2"></i>Pembinaan Teritorial (Binter)</h6>
-                            <p class="small text-secondary mb-0" style="font-size: 0.88rem;">
-                                Babinsa bertugas mengumpulkan dan memelihara data geografi, demografi, serta kondisi sosial desa. Hal ini dilakukan untuk menyiapkan potensi wilayah menjadi kekuatan pertahanan dan membantu penyelesaian masalah di tingkat desa.
+                            <p class="small text-secondary mb-0" id="tugas-deskripsi" style="font-size: 0.88rem;">
+                                Babinsa bertugas mengumpulkan dan memelihara data geografi, demografi, serta kondisi sosial desa demi memperkuat pertahanan wilayah.
                             </p>
                         </div>
 
@@ -400,21 +240,13 @@
                             <div class="col-md-6">
                                 <div class="p-3 bg-light rounded-3 h-100">
                                     <h6 class="fw-bold text-dark mb-2" style="font-size: 0.95rem;"><i class="fas fa-shield-virus text-success me-2"></i>Deteksi & Cegah Dini</h6>
-                                    <ul class="small text-secondary ps-3 mb-0" style="font-size: 0.85rem;">
-                                        <li class="mb-2">Memantau situasi dan mencegah konflik atau gangguan keamanan di desa.</li>
-                                        <li class="mb-2">Mendamaikan perselisihan antarwarga secara kekeluargaan.</li>
-                                        <li>Berkolaborasi dengan aparat desa untuk ronda malam/Siskamling.</li>
-                                    </ul>
+                                    <p class="small text-secondary mb-0" id="tugas-poin1" style="font-size: 0.85rem;">Memantau situasi dan mencegah konflik atau gangguan keamanan di desa secara cepat bersama aparat terkait.</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="p-3 bg-light rounded-3 h-100">
                                     <h6 class="fw-bold text-dark mb-2" style="font-size: 0.95rem;"><i class="fas fa-seedling text-success me-2"></i>Bakti TNI & Kesejahteraan</h6>
-                                    <ul class="small text-secondary ps-3 mb-0" style="font-size: 0.85rem;">
-                                        <li class="mb-2">Mendampingi petani dalam program ketahanan pangan nasional.</li>
-                                        <li class="mb-2">Terjun langsung dalam karya bakti dan gotong royong pembersihan desa.</li>
-                                        <li>Cepat tanggap membantu evakuasi dan penanganan musibah/bencana alam.</li>
-                                    </ul>
+                                    <p class="small text-secondary mb-0" id="tugas-poin2" style="font-size: 0.85rem;">Mendampingi petani dalam program ketahanan pangan serta aktif dalam karya bakti gotong royong.</p>
                                 </div>
                             </div>
                         </div>
@@ -422,36 +254,34 @@
 
                 </div>
 
-                <!-- KOLOM KANAN: SINERGITAS TIGA PILAR & BANNER LAPOR -->
+                <!-- KOLOM KANAN -->
                 <div class="col-lg-4">
-
-                    <!-- SEKSI TIGA PILAR DESA -->
+                    
+                    <!-- SINERGITAS TIGA PILAR -->
                     <div class="content-card" data-aos="fade-left">
-                        <h5 class="fw-bold text-dark mb-3" style="font-size: 1.05rem;"><i class="fas fa-link text-success me-2"></i>Sinergi Tiga Pilar Desa</h5>
-                        <p class="small text-muted mb-3" style="font-size: 0.85rem;">Babinsa bertugas bahu-membahu menjaga stabilitas keamanan bersama dua pilar utama lainnya:</p>
+                        <h5 class="fw-bold text-dark mb-3 fs-6"><i class="fas fa-link text-success me-2"></i>Sinergi Tiga Pilar Desa</h5>
+                        <p class="small text-muted mb-3" style="font-size: 0.85rem;">Babinsa bahu-membahu menjaga stabilitas keamanan bersama pilar utama desa:</p>
                         
                         <div class="d-flex flex-column gap-2">
                             <div class="org-card">
                                 <h6 class="fw-bold text-dark mb-1" style="font-size: 0.9rem;"><i class="fas fa-user-tie text-success me-2"></i>Kepala Desa</h6>
-                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Pemimpin administrasi pemerintahan dan pembangunan masyarakat desa.</p>
+                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Pemimpin administrasi pemerintahan dan pembangunan masyarakat.</p>
                             </div>
-
                             <div class="org-card">
                                 <h6 class="fw-bold text-dark mb-1" style="font-size: 0.9rem;"><i class="fas fa-user-shield text-primary me-2"></i>Bhabinkamtibmas</h6>
-                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Unsur Kepolisian (Polri) yang berfokus pada penegakan hukum dan ketertiban masyarakat.</p>
+                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Unsur Kepolisian (Polri) penjaga ketertiban hukum warga.</p>
                             </div>
-
                             <div class="org-card border-success bg-light">
                                 <h6 class="fw-bold text-success mb-1" style="font-size: 0.9rem;"><i class="fas fa-user-soldier me-2"></i>Babinsa (TNI AD)</h6>
-                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Unsur TNI yang berfokus pada pertahanan wilayah, ketahanan pangan, dan aksi sosial.</p>
+                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Unsur pertahanan wilayah dan pembinaan teritorial.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- BANNER LAPOR KEAMANAN -->
+                    <!-- BANNER LAPOR -->
                     <div class="card border-0 bg-danger text-white rounded-4 p-4 shadow-sm" data-aos="fade-left" data-aos-delay="100">
-                        <h5 class="fw-bold mb-2" style="font-size: 1.05rem;"><i class="fas fa-phone-alt me-2"></i>Lapor Keamanan!</h5>
-                        <p class="small text-white-50 mb-3" style="font-size: 0.85rem;">Melihat tindak kriminal, potensi konflik, peredaran miras/narkoba, atau bencana alam di lingkungan Anda? Segera lapor!</p>
+                        <h5 class="fw-bold mb-2 fs-6"><i class="fas fa-phone-alt me-2"></i>Lapor Keamanan!</h5>
+                        <p class="small text-white-50 mb-3" style="font-size: 0.85rem;">Melihat tindak kriminal, potensi konflik, atau bencana alam di lingkungan Anda? Segera laporkan!</p>
                         <button type="button" class="btn btn-light text-danger fw-bold rounded-pill shadow-sm btn-sm px-3 py-2" data-bs-toggle="modal" data-bs-target="#laporBabinsaModal" style="font-size: 0.85rem;"><i class="fas fa-edit me-1"></i> Buat Laporan Cepat</button>
                     </div>
 
@@ -461,25 +291,25 @@
         </div>
     </section>
 
-    <!-- MODAL LAPORAN KEAMANAN -->
-    <div class="modal fade" id="laporBabinsaModal" tabindex="-1" aria-labelledby="laporBabinsaModalLabel" aria-hidden="true">
+    <!-- MODAL LAPORAN -->
+    <div class="modal fade" id="laporBabinsaModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-4 border-0 shadow">
                 <div class="modal-header bg-danger text-white rounded-top-4">
-                    <h5 class="modal-title fw-bold fs-6" id="laporBabinsaModalLabel"><i class="fas fa-exclamation-circle me-2"></i>Form Laporan Keamanan / Darurat</h5>
+                    <h5 class="modal-title fw-bold fs-6"><i class="fas fa-exclamation-circle me-2"></i>Form Laporan Keamanan / Darurat</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
                     <div class="alert alert-warning small mb-3">
-                        <i class="fas fa-info-circle me-1"></i> Data pelapor dijamin kerahasiaannya. Gunakan form ini hanya untuk pelaporan situasi yang memerlukan penanganan cepat.
+                        <i class="fas fa-info-circle me-1"></i> Data pelapor dijamin kerahasiaannya.
                     </div>
                     <form id="formKeamanan">
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Nama Pelapor</label>
-                            <input type="text" class="form-control rounded-3 form-control-sm" placeholder="Nama Anda (Bisa inisial/Samaran)" required>
+                            <input type="text" class="form-control rounded-3 form-control-sm" placeholder="Nama Anda" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label small fw-bold">Lokasi Kejadian</label>
+                            <label class="form-label small fw-bold">Lokasi Dusun</label>
                             <select class="form-select rounded-3 form-select-sm" required>
                                 <option value="" selected disabled>-- Pilih Dusun --</option>
                                 <option value="Timbuseng I">Dusun Timbuseng I</option>
@@ -502,7 +332,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Kronologi / Keterangan Singkat</label>
-                            <textarea class="form-control rounded-3 form-control-sm" rows="3" placeholder="Sebutkan waktu dan apa yang terjadi..." required></textarea>
+                            <textarea class="form-control rounded-3 form-control-sm" rows="3" placeholder="Sebutkan waktu dan kejadian..." required></textarea>
                         </div>
                         <button type="submit" class="btn btn-danger btn-sm w-100 rounded-pill fw-bold"><i class="fas fa-paper-plane me-1"></i> Kirim Laporan</button>
                     </form>
@@ -511,9 +341,9 @@
         </div>
     </div>
 
-    <!-- FLOATING ACTION BUTTON -->
-    <a href="https://wa.me/" target="_blank" class="btn btn-danger rounded-circle p-3 floating-cta d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;" title="Hubungi Darurat Via WA">
-        <i class="fab fa-whatsapp fs-4"></i>
+    <!-- FLOATING CTA -->
+    <a id="floating-wa" href="#" target="_blank" class="btn btn-danger rounded-circle p-3 floating-cta d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;" title="Hubungi Darurat Via WA">
+        <i class="fab fa-whatsapp fs-4 text-white"></i>
     </a>
 
     <!-- FOOTER -->
@@ -523,14 +353,60 @@
         </div>
     </footer>
 
-    <!-- Bootstrap 5 JS -->
+    <!-- Bootstrap 5 & AOS JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- AOS Animation JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
-        AOS.init({
-            duration: 800,
-            once: true
+        AOS.init({ duration: 800, once: true });
+
+        const API_KEY = "$2a$10$wbLvXvg7KqU.nSiV2NXihOzbcQnKyWuRhAggoR26QUpcDQE.WVBaW";
+        const BIN_SISTEM = "6aa93e9affd5d1605309c685";
+        const GH_USER = "desatimbuseng1993"; 
+        const GH_REPO = "Desa-Timbuseng";
+
+        document.addEventListener("DOMContentLoaded", async function() {
+            try {
+                const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_SISTEM}/latest`, {
+                    headers: { 'X-Master-Key': API_KEY }
+                });
+                if(res.ok) {
+                    const result = await res.json();
+                    const data = result.record;
+                    if(data.babinsa) {
+                        const b = data.babinsa;
+
+                        if(b.hero_title) document.getElementById('hero-title').innerText = b.hero_title;
+                        if(b.hero_desc) document.getElementById('hero-desc').innerText = b.hero_desc;
+                        if(b.stat_wilayah) document.getElementById('stat-wilayah').innerText = b.stat_wilayah;
+                        if(b.stat_sinergi) document.getElementById('stat-sinergi').innerText = b.stat_sinergi;
+                        if(b.stat_kondisi) document.getElementById('stat-kondisi').innerText = b.stat_kondisi;
+                        if(b.stat_respons) document.getElementById('stat-respons').innerText = b.stat_respons;
+
+                        if(b.nama) document.getElementById('babinsa-nama').innerText = b.nama;
+                        if(b.pangkat) document.getElementById('babinsa-pangkat').innerText = b.pangkat;
+                        if(b.koramil) document.getElementById('babinsa-koramil').innerText = b.koramil;
+                        if(b.quote) document.getElementById('babinsa-quote').innerText = `"${b.quote}"`;
+
+                        if(b.kontak) {
+                            const cleanWa = b.kontak.replace(/[^0-9]/g, '');
+                            document.getElementById('babinsa-wa-btn').href = `https://wa.me/${cleanWa}`;
+                            document.getElementById('floating-wa').href = `https://wa.me/${cleanWa}`;
+                        }
+
+                        if(b.foto) {
+                            const fUrl = b.foto.startsWith('http') ? b.foto : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${b.foto}`;
+                            document.getElementById('babinsa-foto').src = fUrl;
+                        }
+
+                        if(b.tugas_deskripsi) document.getElementById('tugas-deskripsi').innerText = b.tugas_deskripsi;
+                        if(b.tugas_poin1) document.getElementById('tugas-poin1').innerText = b.tugas_poin1;
+                        if(b.tugas_poin2) document.getElementById('tugas-poin2').innerText = b.tugas_poin2;
+                    }
+                }
+            } catch(e) {
+                console.error("Gagal memuat data Babinsa:", e);
+            }
         });
 
         document.getElementById('formKeamanan').addEventListener('submit', function(e) {
