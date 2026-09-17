@@ -34,222 +34,67 @@
             font-size: 0.95rem;
         }
 
-        /* Utility Classes */
         .bg-desa { background-color: var(--primary-color) !important; }
         .text-desa { color: var(--primary-color) !important; }
         .bg-desa-dark { background-color: var(--primary-dark) !important; }
 
-        /* Navigation Bar */
-        .navbar {
-            padding: 0.75rem 1rem;
-            transition: all 0.3s ease;
-        }
-        .navbar-brand img {
-            transition: transform 0.3s ease;
-        }
-        .navbar-brand:hover img {
-            transform: scale(1.05);
-        }
-        .nav-link {
-            font-weight: 500;
-            padding: 0.5rem 0.9rem !important;
-            border-radius: 8px;
-            transition: all 0.25s ease;
-        }
-        .nav-link:hover, .nav-link.active {
-            background-color: rgba(255, 255, 255, 0.15);
-            color: #ffffff !important;
-        }
-        .dropdown-menu {
-            border: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .dropdown-item {
-            padding: 0.6rem 1.2rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-        .dropdown-item:hover {
-            background-color: var(--primary-light);
-            color: var(--primary-color);
-            padding-left: 1.5rem;
-        }
+        .navbar { padding: 0.75rem 1rem; transition: all 0.3s ease; }
+        .navbar-brand img { transition: transform 0.3s ease; }
+        .navbar-brand:hover img { transform: scale(1.05); }
+        .nav-link { font-weight: 500; padding: 0.5rem 0.9rem !important; border-radius: 8px; transition: all 0.25s ease; }
+        .nav-link:hover, .nav-link.active { background-color: rgba(255, 255, 255, 0.15); color: #ffffff !important; }
+        
+        .dropdown-menu { border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.12); border-radius: 12px; overflow: hidden; }
+        .dropdown-item { padding: 0.6rem 1.2rem; font-weight: 500; transition: all 0.2s ease; }
+        .dropdown-item:hover { background-color: var(--primary-light); color: var(--primary-color); padding-left: 1.5rem; }
 
-        /* Hero Header */
         .page-hero {
             background: linear-gradient(rgba(7, 59, 36, 0.9), rgba(13, 92, 58, 0.85)), url('image.png') center/cover no-repeat fixed;
-            color: white;
-            padding: 4.5rem 1rem 3.5rem;
-            border-bottom: 5px solid var(--accent-color);
-            position: relative;
+            color: white; padding: 4.5rem 1rem 3.5rem; border-bottom: 5px solid var(--accent-color); position: relative;
         }
-        .page-hero h1 {
-            font-size: clamp(1.75rem, 4vw, 2.75rem);
-        }
-        .page-hero p {
-            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-        }
+        .page-hero h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); }
+        .page-hero p { font-size: clamp(0.9rem, 1.5vw, 1.1rem); }
         .hero-badge {
-            background: rgba(243, 156, 18, 0.2);
-            color: #ffd166;
-            border: 1px solid rgba(243, 156, 18, 0.5);
-            padding: 0.4em 1em;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            background: rgba(243, 156, 18, 0.2); color: #ffd166; border: 1px solid rgba(243, 156, 18, 0.5);
+            padding: 0.4em 1em; border-radius: 50px; font-size: 0.8rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;
         }
 
-        /* Key Performance Cards */
         .stat-card {
-            background: #ffffff;
-            border-radius: 14px;
-            padding: 1rem 1.25rem;
-            border: 1px solid var(--border-color);
-            border-left: 4px solid var(--primary-color);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-            height: 100%;
+            background: #ffffff; border-radius: 14px; padding: 1rem 1.25rem; border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary-color); box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: all 0.3s ease; height: 100%;
         }
-        .stat-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(13, 92, 58, 0.08);
-        }
-        .stat-card h3 {
-            font-size: clamp(1.1rem, 2vw, 1.35rem);
-        }
+        .stat-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(13, 92, 58, 0.08); }
+        .stat-card h3 { font-size: clamp(1.1rem, 2vw, 1.35rem); }
         .stat-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background-color: var(--primary-light);
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            flex-shrink: 0;
+            width: 44px; height: 44px; border-radius: 12px; background-color: var(--primary-light); color: var(--primary-color);
+            display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
         }
 
-        /* Section Titles */
-        .section-title {
-            position: relative;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-weight: 700;
-            color: var(--dark-text);
-            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 45px;
-            height: 3px;
-            border-radius: 2px;
-            background-color: var(--accent-color);
-        }
+        .section-title { position: relative; padding-bottom: 10px; margin-bottom: 20px; font-weight: 700; color: var(--dark-text); font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 45px; height: 3px; border-radius: 2px; background-color: var(--accent-color); }
 
-        .content-card {
-            background: #ffffff;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-            padding: 1.25rem 1.5rem;
-            margin-bottom: 1.5rem;
-        }
+        .content-card { background: #ffffff; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 4px 16px rgba(0,0,0,0.03); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
+        @media (min-width: 768px) { .content-card { padding: 1.8rem; margin-bottom: 1.8rem; } }
 
-        @media (min-width: 768px) {
-            .content-card {
-                padding: 1.8rem;
-                margin-bottom: 1.8rem;
-            }
-        }
+        .profile-card { background: #ffffff; border-radius: 18px; box-shadow: 0 6px 24px rgba(0,0,0,0.05); border: 1px solid var(--border-color); overflow: hidden; transition: all 0.3s ease; }
+        .profile-card-header { height: 90px; background: linear-gradient(135deg, #0d3b66 0%, #0d5c3a 100%); position: relative; }
+        .profile-img-wrapper { margin-top: -55px; position: relative; z-index: 2; }
+        .ketua-img { width: 130px; height: 130px; object-fit: cover; border-radius: 50%; border: 4px solid #ffffff; box-shadow: 0 6px 20px rgba(0,0,0,0.15); background-color: #ffffff; }
 
-        /* Profile Card */
-        .profile-card {
-            background: #ffffff;
-            border-radius: 18px;
-            box-shadow: 0 6px 24px rgba(0,0,0,0.05);
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .profile-card-header {
-            height: 90px;
-            background: linear-gradient(135deg, #0d3b66 0%, #0d5c3a 100%);
-            position: relative;
-        }
-        .profile-img-wrapper {
-            margin-top: -55px;
-            position: relative;
-            z-index: 2;
-        }
-        .ketua-img {
-            width: 130px;
-            height: 130px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #ffffff;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            background-color: #ffffff;
-        }
-
-        .quote-box {
-            background-color: var(--primary-light);
-            border-left: 4px solid var(--primary-color);
-            padding: 1rem 1.25rem;
-            border-radius: 0 12px 12px 0;
-            font-style: italic;
-            font-size: 0.9rem;
-        }
-
-        /* Organizational Structure Cards */
-        .org-card {
-            border-radius: 12px;
-            border: 1px dashed var(--border-color);
-            padding: 0.9rem 1rem;
-            background-color: var(--light-bg);
-            transition: all 0.25s ease;
-        }
-        .org-card:hover {
-            border-color: var(--primary-color);
-            background-color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-        }
-
-        /* Floating Contact Button */
-        .floating-cta {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 999;
-            box-shadow: 0 8px 25px rgba(13, 92, 58, 0.35);
-        }
-
-        /* Custom Badges */
-        .badge-soft-primary {
-            background-color: var(--primary-light);
-            color: var(--primary-color);
-            font-weight: 600;
-        }
+        .quote-box { background-color: var(--primary-light); border-left: 4px solid var(--primary-color); padding: 1rem 1.25rem; border-radius: 0 12px 12px 0; font-style: italic; font-size: 0.9rem; }
+        .floating-cta { position: fixed; bottom: 25px; right: 25px; z-index: 999; box-shadow: 0 8px 25px rgba(13, 92, 58, 0.35); }
+        .badge-soft-primary { background-color: var(--primary-light); color: var(--primary-color); font-weight: 600; }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR / NAVIGATION -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-                <img src="logo.png" alt="Logo Desa Timbuseng" height="38" onerror="this.onerror=null; this.src='https://via.placeholder.com/38?text=DESA';">
+                <img src="logo.png" alt="Logo Desa Timbuseng" height="38" onerror="this.onerror=null; this.src='image.png';">
                 <div class="lh-sm">
-                    <span class="d-block fs-6 text-white fw-bold tracking-wide">DESA TIMBUSENG</span>
+                    <span class="d-block fs-6 text-white fw-bold">DESA TIMBUSENG</span>
                     <small class="fw-normal text-white-50 text-uppercase d-block" style="font-size: 0.65rem;">Kec. Polongbangkeng Timur, Takalar</small>
                 </div>
             </a>
@@ -258,26 +103,23 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto gap-1 align-items-lg-center fw-semibold py-2 py-lg-0">
-                    <li class="nav-item"><a class="nav-link text-white" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="pemdes.html"><i class="fas fa-users-cog me-1"></i> Pemdes & Kades</a></li>
-                    
-                    <!-- DROPDOWN WILAYAH DUSUN -->
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pemdes.html"><i class="fas fa-users-cog me-1"></i> Pemdes & Kades</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDusunDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDusunDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-map-marked-alt me-1"></i> Wilayah Dusun
                         </a>
                         <ul class="dropdown-menu shadow border-0 rounded-3 mt-2" aria-labelledby="navbarDusunDropdown">
-                            <li><a class="dropdown-item" href="dusun-timbuseng1.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Timbuseng I</a></li>
-                            <li><a class="dropdown-item" href="dusun-timbuseng2.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Timbuseng II</a></li>
-                            <li><a class="dropdown-item" href="dusun-sauleya.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Sauleya</a></li>
-                            <li><a class="dropdown-item" href="dusun-tanasambayang.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Tanasambayang</a></li>
-                            <li><a class="dropdown-item" href="dusun-bontobaddo.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Bontobaddo</a></li>
-                            <li><a class="dropdown-item" href="dusun-panaikang1.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Panaikang I</a></li>
-                            <li><a class="dropdown-item" href="dusun-panaikang2.html"><i class="fas fa-caret-right me-2 text-success"></i>Dusun Panaikang II</a></li>
+                            <li><a class="dropdown-item" href="dusun-timbuseng1.html">Dusun Timbuseng I</a></li>
+                            <li><a class="dropdown-item" href="dusun-timbuseng2.html">Dusun Timbuseng II</a></li>
+                            <li><a class="dropdown-item" href="dusun-sauleya.html">Dusun Sauleya</a></li>
+                            <li><a class="dropdown-item" href="dusun-tanasambayang.html">Dusun Tanasambayang</a></li>
+                            <li><a class="dropdown-item" href="dusun-bontobaddo.html">Dusun Bontobaddo</a></li>
+                            <li><a class="dropdown-item" href="dusun-panaikang1.html">Dusun Panaikang I</a></li>
+                            <li><a class="dropdown-item" href="dusun-panaikang2.html">Dusun Panaikang II</a></li>
                         </ul>
                     </li>
-
-                    <li class="nav-item"><a class="nav-link text-white" href="pengaduan.html"><i class="fas fa-paper-plane me-1"></i> Pengaduan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pengaduan.html"><i class="fas fa-paper-plane me-1"></i> Pengaduan</a></li>
                 </ul>
             </div>
         </div>
@@ -289,8 +131,8 @@
             <div class="hero-badge mb-3 shadow-sm">
                 <i class="fas fa-user-shield"></i> Kepolisian Negara Republik Indonesia (Polri)
             </div>
-            <h1 class="fw-extrabold text-white mb-2">Bhabinkamtibmas Desa Timbuseng</h1>
-            <p class="lead text-white-50 mx-auto mb-4" style="max-width: 685px;">
+            <h1 class="fw-extrabold text-white mb-2" id="hero-title">Bhabinkamtibmas Desa Timbuseng</h1>
+            <p class="lead text-white-50 mx-auto mb-4" id="hero-desc" style="max-width: 685px;">
                 Pelindung, Pengayom, dan Pelayan masyarakat yang hadir langsung membina ketertiban, menyelesaikan masalah sosial secara kekeluargaan, serta menjaga keamanan warga Desa Timbuseng.
             </p>
             <div class="d-flex justify-content-center gap-2 flex-wrap">
@@ -300,18 +142,18 @@
         </div>
     </header>
 
-    <!-- MAIN CONTENT SECTION -->
+    <!-- MAIN CONTENT -->
     <section class="py-4 py-md-5">
         <div class="container">
 
-            <!-- STATISTIK / HIGHLIGHT METRICS -->
+            <!-- STATISTIK -->
             <div class="row g-3 mb-4 mb-md-5" data-aos="fade-up">
                 <div class="col-6 col-md-3">
                     <div class="stat-card d-flex align-items-center gap-3">
                         <div class="stat-icon"><i class="fas fa-map-marked-alt"></i></div>
                         <div>
-                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Wilayah Tugas</span>
-                            <h3 class="fw-bold text-dark mb-0">7 <small class="fs-6 text-muted fw-normal">Dusun</small></h3>
+                            <span class="text-muted small fw-semibold d-block">Wilayah Tugas</span>
+                            <h3 class="fw-bold text-dark mb-0"><span id="stat-wilayah">7</span> <small class="fs-6 text-muted fw-normal">Dusun</small></h3>
                         </div>
                     </div>
                 </div>
@@ -319,8 +161,8 @@
                     <div class="stat-card d-flex align-items-center gap-3">
                         <div class="stat-icon"><i class="fas fa-handshake"></i></div>
                         <div>
-                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Mediasi Warga</span>
-                            <h3 class="fw-bold text-dark mb-0" style="font-size: 1.15rem;">Problem <small class="fs-6 text-muted fw-normal">Solving</small></h3>
+                            <span class="text-muted small fw-semibold d-block">Mediasi Warga</span>
+                            <h3 class="fw-bold text-dark mb-0 fs-6" id="stat-mediasi">Problem Solving</h3>
                         </div>
                     </div>
                 </div>
@@ -328,8 +170,8 @@
                     <div class="stat-card d-flex align-items-center gap-3">
                         <div class="stat-icon"><i class="fas fa-shield-alt"></i></div>
                         <div>
-                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Keamanan</span>
-                            <h3 class="fw-bold text-dark mb-0" style="font-size: 1.15rem;">Kamtibmas <small class="fs-6 text-muted fw-normal">Kondusif</small></h3>
+                            <span class="text-muted small fw-semibold d-block">Keamanan</span>
+                            <h3 class="fw-bold text-dark mb-0 fs-6" id="stat-keamanan">Kamtibmas Kondusif</h3>
                         </div>
                     </div>
                 </div>
@@ -337,8 +179,8 @@
                     <div class="stat-card d-flex align-items-center gap-3">
                         <div class="stat-icon"><i class="fas fa-headset"></i></div>
                         <div>
-                            <span class="text-muted small fw-semibold d-block" style="font-size: 0.75rem;">Layanan Warga</span>
-                            <h3 class="fw-bold text-success mb-0" style="font-size: 1.15rem;">Aktif <small class="fs-6 text-muted fw-normal">24 Jam</small></h3>
+                            <span class="text-muted small fw-semibold d-block">Layanan Warga</span>
+                            <h3 class="fw-bold text-success mb-0 fs-6" id="stat-layanan">Aktif 24 Jam</h3>
                         </div>
                     </div>
                 </div>
@@ -346,7 +188,7 @@
 
             <div class="row g-4">
                 
-                <!-- KOLOM KIRI: PROFIL BHABINKAMTIBMAS & TUGAS -->
+                <!-- KOLOM KIRI -->
                 <div class="col-lg-8">
                     
                     <!-- PROFIL BHABINKAMTIBMAS -->
@@ -356,26 +198,26 @@
                         </div>
                         <div class="px-4 pb-4">
                             <div class="d-flex flex-column flex-md-row align-items-center align-items-md-end gap-3 profile-img-wrapper mb-3">
-                                <img src="profil_bhabin.png" alt="Bhabinkamtibmas Desa Timbuseng" class="ketua-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/130?text=BHABIN';">
+                                <img id="bhabin-foto" src="profil_bhabin.png" alt="Bhabinkamtibmas" class="ketua-img" onerror="this.onerror=null; this.src='image.png';">
                                 <div class="text-center text-md-start">
                                     <span class="badge badge-soft-primary px-3 py-1 rounded-pill mb-2" style="font-size: 0.75rem;"><i class="fas fa-star me-1 text-success"></i> Bhabinkamtibmas Desa Timbuseng</span>
-                                    <h3 class="fw-bold text-dark mb-1" style="font-size: 1.25rem;">Nama Bhabinkamtibmas</h3>
+                                    <h3 class="fw-bold text-dark mb-1 fs-5" id="bhabin-nama">Nama Bhabinkamtibmas</h3>
                                     <p class="text-muted small mb-0" style="font-size: 0.82rem;">
-                                        <i class="fas fa-id-badge me-1 text-success"></i> Pangkat / NRP: - <br>
-                                        <i class="fas fa-building me-1 text-success"></i> Polsek Polongbangkeng Timur / Polres Takalar
+                                        <i class="fas fa-id-badge me-1 text-success"></i> Pangkat / NRP: <span id="bhabin-pangkat">-</span><br>
+                                        <i class="fas fa-building me-1 text-success"></i> Kesatuan: <span id="bhabin-kesatuan">Polsek Polongbangkeng Timur</span>
                                     </p>
                                 </div>
                             </div>
 
                             <div class="quote-box my-3">
-                                <p class="mb-1 text-dark">
-                                    "Keamanan dan ketertiban masyarakat bukanlah hasil yang terjadi secara kebetulan, melainkan buah dari kerja sama dan komunikasi yang erat antara kepolisian dan warga. Pintu komunikasi di 7 dusun Desa Timbuseng selalu terbuka untuk masyarakat."
+                                <p class="mb-1 text-dark" id="bhabin-quote">
+                                    "Keamanan dan ketertiban masyarakat bukanlah hasil yang terjadi secara kebetulan, melainkan buah dari kerja sama dan komunikasi yang erat."
                                 </p>
                                 <small class="fw-bold text-success d-block mt-1">— Pesan Bhabinkamtibmas Desa Timbuseng</small>
                             </div>
 
                             <div class="d-flex flex-wrap gap-2 pt-1">
-                                <a href="https://wa.me/" target="_blank" class="btn btn-outline-success btn-sm rounded-pill px-3 fw-semibold" style="font-size: 0.8rem;"><i class="fab fa-whatsapp me-1"></i> Hubungi via WhatsApp</a>
+                                <a id="bhabin-wa-btn" href="#" target="_blank" class="btn btn-outline-success btn-sm rounded-pill px-3 fw-semibold" style="font-size: 0.8rem;"><i class="fab fa-whatsapp me-1"></i> Hubungi via WhatsApp</a>
                                 <button type="button" class="btn btn-success btn-sm rounded-pill px-3 fw-semibold" data-bs-toggle="modal" data-bs-target="#laporBhabinModal" style="font-size: 0.8rem;"><i class="fas fa-paper-plane me-1"></i> Lapor Masalah / Pengaduan</button>
                             </div>
                         </div>
@@ -386,8 +228,8 @@
                         <h4 class="section-title">Tugas Pokok & Pelayanan Masyarakat</h4>
                         <div class="p-3 bg-light rounded-3 mb-4 border-start border-4 border-success">
                             <h6 class="fw-bold text-success mb-1" style="font-size: 0.95rem;"><i class="fas fa-hands-helping me-2"></i>Pendekatan Polmas (Polisi Masyarakat)</h6>
-                            <p class="small text-secondary mb-0" style="font-size: 0.88rem;">
-                                Bhabinkamtibmas bertugas melakukan kunjungan rutin (*door-to-door system*) ke warga, mendengarkan keluhan langsung, memberikan penyuluhan hukum, serta meredam potensi gangguan keamanan sebelum menjadi konflik sosial.
+                            <p class="small text-secondary mb-0" id="tugas-deskripsi" style="font-size: 0.88rem;">
+                                Bhabinkamtibmas bertugas melakukan kunjungan rutin ke warga, mendengarkan keluhan langsung, serta meredam potensi gangguan keamanan.
                             </p>
                         </div>
 
@@ -395,13 +237,13 @@
                             <div class="col-md-6">
                                 <div class="p-3 bg-light rounded-3 h-100">
                                     <h6 class="fw-bold text-dark mb-2" style="font-size: 0.95rem;"><i class="fas fa-balance-scale text-success me-2"></i>Problem Solving (Mediasi)</h6>
-                                    <p class="small text-secondary mb-0" style="font-size: 0.85rem;">Menyelesaikan perselisihan atau kesalahpahaman antarwarga secara musyawarah mufakat di kantor desa tanpa harus langsung menempuh jalur hukum formal.</p>
+                                    <p class="small text-secondary mb-0" id="tugas-poin1" style="font-size: 0.85rem;">Menyelesaikan perselisihan antarwarga secara musyawarah mufakat di kantor desa tanpa harus langsung melalui jalur hukum formal.</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="p-3 bg-light rounded-3 h-100">
                                     <h6 class="fw-bold text-dark mb-2" style="font-size: 0.95rem;"><i class="fas fa-shield-alt text-success me-2"></i>Pengamanan & Patroli</h6>
-                                    <p class="small text-secondary mb-0" style="font-size: 0.85rem;">Mengawasi jalannya kegiatan masyarakat, hajatan warga, atau perayaan hari besar serta mengaktifkan kembali siskamling malam hari.</p>
+                                    <p class="small text-secondary mb-0" id="tugas-poin2" style="font-size: 0.85rem;">Mengawasi jalannya kegiatan masyarakat, hajatan warga, atau perayaan hari besar serta mengaktifkan siskamling.</p>
                                 </div>
                             </div>
                         </div>
@@ -409,13 +251,13 @@
 
                 </div>
 
-                <!-- KOLOM KANAN: SINERGITAS & BANNER LAPOR -->
+                <!-- KOLOM KANAN -->
                 <div class="col-lg-4">
-
-                    <!-- SEKSI LAYANAN SKCK / SURAT KETERANGAN -->
+                    
+                    <!-- LAYANAN SKCK / SURAT KETERANGAN -->
                     <div class="content-card" data-aos="fade-left">
-                        <h5 class="fw-bold text-dark mb-3" style="font-size: 1.05rem;"><i class="fas fa-file-alt text-success me-2"></i>Layanan Pengantar & SKCK</h5>
-                        <p class="small text-muted mb-3" style="font-size: 0.85rem;">Bhabinkamtibmas juga melayani pembuatan surat pengantar dan rekomendasi kepolisian untuk keperluan warga:</p>
+                        <h5 class="fw-bold text-dark mb-3 fs-6"><i class="fas fa-file-alt text-success me-2"></i>Layanan Pengantar & SKCK</h5>
+                        <p class="small text-muted mb-3" style="font-size: 0.85rem;">Bhabinkamtibmas juga melayani pembuatan surat pengantar dan rekomendasi kepolisian:</p>
                         
                         <ul class="list-unstyled small text-secondary mb-0" style="font-size: 0.85rem;">
                             <li class="mb-2 d-flex align-items-center gap-2">
@@ -433,10 +275,10 @@
                         </ul>
                     </div>
 
-                    <!-- BANNER LAPOR KEPOLISIAN -->
+                    <!-- BANNER LAPOR -->
                     <div class="card border-0 bg-success text-white rounded-4 p-4 shadow-sm" data-aos="fade-left" data-aos-delay="100">
-                        <h5 class="fw-bold mb-2" style="font-size: 1.05rem;"><i class="fas fa-bullhorn me-2"></i>Butuh Bantuan Polisi?</h5>
-                        <p class="small text-white-50 mb-3" style="font-size: 0.85rem;">Menemukan tindak kejahatan, pencurian, atau perselisihan yang butuh mediasi? Laporkan langsung secara online.</p>
+                        <h5 class="fw-bold mb-2 fs-6"><i class="fas fa-bullhorn me-2"></i>Butuh Bantuan Polisi?</h5>
+                        <p class="small text-white-50 mb-3" style="font-size: 0.85rem;">Menemukan tindak kejahatan atau perselisihan yang butuh mediasi? Laporkan langsung.</p>
                         <button type="button" class="btn btn-light text-success fw-bold rounded-pill shadow-sm btn-sm px-3 py-2" data-bs-toggle="modal" data-bs-target="#laporBhabinModal" style="font-size: 0.85rem;"><i class="fas fa-edit me-1"></i> Form Lapor / Konsultasi</button>
                     </div>
 
@@ -446,12 +288,12 @@
         </div>
     </section>
 
-    <!-- MODAL LAPOR / KONSULTASI BHABINKAMTIBMAS -->
-    <div class="modal fade" id="laporBhabinModal" tabindex="-1" aria-labelledby="laporBhabinModalLabel" aria-hidden="true">
+    <!-- MODAL PENGADUAN -->
+    <div class="modal fade" id="laporBhabinModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-4 border-0 shadow">
                 <div class="modal-header bg-desa text-white rounded-top-4">
-                    <h5 class="modal-title fw-bold fs-6" id="laporBhabinModalLabel"><i class="fas fa-shield-alt me-2"></i>Form Pengaduan & Konsultasi Kamtibmas</h5>
+                    <h5 class="modal-title fw-bold fs-6"><i class="fas fa-shield-alt me-2"></i>Form Pengaduan & Konsultasi Kamtibmas</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
@@ -484,7 +326,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Isi Laporan / Pesan</label>
-                            <textarea class="form-control rounded-3 form-control-sm" rows="3" placeholder="Jelaskan masalah atau keperluan Anda secara jelas..." required></textarea>
+                            <textarea class="form-control rounded-3 form-control-sm" rows="3" placeholder="Jelaskan masalah atau keperluan Anda..." required></textarea>
                         </div>
                         <button type="submit" class="btn btn-success btn-sm w-100 rounded-pill fw-bold"><i class="fas fa-paper-plane me-1"></i> Kirim Pengaduan</button>
                     </form>
@@ -493,9 +335,9 @@
         </div>
     </div>
 
-    <!-- FLOATING ACTION BUTTON -->
-    <a href="https://wa.me/" target="_blank" class="btn btn-success rounded-circle p-3 floating-cta d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;" title="Hubungi Bhabinkamtibmas Via WA">
-        <i class="fab fa-whatsapp fs-4"></i>
+    <!-- FLOATING CTA -->
+    <a id="floating-wa" href="#" target="_blank" class="btn btn-success rounded-circle p-3 floating-cta d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;" title="Hubungi Bhabinkamtibmas Via WA">
+        <i class="fab fa-whatsapp fs-4 text-white"></i>
     </a>
 
     <!-- FOOTER -->
@@ -505,14 +347,60 @@
         </div>
     </footer>
 
-    <!-- Bootstrap 5 JS -->
+    <!-- Bootstrap 5 & AOS JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- AOS Animation JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
-        AOS.init({
-            duration: 800,
-            once: true
+        AOS.init({ duration: 800, once: true });
+
+        const API_KEY = "$2a$10$wbLvXvg7KqU.nSiV2NXihOzbcQnKyWuRhAggoR26QUpcDQE.WVBaW";
+        const BIN_SISTEM = "6aa93e9affd5d1605309c685";
+        const GH_USER = "desatimbuseng1993"; 
+        const GH_REPO = "Desa-Timbuseng";
+
+        document.addEventListener("DOMContentLoaded", async function() {
+            try {
+                const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_SISTEM}/latest`, {
+                    headers: { 'X-Master-Key': API_KEY }
+                });
+                if(res.ok) {
+                    const result = await res.json();
+                    const data = result.record;
+                    if(data.bhabin) {
+                        const b = data.bhabin;
+
+                        if(b.hero_title) document.getElementById('hero-title').innerText = b.hero_title;
+                        if(b.hero_desc) document.getElementById('hero-desc').innerText = b.hero_desc;
+                        if(b.stat_wilayah) document.getElementById('stat-wilayah').innerText = b.stat_wilayah;
+                        if(b.stat_mediasi) document.getElementById('stat-mediasi').innerText = b.stat_mediasi;
+                        if(b.stat_keamanan) document.getElementById('stat-keamanan').innerText = b.stat_keamanan;
+                        if(b.stat_layanan) document.getElementById('stat-layanan').innerText = b.stat_layanan;
+
+                        if(b.nama) document.getElementById('bhabin-nama').innerText = b.nama;
+                        if(b.pangkat) document.getElementById('bhabin-pangkat').innerText = b.pangkat;
+                        if(b.kesatuan) document.getElementById('bhabin-kesatuan').innerText = b.kesatuan;
+                        if(b.quote) document.getElementById('bhabin-quote').innerText = `"${b.quote}"`;
+
+                        if(b.kontak) {
+                            const cleanWa = b.kontak.replace(/[^0-9]/g, '');
+                            document.getElementById('bhabin-wa-btn').href = `https://wa.me/${cleanWa}`;
+                            document.getElementById('floating-wa').href = `https://wa.me/${cleanWa}`;
+                        }
+
+                        if(b.foto) {
+                            const fUrl = b.foto.startsWith('http') ? b.foto : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${b.foto}`;
+                            document.getElementById('bhabin-foto').src = fUrl;
+                        }
+
+                        if(b.tugas_deskripsi) document.getElementById('tugas-deskripsi').innerText = b.tugas_deskripsi;
+                        if(b.tugas_poin1) document.getElementById('tugas-poin1').innerText = b.tugas_poin1;
+                        if(b.tugas_poin2) document.getElementById('tugas-poin2').innerText = b.tugas_poin2;
+                    }
+                }
+            } catch(e) {
+                console.error("Gagal memuat data Bhabinkamtibmas:", e);
+            }
         });
 
         document.getElementById('formBhabin').addEventListener('submit', function(e) {
