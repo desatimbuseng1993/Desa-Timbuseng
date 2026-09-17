@@ -488,7 +488,7 @@
             </div>
         </div>
 
-        <!-- TAB 9: BPD.HTML (LENGKAP SESUAI PERMINTAAN) -->
+        <!-- TAB 9: BPD.HTML -->
         <div id="tab-bpd" class="tab-pane">
             <div class="cms-card">
                 <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-university text-success me-2"></i>bpd.html - Badan Permusyawaratan Desa</h4>
@@ -625,16 +625,34 @@
             </div>
         </div>
 
-        <!-- TAB 16: IMAN-DESA.HTML -->
+        <!-- TAB 16: IMAN-DESA.HTML (DIPERBARUI LENGKAP) -->
         <div id="tab-iman-desa" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-mosque text-success me-2"></i>iman-desa.html - Imam Desa</h4>
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-mosque text-success me-2"></i>iman-desa.html - Imam Desa & Keagamaan</h4>
+                <p class="text-muted small mb-4">Kelola statistik keagamaan, profil lengkap Imam Desa (foto, nama, NIK, TTL, masa pengabdian, kontak), serta uraian tugas dan tanggung jawab.</p>
+                
                 <form onsubmit="saveSectionData(event, 'iman_desa')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area iman-desa.html ]</div></div>
-                        <div class="col-md-6"><label class="form-label">Nama Imam Desa</label><input type="text" class="form-control" name="nama"></div>
-                        <div class="col-md-6"><label class="form-label">Jadwal Pengajian</label><input type="text" class="form-control" name="jadwal"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Imam Desa</button></div>
+                        <div class="col-12"><h6 class="text-success fw-bold border-bottom pb-2">1. Statistik & Metrik Keagamaan</h6></div>
+                        <div class="col-md-3"><label class="form-label">Statistik Imam</label><input type="text" class="form-control" name="stat_imam" placeholder="1 Orang Utama"></div>
+                        <div class="col-md-3"><label class="form-label">Imam Dusun</label><input type="text" class="form-control" name="stat_dusun" placeholder="7 Wilayah Dusun"></div>
+                        <div class="col-md-3"><label class="form-label">Masa Pengabdian</label><input type="text" class="form-control" name="stat_pengabdian" placeholder="Sejak Tahun 2008"></div>
+                        <div class="col-md-3"><label class="form-label">Layanan Warga</label><input type="text" class="form-control" name="stat_layanan" placeholder="Nikah, Doa, TPA & Hajat"></div>
+
+                        <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">2. Profil Utama Imam Desa</h6></div>
+                        <div class="col-md-6"><label class="form-label">Nama Lengkap & Gelar</label><input type="text" class="form-control" name="nama" placeholder="Muh. Fajar, S.Ag."></div>
+                        <div class="col-md-6"><label class="form-label">NIK Imam Desa</label><input type="text" class="form-control" name="nik" placeholder="7305041507750001"></div>
+                        <div class="col-md-4"><label class="form-label">Tempat, Tanggal Lahir (TTL)</label><input type="text" class="form-control" name="ttl" placeholder="Parangbaddo, 15 Juli 1975"></div>
+                        <div class="col-md-4"><label class="form-label">Masa Jabatan / Pengabdian</label><input type="text" class="form-control" name="jabatan" placeholder="2008 – Sekarang"></div>
+                        <div class="col-md-4"><label class="form-label">Nomor Kontak / WhatsApp</label><input type="text" class="form-control" name="kontak" placeholder="085299636971"></div>
+                        <div class="col-md-12"><label class="form-label">Upload Foto Profil Imam Desa</label><input type="file" class="form-control" name="foto" accept="image/*"></div>
+
+                        <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">3. Tugas & Tanggung Jawab</h6></div>
+                        <div class="col-md-12"><label class="form-label">Deskripsi / Uraian Tugas Utama</label><textarea class="form-control" name="tugas_desc" rows="3" placeholder="Sebagai pemuka agama tingkat desa..."></textarea></div>
+
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-desa px-5 py-3"><i class="fas fa-save me-2"></i>Simpan Perubahan Data Imam Desa</button>
+                        </div>
                     </div>
                 </form>
             </div>
