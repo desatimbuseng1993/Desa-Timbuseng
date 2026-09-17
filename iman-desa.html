@@ -1,35 +1,373 @@
-<!-- TAB 16: IMAN-DESA.HTML (DIPERBARUI LENGKAP) -->
-<div id="tab-iman-desa" class="tab-pane">
-    <div class="cms-card">
-        <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-mosque text-success me-2"></i>iman-desa.html - Imam Desa & Keagamaan</h4>
-        <p class="text-muted small mb-4">Kelola statistik keagamaan, profil imam desa utama, masa pengabdian, layanan masyarakat, nomor kontak, foto profil, serta tugas dan tanggung jawab.</p>
-        
-        <form onsubmit="saveSectionData(event, 'iman_desa')">
-            <div class="row g-3">
-                <div class="col-12"><h6 class="text-success fw-bold border-bottom pb-2">1. Statistik Keagamaan</h6></div>
-                <div class="col-md-3"><label class="form-label">Statistik Imam Desa</label><input type="text" class="form-control" name="stat_imam_desa" placeholder="1 Orang Utama"></div>
-                <div class="col-md-3"><label class="form-label">Statistik Imam Dusun</label><input type="text" class="form-control" name="stat_imam_dusun" placeholder="7 Wilayah Dusun"></div>
-                <div class="col-md-3"><label class="form-label">Masa Pengabdian</label><input type="text" class="form-control" name="stat_pengabdian" placeholder="Sejak Tahun 2008"></div>
-                <div class="col-md-3"><label class="form-label">Layanan Masyarakat</label><input type="text" class="form-control" name="stat_layanan" placeholder="Nikah, Doa, TPA & Hajat"></div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imam Desa & Keagamaan - Desa Timbuseng</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d5c3a;
+            --primary-dark: #073b24;
+            --primary-light: #e8f5e9;
+            --accent-color: #f39c12;
+            --light-bg: #f8faf9;
+            --dark-text: #1e293b;
+        }
 
-                <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">2. Profil Utama Imam Desa</h6></div>
-                <div class="col-md-6"><label class="form-label">Nama Lengkap & Gelar</label><input type="text" class="form-control" name="nama" placeholder="Muh. Fajar, S.Ag."></div>
-                <div class="col-md-6"><label class="form-label">NIK</label><input type="text" class="form-control" name="nik" placeholder="7305041507750001"></div>
-                <div class="col-md-6"><label class="form-label">Tempat, Tanggal Lahir (TTL)</label><input type="text" class="form-control" name="ttl" placeholder="Parangbaddo, 15 Juli 1975"></div>
-                <div class="col-md-6"><label class="form-label">Masa Jabatan / Pengabdian</label><input type="text" class="form-control" name="jabatan" placeholder="2008 – Sekarang"></div>
-                <div class="col-md-6"><label class="form-label">Nomor Kontak / WhatsApp</label><input type="text" class="form-control" name="kontak" placeholder="085299636971"></div>
-                <div class="col-md-6"><label class="form-label">Upload Foto Profil Imam Desa</label><input type="file" class="form-control" name="foto" accept="image/*"></div>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f4f6f8;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
 
-                <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">3. Tugas & Tanggung Jawab</h6></div>
-                <div class="col-md-12">
-                    <label class="form-label">Deskripsi Utama Tugas & Peran Imam Desa</label>
-                    <textarea class="form-control" name="tugas_desc" rows="3" placeholder="Tulis uraian tugas utama imam desa..."></textarea>
+        .bg-desa { background-color: var(--primary-color) !important; }
+        .text-desa { color: var(--primary-color) !important; }
+
+        .navbar { padding: 0.8rem 1rem; }
+        .dropdown-menu .dropdown-item.active, 
+        .dropdown-menu .dropdown-item:active { background-color: var(--primary-color); }
+
+        .page-hero {
+            background: linear-gradient(rgba(7, 59, 36, 0.88), rgba(13, 92, 58, 0.92)), url('image.png') center/cover no-repeat;
+            color: white; padding: 4.5rem 0 3.5rem; border-bottom: 5px solid var(--accent-color);
+        }
+
+        .stat-card {
+            background: #ffffff; border-radius: 16px; padding: 1.4rem; border: 1px solid #e2e8f0;
+            border-left: 5px solid var(--primary-color); box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: transform 0.25s ease;
+        }
+        .stat-card:hover { transform: translateY(-3px); }
+
+        .profile-card-main {
+            background: #ffffff; border-radius: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; overflow: hidden;
+        }
+        .profile-header-bg { height: 100px; background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); }
+        .profile-img-main {
+            width: 140px; height: 140px; object-fit: cover; border-radius: 50%; border: 5px solid #ffffff;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15); margin-top: -60px; background-color: #ffffff;
+        }
+
+        .imam-card { background: #ffffff; border-radius: 16px; border: 1px solid #e2e8f0; transition: all 0.3s ease; }
+        .imam-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.06); border-color: var(--primary-color); }
+
+        .content-card { background: #ffffff; border-radius: 20px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); padding: 1.75rem; }
+        .section-title { position: relative; padding-bottom: 12px; margin-bottom: 24px; font-weight: 700; }
+        .section-title::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 50px; height: 4px; border-radius: 2px; background-color: var(--accent-color);
+        }
+
+        .badge-custom { font-weight: 600; padding: 0.45em 0.85em; border-radius: 30px; }
+        .service-icon-box {
+            width: 50px; height: 50px; border-radius: 14px; background-color: var(--primary-light); color: var(--primary-color);
+            display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-desa sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="logo.png" alt="Logo Desa" height="40" onerror="this.style.display='none'">
+                <span class="fw-bold text-white fs-5">Desa Timbuseng</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-1 align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="pemdes.html">Pemdes & Kades</a></li>
+                    <li class="nav-item"><a class="nav-link active fw-bold px-3" href="iman-desa.html">Imam Desa</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle px-3" href="#" id="navbarDusunDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Wilayah Dusun</a>
+                        <ul class="dropdown-menu shadow border-0 rounded-3 mt-2" aria-labelledby="navbarDusunDropdown">
+                            <li><a class="dropdown-item py-2" href="dusun-timbuseng1.html">Dusun Timbuseng I</a></li>
+                            <li><a class="dropdown-item py-2" href="dusun-timbuseng2.html">Dusun Timbuseng II</a></li>
+                            <li><a class="dropdown-item py-2" href="dusun-sauleya.html">Dusun Sauleya</a></li>
+                            <li><a class="dropdown-item py-2" href="dusun-tanasambayang.html">Dusun Tanasambayang</a></li>
+                            <li><a class="dropdown-item py-2" href="dusun-bontobaddo.html">Dusun Bontobaddo</a></li>
+                            <li><a class="dropdown-item py-2" href="dusun-panaikang1.html">Dusun Panaikang I</a></li>
+                            <li><a class="dropdown-item py-2" href="dusun-panaikang2.html">Dusun Panaikang II</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link px-3" href="pengaduan.html">Pengaduan</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO HEADER -->
+    <header class="page-hero text-center">
+        <div class="container">
+            <span class="badge bg-warning text-dark badge-custom mb-3 shadow-sm"><i class="fas fa-mosque me-1"></i> Keagamaan & Pembinaan Mental Spiritual</span>
+            <h1 class="fw-extrabold display-5 text-white">Imam Desa & Lembaga Keagamaan</h1>
+            <p class="lead mb-0 text-white-50 max-w-700 mx-auto">Pusat Pelayanan Keagamaan, Pembinaan Kemasyarakatan, & Administrasi Urusan Keagamaan Desa Timbuseng</p>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <section class="py-5">
+        <div class="container">
+
+            <!-- METRIK KEAGAMAAN DESA -->
+            <div class="row g-3 mb-5">
+                <div class="col-6 col-md-3">
+                    <div class="stat-card d-flex align-items-center gap-3">
+                        <div class="service-icon-box"><i class="fas fa-user-shield"></i></div>
+                        <div>
+                            <small class="text-muted fw-semibold d-block">Statistik Imam</small>
+                            <h4 class="fw-bold text-dark mb-0 fs-6" id="stat-imam-val">1 Orang Utama</h4>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="col-12 mt-4">
-                    <button type="submit" class="btn btn-desa px-5 py-3"><i class="fas fa-save me-2"></i>Simpan Perubahan Data Imam Desa</button>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card d-flex align-items-center gap-3">
+                        <div class="service-icon-box"><i class="fas fa-users-cog"></i></div>
+                        <div>
+                            <small class="text-muted fw-semibold d-block">Imam Dusun</small>
+                            <h4 class="fw-bold text-dark mb-0 fs-6" id="stat-dusun-val">7 Wilayah Dusun</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card d-flex align-items-center gap-3">
+                        <div class="service-icon-box"><i class="fas fa-quran"></i></div>
+                        <div>
+                            <small class="text-muted fw-semibold d-block">Masa Pengabdian</small>
+                            <h4 class="fw-bold text-dark mb-0 fs-6" id="stat-pengabdian-val">Sejak Tahun 2008</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card d-flex align-items-center gap-3">
+                        <div class="service-icon-box"><i class="fas fa-hands-helping"></i></div>
+                        <div>
+                            <small class="text-muted fw-semibold d-block">Layanan Warga</small>
+                            <h4 class="fw-bold text-success mb-0 fs-6" id="stat-layanan-val">Nikah, Doa, TPA & Hajat</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </form>
-    </div>
-</div>
+
+            <!-- UTAMA: PROFIL IMAM DESA -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-5">
+                    <div class="profile-card-main text-center pb-4 h-100">
+                        <div class="profile-header-bg"></div>
+                        <img id="imam-foto" src="foto.png" alt="Imam Desa" class="profile-img-main mb-3" onerror="this.src='https://via.placeholder.com/140?text=Imam+Desa'">
+                        <div class="px-4">
+                            <span class="badge bg-success badge-custom mb-2">Imam Desa Timbuseng</span>
+                            <h4 class="fw-bold text-dark mb-1" id="imam-nama">Muh. Fajar, S.Ag.</h4>
+                            <p class="text-muted small mb-3"><i class="fas fa-id-card me-1 text-secondary"></i>NIK: <span id="imam-nik">7305041507750001</span></p>
+                            
+                            <div class="p-3 bg-light rounded-3 text-start mb-3">
+                                <div class="row g-2 small">
+                                    <div class="col-5 text-muted"><i class="fas fa-map-marker-alt me-1"></i>TTL</div>
+                                    <div class="col-7 fw-semibold text-dark" id="imam-ttl">: Parangbaddo, 15 Juli 1975</div>
+                                    <div class="col-5 text-muted"><i class="fas fa-calendar-alt me-1"></i>Masa Jabatan</div>
+                                    <div class="col-7 fw-semibold text-dark" id="imam-jabatan">: 2008 – Sekarang</div>
+                                    <div class="col-5 text-muted"><i class="fas fa-phone me-1"></i>No. Telepon/WA</div>
+                                    <div class="col-7 fw-semibold text-success" id="imam-kontak-val">: 085299636971</div>
+                                </div>
+                            </div>
+
+                            <a id="imam-wa-btn" href="https://wa.me/6285299636971" target="_blank" class="btn btn-success w-100 rounded-pill fw-bold shadow-sm">
+                                <i class="fab fa-whatsapp me-2"></i> Hubungi Imam Desa Via WA
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="content-card h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <h4 class="section-title text-dark"><i class="fas fa-award me-2 text-warning"></i>Tugas & Tanggung Jawab Imam Desa</h4>
+                            <p class="text-secondary small leading-relaxed mb-3" id="imam-tugas-desc">
+                                Sebagai pemuka agama tingkat desa, Imam Desa Timbuseng mengemban amanah penting dalam memimpin kegiatan kerohanian, memfasilitasi administrasi keagamaan warga, dan mengordinasikan para Imam Dusun di seluruh wilayah Desa Timbuseng.
+                            </p>
+
+                            <div class="row g-3 mt-2">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start gap-3 p-2.5 bg-light rounded-3">
+                                        <i class="fas fa-ring text-warning fs-5 mt-1"></i>
+                                        <div>
+                                            <h6 class="fw-bold mb-1 small text-dark">Layanan Pendaftaran Nikah</h6>
+                                            <p class="text-muted mb-0" style="font-size:0.78rem;">Pemeriksaan berkas administrasi dan rekomendasi pernikahan warga desa.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start gap-3 p-2.5 bg-light rounded-3">
+                                        <i class="fas fa-book-quran text-success fs-5 mt-1"></i>
+                                        <div>
+                                            <h6 class="fw-bold mb-1 small text-dark">Pembinaan Majelis Taklim</h6>
+                                            <p class="text-muted mb-0" style="font-size:0.78rem;">Mengarahkan kegiatan pengajian berkala dan TPA/TPQ di tingkat dusun.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start gap-3 p-2.5 bg-light rounded-3">
+                                        <i class="fas fa-hands-praying text-primary fs-5 mt-1"></i>
+                                        <div>
+                                            <h6 class="fw-bold mb-1 small text-dark">Pendampingan Ibadah & Doa</h6>
+                                            <p class="text-muted mb-0" style="font-size:0.78rem;">Memimpin doa hajat, aqiqah, syukuran, serta pemulasaran jenazah warga.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start gap-3 p-2.5 bg-light rounded-3">
+                                        <i class="fas fa-sitemap text-danger fs-5 mt-1"></i>
+                                        <div>
+                                            <h6 class="fw-bold mb-1 small text-dark">Koordinasi Imam Dusun</h6>
+                                            <p class="text-muted mb-0" style="font-size:0.78rem;">Menjaga keselarasan program keagamaan di 7 dusun se-Desa Timbuseng.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success border-0 bg-success bg-opacity-10 text-success rounded-3 mt-4 mb-0 p-3 small">
+                            <i class="fas fa-info-circle me-1 fw-bold"></i> <strong>Catatan Pelayanan:</strong> Pengurusan berkas rekomendasi nikah atau konsultasi keagamaan dapat diakses langsung dengan mendatangi Sekretariat Keagamaan atau menghubungi WhatsApp resmi Imam Desa.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JAJARAN IMAM DUSUN (TERHUBUNG KE DATA IMAM / DUSUN) -->
+            <div class="mb-5">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <div>
+                        <h4 class="fw-bold text-dark mb-1">Jajaran Imam Dusun Desa Timbuseng</h4>
+                        <p class="text-muted small mb-0">Para pemuka agama di tiap dusun yang melayani kebutuhan spiritual dan sosial warga.</p>
+                    </div>
+                    <span class="badge bg-primary rounded-pill px-3 py-2 fw-semibold"><i class="fas fa-layer-group me-1"></i> 7 Wilayah Dusun</span>
+                </div>
+
+                <div class="row g-3" id="imam-dusun-container">
+                    <!-- Data dimuat dinamis dari sistem.json agar sinkron -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="imam-card p-3 h-100 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="badge bg-outline-success text-success bg-success bg-opacity-10 px-2 py-1 rounded" style="font-size:0.75rem;">Dusun Timbuseng II</span>
+                                    <i class="fas fa-mosque text-muted"></i>
+                                </div>
+                                <h6 class="fw-bold text-dark mb-1">Amiruddin, S.P.</h6>
+                                <p class="text-muted small mb-2"><i class="fas fa-map-pin me-1 text-secondary"></i>Saluleya</p>
+                            </div>
+                            <div class="pt-2 border-top d-flex justify-content-between align-items-center">
+                                <span class="text-success small fw-semibold"><i class="fab fa-whatsapp me-1"></i>085240349252</span>
+                                <a href="https://wa.me/6285240349252" target="_blank" class="btn btn-sm btn-outline-success rounded-pill px-3 py-0">Kontak</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANDUAN NIKAH -->
+            <div class="content-card">
+                <h5 class="fw-bold text-dark mb-3"><i class="fas fa-clipboard-list text-success me-2"></i>Panduan Administrasi Pelayanan Nikah / Rekomendasi</h5>
+                <div class="row g-3 text-center">
+                    <div class="col-md-3">
+                        <div class="p-3 bg-light rounded-3 h-100">
+                            <span class="badge bg-success rounded-circle px-2.5 py-1 mb-2">1</span>
+                            <h6 class="fw-bold text-dark small mb-1">Pengantar Kepala Dusun</h6>
+                            <p class="text-muted mb-0" style="font-size:0.75rem;">Minta surat pengantar dari Kepala Dusun domisili tempat tinggal.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-light rounded-3 h-100">
+                            <span class="badge bg-success rounded-circle px-2.5 py-1 mb-2">2</span>
+                            <h6 class="fw-bold text-dark small mb-1">Verifikasi Berkas Imam Desa</h6>
+                            <p class="text-muted mb-0" style="font-size:0.75rem;">Bawa berkas ke Imam Desa untuk penandatanganan dan verifikasi.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-light rounded-3 h-100">
+                            <span class="badge bg-success rounded-circle px-2.5 py-1 mb-2">3</span>
+                            <h6 class="fw-bold text-dark small mb-1">Pengesahan Kantor Desa</h6>
+                            <p class="text-muted mb-0" style="font-size:0.75rem;">Surat yang diverifikasi Imam Desa disahkan di Kantor Desa Timbuseng.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-light rounded-3 h-100">
+                            <span class="badge bg-success rounded-circle px-2.5 py-1 mb-2">4</span>
+                            <h6 class="fw-bold text-dark small mb-1">Proses KUA Kecamatan</h6>
+                            <p class="text-muted mb-0" style="font-size:0.75rem;">Pendaftaran resmi dilanjutkan ke KUA Kec. Polongbangkeng Timur.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white pt-4 pb-3">
+        <div class="container text-center">
+            <p class="small text-white-50 mb-0">©2026 P10 KKN UHM | Pemdes & Keagamaan Desa Timbuseng, Kec. Polongbangkeng Timur, Takalar.</p>
+        </div>
+    </footer>
+
+    <!-- JS & SINKRONISASI JSONBIN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const API_KEY = "$2a$10$wbLvXvg7KqU.nSiV2NXihOzbcQnKyWuRhAggoR26QUpcDQE.WVBaW";
+        const BIN_SISTEM = "6aa93e9affd5d1605309c685";
+        const GH_USER = "desatimbuseng1993"; 
+        const GH_REPO = "Desa-Timbuseng";
+
+        document.addEventListener("DOMContentLoaded", async function() {
+            try {
+                const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_SISTEM}/latest`, {
+                    headers: { 'X-Master-Key': API_KEY }
+                });
+                if(res.ok) {
+                    const result = await res.json();
+                    const data = result.record;
+                    if(data.iman_desa) {
+                        const i = data.iman_desa;
+                        
+                        // Statistik
+                        if(i.stat_imam) document.getElementById('stat-imam-val').innerText = i.stat_imam;
+                        if(i.stat_dusun) document.getElementById('stat-dusun-val').innerText = i.stat_dusun;
+                        if(i.stat_pengabdian) document.getElementById('stat-pengabdian-val').innerText = i.stat_pengabdian;
+                        if(i.stat_layanan) document.getElementById('stat-layanan-val').innerText = i.stat_layanan;
+
+                        // Profil Utama
+                        if(i.nama) document.getElementById('imam-nama').innerText = i.nama;
+                        if(i.nik) document.getElementById('imam-nik').innerText = i.nik;
+                        if(i.ttl) document.getElementById('imam-ttl').innerText = `: ${i.ttl}`;
+                        if(i.jabatan) document.getElementById('imam-jabatan').innerText = `: ${i.jabatan}`;
+                        if(i.kontak) {
+                            document.getElementById('imam-kontak-val').innerText = `: ${i.kontak}`;
+                            document.getElementById('imam-wa-btn').href = `https://wa.me/${i.kontak.replace(/[^0-9]/g, '')}`;
+                        }
+                        if(i.tugas_desc) document.getElementById('imam-tugas-desc').innerText = i.tugas_desc;
+
+                        // Foto
+                        if(i.foto) {
+                            const photoUrl = i.foto.startsWith('http') 
+                                ? i.foto 
+                                : `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/assets/${i.foto}`;
+                            document.getElementById('imam-foto').src = photoUrl;
+                        }
+                    }
+                }
+            } catch(e) {
+                console.error("Gagal memuat data Imam Desa:", e);
+            }
+        });
+    </script>
+</body>
+</html>
