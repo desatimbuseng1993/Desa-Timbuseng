@@ -629,17 +629,36 @@
                 </form>
             </div>
         </div>
-
-        <!-- TAB 15: BIMNAS.HTML -->
-        <div id="tab-bimnas" class="tab-pane">
+        <!-- TAB BHABINKAMTIBMAS -->
+        <div id="tab-bhabin" class="tab-pane">
             <div class="cms-card">
-                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-user-shield text-success me-2"></i>bimnas.html - Bhabinkamtibmas</h4>
-                <form onsubmit="saveSectionData(event, 'bimnas')">
+                <h4 class="fw-bold text-dark mb-3 fs-5"><i class="fas fa-user-shield text-success me-2"></i>Kelola Data Halaman Bhabinkamtibmas</h4>
+                <form onsubmit="saveSectionData(event, 'bhabin')">
                     <div class="row g-3">
-                        <div class="col-12"><div class="alert alert-info py-2 small mb-0">[ PETUNJUK: Area bimnas.html ]</div></div>
-                        <div class="col-md-6"><label class="form-label">Nama Personel</label><input type="text" class="form-control" name="nama"></div>
-                        <div class="col-md-6"><label class="form-label">Kontak Polsek</label><input type="text" class="form-control" name="kontak"></div>
-                        <div class="col-12 mt-4"><button type="submit" class="btn btn-desa">Simpan Bhabinkamtibmas</button></div>
+                        <div class="col-12"><h6 class="text-success fw-bold border-bottom pb-2">1. Bagian Hero Header & Statistik</h6></div>
+                        <div class="col-md-6"><label class="form-label">Judul Hero</label><input type="text" class="form-control" name="hero_title"></div>
+                        <div class="col-md-6"><label class="form-label">Deskripsi Hero</label><textarea class="form-control" name="hero_desc" rows="2"></textarea></div>
+                        <div class="col-md-3"><label class="form-label">Wilayah Tugas (Dusun)</label><input type="text" class="form-control" name="stat_wilayah"></div>
+                        <div class="col-md-3"><label class="form-label">Mediasi Warga</label><input type="text" class="form-control" name="stat_mediasi"></div>
+                        <div class="col-md-3"><label class="form-label">Keamanan Desa</label><input type="text" class="form-control" name="stat_keamanan"></div>
+                        <div class="col-md-3"><label class="form-label">Layanan Warga</label><input type="text" class="form-control" name="stat_layanan"></div>
+
+                        <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">2. Profil Bhabinkamtibmas</h6></div>
+                        <div class="col-md-4"><label class="form-label">Nama Lengkap & Gelar</label><input type="text" class="form-control" name="nama"></div>
+                        <div class="col-md-4"><label class="form-label">Pangkat / NRP</label><input type="text" class="form-control" name="pangkat"></div>
+                        <div class="col-md-4"><label class="form-label">Kesatuan / Polsek</label><input type="text" class="form-control" name="kesatuan"></div>
+                        <div class="col-md-6"><label class="form-label">Nomor Kontak / WhatsApp</label><input type="text" class="form-control" name="kontak"></div>
+                        <div class="col-md-6"><label class="form-label">Upload Foto Bhabin</label><input type="file" class="form-control" name="foto" accept="image/*"></div>
+                        <div class="col-md-12"><label class="form-label">Kutipan / Pesan Kamtibmas</label><textarea class="form-control" name="quote" rows="2"></textarea></div>
+
+                        <div class="col-12 mt-4"><h6 class="text-success fw-bold border-bottom pb-2">3. Tugas Pokok & Layanan</h6></div>
+                        <div class="col-md-12"><label class="form-label">Deskripsi Utama Polmas</label><textarea class="form-control" name="tugas_deskripsi" rows="2"></textarea></div>
+                        <div class="col-md-6"><label class="form-label">Poin Problem Solving</label><textarea class="form-control" name="tugas_poin1" rows="2"></textarea></div>
+                        <div class="col-md-6"><label class="form-label">Poin Pengamanan & Patroli</label><textarea class="form-control" name="tugas_poin2" rows="2"></textarea></div>
+
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-desa px-5 py-3"><i class="fas fa-save me-2"></i>Simpan Perubahan Bhabinkamtibmas</button>
+                        </div>
                     </div>
                 </form>
             </div>
